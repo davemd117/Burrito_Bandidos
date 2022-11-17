@@ -1,0 +1,230 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    height: 100%;
+    width: 100%;
+    font-size: 20px;
+    position: relative;
+}
+
+/* NAV */
+.nav-bar{
+    max-width: 1140px;
+    height: 50px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    background-color: white;
+}
+.nav-links{
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+}
+.go-to-login{
+    color: #FDB927;
+}
+
+/* MENU */
+
+.menu{
+    max-width: 1140px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.card{
+    min-width: 340px;
+    margin: 50px 1.25%;
+    height: 300px;
+    background-color: red;
+    text-align: center;
+}
+
+/* SIGNUP */
+.title{
+    align-self: center;
+    margin-bottom: 50px;
+    text-align: center;
+    font-weight: 100;
+}
+.sup-mess{
+    font-size: 75%;
+    text-align: center;
+    display: none;
+}
+.sup-good{
+    color: green;
+}
+.sup-bad{
+    color: red;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: fit-content;
+    justify-content: center;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    padding: 20px;
+    border: 2px solid black;
+    box-shadow: 0 0 10px black;
+    background-color: white;
+    z-index: 3;
+}
+.next-to{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.group{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+.form-input{
+    border: none;
+    width: 50%;
+    border-bottom: 1px solid #d3d3d3;
+    border-radius: 5px;
+    outline: none;
+    padding: 5px;
+    font-size: 100%;
+
+}
+.form-input:not(.sup-name,.sup-submit){
+    margin-right: 10px;
+}
+.form-input::placeholder{
+    color: #d3d3d3;
+}
+.form-input:focus{
+    outline: none;
+}
+.sup-confirm{
+    height: fit-content;
+}
+.sup-name{
+    width: 50%;
+    margin: 20px auto;
+}
+.back-btn{
+    color: #552583;
+    font-size: 150%;
+    border: none;
+    transition: .4s;
+    cursor: pointer;
+}
+.back-btn:hover{
+    color: #FDB927;
+}
+.submit{
+    align-self: center;
+    width: fit-content;
+    padding: 10px 20px;
+    color: #fff;
+    border-radius: 50px;
+    border: none;
+    background-color: #FDB927;
+    background-image: linear-gradient(to right,#FDB927,#552583);
+    transition: .7s;
+}
+.submit:hover{
+    cursor: pointer;
+    color: #FDB927;
+    background: transparent;    
+}
+.pass-needs{
+    display: none;
+    color: #d3d3d3;
+    align-self: center;
+}
+.pass-needs ul{
+    list-style-type: none ;
+}
+.pass-req{
+  font-size: 50%;
+
+}
+.pass-reqX{
+    color: red;
+    font-style: italic;
+}
+.pass-req-check{
+    color: green;
+}
+.form-sup{
+    visibility: hidden;
+    /* display: none; */
+}
+
+/* LOGIN */
+.form-log{
+    display: block;
+    transform: scale(0);
+    transition: 1s;
+}
+.back-to-home{
+    color: #552583;
+    font-size: 150%;
+    border: none;
+    transition: .4s;
+    cursor: pointer;
+}
+.back-to-home:hover{
+    color: #FDB927;
+}
+.err-mess{
+   text-align: center;
+    font-size: 75%;
+    color: red;
+    font-style: italic;
+    animation: heartbeat;
+    animation-duration: 2s;
+    display: none;
+}
+.welcome{
+    font-size: 75%;
+    text-align: center;
+    color: green;
+    display: none;
+}
+.log-user{
+    width: 90%;
+}
+.log-pass{
+    width: 90%;
+}
+.log-next-to{
+    margin-bottom: 50px;
+}
+.create-acc{
+    font-size: 75%;
+    margin :2.5px auto;
+}
+.log-group{
+    width: fit-content;
+}
+a{
+    color: #552583;
+    transition: .4s;
+    cursor: pointer;
+}
+a:hover{
+text-decoration: none;
+color: #FDB927;
+}

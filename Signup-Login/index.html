@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <title>Burrito Bandido - Login</title>
+</head>
+<body>
+    <nav class="nav-bar">
+        <div class="logo">LOGO</div>
+        <ul class="nav-links">
+            <a ><li>Link</li></a>
+            <a><li>Link</li></a>
+            <a><li>Link</li></a>
+            <a class="go-to-login"><li>LOGIN</li></a>
+        </ul>
+    </nav>
+
+    <!-- <button class="go-to-login">LOGIN</button> -->
+    <form id="form-sup" class="form-sup form" action="">
+        <ion-icon class="back-btn" name="arrow-back-outline"></ion-icon>
+        <h1 class="sup-title title">Become a Bandido</h1>
+        <p class=" sup-mess sup-good animate__animated animate__lightSpeedInLeft">Thanks for signing up! Return to the login page to sign in.</p>
+        <p class="sup-mess sup-bad animate__animated animate__headShake">Sorry! One ore more fields are incorrect!</p>
+        <input placeholder="First Name..." class="form-input sup-name" type="text" name="name" id="sup-name">
+        <div class="next-to">
+            <input placeholder="Email..." class="form-input sup-email" type="email" name="email" id="sup-email">
+            <input placeholder="Userame..." class="form-input sup-user" type="text" name="username" id="sup-user">
+        </div>
+        <div class="next-to">
+            <input placeholder="Password..." class="form-input sup-password" type="password" name="password"
+                id="sup-password">
+            <input placeholder="Confirm Password" class="form-input sup-confirm" type="password" name="sup-confirm"
+                id="sup-confirm">
+        </div>
+        <div class="pass-needs" id="pass-needs">
+            <p> Your pasword must contain...</p>
+            <ul class="group">
+                <li class="pass-req pass-reqX upper-req">
+                    <ion-icon class="close-outline upper-req" name="close-outline"></ion-icon> 1 Uppercase letter
+                </li>
+                <!-- Class change to <ion-icon name="checkmark-outline green"></ion-icon> when each requirement is met-->
+                <li class="pass-req pass-reqX lower-req">
+                    <ion-icon class="close-outline" name="close-outline"></ion-icon> 1 Lowercase letter
+                </li>
+                <li class="pass-req pass-reqX length-req">
+                    <ion-icon class="close-outline" name="close-outline"></ion-icon> At least 8 Characters
+                </li>
+                <li class="pass-req pass-reqX num-req">
+                    <ion-icon class="close-outline" name="close-outline"></ion-icon> 1 number
+                </li>
+                <li class="pass-req pass-reqX spec-req">
+                    <ion-icon class="close-outline" name="close-outline"></ion-icon> 1 special character
+                </li>
+            </ul>
+        </div>
+        <input class=" form-input sup-submit submit" type="button" id="sup-submit" value="Sign Up">
+    </form>
+
+    <!------------------------------- LOGIN ---------------------------------->
+    <form id="form-log " action="" class="form form-log">
+        <ion-icon class="back-to-home" name="home"></ion-icon>
+        <h1 class="title log-title">Log In</h1>
+        <p class="err-mess animate__animated animate__fadeInUp"></p>
+        <p id="welcome" class="welcome"></p>
+        <div class="next-to log-next-to">
+            <input placeholder="Username..." type="text" name="log-user" id="log-user" class="log-user form-input">
+            <input placeholder="Password..." type="password" name="" id="log-pass" class="log-pass form-input">
+        </div>
+        <div class="next-to">
+            <input class="submit log-submit form-input" id="log-submit" type="button" value="Log In">
+            <div class="group log-group">
+                <p class="create-acc">Don't have an account? </p>
+                <a id="go-to-sup" class="create-acc go-to-sup">Sign up</a>
+            </div>
+        </div>
+    </form>
+    <section class="menu">
+        <div class="card">CARD</div>
+        <div class="card">CARD</div>
+        <div class="card">CARD</div>
+        <div class="card">CARD</div>
+        <div class="card">CARD</div>
+        <div class="card">CARD</div>
+        <div class="card">CARD</div>
+        <div class="card">CARD</div>
+        <div class="card">CARD</div>
+        <div class="card">CARD</div>
+        <div class="card">CARD</div>
+        <div class="card">CARD</div>
+        <div class="card">CARD</div>
+        <div class="card">CARD</div>
+        <div class="card">CARD</div>
+        <div class="card">CARD</div>
+        <div class="card">CARD</div>
+        <div class="card">CARD</div>
+        <div class="card">CARD</div>
+        <div class="card">CARD</div>
+    </section>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="main.js"></script>
+
+</body>
+</html>
