@@ -20,7 +20,11 @@ userDatabase.push(new UserInfo('bandido1', 'Owner', 'BurBand@email.com', 'Passwo
 userDatabase.push(new UserInfo('davemd', 'Dave', 'dave@email.com', 'Drum&'));
 userDatabase.push(new UserInfo('preachey', 'Ryan', 'ryan@email.com', '$hort'));
 userDatabase.push(new UserInfo('chris', 'Chris', 'chris@email.com', 'wr1ght'));
+
+//Testing accnts in storage
 window.onload =  addUserToStorage(userDatabase)
+
+
 
 // ----- database functions ----- //
 
@@ -33,42 +37,31 @@ function addUser() {
     ));
 }
 
-// function addUserToStorage(){
-//     JSON.stringify(userDatabase)
-//     for(i=0;i<userDatabase.length; i++){
-//         window.localStorage.setItem(`${i}`, JSON.stringify(userDatabase[i]))
-//     }
-// }
 function addUserToStorage(arr){
     for(i=0;i<arr.length; i++){
         window.localStorage.setItem(`${i}`, JSON.stringify(arr[i]))
     }
 }
 
-function retrieveFromStorage(){
+function retrieveFromStorage(arr){
     Object.keys(localStorage).forEach((key) => {
-        listUsers.push(JSON.parse(localStorage.getItem(key)));
+        arr.push(JSON.parse(localStorage.getItem(key)));
     })
 
 }
 
 // ----- CREATE ACC CHECKS----- //
+//Checks if inputs are empty
 function checkForInput() {
-    let name = document.getElementById("sup-name").value
-    let email = document.getElementById("sup-email").value
-    let username = document.getElementById("sup-user").value
-    let pass = document.getElementById("sup-password").value
-    let confPass = document.getElementById("sup-confirm").value
-    // console.log(name)
-    if (name === "" || email === ""|| user === ""|| pass === ""|| confPass === ""){
-        return false
+    if ($('.sup-user').val() === '' || $('.sup-name').val() === '' || $('.sup-email').val() === '' || $('.sup-password').val() === '') {
+        return false;
     }
     else {
-        return true
+        return true;
     }
 }
 
-
+//Checks if username is already used
 function userDupeCheck() {
     let userUsername = []
     userDatabase.forEach((user) => {
@@ -84,7 +77,7 @@ function userDupeCheck() {
     }
 }
 
-
+//Checks if email is already in use
 function emailDupeCheck() {
     let userEmail = []
     userDatabase.forEach((user) => {
@@ -100,6 +93,7 @@ function emailDupeCheck() {
     }
 }
 
+//Checks if password and confirm password are the same
 function checkConfirmPass() {
     let pass = document.getElementById('sup-password').value
     let confirm = document.getElementById('sup-confirm').value
@@ -111,6 +105,7 @@ function checkConfirmPass() {
     }
 }
 
+//Checks if all password requirements are met
 function checkPassReqs() {
     req1 = document.getElementsByClassName('pass-req')[0]
     req2 = document.getElementsByClassName('pass-req')[1]
@@ -118,7 +113,6 @@ function checkPassReqs() {
     req4 = document.getElementsByClassName('pass-req')[3]
     req5 = document.getElementsByClassName('pass-req')[4]
 
-    // console.log(reqs)
     if (req1.classList.contains('pass-req-check') && req2.classList.contains('pass-req-check') && req3.classList.contains('pass-req-check') && req4.classList.contains('pass-req-check') && req5.classList.contains('pass-req-check')) {
         return true
     }
@@ -129,19 +123,21 @@ function checkPassReqs() {
 
 // ----- event functions ----- //
 
+//When signup button is clicked check form values for duplicates or empty fields
+// Make new instance of UserInfo and push into userDatabase
+// Send userDatabase to local storage
+//Clear fields
 $('.sup-submit').click(() => {
-    if (checkForInput()){
-    // && userDupeCheck() && checkForInput() && checkPassReqs() && checkConfirmPass()) {
-        console.log(document.getElementById("sup-name").value)
+    if (userDupeCheck() && emailDupeCheck() && checkForInput() && checkPassReqs() && checkConfirmPass()){
         addUser();
         addUserToStorage(userDatabase)
         $('.sup-good').show()
         $('.sup-bad').hide()
-        // $('.sup-name').val("")
-        // $('.sup-email').val("")
-        // $('.sup-user').val("")
-        // $('.sup-password').val("")
-        // $('.sup-confirm').val("")
+        $('.sup-name').val("")
+        $('.sup-email').val("")
+        $('.sup-user').val("")
+        $('.sup-password').val("")
+        $('.sup-confirm').val("")
     }
     else {
         $('.sup-bad').show()
@@ -151,9 +147,9 @@ $('.sup-submit').click(() => {
 
 
 // -----Go to Log-in ----- //
-    $('.go-to-login').click(()=>{
-        $('.form-log').css("transform", "scale(1)")
-    })
+$('.go-to-login').click(()=>{
+    $('.form-log').css("transform", "scale(1)")
+})
 
 // -----Go Back To Home ----- //
 $('.back-to-home').click(() => {
@@ -242,10 +238,10 @@ $('.sup-password').on('input', () => {
 $('.log-submit').click(() => {
     let logPassword = $('.log-pass').val()
     let logUsername = $('.log-user').val()
-    retrieveFromStorage()
+    retrieveFromStorage(listUsers) // Grab local storage and push it into listUsers
     for(users of listUsers){
         if(logUsername ==="bandido1" && logPassword === "P@ssword123"){
-            // NEW
+            // LOAD NEW PAGE
             $('.log-pass').val("")
             $('.log-user').val("")
             $('.err-mess').hide()
@@ -256,7 +252,6 @@ $('.log-submit').click(() => {
             console.log(currentUser)
         }
         else if( logUsername === users.username && logPassword === users.password){
-            console.log(`Welcome ${users.firstName}`)
             $('.log-pass').val("")
             $('.log-user').val("")
             $('#welcome').text(`Welcome ${users.firstName}`)
@@ -280,11 +275,27 @@ $('.log-submit').click(() => {
     }
 })
 
-function checkForInput() {
-    if ($('.sup-user').value === '' || $('.sup-name').value === '' || $('.sup-email').value === '' || $('.sup-password').value === '') {
-        return false;
-    }
-    else {
-        return true;
+//Pressing Enter on signup form
+ let supInputs = document.querySelectorAll(".sup-input")
+supInputs.forEach((input) => {
+    input.addEventListener("keypress", pressEnter)
+})
+function pressEnter(event){
+   let inputs = document.querySelectorAll(".sup-input")
+    if(event.keyCode === 13){
+        for(i=0; i<inputs.length; i++){
+            if(inputs[i] === this){
+                i++
+                inputs[i].focus()
+            }
+            else if(i === 3){
+                return
+            }
+        }
     }
 }
+$('.log-user').keydown((event) =>{
+    if(event.keyCode ===13){
+        $('.log-pass').focus()
+    }
+})
