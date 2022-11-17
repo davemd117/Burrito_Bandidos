@@ -1,0 +1,103 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+}
+
+.headerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #e6e6e6;
+    height: 10vh;
+    width: 100%;
+    /* margin-bottom: 1rem; */
+
+}
+
+.headerContainer ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.headerContainer a{
+    color: black;
+    font-weight: 600;
+}
+
+.headerContainer h2{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.headerContainer h2:nth-child(2){
+    align-items: center;
+}
+
+/* start of add new item form */
+.addNewItemform{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: gray;
+    width: 15vw;
+
+}
+/* end of add new item form */
+
+/* start of delete item form */
+.deleteItemForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: blue;
+    width: 15vw;
+}
+/* end of delete item form */
+
+/* start of menu items gallery */
+.menuItems{
+    position: relative;
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1rem;
+    background-color: black;
+    text-align: center;
+    padding: 1rem;
+    padding-top: 3.5rem;
+    width: 100%;
+}
+
+.menuItems h2{
+    color: white;
+}
+
+.menuItem{
+    border: 1px solid white;
+    border-radius: 15px;
+    padding: 1rem;
+    background-color: gray;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 1rem;
+
+}
+
+.menuItem img{
+    width: 100%;
+    object-fit: contain;
+}
+/* end of menu items gallery */
+
