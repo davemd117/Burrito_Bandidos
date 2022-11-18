@@ -20,7 +20,7 @@ body{
     border-bottom: 1px solid #e6e6e6;
     height: 10vh;
     width: 100%;
-    /* margin-bottom: 1rem; */
+    margin-bottom: 1rem;
 
 }
 
@@ -45,26 +45,153 @@ body{
     align-items: center;
 }
 
-/* start of add new item form */
-.addNewItemform{
-    display: flex;
+/* start form */
+
+.forms{
     flex-direction: column;
-    align-items: center;
-    background-color: gray;
-    width: 15vw;
-
+    width: 50%;
+    height: fit-content;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -45%);
+    padding: 20px;
+    z-index: 20;
 }
-/* end of add new item form */
 
-/* start of delete item form */
+.addNewItemform,
 .deleteItemForm{
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: blue;
-    width: 15vw;
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    font-size: 1.4rem;
+    border: 2px solid black;
+    box-shadow: 0 0 10px black;    
+    padding: 2rem 2rem;
+    text-align: center;
 }
-/* end of delete item form */
+
+.formHeader{
+    align-self: center;
+    margin-bottom: 20px;
+}
+
+.formHidden{
+    display: none;
+}
+.formActive{
+    display: block;
+}
+
+.formBtn{
+    width: 25%;
+    padding: 10px 20px;
+    color: #fff;
+    border-radius: 50px;
+    border: none;
+    background-color: #FDB927;
+    background-image: linear-gradient(to right,#FDB927,#552583);
+    transition: .7s;
+    cursor: pointer;
+    margin-top: .3rem;
+    font-size: 1rem;
+    height: 3rem;
+}
+
+.formBtn:hover{
+    color: #FDB927;
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid #FDB927;
+    font-weight: 600;
+    transition: .7s;
+}
+
+.formBtnContainer{
+    width: 100%;
+    display: flex;
+    margin-top: .5rem;
+    padding: 1rem;
+    justify-content: space-evenly;
+}
+
+.addFormCloseBtn{
+    position: absolute;
+    left: 90%;
+    top: 7%;
+    font-size: 3rem;
+    cursor: pointer;
+    transition: .7s;
+}
+.addFormCloseBtn:hover{
+    color: #FDB927;
+    font-size: 3.1rem;
+    transition: .5s;
+}
+
+.delFormCloseBtn{
+    left: 90%;
+    position: absolute;
+    font-size: 3rem;
+    cursor: pointer;
+    transition: .7s;
+}
+.delFormCloseBtn:hover{
+    color: #FDB927;
+    font-size: 3.1rem;
+    transition: .5s;
+}
+
+
+input[type="text"]{
+    border: none;
+    width: 100%;
+    border-bottom: 1px solid #d3d3d3;
+    border-radius: 5px;
+    outline: none;
+    padding: 5px;
+    font-size: 100%;
+}
+
+#deleteMenuItem {
+    width: 25%;
+    padding: 10px 20px;
+    color: #fff;
+    border-radius: 50px;
+    border: none;
+    background-color: #FDB927;
+    background-image: linear-gradient(to right,#FDB927,#552583);
+    transition: .7s;
+    cursor: pointer;
+    margin-top: .3rem;
+    font-size: 1rem;
+    height: 3rem;
+}
+
+#deleteMenuItem:hover{
+    color: #FDB927;
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid #FDB927;
+    font-weight: 600;
+    transition: .7s;
+}
+
+.formsHidden{
+    display: none;
+}
+
+.formsActive{
+    display: block;
+}
+
+
+/* end form */
 
 /* start of menu items gallery */
 .menuItems{
@@ -77,6 +204,12 @@ body{
     padding: 1rem;
     padding-top: 3.5rem;
     width: 100%;
+}
+.menuItemsHidden{
+    display: none;
+}
+.menuItemsActive{
+    display: block;
 }
 
 .menuItems h2{
@@ -99,5 +232,42 @@ body{
     width: 100%;
     object-fit: contain;
 }
+
 /* end of menu items gallery */
+
+/* media queries come back and finish once rest of css is done */
+@media screen and (max-width: 1200px){
+    .menuItems{
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .menu{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 900px){
+    .menuItems{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 600px){
+    .menuItems{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media screen and (max-width: 400px){
+    .menuItems{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media screen and (max-width: 300px){
+    .menuItems{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+/* end of media queries */
 

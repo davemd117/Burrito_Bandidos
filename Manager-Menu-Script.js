@@ -1,10 +1,9 @@
-//array to store html elements as objects might need to call on button click
+// start of pushing static menu items to array menu
 let menu = []
 let menuItems = document.querySelectorAll('.menuItem')
 menuItems.forEach((item) => {
-    // push to array of objects
     menu.push({
-        name: item.querySelector('.itemName').textContent,
+        name: item.querySelector('.itemName').textContent.toUpperCase(),
         price: item.querySelector('.itemPrice').textContent,
         description: item.querySelector('.itemDescription').textContent,
         image: item.querySelector('.itemImg').src,
@@ -12,35 +11,43 @@ menuItems.forEach((item) => {
     })
 })
 console.log(menu)
+// end of pushing static menu items to array menu
 
 //start of add new menu item  
 const addNewMenuItemBtn = document.getElementById('addNewMenuItem');
 addNewMenuItemBtn.addEventListener('click', () => {
-    const name = document.getElementById('newItemName').value;
+    const name = document.getElementById('newItemName').value.toUpperCase();
     const price = document.getElementById('newItemPrice').value;
     const description = document.getElementById('newItemDescription').value;
     const image = document.getElementById('newItemImg').value;
     const calories = document.getElementById('newItemCalories').value;
-    // test
-    // const whereToinsert = document.getElementById('locationNewItem').value;
-    // end test
-    // checking if inputs are empty or not will need to check if they already exist as well need to figure out why checking name is not working
+    const whereToinsert = document.getElementById('locationNewItem').value;
+    for(let i = 0; i < menu.length; i++) {
+        if(menu[i].name === name) {
+            alert('Item already exists');
+            return;
+        }
+    }
     if(name === '' || price === '' || description === '' || image === '' || calories === '') {
-        alert('Please fill out required fields')
-    } else {
+        alert('Please fill out all fields');
+        return;
+    }
     const newMenuItem = {
-        name: document.getElementById('newItemName').value,
-        price: document.getElementById('newItemPrice').value,
-        description: document.getElementById('newItemDescription').value,
-        image: document.getElementById('newItemImg').value
+        name: name,
+        price: price,
+        description: description,
+        image: image,
+        calories: calories
     }
-    // test trying to make the item appear in manager menu in correct spot and not reload array everytime
-    // menu.splice(whereToinsert, 0, newMenuItem)
-    // end test
-    menu.push(newMenuItem)
+    menu.splice(whereToinsert, 0, newMenuItem)
     console.log(menu)
-    appendMenuItems(menu)    
-    }
+    appendMenuItems(menu)
+    document.getElementById('newItemName').value = '';
+    document.getElementById('newItemPrice').value = '';
+    document.getElementById('newItemDescription').value = '';
+    document.getElementById('newItemImg').value = '';
+    document.getElementById('newItemCalories').value = '';
+    document.getElementById('locationNewItem').value = '';
 })
 
 const appendMenuItems = (menu) => {
@@ -51,25 +58,28 @@ const appendMenuItems = (menu) => {
     newMenuItem.innerHTML = `
     <img class="itemImg" src="${menu[menu.length - 1].image}"  alt="...">
     <h3 class="itemName">${menu[menu.length - 1].name}</h3>
-    <p class="itemPrice">${menu[menu.length - 1].price}</p>
     <p class="itemDescription">${menu[menu.length - 1].description}</p>
+    <p class="itemCalories">${menu[menu.length - 1].calories}</p>
+    <p class="itemPrice">${menu[menu.length - 1].price}</p>
 `
-    menuItems.appendChild(newMenuItem)  
+    // menuItems.appendChild(newMenuItem)
+    // menuItems.insertBefore(newMenuItem, menuItems.childNodes[whereToinsert])
 }
 // end of add new menu item
 
-// function to delete menu item need to check if item name is in cart
+// function to delete menu 
 const deleteMenuItemBtn = document.getElementById('deleteMenuItem');
 deleteMenuItemBtn.addEventListener('click', () => {
-    const deleteMenuItem = document.getElementById('deleteItemName').value
+    const deleteMenuItem = document.getElementById('deleteItemName').value.toUpperCase();
     for(i = 0 ; i < menu.length ; i++) {
         if(menu[i].name === deleteMenuItem) {
-// delete from card container
         const menuItems = document.querySelector('.menuItems')
         menuItems.removeChild(menuItems.children[i])
-//delete from menu array
         menu.splice(i, 1)
         console.log(menu)
+        } else {
+            alert('Item does not exist');
+            return;
         }
     }
 })
@@ -82,3 +92,53 @@ saveChanges.addEventListener('click', () => {
     localStorage.setItem('menu', JSON.stringify(menu))
 })
 
+const viewMenu = document.getElementById('viewMenu');
+viewMenu.addEventListener('click', () => {
+    let menuItemsContainer = document.querySelector('.menu')
+    menuItemsContainer.classList.remove('menuItemsHidden')
+    menuItemsContainer.classList.add('menuItemsActive')
+})
+
+const editMenuBtn = document.getElementById('editMenu');
+editMenuBtn.addEventListener('click', () => {
+    let form = document.querySelector('.form')
+    form.classList.remove('formHidden')
+    form.classList.add('formActive')
+})
+
+const addFormCloseBtn = document.querySelector('.addFormCloseBtn');
+addFormCloseBtn.addEventListener('click', () => {
+    let addform = document.getElementById('addForm')
+    addform.classList.remove('formsActive')
+    addform.classList.add('formsHidden')
+})
+
+const deleteFormCloseBtn = document.querySelector('.delFormCloseBtn');
+deleteFormCloseBtn.addEventListener('click', () => {
+    let deleteform = document.getElementById('deleteForm')
+    deleteform.classList.remove('formsActive')
+    deleteform.classList.add('formsHidden')
+})
+
+const viewChanges = document.getElementById('viewChanges');
+viewChanges.addEventListener('click', () => {
+    window.location.href = 'Manager-Menu-Page-Updated.html'
+})
+
+
+
+//function to parse local storage and append menu items to menu
+// let CurrentMenuItemsCustomerPage = JSON.parse(localStorage.getItem('menu'))
+// CurrentMenuItemsCustomerPage.forEach((item) => {
+//     let menuItems = document.querySelector('.menuItems')
+//     let menuItem = document.createElement('div')
+//     menuItem.classList.add('menuItem')
+//     menuItem.innerHTML = `
+//     <img class="itemImg" src="${item.image}" alt="">
+//     <h3 class="itemName">${item.name}</h3>
+//     <p class="itemPrice">${item.price}</p>
+//     <p class="itemDescription">${item.description}</p>
+//     `
+//     menuItems.appendChild(menuItem)
+// })
+// console.log(CurrentMenuItemsCustomerPage)
