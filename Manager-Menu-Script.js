@@ -39,6 +39,15 @@ addNewMenuItemBtn.addEventListener('click', () => {
         image: image,
         calories: calories
     }
+    
+    setTimeout(() => {
+        let addedSuccess = document.querySelector('.addedItemSuccess')
+        addedSuccess.style.display = 'block'
+    }, .5)
+    setTimeout(() => {
+        let addedSuccess = document.querySelector('.addedItemSuccess')
+        addedSuccess.style.display = 'none'
+    }, 1000)
     menu.splice(whereToinsert, 0, newMenuItem)
     console.log(menu)
     appendMenuItems(menu)
@@ -104,7 +113,13 @@ editMenuBtn.addEventListener('click', () => {
     let form = document.querySelector('.form')
     form.classList.remove('formHidden')
     form.classList.add('formActive')
+    let headerMenuBtns = document.querySelectorAll('.headerMenuBtn')
+    headerMenuBtns.forEach((btn) => {
+        btn.classList.remove('headerBtnHidden')
+        btn.classList.add('headerBtnActive')
+    })
 })
+
 
 const addFormCloseBtn = document.querySelector('.addFormCloseBtn');
 addFormCloseBtn.addEventListener('click', () => {
@@ -124,6 +139,25 @@ const viewChanges = document.getElementById('viewChanges');
 viewChanges.addEventListener('click', () => {
     window.location.href = 'Manager-Menu-Page-Updated.html'
 })
+
+
+const showAddFormHeader = document.getElementById('addMenuHeader');
+showAddFormHeader.addEventListener('click', () => {
+    let addform1 = document.getElementById('addForm')
+    addform1.classList.remove('formsHidden')
+    addform1.classList.add('formsActive')
+    
+})
+
+const deleteAddFormHeader = document.getElementById('deleteMenuHeader');
+deleteAddFormHeader.addEventListener('click', () => {
+    let deleteform1 = document.getElementById('deleteForm')
+    deleteform1.classList.remove('formsHidden')
+    deleteform1.classList.add('formsActive')
+})
+
+   
+
 
 
 

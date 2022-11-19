@@ -25,7 +25,11 @@
 </header>
 
 <section class="menuItemsHidden menu">
+<div class="menuHeader">
 <button id="editMenu">Edit Menu</button>
+<button id="addMenuHeader" class="headerBtnHidden headerMenuBtn">Add Menu</button>
+<button id="deleteMenuHeader" class="headerBtnHidden headerMenuBtn">Delete Menu</button>
+</div>
 <h2 style="text-align:center;">Menu Items</h2>
 <div class="menuItems"> 
     <div class="menuItem">
@@ -174,15 +178,16 @@
 <section class="formHidden form">
 <div class="forms">
     <form class="addNewItemform formsActive" id="addForm">
+        <div class="addedItemSuccess success">Item succesfully added to menu</div>
         <ion-icon class="addFormCloseBtn" name="close-circle-outline"></ion-icon>
-         <h2 class="formHeader">Add Items</h2>
-         <input id="newItemImg" type="text" name="image" placeholder="Enter url/file name for image">
-        <input id="newItemName" type="text" name="name" placeholder="Enter item name">
+        <h2 class="formHeader">Add Items</h2>
+        <input id="newItemName" type="text" name="name" placeholder="Enter Item Name">
+        <input id="newItemImg" type="text" name="image" placeholder="Enter url/file name for image">
         <input id="newItemDescription" type="text" name="description" placeholder="Enter Item description">
         <input id="newItemCalories" type="text" name="calories" placeholder="Enter item calories">
         <input id="newItemPrice" type="text" name="price" placeholder="Enter item price">
         <input type="text" id="locationNewItem" placeholder="Desired position in menu">
-        <div class="formBtnContainer">
+    <div class="formBtnContainer">
         <button class="formBtn" id="addNewMenuItem" type="button">Add new menu item</button>
         <button class="formBtn" type="button" id="saveMenu">Confirm Changes</button>
         <button class="formBtn" id="viewChanges" type="button">View Changes</button>
@@ -198,6 +203,7 @@
     </form>
 </div>
 </section>
+
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
