@@ -51,12 +51,12 @@ addNewMenuItemBtn.addEventListener('click', () => {
     menu.splice(whereToinsert, 0, newMenuItem)
     console.log(menu)
     appendMenuItems(menu)
-    document.getElementById('newItemName').value = '';
-    document.getElementById('newItemPrice').value = '';
-    document.getElementById('newItemDescription').value = '';
-    document.getElementById('newItemImg').value = '';
-    document.getElementById('newItemCalories').value = '';
-    document.getElementById('locationNewItem').value = '';
+    // document.getElementById('newItemName').value = '';
+    // document.getElementById('newItemPrice').value = '';
+    // document.getElementById('newItemDescription').value = '';
+    // document.getElementById('newItemImg').value = '';
+    // document.getElementById('newItemCalories').value = '';
+    // document.getElementById('locationNewItem').value = '';
 })
 
 const appendMenuItems = (menu) => {
@@ -76,7 +76,7 @@ const appendMenuItems = (menu) => {
 }
 // end of add new menu item
 
-// function to delete menu 
+// function to delete menu figure out how to get error message to work properly
 const deleteMenuItemBtn = document.getElementById('deleteMenuItem');
 deleteMenuItemBtn.addEventListener('click', () => {
     const deleteMenuItem = document.getElementById('deleteItemName').value.toUpperCase();
@@ -85,41 +85,34 @@ deleteMenuItemBtn.addEventListener('click', () => {
         const menuItems = document.querySelector('.menuItems')
         menuItems.removeChild(menuItems.children[i])
         menu.splice(i, 1)
+        console.log(deleteMenuItem)
         console.log(menu)
-        } else {
-            alert('Item does not exist');
-            return;
         }
     }
 })
+
 // end of function to delete menu items
 
-//clearing local storage and adding updated menu to local storage
-const saveChanges = document.getElementById('saveMenu');
-saveChanges.addEventListener('click', () => {
-    localStorage.clear()
-    localStorage.setItem('menu', JSON.stringify(menu))
-})
-
+// function to show edit/add/delete menu items and also unhide the form
 const viewMenu = document.getElementById('viewMenu');
 viewMenu.addEventListener('click', () => {
     let menuItemsContainer = document.querySelector('.menu')
     menuItemsContainer.classList.remove('menuItemsHidden')
     menuItemsContainer.classList.add('menuItemsActive')
+    let hero = document.querySelector('.hero')
+    hero.classList.remove('heroActive')
+    hero.classList.add('heroHidden')
 })
+// end of view menu button
 
-const editMenuBtn = document.getElementById('editMenu');
-editMenuBtn.addEventListener('click', () => {
-    let form = document.querySelector('.form')
-    form.classList.remove('formHidden')
-    form.classList.add('formActive')
-    let headerMenuBtns = document.querySelectorAll('.headerMenuBtn')
-    headerMenuBtns.forEach((btn) => {
-        btn.classList.remove('headerBtnHidden')
-        btn.classList.add('headerBtnActive')
-    })
+// add form buttons
+const showAddFormHeader = document.getElementById('addMenuHeader');
+showAddFormHeader.addEventListener('click', () => {
+    let addform1 = document.getElementById('addForm')
+    addform1.classList.remove('formsHidden')
+    addform1.classList.add('formsActive')
+    
 })
-
 
 const addFormCloseBtn = document.querySelector('.addFormCloseBtn');
 addFormCloseBtn.addEventListener('click', () => {
@@ -128,25 +121,24 @@ addFormCloseBtn.addEventListener('click', () => {
     addform.classList.add('formsHidden')
 })
 
+const AddFormviewChanges = document.getElementById('AddFormviewChanges');
+AddFormviewChanges.addEventListener('click', () => {
+    window.location.href = 'Manager-Menu-Page-Updated.html'
+})
+
+const addFormConfirmBtn = document.getElementById('addFormConfirmBtn');
+addFormConfirmBtn.addEventListener('click', () => {
+    localStorage.clear()
+    localStorage.setItem('menu', JSON.stringify(menu))
+})
+// end of add form buttons
+
+// delete form buttons
 const deleteFormCloseBtn = document.querySelector('.delFormCloseBtn');
 deleteFormCloseBtn.addEventListener('click', () => {
     let deleteform = document.getElementById('deleteForm')
     deleteform.classList.remove('formsActive')
     deleteform.classList.add('formsHidden')
-})
-
-const viewChanges = document.getElementById('viewChanges');
-viewChanges.addEventListener('click', () => {
-    window.location.href = 'Manager-Menu-Page-Updated.html'
-})
-
-
-const showAddFormHeader = document.getElementById('addMenuHeader');
-showAddFormHeader.addEventListener('click', () => {
-    let addform1 = document.getElementById('addForm')
-    addform1.classList.remove('formsHidden')
-    addform1.classList.add('formsActive')
-    
 })
 
 const deleteAddFormHeader = document.getElementById('deleteMenuHeader');
@@ -156,23 +148,66 @@ deleteAddFormHeader.addEventListener('click', () => {
     deleteform1.classList.add('formsActive')
 })
 
-   
+const deleteFormConfirmBtn = document.getElementById('deleteFormConfirmBtn');
+deleteFormConfirmBtn.addEventListener('click', () => {
+    localStorage.clear()
+    localStorage.setItem('menu', JSON.stringify(menu))
+})
 
+const deleteFormviewChanges = document.getElementById('deleteFormViewChanges');
+deleteFormviewChanges.addEventListener('click', () => {
+    window.location.href = 'Manager-Menu-Page-Updated.html'
+})
 
+// end of delete form buttons
 
+// start of edit form buttons
+const editMenuItemBtn = document.getElementById('editMenuItem');
+editMenuItemBtn.addEventListener('click', () => {
+    const name = document.getElementById('editItemName').value.toUpperCase();
+    const newPrice = document.getElementById('editItemPrice').value;
+    const newDescription = document.getElementById('editItemDescription').value;
+    const newImage = document.getElementById('editItemImg').value;
+    const newCalories = document.getElementById('editItemCalories').value;
+    // might use to see if can update location of item would have to check if parsed menu looks the same
+    const newItemLocation = document.getElementById('editItemLocation').value;
+    for(let i = 0; i < menu.length; i++) {
+        if(menu[i].name === name) {
+            menu[i].name = name;
+            menu[i].price = newPrice;
+            menu[i].description = newDescription;
+            menu[i].image = newImage;
+            menu[i].calories = newCalories;
+            console.log(menu)
+            return;
+        }
+    }
+    alert('Item does not exist');
+})
 
-//function to parse local storage and append menu items to menu
-// let CurrentMenuItemsCustomerPage = JSON.parse(localStorage.getItem('menu'))
-// CurrentMenuItemsCustomerPage.forEach((item) => {
-//     let menuItems = document.querySelector('.menuItems')
-//     let menuItem = document.createElement('div')
-//     menuItem.classList.add('menuItem')
-//     menuItem.innerHTML = `
-//     <img class="itemImg" src="${item.image}" alt="">
-//     <h3 class="itemName">${item.name}</h3>
-//     <p class="itemPrice">${item.price}</p>
-//     <p class="itemDescription">${item.description}</p>
-//     `
-//     menuItems.appendChild(menuItem)
-// })
-// console.log(CurrentMenuItemsCustomerPage)
+const editItemConfirmBtn = document.getElementById('editFormConfirmBtn');
+editItemConfirmBtn.addEventListener('click', () => {
+    localStorage.clear()
+    localStorage.setItem('menu', JSON.stringify(menu))
+})
+
+const editItemFormViewChanges = document.getElementById('editFormViewChanges');
+editItemFormViewChanges.addEventListener('click', () => {
+    window.location.href = 'Manager-Menu-Page-Updated.html'
+})
+
+const editMenuHeader = document.getElementById('editMenuHeader');
+editMenuHeader.addEventListener('click', () => {
+    let editForm = document.querySelector('.editItemForm')
+    editForm.classList.remove('formsHidden')
+    editForm.classList.add('formsActive')
+})
+
+const editFormCloseBtn = document.querySelector('.editFormCloseBtn');
+editFormCloseBtn.addEventListener('click', () => {
+    let editForm = document.querySelector('.editItemForm')
+    editForm.classList.remove('formsActive')
+    editForm.classList.add('formsHidden')
+})
+// end of edit form buttons
+

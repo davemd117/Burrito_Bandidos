@@ -20,13 +20,12 @@ body{
     border-bottom: 1px solid #e6e6e6;
     height: 10vh;
     width: 100%;
-    margin-bottom: 1rem;
 }
 
 .headerContainer h2:hover, 
 .headerContainer li:hover, 
 .headerContainer a:hover{
-    color: #FDB927
+    color: #FDB927;
 }
 
 .headerContainer ul{
@@ -53,6 +52,22 @@ body{
     align-items: center;
     margin-left: 13rem;
 }
+/* hero */
+.hero{
+    background-color: gray;
+    border-bottom: 1px solid #e6e6e6;
+    height: 83.5vh;
+    width: 100%;
+}
+
+.heroActive{
+    display: block;
+}
+.heroHidden{
+    display: none;
+}
+
+/* end hero */
 
 /* start form */
 
@@ -69,10 +84,24 @@ body{
     z-index: 20;
 }
 
-.addNewItemform,
+
+.addNewItemForm,
 .deleteItemForm{
     position: relative;
     display: flex;
+    align-items: center;
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    font-size: 1.4rem;
+    border: 2px solid black;
+    box-shadow: 0 0 10px black;    
+    padding: 2rem 2rem;
+    text-align: center;
+}
+
+.editItemForm{
+    position: relative;
     align-items: center;
     background-color: white;
     height: 100%;
@@ -156,6 +185,20 @@ button:hover{
     transition: .7s;
 }
 
+.editFormCloseBtn{
+    position: absolute;
+    left: 90%;
+    top: 7%;
+    font-size: 3rem;
+    cursor: pointer;
+    transition: .7s;
+}
+.editFormCloseBtn:hover{
+    color: #FDB927;
+    font-size: 3.1rem;
+    transition: .7s;
+}
+
 .delFormCloseBtn{
     left: 90%;
     position: absolute;
@@ -218,15 +261,6 @@ input[type="text"]:focus{
     display: block;
 }
 
-.headerBtnHidden{
-    display: none;
-}
-.headerBtnActive{
-    display: block;
-    /* transition */
-    transition: .7s;
-}
-
 .success{
     position: absolute;
     top: 5%;
@@ -252,14 +286,10 @@ input[type="text"]:focus{
 
 /* start of menu items gallery */
 .menuItems{
-    position: relative;
     display:grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 1rem;
-    background-color: black;
     text-align: center;
-    padding: 1rem;
-    padding-top: 3.5rem;
     width: 100%;
 }
 .menuItemsHidden{
@@ -275,14 +305,8 @@ input[type="text"]:focus{
 
 .menuItem{
     border: 1px solid white;
-    border-radius: 15px;
-    padding: 1rem;
     background-color: gray;
     color: white;
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 1rem;
-
 }
 
 .menuItem img{
@@ -300,7 +324,6 @@ input[type="text"]:focus{
 
 .menuHeader > button {
     justify-content: center;
-    width: 10vw;
     background-color: #FDB927;
     background-image: linear-gradient(to right,#FDB927,#552583);
     border: none;
@@ -315,12 +338,33 @@ input[type="text"]:focus{
     background-image: none;
     border: 1px solid #FDB927;
     color: #FDB927;
-    font-weight: 600;
     transition: .7s;
 }
 
 
+
 /* end of menu items gallery */
+
+/* start of footer */
+footer{
+    border-top: 1px solid #d3d3d3;
+    position: relative;
+    width: 100%;
+}
+
+.footerContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+.socialMedia{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 1rem; 
+}
 
 /* media queries come back and finish once rest of css is done */
 @media screen and (max-width: 1200px){
