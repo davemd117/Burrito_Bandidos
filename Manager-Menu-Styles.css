@@ -20,8 +20,12 @@ body{
     border-bottom: 1px solid #e6e6e6;
     height: 10vh;
     width: 100%;
-    /* margin-bottom: 1rem; */
+}
 
+.headerContainer h2:hover, 
+.headerContainer li:hover, 
+.headerContainer a:hover{
+    color: #FDB927;
 }
 
 .headerContainer ul{
@@ -35,6 +39,9 @@ body{
     color: black;
     font-weight: 600;
 }
+.headerContainer a:hover{
+    color: #FDB927;
+}
 
 .headerContainer h2{
     font-size: 20px;
@@ -43,40 +50,276 @@ body{
 
 .headerContainer h2:nth-child(2){
     align-items: center;
+    margin-left: 13rem;
 }
-
-/* start of add new item form */
-.addNewItemform{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+/* hero */
+.hero{
     background-color: gray;
-    width: 15vw;
-
+    border-bottom: 1px solid #e6e6e6;
+    height: 83.5vh;
+    width: 100%;
 }
-/* end of add new item form */
 
-/* start of delete item form */
-.deleteItemForm{
-    display: flex;
+.heroActive{
+    display: block;
+}
+.heroHidden{
+    display: none;
+}
+
+/* end hero */
+
+/* start form */
+
+/* .forms{
     flex-direction: column;
+    width: 50%;
+    height: fit-content;
+    justify-content: center;
+    position: absolute;
+    top: 60%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    z-index: 20;
+} */
+
+.addNewItemForm{
+    position: absolute;
+    left: 0%;
+    top: 40%;
     align-items: center;
-    background-color: blue;
-    width: 15vw;
+    background-color: white;
+    height: 50%;
+    width: 50%;
+    font-size: 1.2em;
+    border: 2px solid black;
+    box-shadow: 0 0 10px black;    
+    padding: 2rem 2rem;
+    text-align: center;
+    transform: translate(-50%, 0%);
 }
-/* end of delete item form */
+.deleteItemForm{
+    left: 0%;
+    top: 40%;
+    position: absolute;
+    align-items: center;
+    background-color: white;
+    height: 50%;
+    width: 25%;
+    font-size: 1.2em;
+    border: 2px solid black;
+    box-shadow: 0 0 10px black;    
+    padding: 2rem 2rem;
+    text-align: center;
+}
+.deleteItemForm > div{
+    margin-top: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.editItemForm{
+    position: absolute;
+    top: 40%;
+    left: 0%;
+    align-items: center;
+    background-color: white;
+    height: 50%;
+    width: 25%;
+    font-size: 1.4rem;
+    border: 2px solid black;
+    box-shadow: 0 0 10px black;    
+    padding: 2rem 2rem;
+    text-align: center;
+}
+.editItemForm > div{
+    display: flex;
+    justify-content: space-between;
+}
+
+.formHeader{
+    align-self: center;
+    margin-bottom: 20px;
+    transition: .7s;
+    color: #FDB927;
+}
+.formHeader:hover{
+    background-image: -webkit-linear-gradient(#FDB927,#552583);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: .7s;
+    cursor: pointer;
+}
+
+.formHidden{
+    display: none;
+}
+.formActive{
+    display: block;
+}
+
+.formBtn{
+    width: max-content;
+    padding: 10px 20px;
+    color: #fff;
+    border-radius: 15px;
+    border: none;
+    background-color: #FDB927;
+    background-image: linear-gradient(to right,#FDB927,#552583);
+    transition: .7s;
+    cursor: pointer;
+    margin-top: .3rem;
+    height: 3rem;
+}
+
+button:hover{
+    box-shadow: 0 0 10px #FDB927;
+}
+
+.formBtn:hover{
+    color: #FDB927;
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid #FDB927;
+    font-weight: 600;
+    transition: .7s;
+}
+
+.formBtnContainer{
+    width: 100%;
+    display: flex;
+    margin-top: .5rem;
+    padding: 1rem;
+    justify-content: space-evenly;
+}
+
+.addFormCloseBtn{
+    position: absolute;
+    left: 90%;
+    top: 7%;
+    font-size: 3rem;
+    cursor: pointer;
+    transition: .7s;
+}
+.addFormCloseBtn:hover{
+    color: #FDB927;
+    font-size: 3.1rem;
+    transition: .7s;
+}
+
+.editFormCloseBtn{
+    position: absolute;
+    left: 90%;
+    top: 7%;
+    font-size: 3rem;
+    cursor: pointer;
+    transition: .7s;
+}
+.editFormCloseBtn:hover{
+    color: #FDB927;
+    font-size: 3.1rem;
+    transition: .7s;
+}
+
+.delFormCloseBtn{
+    left: 90%;
+    position: absolute;
+    font-size: 3rem;
+    cursor: pointer;
+    transition: .7s;
+}
+.delFormCloseBtn:hover{
+    color: #FDB927;
+    font-size: 3.1rem;
+    transition: .7s;
+}
+
+
+input[type="text"]{
+    border: none;
+    width: 100%;
+    border-bottom: 1px solid #d3d3d3;
+    border-radius: 5px;
+    outline: none;
+    /* padding-top: 5px; */
+    padding-bottom: 10px;
+    text-indent: .7rem;
+    font-size: 100%;
+    text-transform: capitalize;
+}
+input[type="text"]:focus{
+    border-bottom: 1px solid #FDB927;
+}
+
+#deleteMenuItem {
+    width: 25%;
+    padding: 10px 20px;
+    color: #fff;
+    border-radius: 15px;
+    border: none;
+    background-color: #FDB927;
+    background-image: linear-gradient(to right,#FDB927,#552583);
+    transition: .7s;
+    cursor: pointer;
+    margin-top: .3rem;
+    font-size: 1rem;
+    height: 3rem;
+}
+
+#deleteMenuItem:hover{
+    color: #FDB927;
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid #FDB927;
+    font-weight: 600;
+    transition: .7s;
+}
+
+.formsHidden{
+    display: none;
+}
+
+.formsActive{
+    display: block;
+}
+
+.success{
+    position: absolute;
+    top: 5%;
+    right: 19%;
+    background-color: transparent;
+    padding: .7rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #FDB927;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #FDB927;
+    z-index: 20;
+    width: 20%;
+    height: 15%;
+}
+
+.addedItemSuccess{
+    display: none;
+}
+
+/* end form */
 
 /* start of menu items gallery */
 .menuItems{
-    position: relative;
     display:grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 1rem;
-    background-color: black;
     text-align: center;
-    padding: 1rem;
-    padding-top: 3.5rem;
     width: 100%;
+}
+.menuItemsHidden{
+    display: none;
+}
+.menuItemsActive{
+    display: block;
 }
 
 .menuItems h2{
@@ -85,19 +328,90 @@ body{
 
 .menuItem{
     border: 1px solid white;
-    border-radius: 15px;
-    padding: 1rem;
     background-color: gray;
     color: white;
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 1rem;
-
 }
 
 .menuItem img{
     width: 100%;
     object-fit: contain;
 }
+
+.menuHeader{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.menuHeader > button {
+    justify-content: center;
+    background-color: #FDB927;
+    background-image: linear-gradient(to right,#FDB927,#552583);
+    border: none;
+    padding: .8rem;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: .7s;
+}
+.menuHeader > button:hover{
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid #FDB927;
+    color: #FDB927;
+    transition: .7s;
+}
+
 /* end of menu items gallery */
+
+/* start of footer */
+footer{
+    border-top: 1px solid #d3d3d3;
+    position: relative;
+    width: 100%;
+}
+
+.footerContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+.socialMedia{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 1rem; 
+}
+
+/* media queries come back and finish once rest of css is done */
+@media screen and (max-width: 1200px){
+    .menuItems{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 900px){
+    .menuItems{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 600px){
+    .menuItems{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media screen and (max-width: 400px){
+    .menuItems{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+
+/* end of media queries */
 
