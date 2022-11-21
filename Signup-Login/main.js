@@ -145,6 +145,31 @@ $('.sup-submit').click(() => {
     }
 });
 
+//Pressing Enter on signup form
+ let supInputs = document.querySelectorAll(".sup-input")
+supInputs.forEach((input) => {
+    input.addEventListener("keypress", pressEnter)
+})
+function pressEnter(event){
+   let inputs = document.querySelectorAll(".sup-input")
+    if(event.keyCode === 13){
+        for(i=0; i<inputs.length; i++){
+            if(inputs[i] === this){
+                i++
+                inputs[i].focus()
+            }
+            else if(i === 3){
+                return
+            }
+        }
+    }
+}
+$('.log-user').keydown((event) =>{
+    if(event.keyCode ===13){
+        $('.log-pass').focus()
+    }
+})
+
 
 // -----Go to Log-in ----- //
 $('.go-to-login').click(()=>{
@@ -190,7 +215,7 @@ $('.sup-password').focusin(() => {
 
 
 
-// ----- Signup Password verification ----- //
+// ----- Signup Password requirement verification ----- //
 $('.sup-password').on('input', () => {
     let pass = $('.sup-password').val();
     let passLength = pass.length;
@@ -204,15 +229,27 @@ $('.sup-password').on('input', () => {
         $('.length-req').addClass("pass-req-check")
         $('.length-req ion-icon').attr("name", "checkmark-outline")
     }
+    else{
+        $('.length-req').removeClass("pass-req-check")
+        $('.length-req ion-icon').attr("name", "close-outline")
+    }
     if (passUpper) {
         // console.log('has uppercase')
         $('.upper-req').addClass("pass-req-check")
         $('.upper-req ion-icon').attr("name", "checkmark-outline")
     }
+    else{
+        $('.upper-req').removeClass("pass-req-check")
+        $('.upper-req ion-icon').attr("name", "close-outline")
+    }
     if (passLower) {
         // console.log('has lowercase')
         $('.lower-req').addClass("pass-req-check")
         $('.lower-req ion-icon').attr("name", "checkmark-outline")
+    }
+    else{
+        $('.lower-req').removeClass("pass-req-check")
+        $('.lower-req ion-icon').attr("name", "close-outline")
     }
     if (passNum) {
         // console.log('has number')
@@ -220,10 +257,18 @@ $('.sup-password').on('input', () => {
         $('.num-req ion-icon').attr("name", "checkmark-outline")
 
     }
+    else{
+        $('.num-req').removeClass("pass-req-check")
+        $('.num-req ion-icon').attr("name", "close-outline")
+    }
     if (passSpecial) {
         // console.log('has special char')
         $('.spec-req').addClass("pass-req-check")
         $('.spec-req ion-icon').attr("name", "checkmark-outline")
+    }
+    else{
+        $('.spec-req').removeClass("pass-req-check")
+        $('.spec-req ion-icon').attr("name", "close-outline")
     }
     if (passLength < 8 || !passUpper || !passLower || !passNum || !passSpecial) {
         // console.log(false)
@@ -249,7 +294,8 @@ $('.log-submit').click(() => {
             $('#welcome').show()
             currentUser.push(users)
             window.localStorage.setItem("Current User", JSON.stringify(currentUser))
-            console.log(currentUser)
+            // $('.log-submit').remove()
+            makeSignout()
         }
         else if( logUsername === users.username && logPassword === users.password){
             $('.log-pass').val("")
@@ -260,42 +306,40 @@ $('.log-submit').click(() => {
             currentUser.push(users)
             window.localStorage.removeItem("Current User")
             window.localStorage.setItem("Current User", JSON.stringify(currentUser))
+           
+            
+
         }
         else if(logUsername === users.username && logPassword !== users.password){
             console.log("WRONG PASSWORD")
             $('.err-mess').text("WRONG PASSWORD")
             $('.err-mess').show()
-            console.log(users)
+            
         }
         else if(logUsername !== users.username && logPassword === users.password){
             console.log("WRONG USERNAME")
             $('.err-mess').text("USERNAME DOESNT MATCH PASSWORD")
             $('.err-mess').show()
         }
+        else if( logUsername === '' || logPassword === ''){
+            $('.err-mess').text("One or both of the fields are empty")
+            $('.err-mess').show()
+        }
     }
 })
 
-//Pressing Enter on signup form
- let supInputs = document.querySelectorAll(".sup-input")
-supInputs.forEach((input) => {
-    input.addEventListener("keypress", pressEnter)
-})
-function pressEnter(event){
-   let inputs = document.querySelectorAll(".sup-input")
-    if(event.keyCode === 13){
-        for(i=0; i<inputs.length; i++){
-            if(inputs[i] === this){
-                i++
-                inputs[i].focus()
-            }
-            else if(i === 3){
-                return
-            }
-        }
-    }
+//make signout button
+function makeSignout(){
+    // let logBtn = document.getElementById('go-to-login')
+    let nav = document.getElementById('nav-links')
+    let link = document.createElement('a')
+    link.removeAttribute("href")
+    link.classList.add("go-to-profile")
+    link.setAttribute("id", "go-to-profile")
+
+    let navLink = document.createElement('li')
+    navLink.innerHTML = "Profile"
+    link.appendChild(navLink)
+    nav.appendChild(link)
+
 }
-$('.log-user').keydown((event) =>{
-    if(event.keyCode ===13){
-        $('.log-pass').focus()
-    }
-})
