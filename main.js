@@ -169,7 +169,11 @@ $('.log-user').keydown((event) =>{
         $('.log-pass').focus()
     }
 })
-
+$('.log-pass').keydown((event) =>{
+    if(event.keyCode ===13){
+        $('.log-submit').click()
+    }
+})
 
 // -----Go to Log-in ----- //
 $('.go-to-login').click(()=>{
@@ -285,27 +289,32 @@ $('.log-submit').click(() => {
     let logUsername = $('.log-user').val()
     retrieveFromStorage(listUsers) // Grab local storage and push it into listUsers
     for(users of listUsers){
-        if(logUsername ==="bandido1" && logPassword === "P@ssword123"){
-            // LOAD NEW PAGE
-            $('.log-pass').val("")
-            $('.log-user').val("")
+        if(logUsername ==="bandido1" && logPassword === "Password123" ){
+            console.log(users)
+            // $('.log-pass').val("")
+            // $('.log-user').val("")
             $('.err-mess').hide()
             $('#welcome').text(`Welcome ${users.firstName}`)
             $('#welcome').show()
+            // console.log(users[0])
+            currentUser.length = 0
             currentUser.push(users)
-            window.localStorage.setItem("Current User", JSON.stringify(currentUser))
-            // $('.log-submit').remove()
-            makeSignout()
+            window.localStorage.removeItem("Current User")
+            window.localStorage.setItem("Current User", JSON.stringify(currentUser[0]))
+            window.location.href = "Manager-Menu-Page.html"
         }
-        else if( logUsername === users.username && logPassword === users.password){
-            $('.log-pass').val("")
-            $('.log-user').val("")
+        else if(logUsername === users.username && logPassword === users.password){
+            // $('.log-pass').val("")
+            // $('.log-user').val("")
             $('#welcome').text(`Welcome ${users.firstName}`)
             $('#welcome').show()
             $('.err-mess').hide()
+            currentUser.length = 0
             currentUser.push(users)
             window.localStorage.removeItem("Current User")
             window.localStorage.setItem("Current User", JSON.stringify(currentUser))
+            console.log("user")
+            // window.location.href = "https://www.google.com/"
            
             
 
