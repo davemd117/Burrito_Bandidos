@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="Manager-Menu-Styles.css">
     <!-- link for google font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>    
 </head>
 <body>
 
@@ -178,49 +180,49 @@
 </div>
 </section>
 <section class="form">
-<div class="forms">
-<form class="addNewItemForm formHidden" id="addForm">
-        <div class="addedItemSuccess success">Item succesfully added to menu</div>
-        <ion-icon class="addFormCloseBtn" name="close-circle-outline"></ion-icon>
-        <h2 class="formHeader">Add Items</h2>
-        <input id="newItemName" type="text" name="name" placeholder="Enter Item Name">
-        <input id="newItemImg" type="text" name="image" placeholder="Enter url/file name for image">
-        <input id="newItemDescription" type="text" name="description" placeholder="Enter Item description">
-        <input id="newItemCalories" type="text" name="calories" placeholder="Enter item calories">
-        <input id="newItemPrice" type="text" name="price" placeholder="Enter item price">
-        <input type="text" id="locationNewItem" placeholder="Desired position in menu">
-    <div class="formBtnContainer">
-        <button class="formBtn" id="addNewMenuItem" type="button">Add new menu item</button>
-        <button class="formBtn" type="button" id="addFormConfirmBtn">Confirm Changes</button>
-        <button class="formBtn" id="AddFormviewChanges" type="button">View Changes</button>
-    </div>
-</form>
-<form action="" class="deleteItemForm formHidden" id="deleteForm">
-        <ion-icon class="delFormCloseBtn" name="close-circle-outline"></ion-icon>
-        <h2 class="formHeader">Delete Items</h2>
-        <input id="deleteItemName" type="text" placeholder="Name of item to be deleted">
-    <div class="formBtnContainer">
-        <button id="deleteMenuItem" type="button">Delete Item</button>
-        <button class="formBtn" id="deleteFormConfirmBtn" type="button">Confirm Changes</button>
-        <button class="formBtn" id="deleteFormViewChanges" type="button">View Changes</button>
-    </div>
-</form>
-<form action="" class="editItemForm formHidden" id="editForm">
-        <ion-icon class="editFormCloseBtn" name="close-circle-outline"></ion-icon>
-        <h2 class="formHeader">Edit Items</h2>
-        <input id="editItemName" type="text" placeholder="Name of item to be edited">
-        <input id="editItemImg" type="text" placeholder="Enter url/file name for image">
-        <input id="editItemDescription" type="text" placeholder="Enter Item description">
-        <input id="editItemCalories" type="text" placeholder="Enter item calories">
-        <input id="editItemPrice" type="text" placeholder="Enter item price">
-        <input id="editItemLocation" type="text" placeholder="Desired position in menu">
-    <div class="formBtnContainer">
-        <button id="editMenuItem" class="formBtn" type="button">Edit Item</button>
-        <button class="formBtn" id="editFormConfirmBtn" type="button">Confirm Changes</button>
-        <button class="formBtn" id="editFormViewChanges" type="button">View Changes</button>
-    </div>
-</form>
-    
+<!-- <div class="forms"> -->
+    <form class="addNewItemForm formHidden" id="addForm">
+            <div class="addedItemSuccess success">Item succesfully added to menu</div>
+            <ion-icon class="addFormCloseBtn" name="close-circle-outline"></ion-icon>
+            <h2 class="formHeader">Add Items</h2>
+            <input id="newItemName" type="text" name="name" placeholder="Enter Item Name">
+            <input id="newItemImg" type="text" name="image" placeholder="Enter url/file name for image">
+            <input id="newItemDescription" type="text" name="description" placeholder="Enter Item description">
+            <input id="newItemCalories" type="text" name="calories" placeholder="Enter item calories">
+            <input id="newItemPrice" type="text" name="price" placeholder="Enter item price">
+            <input type="text" id="locationNewItem" placeholder="Desired position in menu">
+        <div class="formBtnContainer">
+            <button class="formBtn" id="addNewMenuItem" type="button">Add new menu item</button>
+            <button class="formBtn" type="button" id="addFormConfirmBtn">Confirm Changes</button>
+            <button class="formBtn" id="AddFormviewChanges" type="button">View Changes</button>
+        </div>
+    </form>
+    <form action="" class="deleteItemForm formHidden" id="deleteForm">
+            <ion-icon class="delFormCloseBtn" name="close-circle-outline"></ion-icon>
+            <h2 class="formHeader">Delete Items</h2>
+            <input id="deleteItemName" type="text" placeholder="Name of item to be deleted">
+        <div class="formBtnContainer">
+            <button id="deleteMenuItem" type="button">Delete Item</button>
+            <button class="formBtn" id="deleteFormConfirmBtn" type="button">Confirm Changes</button>
+            <button class="formBtn" id="deleteFormViewChanges" type="button">View Changes</button>
+        </div>
+    </form>
+    <form action="" class="editItemForm formHidden" id="editForm">
+            <ion-icon class="editFormCloseBtn" name="close-circle-outline"></ion-icon>
+            <h2 class="formHeader">Edit Items</h2>
+            <input id="editItemName" type="text" placeholder="Name of item to be edited">
+            <input id="editItemImg" type="text" placeholder="Enter url/file name for image">
+            <input id="editItemDescription" type="text" placeholder="Enter Item description">
+            <input id="editItemCalories" type="text" placeholder="Enter item calories">
+            <input id="editItemPrice" type="text" placeholder="Enter item price">
+            <input id="editItemLocation" type="text" placeholder="Desired position in menu">
+        <div class="formBtnContainer">
+            <button id="editMenuItem" class="formBtn" type="button">Edit Item</button>
+            <button class="formBtn" id="editFormConfirmBtn" type="button">Confirm Changes</button>
+            <button class="formBtn" id="editFormViewChanges" type="button">View Changes</button>
+        </div>
+    </form>
+<!-- </div> -->
 </section>
 <footer>
     <div class="footerContainer">

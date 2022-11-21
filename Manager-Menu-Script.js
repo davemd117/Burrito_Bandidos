@@ -48,15 +48,16 @@ addNewMenuItemBtn.addEventListener('click', () => {
         let addedSuccess = document.querySelector('.addedItemSuccess')
         addedSuccess.style.display = 'none'
     }, 1000)
+    // menu.push(newMenuItem)
     menu.splice(whereToinsert, 0, newMenuItem)
     console.log(menu)
     appendMenuItems(menu)
-    // document.getElementById('newItemName').value = '';
-    // document.getElementById('newItemPrice').value = '';
-    // document.getElementById('newItemDescription').value = '';
-    // document.getElementById('newItemImg').value = '';
-    // document.getElementById('newItemCalories').value = '';
-    // document.getElementById('locationNewItem').value = '';
+    document.getElementById('newItemName').value = '';
+    document.getElementById('newItemPrice').value = '';
+    document.getElementById('newItemDescription').value = '';
+    document.getElementById('newItemImg').value = '';
+    document.getElementById('newItemCalories').value = '';
+    document.getElementById('locationNewItem').value = '';
 })
 
 const appendMenuItems = (menu) => {
@@ -72,7 +73,9 @@ const appendMenuItems = (menu) => {
     <p class="itemPrice">${menu[menu.length - 1].price}</p>
 `
     // menuItems.appendChild(newMenuItem)
+    // menu.splice(whereToinsert, 0, newMenuItem)
     // menuItems.insertBefore(newMenuItem, menuItems.childNodes[whereToinsert])
+
 }
 // end of add new menu item
 
@@ -114,12 +117,12 @@ showAddFormHeader.addEventListener('click', () => {
     
 })
 
-const addFormCloseBtn = document.querySelector('.addFormCloseBtn');
-addFormCloseBtn.addEventListener('click', () => {
-    let addform = document.getElementById('addForm')
-    addform.classList.remove('formsActive')
-    addform.classList.add('formsHidden')
-})
+// const addFormCloseBtn = document.querySelector('.addFormCloseBtn');
+// addFormCloseBtn.addEventListener('click', () => {
+//     let addform = document.getElementById('addForm')
+//     addform.classList.remove('formsActive')
+//     addform.classList.add('formsHidden')
+// })
 
 const AddFormviewChanges = document.getElementById('AddFormviewChanges');
 AddFormviewChanges.addEventListener('click', () => {
@@ -134,12 +137,12 @@ addFormConfirmBtn.addEventListener('click', () => {
 // end of add form buttons
 
 // delete form buttons
-const deleteFormCloseBtn = document.querySelector('.delFormCloseBtn');
-deleteFormCloseBtn.addEventListener('click', () => {
-    let deleteform = document.getElementById('deleteForm')
-    deleteform.classList.remove('formsActive')
-    deleteform.classList.add('formsHidden')
-})
+// const deleteFormCloseBtn = document.querySelector('.delFormCloseBtn');
+// deleteFormCloseBtn.addEventListener('click', () => {
+//     let deleteform = document.getElementById('deleteForm')
+//     deleteform.classList.remove('formsActive')
+//     deleteform.classList.add('formsHidden')
+// })
 
 const deleteAddFormHeader = document.getElementById('deleteMenuHeader');
 deleteAddFormHeader.addEventListener('click', () => {
@@ -203,11 +206,58 @@ editMenuHeader.addEventListener('click', () => {
     editForm.classList.add('formsActive')
 })
 
-const editFormCloseBtn = document.querySelector('.editFormCloseBtn');
-editFormCloseBtn.addEventListener('click', () => {
-    let editForm = document.querySelector('.editItemForm')
-    editForm.classList.remove('formsActive')
-    editForm.classList.add('formsHidden')
-})
+// const editFormCloseBtn = document.querySelector('.editFormCloseBtn');
+// editFormCloseBtn.addEventListener('click', () => {
+//     let editForm = document.querySelector('.editItemForm')
+//     editForm.classList.remove('formsActive')
+//     editForm.classList.add('formsHidden')
+// })
 // end of edit form buttons
 
+//  jquery for header buttons to animate forms from left to center
+$("#addMenuHeader").click(function(){
+    $(".addNewItemForm").animate({
+        left: '25%',
+        opacity: '1'
+    });
+});
+
+
+$("#deleteMenuHeader").click(function(){
+    $(".deleteItemForm").animate({
+        left: '50%',
+        opacity: '1',
+        top: '40%'
+    });
+});
+
+$("#editMenuHeader").click(function(){
+    $(".editItemForm").animate({
+        left: '75%',
+        opacity: '1'
+    });
+});
+// end of header buttons jquery
+
+// jquery for close button animation
+$(".addFormCloseBtn").click(function(){
+    $(".addNewItemForm").animate({
+        left: '0%',
+        opacity: '0'
+    });
+});
+
+$(".delFormCloseBtn").click(function(){
+    $(".deleteItemForm").animate({
+        left: '0%',
+        opacity: '0'
+    });
+});
+
+$(".editFormCloseBtn").click(function(){
+    $(".editItemForm").animate({
+        left: '0%',
+        opacity: '0'
+    });
+});
+// end of close button animations
