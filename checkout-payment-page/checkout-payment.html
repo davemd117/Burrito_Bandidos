@@ -27,8 +27,9 @@
             </div>
          </div>
       </header>
-      <div class="container" method="post">
-         <form action="">
+
+<div class="container" method="post">
+   <form action="" id="billingInfoForm">
             <div class="row">
                <div class="col">
                   <h3 class="title">Billing Information</h3>
@@ -60,11 +61,11 @@
                   </div>
                </div>
             </div>
-         </form>
-         <form action="">
+   </form>
+   <form action="" id="paymentInfoForm">
             <div class="row">
                <div class="col">
-                  <h3 class="title">Payment</h3>
+                  <h3 class="title">Payment Information</h3>
                   <div class="inputs">
                      <span>cards accepted :</span>
                     <img src="/checkout-payment-images/card_img.png" alt="">
@@ -93,76 +94,174 @@
                   </div>
                </div>
             </div>
-            <input type="submit" value="proceed to checkout" class="submitBtn">
-         </form>
+            <input type="submit" id="submitBtn1" value="proceed to checkout" class="submitBtn">
+   </form>
+<div class="customerCart">
+<div class="cartTitle">
+   <h3>Customer Cart</h3>
+</div>
+<div class="cartItems">
+   <div class="cartItem">
+      <div class="cartItemImg">
+         <img src="/checkout-payment-images/burrito1.jpg" alt="">
       </div>
+      <div class="cartItemName">
+         <h4>Chicken Burrito</h4>
+      </div>
+      <div class="cartItemQuantity">
+         <h4>Qty: <span><input type="number"></span></h4>
+      </div>
+      <div class="cartItemPrice">
+         <h4>$5.99</h4>
+      </div>
+   </div>  
+   <!-- <div class="cartItem">
+      <div class="cartItemImg">
+         <img src="/checkout-payment-images/burrito1.jpg" alt="">
+      </div>
+      <div class="cartItemName">
+         <h4>Chicken Burrito</h4>
+      </div>
+      <div class="cartItemPrice">
+         <h4>$5.99</h4>
+      </div>
+   </div>  
+   <div class="cartItem">
+      <div class="cartItemImg">
+         <img src="/checkout-payment-images/burrito1.jpg" alt="">
+      </div>
+      <div class="cartItemName">
+         <h4>Chicken Burrito</h4>
+      </div>
+      <div class="cartItemPrice">
+         <h4>$5.99</h4>
+      </div>
+   </div>  
+   <div class="cartItem">
+      <div class="cartItemImg">
+         <img src="/checkout-payment-images/burrito1.jpg" alt="">
+      </div>
+      <div class="cartItemName">
+         <h4>Chicken Burrito</h4>
+      </div>
+      <div class="cartItemPrice">
+         <h4>$5.99</h4>
+      </div>
+   </div>  
+   <div class="cartItem">
+      <div class="cartItemImg">
+         <img src="/checkout-payment-images/burrito1.jpg" alt="">
+      </div>
+      <div class="cartItemName">
+         <h4>Chicken Burrito</h4>
+      </div>
+      <div class="cartItemPrice">
+         <h4>$5.99</h4>
+      </div>
+   </div>  
+   <div class="cartItem">
+      <div class="cartItemImg">
+         <img src="/checkout-payment-images/burrito1.jpg" alt="">
+      </div>
+      <div class="cartItemName">
+         <h4>Chicken Burrito</h4>
+      </div>
+      <div class="cartItemPrice">
+         <h4>$5.99</h4>
+      </div>
+   </div>  
+   <div class="cartItem">
+      <div class="cartItemImg">
+         <img src="/checkout-payment-images/burrito1.jpg" alt="">
+      </div>
+      <div class="cartItemName">
+         <h4>Chicken Burrito</h4>
+      </div>
+      <div class="cartItemPrice">
+         <h4>$5.99</h4>
+      </div>
+   </div>  
+   <div class="cartItem">
+      <div class="cartItemImg">
+         <img src="/checkout-payment-images/burrito1.jpg" alt="">
+      </div>
+      <div class="cartItemName">
+         <h4>Chicken Burrito</h4>
+      </div>
+      <div class="cartItemPrice">
+         <h4>$5.99</h4>
+      </div>
+   </div>  
+   <div class="cartItem">
+      <div class="cartItemImg">
+         <img src="/checkout-payment-images/burrito1.jpg" alt="">
+      </div>
+      <div class="cartItemName">
+         <h4>Chicken Burrito</h4>
+      </div>
+      <div class="cartItemPrice">
+         <h4>$5.99</h4>
+      </div>
+   </div>  
+   <div class="cartItem">
+      <div class="cartItemImg">
+         <img src="/checkout-payment-images/burrito1.jpg" alt="">
+      </div>
+      <div class="cartItemName">
+         <h4>Chicken Burrito</h4>
+      </div>
+      <div class="cartItemPrice">
+         <h4>$5.99</h4>
+      </div>
+   </div>   -->
+</div>
+</div>
+</div>
 
-      <div class="customerCart">
-         <div class="cartTitle">
-            <h3>Customer Cart</h3>
+<div class="container" id="shippingInfoForm">
+   <form action="">
+      <div class="row">
+         <div class="col">
+            <h3 class="title">Shipping Information</h3>
+            <div class="inputs">
+               <span>full name :</span>
+               <input type="text" placeholder="enter name">
+            </div>
+            <div class="inputs">
+               <span>email :</span>
+               <input type="email" placeholder="enter email here">
+            </div>
+            <div class="inputs">
+               <span>address :</span>
+               <input type="text" placeholder="enter shipping address">
+            </div>
+            <div class="inputs">
+               <span>city :</span>
+               <input type="text" placeholder="enter city">
+            </div>
+            <div class="flex">
+               <div class="inputs">
+                  <span>state :</span>
+                  <input type="text" placeholder="enter state">
+               </div>
+               <div class="inputs">
+                  <span>zip code :</span>
+                  <input type="text" placeholder="enter zip code">
+               </div>
+               <div class="inputs">
+                  <span>Shipping Method :</span>
+                  <select name="shippingMethod" id="shippingMethod">
+                     <option value="standard">Standard</option>
+                     <option value="express">Express</option>
+                     <option value="overnight">Overnight</option>
+               </div>
+            </div>
          </div>
-         <div class="cartItems">
-            <div class="cartItem">
-               <div class="cartItemImg">
-                  <img src="images/1.jpg" alt="">
-               </div>
-               <div class="cartItemName">
-                  <h4>Chicken Burrito</h4>
-               </div>
-               <div class="cartItemPrice">
-                  <h4>$5.99</h4>
-               </div>
-            </div>
-            <div class="cartItem">
-               <div class="cartItemImg">
-                  <img src="images/2.jpg" alt="">
-               </div>
-               <div class="cartItemName">
-                  <h4>Beef Burrito</h4>
-               </div>
-               <div class="cartItemPrice">
-                  <h4>$5.99</h4>
-               </div>
-            </div>
-            <div class="cartItem">
-               <div class="cartItemImg">
-                  <img src="images/3.jpg" alt="">
-               </div>
-               <div class="cartItemName">
-                  <h4>Steak Burrito</h4>
-               </div>
-               <div class="cartItemPrice">
-                  <h4>$5.99</h4>
-               </div>
-            </div>
-            <div class="cartItem">
-               <div class="cartItemImg">
-                  <img src="images/4.jpg" alt="">
-               </div>
-               <div class="cartItemName">
-                  <h4>Chicken Quesadilla</h4>
-               </div>
-               <div class="cartItemPrice">
-                  <h4>$5.99</h4>
-               </div>
-            </div>
-            <div class="cartItem">
-               <div class="cartItemImg">
-                  <img src="images/5.jpg" alt="">
-               </div>
-               <div class="cartItemName">
-                  <h4>Beef Quesadilla</h4>
-               </div>
-               <div class="cartItemPrice">
-                  <h4>$5.99</h4>
-               </div>
-            </div>
-            <div class="cartItem">
-               <div class="cartItemImg">
-                  <img src="images/6.jpg
       </div>
-
-      <footer></footer>
+</form>
+<input type="submit" id="submitBtn2" value="proceed to checkout" class="submitBtn">
+</div>
+ 
       <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
       <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
       <script src="checkout-payment-script.js"></script>
