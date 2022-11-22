@@ -1,19 +1,33 @@
-// start of pushing static menu items to array menu
 let menu = []
-let menuItems = document.querySelectorAll('.menuItem')
-menuItems.forEach((item) => {
+let CurrentMenuItemsCustomerPage = JSON.parse(localStorage.getItem('foodItems'))
+CurrentMenuItemsCustomerPage.forEach((item) => {
+    // let name = item.name
+    // let nameCapitalized = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()
+    let menuItems = document.querySelector('.menuItems')
+    let menuItem = document.createElement('div')
+    menuItem.classList.add('menuItem')
+    menuItem.innerHTML = `
+    <img class="itemImg" src="${item.image}" alt="">
+    <h3 class="itemName">${item.name}</h3>
+    <p class="itemPrice">${item.price}</p>
+    <p class="itemDescription">${item.description}</p>
+    `
+    menuItems.appendChild(menuItem)
+    // push to array menu as object
     menu.push({
-        name: item.querySelector('.itemName').textContent.toUpperCase(),
-        price: item.querySelector('.itemPrice').textContent,
-        description: item.querySelector('.itemDescription').textContent,
-        image: item.querySelector('.itemImg').src,
-        calories: item.querySelector('.itemCalories').textContent
-    })
-})
-console.log(menu)
-// end of pushing static menu items to array menu
+        name: item.name,
+        price: item.price,
+        description: item.description,
+        image: item.image
 
-//start of add new menu item  
+})
+})
+
+console.log(CurrentMenuItemsCustomerPage)
+console.log(menu)
+
+
+//start of add new menu item 
 const addNewMenuItemBtn = document.getElementById('addNewMenuItem');
 addNewMenuItemBtn.addEventListener('click', () => {
     const name = document.getElementById('newItemName').value.toUpperCase();
@@ -33,11 +47,11 @@ addNewMenuItemBtn.addEventListener('click', () => {
         return;
     }
     const newMenuItem = {
-        name: name,
-        price: price,
-        description: description,
-        image: image,
-        calories: calories
+        name: document.getElementById('newItemName').value.toUpperCase(),
+        price: document.getElementById('newItemPrice').value,
+        description: document.getElementById('newItemDescription').value,
+        image: document.getElementById('newItemImg').value,
+        calories: document.getElementById('newItemCalories').value
     }
     
     setTimeout(() => {
@@ -131,18 +145,18 @@ AddFormviewChanges.addEventListener('click', () => {
 
 const addFormConfirmBtn = document.getElementById('addFormConfirmBtn');
 addFormConfirmBtn.addEventListener('click', () => {
-    localStorage.clear()
+    localStorage.removeItem('menu')
     localStorage.setItem('menu', JSON.stringify(menu))
 })
 // end of add form buttons
 
 // delete form buttons
-// const deleteFormCloseBtn = document.querySelector('.delFormCloseBtn');
-// deleteFormCloseBtn.addEventListener('click', () => {
-//     let deleteform = document.getElementById('deleteForm')
-//     deleteform.classList.remove('formsActive')
-//     deleteform.classList.add('formsHidden')
-// })
+const deleteFormCloseBtn = document.querySelector('.delFormCloseBtn');
+deleteFormCloseBtn.addEventListener('click', () => {
+    let deleteform = document.getElementById('deleteForm')
+    deleteform.classList.remove('formsActive')
+    deleteform.classList.add('formsHidden')
+})
 
 const deleteAddFormHeader = document.getElementById('deleteMenuHeader');
 deleteAddFormHeader.addEventListener('click', () => {
@@ -153,7 +167,7 @@ deleteAddFormHeader.addEventListener('click', () => {
 
 const deleteFormConfirmBtn = document.getElementById('deleteFormConfirmBtn');
 deleteFormConfirmBtn.addEventListener('click', () => {
-    localStorage.clear()
+    localStorage.removeItem('menu')
     localStorage.setItem('menu', JSON.stringify(menu))
 })
 
@@ -190,13 +204,14 @@ editMenuItemBtn.addEventListener('click', () => {
 
 const editItemConfirmBtn = document.getElementById('editFormConfirmBtn');
 editItemConfirmBtn.addEventListener('click', () => {
-    localStorage.clear()
+    localStorage.removeItem('menu')
     localStorage.setItem('menu', JSON.stringify(menu))
 })
 
 const editItemFormViewChanges = document.getElementById('editFormViewChanges');
 editItemFormViewChanges.addEventListener('click', () => {
     window.location.href = 'Manager-Menu-Page-Updated.html'
+
 })
 
 const editMenuHeader = document.getElementById('editMenuHeader');
@@ -206,58 +221,70 @@ editMenuHeader.addEventListener('click', () => {
     editForm.classList.add('formsActive')
 })
 
-// const editFormCloseBtn = document.querySelector('.editFormCloseBtn');
-// editFormCloseBtn.addEventListener('click', () => {
-//     let editForm = document.querySelector('.editItemForm')
-//     editForm.classList.remove('formsActive')
-//     editForm.classList.add('formsHidden')
-// })
-// end of edit form buttons
+const editFormCloseBtn = document.querySelector('.editFormCloseBtn');
+editFormCloseBtn.addEventListener('click', () => {
+    let editForm = document.querySelector('.editItemForm')
+    editForm.classList.remove('formsActive')
+    editForm.classList.add('formsHidden')
+})
+// // end of edit form buttons
 
 //  jquery for header buttons to animate forms from left to center
 $("#addMenuHeader").click(function(){
-    $(".addNewItemForm").animate({
-        left: '25%',
+    $(".addItemFormContainer").animate({
+        left: '1%',
         opacity: '1'
     });
 });
 
 
 $("#deleteMenuHeader").click(function(){
-    $(".deleteItemForm").animate({
-        left: '50%',
+    $(".deleteItemFormContainer").animate({
+        left: '34.5%',
         opacity: '1',
-        top: '40%'
     });
 });
 
 $("#editMenuHeader").click(function(){
-    $(".editItemForm").animate({
-        left: '75%',
+    $(".editItemFormContainer").animate({
+        left: '68%',
         opacity: '1'
     });
 });
-// end of header buttons jquery
-
-// jquery for close button animation
-$(".addFormCloseBtn").click(function(){
-    $(".addNewItemForm").animate({
-        left: '0%',
-        opacity: '0'
+// // end of header buttons jquery
+$('.addFormCloseBtn').click(function() {
+    $('.addItemFormContainer').animate({
+        right: '-100%',
+        opacity: '0',
     });
-});
+    $('.addNewItemForm').removeClass('formsActive')
+})
 
-$(".delFormCloseBtn").click(function(){
-    $(".deleteItemForm").animate({
-        left: '0%',
-        opacity: '0'
+$('.delFormCloseBtn').click(function() {
+    $('.deleteItemFormContainer').animate({
+        left: '-100%',
+        opacity: '1',
     });
-});
+    $('.deleteItemForm').removeClass('formsActive')
+})
 
-$(".editFormCloseBtn").click(function(){
-    $(".editItemForm").animate({
-        left: '0%',
-        opacity: '0'
+$('.editFormCloseBtn').click(function() {
+    $('.editItemFormContainer').animate({
+        left: '-100%',
+        opacity: '1',
     });
-});
-// end of close button animations
+    $('.editItemForm').removeClass('formsActive')
+})
+
+// let menuItems = document.querySelectorAll('.menuItem')
+// menuItems.forEach((item) => {
+    // menu.push({
+    //     name: item.querySelector('.itemName').textContent.toUpperCase(),
+    //     price: item.querySelector('.itemPrice').textContent,
+    //     description: item.querySelector('.itemDescription').textContent,
+    //     image: item.querySelector('.itemImg').src,
+    //     calories: item.querySelector('.itemCalories').textContent
+    // })
+// })
+// console.log(menu)
+// end of pushing static menu items to array menu

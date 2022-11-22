@@ -53,6 +53,7 @@ body{
     margin-left: 13rem;
 }
 /* hero */
+
 .hero{
     background-color: gray;
     border-bottom: 1px solid #e6e6e6;
@@ -69,73 +70,132 @@ body{
 
 /* end hero */
 
-/* start form */
 
-/* .forms{
-    flex-direction: column;
-    width: 50%;
-    height: fit-content;
-    justify-content: center;
-    position: absolute;
-    top: 60%;
-    transform: translate(-50%, -50%);
-    padding: 20px;
-    z-index: 20;
-} */
-
+/* add item form start */
 .addNewItemForm{
-    position: absolute;
-    left: 0%;
-    top: 40%;
+    position: relative;
     align-items: center;
     background-color: white;
-    height: 50%;
-    width: 50%;
+    height: 50vh;
+    width: 90%;
     font-size: 1.2em;
     border: 2px solid black;
-    box-shadow: 0 0 10px black;    
+    box-shadow: 0 0 10px black;
     padding: 2rem 2rem;
     text-align: center;
-    transform: translate(-50%, 0%);
+    opacity: .5;
 }
-.deleteItemForm{
-    left: 0%;
-    top: 40%;
+.addNewItemForm:hover{
+    opacity: 1;
+}
+
+.addItemFormContainer{
     position: absolute;
+    top: 35%;
+    width: 35%;
+    z-index: 20;
+}
+
+.addFormCloseBtn{
+    position: absolute;
+    left: 85%;
+    top: 5%;
+    font-size: 3rem;
+    cursor: pointer;
+    transition: .7s;
+}
+.addFormCloseBtn:hover,
+.editFormCloseBtn:hover,
+.delFormCloseBtn:hover{
+    color: #FDB927;
+    font-size: 3.1rem;
+    transition: .7s;
+}
+
+/* add item form end */
+
+/* start of delete item form */
+
+.deleteItemForm{
+    position: relative;
     align-items: center;
     background-color: white;
-    height: 50%;
-    width: 25%;
+    height: 50vh;
+    width: 90%;
     font-size: 1.2em;
     border: 2px solid black;
     box-shadow: 0 0 10px black;    
     padding: 2rem 2rem;
     text-align: center;
+    opacity: .5;
+}
+.deleteItemForm:hover{
+    opacity: 1;
+}
+
+.deleteItemFormContainer{
+    position: absolute;
+    top: 35%;
+    width: 35%;
+    z-index: 20;
 }
 .deleteItemForm > div{
-    margin-top: 50%;
+    margin-top: 40%;
     display: flex;
     justify-content: space-between;
 }
 
-.editItemForm{
+.delFormCloseBtn{
+    left: 85%;
+    top: 5%;
     position: absolute;
-    top: 40%;
-    left: 0%;
+    font-size: 3rem;
+    cursor: pointer;
+    transition: .7s;
+}
+
+/* end of delete item form */
+
+/* start of edit form */
+.editItemForm{
     align-items: center;
     background-color: white;
-    height: 50%;
-    width: 25%;
+    height: 50vh;
+    width: 90%;
     font-size: 1.4rem;
     border: 2px solid black;
     box-shadow: 0 0 10px black;    
     padding: 2rem 2rem;
     text-align: center;
+    gap: 1rem;
+    opacity: .5;
+}
+.editItemForm:hover{
+    opacity: 1;
+}
+
+.editItemFormContainer{
+    position: absolute;
+    top: 35%;
+    width: 35%;
+    z-index: 20;
 }
 .editItemForm > div{
     display: flex;
     justify-content: space-between;
 }
+
+.editFormCloseBtn{
+    left: 75%;
+    top: 5%;
+    position: absolute;
+    font-size: 3rem;
+    cursor: pointer;
+    transition: .7s;
+}
+
+
+/* end of edit form */
 
 .formHeader{
     align-self: center;
@@ -192,47 +252,6 @@ button:hover{
     margin-top: .5rem;
     padding: 1rem;
     justify-content: space-evenly;
-}
-
-.addFormCloseBtn{
-    position: absolute;
-    left: 90%;
-    top: 7%;
-    font-size: 3rem;
-    cursor: pointer;
-    transition: .7s;
-}
-.addFormCloseBtn:hover{
-    color: #FDB927;
-    font-size: 3.1rem;
-    transition: .7s;
-}
-
-.editFormCloseBtn{
-    position: absolute;
-    left: 90%;
-    top: 7%;
-    font-size: 3rem;
-    cursor: pointer;
-    transition: .7s;
-}
-.editFormCloseBtn:hover{
-    color: #FDB927;
-    font-size: 3.1rem;
-    transition: .7s;
-}
-
-.delFormCloseBtn{
-    left: 90%;
-    position: absolute;
-    font-size: 3rem;
-    cursor: pointer;
-    transition: .7s;
-}
-.delFormCloseBtn:hover{
-    color: #FDB927;
-    font-size: 3.1rem;
-    transition: .7s;
 }
 
 
