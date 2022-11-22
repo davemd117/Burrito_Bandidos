@@ -24,6 +24,17 @@
         </ul>
     </nav>
 </header>
+<ion-icon class="hamburgerBtn" name="menu-outline"></ion-icon>
+<div class="hamburger hamburgerHidden">
+<nav>
+        <ul>
+            <!-- add href later when other pages/css are done-->
+            <li><a href="index.html">Home</a></li>
+            <li ><a id="viewMenuHamburger" href="#">View Menu</a></li>
+            <li><a href="#">View Applications</a><span><ion-icon class="closeHamburgerBtn" name="close-circle-outline"></ion-icon></span></li>
+        </ul>
+</nav>
+</div>
 
 <section class="hero heroActive">
     <h1>Manager Dashboard</h1>
@@ -180,7 +191,7 @@
 </div>
 </section>
 
-<section>
+<section class="form">
     <div class="addItemFormContainer">
     <form class="addNewItemForm formHidden" id="addForm">
             <div class="addedItemSuccess success">Item succesfully added to menu</div>

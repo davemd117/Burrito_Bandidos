@@ -1,30 +1,30 @@
 let menu = []
-let CurrentMenuItemsCustomerPage = JSON.parse(localStorage.getItem('foodItems'))
-CurrentMenuItemsCustomerPage.forEach((item) => {
-    // let name = item.name
-    // let nameCapitalized = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()
-    let menuItems = document.querySelector('.menuItems')
-    let menuItem = document.createElement('div')
-    menuItem.classList.add('menuItem')
-    menuItem.innerHTML = `
-    <img class="itemImg" src="${item.image}" alt="">
-    <h3 class="itemName">${item.name}</h3>
-    <p class="itemPrice">${item.price}</p>
-    <p class="itemDescription">${item.description}</p>
-    `
-    menuItems.appendChild(menuItem)
-    // push to array menu as object
-    menu.push({
-        name: item.name,
-        price: item.price,
-        description: item.description,
-        image: item.image
+// let CurrentMenuItemsCustomerPage = JSON.parse(localStorage.getItem('foodItems'))
+// CurrentMenuItemsCustomerPage.forEach((item) => {
+//     // let name = item.name
+//     // let nameCapitalized = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()
+//     let menuItems = document.querySelector('.menuItems')
+//     let menuItem = document.createElement('div')
+//     menuItem.classList.add('menuItem')
+//     menuItem.innerHTML = `
+//     <img class="itemImg" src="${item.image}" alt="">
+//     <h3 class="itemName">${item.name}</h3>
+//     <p class="itemPrice">${item.price}</p>
+//     <p class="itemDescription">${item.description}</p>
+//     `
+//     menuItems.appendChild(menuItem)
+//     // push to array menu as object
+//     menu.push({
+//         name: item.name,
+//         price: item.price,
+//         description: item.description,
+//         image: item.image
 
-})
-})
+// })
+// })
 
-console.log(CurrentMenuItemsCustomerPage)
-console.log(menu)
+// console.log(CurrentMenuItemsCustomerPage)
+// console.log(menu)
 
 
 //start of add new menu item 
@@ -105,6 +105,7 @@ deleteMenuItemBtn.addEventListener('click', () => {
         console.log(deleteMenuItem)
         console.log(menu)
         }
+        document.getElementById('deleteItemName').value = '';
     }
 })
 
@@ -275,6 +276,33 @@ $('.editFormCloseBtn').click(function() {
     });
     $('.editItemForm').removeClass('formsActive')
 })
+
+
+// hamburger menu fix hamburger menu positioning
+let hamburgerBtn = document.querySelector('.hamburgerBtn');
+hamburgerBtn.addEventListener('click', () => {
+    let hamnurgerMenu = document.querySelector('.hamburger');
+    hamnurgerMenu.classList.remove('hamburgerHidden')
+    hamnurgerMenu.classList.add('hamburgerActive')
+    hamburgerBtn.classList.add('hamburgerBtnLeft')
+})
+
+let viewMenuHamburger = document.querySelector('#viewMenuHamburger');
+viewMenuHamburger.addEventListener('click', () => {
+    let menuItemsContainer = document.querySelector('.menu')
+    menuItemsContainer.classList.remove('menuItemsHidden')
+    menuItemsContainer.classList.add('menuItemsActive')
+    let hero = document.querySelector('.hero')
+    hero.classList.remove('heroActive')
+    hero.classList.add('heroHidden')
+    let hamnurgerMenu = document.querySelector('.hamburger');
+    hamnurgerMenu.classList.remove('hamburgerActive')
+    hamnurgerMenu.classList.add('hamburgerHidden')
+    let hamburgerBtn = document.querySelector('.hamburgerBtn');
+    hamburgerBtn.classList.remove('hamburgerBtnLeft')
+    hamburgerBtn.classList.add('hamburgerBtn')
+})
+// end of hamburger menu
 
 // let menuItems = document.querySelectorAll('.menuItem')
 // menuItems.forEach((item) => {
