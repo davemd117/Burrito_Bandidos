@@ -8,7 +8,7 @@
 
 body{
     font-family: 'Poppins', sans-serif;
-    font-size: 20px;
+    font-size: 1rem;
 }
 
 .headerContainer {
@@ -21,31 +21,26 @@ body{
     height: 10vh;
     width: 100%;
 }
-
-.headerContainer h2:hover, 
-.headerContainer li:hover, 
-.headerContainer a:hover{
-    color: #FDB927;
-}
-
-.headerContainer ul{
+ 
+.headerContainer ul,
+.headerContainer a{
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
+    font-size: 1.2rem;
+    color: black;
 }
 
-.headerContainer a{
-    color: black;
-    font-weight: 600;
-}
 .headerContainer a:hover{
+    text-decoration: underline;
+    text-underline-offset: .5rem;
     color: #FDB927;
 }
 
 .headerContainer h2{
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 1.2rem;
+    pointer-events: none;
 }
 
 .headerContainer h2:nth-child(2){
@@ -95,8 +90,6 @@ body{
     bottom: 20%;
 }
     
-
-
 /* hero */
 
 .hero{
@@ -112,29 +105,39 @@ body{
 .heroHidden{
     display: none;
 }
+.hero img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
 /* end hero */
 
 
-/* add item form start */
+/* start of add edit delete forms */
 .addNewItemForm{
     position: relative;
     align-items: center;
     background-color: white;
     height: 50vh;
     width: 90%;
-    font-size: 1.2em;
+    font-size: 1.4rem;
     border: 2px solid black;
     box-shadow: 0 0 10px black;
     padding: 2rem 2rem;
     text-align: center;
     opacity: .7;
+    transition: .7s;
 }
-.addNewItemForm:hover{
+.addNewItemForm:hover,
+.deleteItemForm:hover,
+.editItemForm:hover{
     opacity: 1;
 }
 
-.addItemFormContainer{
+.addItemFormContainer,
+.deleteItemFormContainer,
+.editItemFormContainer{
     position: absolute;
     top: 35%;
     width: 35%;
@@ -157,9 +160,6 @@ body{
     transition: .7s;
 }
 
-/* add item form end */
-
-/* start of delete item form */
 
 .deleteItemForm{
     position: relative;
@@ -167,27 +167,18 @@ body{
     background-color: white;
     height: 50vh;
     width: 90%;
-    font-size: 1.2em;
+    font-size: 1.4rem;
     border: 2px solid black;
     box-shadow: 0 0 10px black;    
     padding: 2rem 2rem;
     text-align: center;
     opacity: .7;
 }
-.deleteItemForm:hover{
-    opacity: 1;
-}
 
-.deleteItemFormContainer{
-    position: absolute;
-    top: 35%;
-    width: 35%;
-    z-index: 20;
-}
 .deleteItemForm > div{
     margin-top: 40%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .delFormCloseBtn{
@@ -199,9 +190,6 @@ body{
     transition: .7s;
 }
 
-/* end of delete item form */
-
-/* start of edit form */
 .editItemForm{
     align-items: center;
     background-color: white;
@@ -215,19 +203,10 @@ body{
     gap: 1rem;
     opacity: .7;
 }
-.editItemForm:hover{
-    opacity: 1;
-}
 
-.editItemFormContainer{
-    position: absolute;
-    top: 35%;
-    width: 35%;
-    z-index: 20;
-}
 .editItemForm > div{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .editFormCloseBtn{
@@ -239,8 +218,11 @@ body{
     transition: .7s;
 }
 
+form{
+    border-radius: 10px;
+}
 
-/* end of edit form */
+/* end of add edit delete forms */
 
 .formHeader{
     align-self: center;
@@ -268,7 +250,6 @@ body{
     width: max-content;
     padding: 10px 20px;
     color: #fff;
-    /* border-radius: 15px; */
     border: none;
     background-color: #FDB927;
     background-image: linear-gradient(to right,#FDB927,#552583);
@@ -316,6 +297,7 @@ input[type="text"]:focus{
     border-bottom: 1px solid #FDB927;
 }
 
+/* for delete menu button on delete form */
 #deleteMenuItem {
     width: 25%;
     padding: 10px 20px;
@@ -326,7 +308,7 @@ input[type="text"]:focus{
     transition: .7s;
     cursor: pointer;
     margin-top: .3rem;
-    font-size: 1rem;
+    font-size: .6em;
     height: 3rem;
 }
 
