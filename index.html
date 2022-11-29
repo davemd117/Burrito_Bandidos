@@ -6,10 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <title>Burrito Bandido - Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap&family=Smokum&display=swap"  rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&family=DM+Sans:wght@400;500;700&family=Lato:wght@100;300;400&family=Playfair+Display:wght@400;500&family=Rubik:wght@300;400;500;600;700;800;900&family=Smokum&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+
+    <title>Burrito Bandido - Home</title>
 </head>
 <body>
-    <nav class="nav-bar">
+
+    <nav id="nav-bar" class="nav-bar">
         <div class="logo">LOGO</div>
         <ul id="nav-links" class="nav-links">
             <a ><li>Link</li></a>
@@ -77,43 +83,82 @@
             </div>
         </div>
     </form>
-<!-- PROFILE -->
-<!-- <form  action="" class="form form-prof">
-    <h1 class="prof-name"></h1>
-    <div class="next-to">
-        <a class="prof-email"></a>
-        <p class="prof-user"></p>
-    </div>
-    
-</form> -->
 
-    <section class="menu">
-        <div class="card">CARD</div>
-        <div class="card">CARD</div>
-        <div class="card">CARD</div>
-        <div class="card">CARD</div>
-        <div class="card">CARD</div>
-        <div class="card">CARD</div>
-        <div class="card">CARD</div>
-        <div class="card">CARD</div>
-        <div class="card">CARD</div>
-        <div class="card">CARD</div>
-        <div class="card">CARD</div>
-        <div class="card">CARD</div>
-        <div class="card">CARD</div>
-        <div class="card">CARD</div>
-        <div class="card">CARD</div>
-        <div class="card">CARD</div>
-        <div class="card">CARD</div>
-        <div class="card">CARD</div>
-        <div class="card">CARD</div>
-        <div class="card">CARD</div>
+    <section class="hero">
+        <!-- <div class="slide-container"> -->
+            <ion-icon class="prev" name="arrow-back-outline"></ion-icon>
+            <div class="container slider">
+
+            <div class="card card-1">
+                <h1 id="title">Burrito Bandido</h1>
+                        <p>Meals for a steal</p>
+            </div>
+
+            <div class="card card-2">
+                <h5 class="slide-head">DEAL</h5>
+                        <div class="flex slide-flex">
+                            <p class="slide-deal">2$ TACOS</p>
+                            <p class="slide-sub"><strong>EVERY TUESDAY</strong></p>
+                        </div>
+                        <button class="btn slide-btn">Shop Now</button>
+            </div>
+
+            <div class="card card-3">
+                <h5 class="slide-head slide-head-3">COUPON</h5>
+                        <div class="flex slide-flex">
+                            <p class="slide-deal slide-deal-3">Use points at checkout</p>
+                            <p class="slide-sub">For an awesome DISCOUNT</p>
+                        </div>
+                        <button class="btn slide-btn">Add To Cart</button>
+            </div>
+
+            <div class="card card-4">
+                <h5 class="slide-head slide-head-3">NEW</h5>
+                        <div class="flex slide-flex">
+                            <p class="slide-deal slide-deal-3">Fiery Fajitas</p>
+                            <p class="slide-sub">New items added weekly</p>
+                        </div>
+                        <button class="btn slide-btn">Add To Cart</button>
+            </div>
+        </div>
+        <ion-icon class="next" name="arrow-forward-outline"></ion-icon>
     </section>
-    
+
+    <section id="about-section "class= 'reveal about-section animate__animated'>
+
+        <h1 class="header">About Us</h1>
+        <div class="about">
+            <img src="Manager-Menu-Page-Images/fam-eating-pic.jpg" alt="">
+            <div class="about-text">
+                <h1 class="header">Who we are</h1>
+                <p>Since our modest beginnings in 2022 with a little space in Pennsylvania's stylish Lancaster locale,Burrito Bandido ‘s development has been enlivened with the energy to cook and serve solid, Mexican-roused takeout food.  We realize numerous individuals love Mexican sustenance, yet a large number of them loathe or are unconscious of the regularly unfortunate fixings that make run-of-the-mill Mexican nourishment taste so great.</p>
+            </div>
+            </div>
+    </section>
+
+    <section class="reveal animate__animated">
+        <p>STUFF</p>
+        <p>STUFF</p>
+        <p>STUFF</p>
+        <p>STUFF</p>
+    </section>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script src="main.js"></script>
 
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+   
+    <script src="main.js"></script>
+    <script>
+           $('.slider').slick({
+                 prevArrow: $('.prev'),
+                nextArrow: $('.next'),
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 5000,
+            });
+    </script>
 </body>
 </html>

@@ -1,3 +1,43 @@
+// ----- SLICK SLIDER----- //
+// $('.slider').slick({
+//     // nextArrow: $('#slick-next1'),
+//     // prevArrow: $('#slick-prev1'),
+//       dots: true,
+//       infinite: true,
+//       speed: 300,
+//       slidesToShow: 4,
+//       slidesToScroll: 1,
+//       responsive: [
+//         {
+//           breakpoint: 1024,
+//           settings: {
+//             slidesToShow: 3,
+//             slidesToScroll: 3,
+//             infinite: true,
+//             dots: true
+//           }
+//         },
+//         {
+//           breakpoint: 600,
+//           settings: {
+//             slidesToShow: 2,
+//             slidesToScroll: 2
+//           }
+//         },
+//         {
+//           breakpoint: 480,
+//           settings: {
+//             slidesToShow: 1,
+//             slidesToScroll: 1
+//           }
+//         }
+//         // You can unslick at a given breakpoint now by adding:
+//         // settings: "unslick"
+//         // instead of a settings object
+//       ]
+//     });
+
+
 let userDatabase = [];
 let listUsers = [];
 let currentUser = [];
@@ -352,3 +392,50 @@ function makeSignout(){
     nav.appendChild(link)
 
 }
+// STICKY NAV
+function addSticky(){
+    let nav = document.getElementById("nav-bar")
+    let sticky = nav.offsetTop
+    if (window.pageYOffset > sticky) {
+        nav.classList.add("sticky")
+        // nav.classList.remove("clear")
+    } else {
+        nav.classList.remove("sticky");
+        // nav.classList.add("clear")
+    }
+}
+// SHOW BACKGROUNDS ON SCROLL
+ function showOnScroll(){
+    var sections = document.querySelectorAll('.reveal')
+
+    for(i=0; i<sections.length; i++){
+        var windowHeight = window.innerHeight
+        var sectionTop = sections[i].getBoundingClientRect().top
+        var revealpoint = 150;
+
+        if(sectionTop < windowHeight - revealpoint){
+            sections[i].classList.remove('animate__fadeOutLeft')
+            sections[i].classList.add('animate__fadeInLeft')
+            let sectionItems = sections[i].children
+            console.log(sectionItems)
+            for(j=0;  j < sectionItems.length; j++){
+                sectionItems[j].classList.remove("animate__lightSpeedOutLeft")
+                sectionItems[j].classList.add("animate__animated")
+                sectionItems[j].classList.add("animate__delay-1s")
+                sectionItems[j].classList.add("animate__lightSpeedInRight")
+            }
+        }
+        else{
+            sections[i].classList.remove('animate__fadeInLeft')
+            sections[i].classList.add('animate__fadeOutLeft')
+            let sectionItems = sections[i].children
+            for(j=0;  j < sectionItems.length; j++){
+                sectionItems[j].classList.remove("animate__lightSpeedInRight")
+                sectionItems[j].classList.add("animate__lightSpeedOutLeft")
+            }
+        }
+    }
+ }
+
+ window.addEventListener("scroll", showOnScroll);
+ window.addEventListener("scroll", addSticky);

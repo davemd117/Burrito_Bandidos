@@ -2,25 +2,57 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family:'Poppins', sans-serif ;
 }
 html{
-    height: 100%;
-    width: 100%;
     font-size: 20px;
     position: relative;
+    background-color: black;
+}
+section{
+    width: 100%;
+    height: 100vh;
+}
+.flex{
+    display: flex;
+    justify-content: space-around;
+}
+.row{
+    max-width: 1140px;
+    margin: 0 auto;
+    text-align: center;
+}
+.btn{
+    width: 200px;
+    font-size: 100%;
+    padding: 10px;
+    border-radius: 50px;
+    border: none;
+    background-image: linear-gradient(to right,#ce1126,#006341);
+    transition: .7s;
+    align-self: center;
+}
+.btn:hover{
+    cursor: pointer;
+    color: #ce1126;
+    background: transparent;  
+}
+h1{
+    width: fit-content;
 }
 
 /* NAV */
 .nav-bar{
-    max-width: 1140px;
+    width: 100%;
     height: 50px;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    position: sticky;
-    top: 0;
-    background-color: white;
+    position: absolute;
+    background-color: transparent;
+    z-index: 4;
+    border-bottom: 1px solid #d3d3d3;
 }
 .nav-links{
     display: flex;
@@ -28,25 +60,188 @@ html{
     width: 50%;
 }
 .go-to-login{
-    color: #FDB927;
+    color: #ce1126;
 }
-
-/* MENU */
-
-.menu{
-    max-width: 1140px;
+.sticky{
+    background-color: #fff;
+    position: fixed;
+    width: 100%;
+    height: 50px;
     margin: 0 auto;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: black 0 0 5px;
+    z-index: 4;
 }
-.card{
-    min-width: 340px;
-    margin: 50px 1.25%;
-    height: 300px;
-    background-color: red;
+
+/* SLICK SLIDER */
+
+
+.hero{
+    position: relative;
+    display: flex;
+    align-items: center;
+    /* flex-direction: column; */
+    justify-content: center;
+    background-image: linear-gradient( rgba(0, 0, 0, 0.7) ,rgba(0, 0, 0, 0.7)), url(Manager-Menu-Page-Images/heroback.jpg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.slider{
+    width: 80%;
+    display: flex;
+}
+.slick-slide{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    margin: 0px auto;
+    color: #fff;
     text-align: center;
 }
+
+.next{
+    font-size: 36px;
+    color: #ce1126;
+    opacity: .5;
+    border: 2px solid #ce1126;
+    border-radius: 50%;
+    margin-right: 10px;
+    
+}
+.prev{
+    font-size: 36px;
+    color: #ce1126;
+    opacity: .5;
+    border: 2px solid #ce1126;
+    border-radius: 50%;
+    margin-left: 10px;
+
+}
+.next:hover{
+    color: #006341;
+    border: none;
+}
+.prev:hover{
+    color: #006341;
+    border: none;
+}
+.container{
+    display: flex;
+    height: 300px;
+}
+.card{
+    width: 50%;
+    height: 200px;
+    margin: 0 2.5%;
+    /* background-color: red; */
+}
+#title{
+    /* margin-top: 1150px; */
+    font-size: 500%;
+    margin-left: -20px;
+    font-family: 'smokum', cursive;
+    background:linear-gradient(to right,#006341,#ce1126);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.card-1 p{
+    margin-left: -20px;
+}
+.card-2{
+    background-image: url(Manager-Menu-Page-Images/slideback-1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+}
+.card-2 h5, .card-2 p{
+    text-shadow: 2px 2px black;
+}
+.card-3{
+    background-image: url(Manager-Menu-Page-Images/coin1.gif);
+    background-size: cover;
+    background-repeat: no-repeat;
+   
+}
+.card-3 p{
+    font-size: 150%;
+    margin: 0px 20px;
+    text-shadow: 2px 2px black;
+}
+.card-4{
+    background-image: url(Manager-Menu-Page-Images/firetaco.gif);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.card-4 p{
+    font-size: 150%;
+    margin: 0px 20px;
+    text-shadow: 2px 2px black;
+}
+
+.slide-flex{
+    margin: 20px auto;
+}
+.slide-head{
+    color: #ce1126;
+    font-size: 200%;
+    text-shadow: 2px 2px black;
+}
+.slide-deal{
+    font-size: 200%;
+    text-shadow: 2px 2px black;
+}
+.slide-sub{
+    font-size: 200%;
+    color: #006341;
+    text-shadow: 2px 2px black;
+}
+.slide-btn{
+    margin-bottom: 20px;
+}
+/* ABOUT */
+
+.about-section{
+    margin-top: 50px;
+    background-image: linear-gradient( rgba(0, 0, 0, 0.7) ,rgba(0, 0, 0, 0.7)), url(Manager-Menu-Page-Images/burrito-1.jpg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #006341;
+}
+.header{
+    text-align: center;
+    margin: 0 auto;
+}
+.about{
+    margin-top: 100px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+}
+.about-text{
+    background-color: #fff;
+    width: 40%;
+    border: 1px solid black;
+    box-shadow:  -5px 5px, rgba(0 ,99 ,65, 0.3) -10px 10px, rgba(0 ,99 ,65,  0.2) -15px 15px, rgba(0 ,99 ,65,  0.1) -20px 20px, rgba(0 ,99 ,65,  0.05) -25px 25px;
+    text-shadow: 1px 1px black;
+    padding: 10px;
+
+}
+.about-text p{
+    font-size: 75%;
+}
+.about img{
+    width: 40%;
+}
+/* MENU */
+
 
 /* SIGNUP */
 .title{
@@ -125,14 +320,14 @@ html{
     text-transform: capitalize;
 }
 .back-btn{
-    color: #552583;
+    color: #006341;
     font-size: 150%;
     border: none;
     transition: .4s;
     cursor: pointer;
 }
 .back-btn:hover{
-    color: #FDB927;
+    color: #ce1126;
 }
 .submit{
     align-self: center;
@@ -141,13 +336,13 @@ html{
     color: #fff;
     border-radius: 50px;
     border: none;
-    background-color: #FDB927;
-    background-image: linear-gradient(to right,#FDB927,#552583);
+    background-color: #ce1126;
+    background-image: linear-gradient(to right,#ce1126,#006341);
     transition: .7s;
 }
 .submit:hover{
     cursor: pointer;
-    color: #FDB927;
+    color: #ce1126;
     background: transparent;    
 }
 .pass-needs{
@@ -181,14 +376,14 @@ html{
     transition: 1s;
 }
 .back-to-home{
-    color: #552583;
+    color: #006341;
     font-size: 150%;
     border: none;
     transition: .4s;
     cursor: pointer;
 }
 .back-to-home:hover{
-    color: #FDB927;
+    color: #ce1126;
 }
 .err-mess{
    text-align: center;
@@ -223,11 +418,13 @@ html{
     width: fit-content;
 }
 a{
-    color: #552583;
+    color: #006341;
     transition: .4s;
     cursor: pointer;
 }
 a:hover{
 text-decoration: none;
-color: #FDB927;
+color: #ce1126;
 }
+
+/* SLIDER TEST */
