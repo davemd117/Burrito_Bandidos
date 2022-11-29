@@ -8,25 +8,26 @@
       <link rel="stylesheet" href="checkout-payment-styles.css">
    </head>
    <body>
-      <header>
-         <div class="headerContainer">
-            <div class="logo">
-               <img src="images/logo.png" alt="logo">
-            </div>
-            <div>
-               <h2>Burrito Banditos</h2>
-            </div>
-            <div class="nav">
-               <ul>
-                  <li><a href="index.html">Home</a></li>
-                  <li><a href="products.html">Products</a></li>
-                  <li><a href="about.html">About</a></li>
-                  <li><a href="contact.html">Contact</a></li>
-                  <li><a href="checkout-payment.html">Checkout</a></li>
-               </ul>
-            </div>
-         </div>
-      </header>
+
+<header>
+   <div class="headerContainer">
+      <div class="logo">
+         <img src="images/logo.png" alt="logo">
+      </div>
+      <div>
+         <h2>Burrito Banditos</h2>
+      </div>
+      <div class="nav">
+         <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="checkout-payment.html">Checkout</a></li>
+         </ul>
+      </div>
+   </div>
+</header>
 
 <div class="customerCart">
          <div class="cartTitle">
@@ -57,35 +58,35 @@
         
 </div>
 
-<div class="container containerHidden" method="post">
+<div class="container containerActive" method="post">
    <form action="" id="billingInfoForm">
             <div class="row">
                <div class="col">
                   <h3 class="title">Billing Information</h3>
                   <div class="inputs">
                      <span>full name :</span>
-                     <input type="text" placeholder="enter name">
+                     <input id="name" type="text" placeholder="enter name">
                   </div>
                   <div class="inputs">
                      <span>email :</span>
-                     <input type="email" placeholder="enter email here">
+                     <input id="email" type="email" placeholder="enter email here">
                   </div>
                   <div class="inputs">
                      <span>address :</span>
-                     <input type="text" placeholder="enter billing address">
+                     <input id="billingAddress" type="text" placeholder="enter billing address">
                   </div>
                   <div class="inputs">
                      <span>city :</span>
-                     <input type="text" placeholder="enter current city">
+                     <input id="city" type="text" placeholder="enter current city">
                   </div>
                   <div class="flex">
                      <div class="inputs">
                         <span>state :</span>
-                        <input type="text" placeholder="enter state">
+                        <input id="state" type="text" placeholder="enter state">
                      </div>
                      <div class="inputs">
                         <span>zip code :</span>
-                        <input type="text" placeholder="enter zip code">
+                        <input id="zip" type="text" placeholder="enter zip code">
                      </div>
                   </div>
                </div>
@@ -101,61 +102,65 @@
                   </div>
                   <div class="inputs">
                      <span>name on card :</span>
-                     <input type="text" placeholder="enter name on card">
+                     <input id="cardName" type="text" placeholder="enter name on card">
                   </div>
                   <div class="inputs">
                      <span>credit card number :</span>
-                     <input type="text" placeholder="1111-1111-1111-1111">
+                     <input id="cardNumber" type="text" placeholder="1111-1111-1111-1111">
                   </div>
                   <div class="inputs">
                      <span>exp month :</span>
-                     <input type="text" placeholder="enter card expiration month">
+                     <input id="cardExpMonth" type="text" placeholder="enter card expiration month">
                   </div>
                   <div class="flex">
                      <div class="inputs">
                         <span>exp year :</span>
-                        <input type="text" placeholder="enter card expiration year">
+                        <input id="cardExpYear" type="text" placeholder="enter card expiration year">
                      </div>
                      <div class="inputs">
                         <span>CVV :</span>
-                        <input type="text" placeholder="enter 3 digit security code">
+                        <input id="cardCvv" type="text" placeholder="enter 3 digit security code">
                      </div>
                   </div>
                </div>
             </div>
-            <input type="submit" id="submitBtn1" value="proceed to checkout" class="submitBtn">
+            <input type="button" id="submitBtn1" value="proceed to shipping" class="submitBtn">
    </form>
 </div>
 
-<div class="container2 containerActive" id="shippingInfoForm">
-   <form action="">
+<div class="container2 containerHidden">
+   <form action="" id="shippingInfoForm">
       <div class="row">
          <div class="col">
             <h3 class="title">Shipping Information</h3>
             <div class="inputs">
                <span>full name :</span>
-               <input type="text" placeholder="enter name">
+               <input id="shippingName" type="text" placeholder="enter name">
             </div>
             <div class="inputs">
                <span>email :</span>
-               <input type="email" placeholder="enter email here">
+               <input id="shippingEmail" type="email" placeholder="enter email here">
             </div>
             <div class="inputs">
                <span>address :</span>
-               <input type="text" placeholder="enter shipping address">
+               <input id="shippingAddress" type="text" placeholder="enter shipping address">
             </div>
             <div class="inputs">
                <span>city :</span>
-               <input type="text" placeholder="enter city">
+               <input id="shippingCity" type="text" placeholder="enter city">
             </div>
             <div class="flex">
                <div class="inputs">
                   <span>state :</span>
-                  <input type="text" placeholder="enter state">
+                  <input id="shippingState" type="text" placeholder="enter state">
                </div>
                <div class="inputs">
                   <span>zip code :</span>
-                  <input type="text" placeholder="enter zip code">
+                  <input id="shippingZip" type="text" placeholder="enter zip code">
+               </div>
+               <div class="inputs">
+                  <span>phone number :</span>
+                  <input id="phone" type="text" placeholder="enter phone number">
                </div>
                <div class="inputs">
                   <span>Shipping Method :</span>
@@ -164,16 +169,18 @@
                      <option value="express">Express</option>
                      <option value="overnight">Overnight</option>
                </div>
+              
             </div>
          </div>
       </div>
 </form>
-<input type="submit" id="submitBtn2" value="proceed to payment" class="submitBtn">
+<input type="submit" id="submitBtn2" value="proceed to checkout" class="submitBtn">
 </div>
 
- 
+
       <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
       <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
       <script src="checkout-payment-script.js"></script>
+      <script src="checkout-payment-forms-script.js"></script>
    </body>
 </html>

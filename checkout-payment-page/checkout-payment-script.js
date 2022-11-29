@@ -1,8 +1,6 @@
 // testing parsing from menu to checkout page
 // total might work properly if the actual total is being passed from menu page to checkout page will have to test and then variable is grabbed and updated through totalPrice() function
 
-
-
 let cartItems = [
     {
         name: "Chicken",
@@ -42,9 +40,7 @@ currentCustomerCart.forEach((item) => {
         <h4>${item.name}</h4>
     </div>
     <div class="cartItemQuantity"
-    <h4>Qty: 
-    <span><input class="quantity" type="number" placeholder=></span>
-    </h4>
+    <div><input type="number" class="quantity" value="${item.quantity}" min="1"></div>
     </div>
     <div class="cartItemPrice">
         <h4>$${item.price}</h4>

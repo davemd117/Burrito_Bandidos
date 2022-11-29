@@ -42,7 +42,7 @@ header{
     height: max-content;
     padding-bottom: 70px;
     left: 40%;
-    transform: translate(-50%, 0%);
+    transform: translate(-50%, 3.3%);
 }
 .container h3{
     text-align: center;
@@ -85,8 +85,8 @@ header{
 .container2{
     position: absolute;
     left: 40%;
-    transform: translate(-50%, 8.1%);
-    /* padding: 25px; */
+    transform: translate(-50%, 5.5%);
+    padding: 25px;
     width: min-content;
     padding-bottom: 50px;
 }
@@ -216,7 +216,7 @@ select{
 
 .customerCart{
     position: absolute;
-    top: 17.2%;
+    top: 17.35%;
     right: 10%;
     display: flex;
     flex-direction: column;
@@ -256,4 +256,12 @@ select{
 .deleteFromCartBtn:hover{
     background: #fff;
     color: red;
+}
+
+.total{
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid #ccc;
 }
