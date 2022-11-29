@@ -176,6 +176,14 @@ input[type=number]{
     width: 50px;
     text-align: center;
 }
+input[type=radio]{
+    position: absolute;
+    left: -35%;
+    top: 56.9%;
+    height: 1rem;
+    width: 1rem;
+}
+
 
 
 #submitBtn2{
