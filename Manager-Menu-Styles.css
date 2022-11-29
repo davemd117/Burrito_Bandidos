@@ -8,7 +8,7 @@
 
 body{
     font-family: 'Poppins', sans-serif;
-    font-size: 20px;
+    font-size: 1rem;
 }
 
 .headerContainer {
@@ -21,38 +21,77 @@ body{
     height: 10vh;
     width: 100%;
 }
-
-.headerContainer h2:hover, 
-.headerContainer li:hover, 
-.headerContainer a:hover{
-    color: #FDB927;
-}
-
-.headerContainer ul{
+ 
+.headerContainer ul,
+.headerContainer a{
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
+    font-size: 1.2rem;
+    color: black;
 }
 
-.headerContainer a{
-    color: black;
-    font-weight: 600;
-}
 .headerContainer a:hover{
+    text-decoration: underline;
+    text-underline-offset: .5rem;
     color: #FDB927;
 }
 
 .headerContainer h2{
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 1.2rem;
+    pointer-events: none;
 }
 
 .headerContainer h2:nth-child(2){
     align-items: center;
     margin-left: 13rem;
 }
+
+.hamburger{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: absolute;
+    right: 0;
+    background-color: white;
+    height: 100%;
+    width: 20%;
+}
+.hamburgerHidden{
+    display: none;
+}
+.hamburgerActive{
+    display: block;
+}
+.hamburgerBtn{
+    display:none;
+    transform: translate(1800%, 10%);
+    position: absolute;
+    height: 2.5rem;
+    width: 2.5rem;
+    cursor: pointer;
+    z-index: 100;
+    padding: 2px;
+}
+.hamburgerBtnLeft{
+    transform: translate(1400%, 10%);
+    position: absolute;
+    height: 2.5rem;
+    width: 2.5rem;
+    cursor: pointer;
+    z-index: 100;
+    padding: 2px;
+}
+.hamburger ion-icon{
+    font-size: 2.5rem;
+    color: black;
+    position: absolute;
+    bottom: 20%;
+}
+    
 /* hero */
+
 .hero{
     background-color: gray;
     border-bottom: 1px solid #e6e6e6;
@@ -66,76 +105,124 @@ body{
 .heroHidden{
     display: none;
 }
+.hero img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
 /* end hero */
 
-/* start form */
 
-/* .forms{
-    flex-direction: column;
-    width: 50%;
-    height: fit-content;
-    justify-content: center;
-    position: absolute;
-    top: 60%;
-    transform: translate(-50%, -50%);
-    padding: 20px;
-    z-index: 20;
-} */
-
+/* start of add edit delete forms */
 .addNewItemForm{
-    position: absolute;
-    left: 0%;
-    top: 40%;
+    position: relative;
     align-items: center;
     background-color: white;
-    height: 50%;
-    width: 50%;
-    font-size: 1.2em;
+    height: 50vh;
+    width: 90%;
+    font-size: 1.4rem;
     border: 2px solid black;
-    box-shadow: 0 0 10px black;    
+    box-shadow: 0 0 10px black;
     padding: 2rem 2rem;
     text-align: center;
-    transform: translate(-50%, 0%);
+    opacity: .7;
+    transition: .7s;
 }
-.deleteItemForm{
-    left: 0%;
-    top: 40%;
-    position: absolute;
-    align-items: center;
-    background-color: white;
-    height: 50%;
-    width: 25%;
-    font-size: 1.2em;
-    border: 2px solid black;
-    box-shadow: 0 0 10px black;    
-    padding: 2rem 2rem;
-    text-align: center;
-}
-.deleteItemForm > div{
-    margin-top: 50%;
-    display: flex;
-    justify-content: space-between;
+.addNewItemForm:hover,
+.deleteItemForm:hover,
+.editItemForm:hover{
+    opacity: 1;
 }
 
-.editItemForm{
+.addItemFormContainer,
+.deleteItemFormContainer,
+.editItemFormContainer{
     position: absolute;
-    top: 40%;
-    left: 0%;
+    top: 35%;
+    width: 35%;
+    z-index: 20;
+}
+
+.addFormCloseBtn{
+    position: absolute;
+    left: 85%;
+    top: 5%;
+    font-size: 3rem;
+    cursor: pointer;
+    transition: .7s;
+}
+.addFormCloseBtn:hover,
+.editFormCloseBtn:hover,
+.delFormCloseBtn:hover{
+    color: #FDB927;
+    font-size: 3.1rem;
+    transition: .7s;
+}
+
+
+.deleteItemForm{
+    position: relative;
     align-items: center;
     background-color: white;
-    height: 50%;
-    width: 25%;
+    height: 50vh;
+    width: 90%;
     font-size: 1.4rem;
     border: 2px solid black;
     box-shadow: 0 0 10px black;    
     padding: 2rem 2rem;
     text-align: center;
+    opacity: .7;
 }
+
+.deleteItemForm > div{
+    margin-top: 40%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.delFormCloseBtn{
+    left: 85%;
+    top: 5%;
+    position: absolute;
+    font-size: 3rem;
+    cursor: pointer;
+    transition: .7s;
+}
+
+.editItemForm{
+    align-items: center;
+    background-color: white;
+    height: 50vh;
+    width: 90%;
+    font-size: 1.4rem;
+    border: 2px solid black;
+    box-shadow: 0 0 10px black;    
+    padding: 2rem 2rem;
+    text-align: center;
+    gap: 1rem;
+    opacity: .7;
+}
+
 .editItemForm > div{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
+
+.editFormCloseBtn{
+    left: 75%;
+    top: 5%;
+    position: absolute;
+    font-size: 3rem;
+    cursor: pointer;
+    transition: .7s;
+}
+
+form{
+    border-radius: 10px;
+}
+
+/* end of add edit delete forms */
 
 .formHeader{
     align-self: center;
@@ -163,7 +250,6 @@ body{
     width: max-content;
     padding: 10px 20px;
     color: #fff;
-    border-radius: 15px;
     border: none;
     background-color: #FDB927;
     background-image: linear-gradient(to right,#FDB927,#552583);
@@ -194,47 +280,6 @@ button:hover{
     justify-content: space-evenly;
 }
 
-.addFormCloseBtn{
-    position: absolute;
-    left: 90%;
-    top: 7%;
-    font-size: 3rem;
-    cursor: pointer;
-    transition: .7s;
-}
-.addFormCloseBtn:hover{
-    color: #FDB927;
-    font-size: 3.1rem;
-    transition: .7s;
-}
-
-.editFormCloseBtn{
-    position: absolute;
-    left: 90%;
-    top: 7%;
-    font-size: 3rem;
-    cursor: pointer;
-    transition: .7s;
-}
-.editFormCloseBtn:hover{
-    color: #FDB927;
-    font-size: 3.1rem;
-    transition: .7s;
-}
-
-.delFormCloseBtn{
-    left: 90%;
-    position: absolute;
-    font-size: 3rem;
-    cursor: pointer;
-    transition: .7s;
-}
-.delFormCloseBtn:hover{
-    color: #FDB927;
-    font-size: 3.1rem;
-    transition: .7s;
-}
-
 
 input[type="text"]{
     border: none;
@@ -252,18 +297,18 @@ input[type="text"]:focus{
     border-bottom: 1px solid #FDB927;
 }
 
+/* for delete menu button on delete form */
 #deleteMenuItem {
     width: 25%;
     padding: 10px 20px;
     color: #fff;
-    border-radius: 15px;
     border: none;
     background-color: #FDB927;
     background-image: linear-gradient(to right,#FDB927,#552583);
     transition: .7s;
     cursor: pointer;
     margin-top: .3rem;
-    font-size: 1rem;
+    font-size: .6em;
     height: 3rem;
 }
 
@@ -286,19 +331,20 @@ input[type="text"]:focus{
 
 .success{
     position: absolute;
-    top: 5%;
-    right: 19%;
+    top: 15%;
+    right: 10%;
     background-color: transparent;
     padding: .7rem;
     border-radius: 10px;
     box-shadow: 0 0 10px #FDB927;
     text-align: center;
-    font-size: 1rem;
+    font-size: .6em;
     font-weight: 600;
     color: #FDB927;
     z-index: 20;
     width: 20%;
     height: 15%;
+    line-height: 15px;
 }
 
 .addedItemSuccess{
@@ -387,6 +433,7 @@ footer{
     gap: 1rem; 
 }
 
+
 /* media queries come back and finish once rest of css is done */
 @media screen and (max-width: 1200px){
     .menuItems{
@@ -398,11 +445,29 @@ footer{
     .menuItems{
         grid-template-columns: repeat(2, 1fr);
     }
+    .headerContainer{
+        display: none;
+    }
+    .hamburgerBtn{
+        display: block;
+    }
+    .menuHeader{
+        display:inline-block
+    }
 }
 
 @media screen and (max-width: 600px){
     .menuItems{
         grid-template-columns: repeat(1, 1fr);
+    }
+    .hamburgerBtn{
+        transform: translateX(1100%);
+    }
+    .hamburger{
+        margin-top: 10%;
+        background-color: transparent;
+        font-size: .7em;
+        font-weight: 600;
     }
 }
 
