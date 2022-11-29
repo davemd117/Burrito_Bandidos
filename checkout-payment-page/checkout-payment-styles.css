@@ -10,13 +10,39 @@ body{
     background-color: #ccc;
 }
 
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    background-color: #fff;
+    height: 10vh;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.headerContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    /* max-width: 1200px; */
+    margin: 0 auto;
+}
+.headerContainer ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    gap: 1rem;
+}
+
 .container{
-    position: relative;
-    left: 25%;
+    position: absolute;
     padding: 25px;
     width: min-content;
     height: max-content;
     padding-bottom: 70px;
+    left: 40%;
+    transform: translate(-50%, 0%);
 }
 .container h3{
     text-align: center;
@@ -56,6 +82,59 @@ body{
     border-color: #edd00e;
 }
 
+.container2{
+    position: absolute;
+    left: 40%;
+    transform: translate(-50%, 8.1%);
+    /* padding: 25px; */
+    width: min-content;
+    padding-bottom: 50px;
+}
+.container2 h3{
+    text-align: center;
+}
+
+.container2 form{
+    padding: 20px;
+    width: 700px;
+    background: #fff;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+.container2 form .row .col .title{
+    font-size: 20px;
+    color: #333;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.container2 form .row .col .inputs{
+    margin:10px 0;
+}
+.container2 form .row .col .inputs span{
+    margin-bottom: 10px;
+    display: block;
+}
+.container2 form .row .col .inputs input{
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+}
+
+.container2 form .row .col .inputs input:focus{
+    border-color: #edd00e;
+}
+
+.containerActive{
+    display: block;
+}
+.containerHidden{
+    display: none;
+}
+
 .submitBtn{
     padding: 10px 15px;
     background: #333;
@@ -78,51 +157,6 @@ span {
     text-transform: capitalize;
 }
 
-::-webkit-input-placeholder {
-    color: #333;
-    text-transform: capitalize;
-}
-
-.customerCart{
-    position: absolute;
-    top: 1.7%;
-    right: -47.8%;
-    display: flex;
-    flex-direction: column;
-    width: 20vw;
-    background: #fff;
-    box-shadow: 10px 5px 10px rgba(0,0,0,0.1);
-    border: 1px solid #ccc;
-    height: 80vh;
-}
-
-.cartTitle{
-    padding: 10px;
-    background: #333;
-    color: #fff;
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 20px;
-}
-
-.cartItems{
-    padding: 10px;
-    height: 70vh;
-    overflow-y: scroll;
-}
-
-::-webkit-scrollbar{
-    width: 15px;
-}
-
-::-webkit-scrollbar-track{
-    background: #555;
-}
-
-::-webkit-scrollbar-thumb{
-    background: #333;
-}
-
 .cartItem{
     display: flex;
     justify-content: space-between;
@@ -143,9 +177,6 @@ input[type=number]{
     text-align: center;
 }
 
-#shippingInfoForm{
-    height: 100vh;
-}
 
 #submitBtn2{
     margin-top:10%;
@@ -182,10 +213,47 @@ select{
     border: 1px solid #ccc;
 }
 
-#shippingCartInput{
-    width: 50px;
-    text-align: center;
-    border: none;
+
+.customerCart{
+    position: absolute;
+    top: 17.2%;
+    right: 10%;
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+    background: #fff;
+    box-shadow: 10px 5px 10px rgba(0,0,0,0.1);
+    border: 1px solid #ccc;
+    height: 80vh;
 }
 
+.cartTitle{
+    padding: 10px;
+    background: #333;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 20px;
+}
 
+.cartItems{
+    padding: 10px;
+    height: 70vh;
+    overflow-y: scroll;
+}
+
+.deleteFromCartBtn{
+    padding: 5px 10px;
+    background: #333;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1px solid #333;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+.deleteFromCartBtn:hover{
+    background: #fff;
+    color: red;
+}
