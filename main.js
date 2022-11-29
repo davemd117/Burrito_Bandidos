@@ -354,7 +354,7 @@ $('.log-submit').click(() => {
             window.localStorage.removeItem("Current User")
             window.localStorage.setItem("Current User", JSON.stringify(currentUser))
             console.log("user")
-            // window.location.href = "https://www.google.com/"
+            window.location.href = "menu.html"
            
             
 
