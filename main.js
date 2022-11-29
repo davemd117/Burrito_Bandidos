@@ -421,6 +421,7 @@ function addSticky(){
             for(j=0;  j < sectionItems.length; j++){
                 sectionItems[j].classList.remove("animate__lightSpeedOutLeft")
                 sectionItems[j].classList.add("animate__animated")
+                sectionItems[j].classList.add("animate__slow")
                 sectionItems[j].classList.add("animate__delay-1s")
                 sectionItems[j].classList.add("animate__lightSpeedInRight")
             }

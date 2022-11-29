@@ -7,11 +7,12 @@
 html{
     font-size: 20px;
     position: relative;
-    background-color: black;
+    /* background-color: black; */
 }
 section{
     width: 100%;
     height: 100vh;
+    padding: 50px;
 }
 .flex{
     display: flex;
@@ -53,11 +54,13 @@ h1{
     background-color: transparent;
     z-index: 4;
     border-bottom: 1px solid #d3d3d3;
+    transition: .4s;
 }
 .nav-links{
     display: flex;
     justify-content: space-between;
     width: 50%;
+    list-style-type: none;
 }
 .go-to-login{
     color: #ce1126;
@@ -74,10 +77,11 @@ h1{
     box-shadow: black 0 0 5px;
     z-index: 4;
 }
+nav a{
+    text-decoration: none;
+}
 
 /* SLICK SLIDER */
-
-
 .hero{
     position: relative;
     display: flex;
@@ -203,11 +207,14 @@ h1{
 .slide-btn{
     margin-bottom: 20px;
 }
+
+
 /* ABOUT */
 
 .about-section{
-    margin-top: 50px;
-    background-image: linear-gradient( rgba(0, 0, 0, 0.7) ,rgba(0, 0, 0, 0.7)), url(Manager-Menu-Page-Images/burrito-1.jpg);
+    /* margin-top: 50px; */
+    padding: 50px;
+    background-image: linear-gradient( rgba(0, 0, 0, 0.7) ,rgba(0, 0, 0, 0.7)), url(Manager-Menu-Page-Images/about-us-back1.jpg);
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
@@ -240,8 +247,72 @@ h1{
 .about img{
     width: 40%;
 }
-/* MENU */
+/* LOCATIONS */
+.locations-section{
+    /* margin-top: 50px; */
+    padding: 50px;
+    background-image: linear-gradient( rgba(0, 0, 0, 0.7) ,rgba(0, 0, 0, 0.7)), url(Manager-Menu-Page-Images/our-locations-back.jpg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #006341;
+}
+.location-about{
+    flex-direction: row-reverse;
+}
 
+/* CONTACT US*/
+
+.contact-form-container{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+}
+.contact-form{
+    display: flex;
+    border: 1px solid black;
+    width: 50%;
+    padding: 20px;
+    box-shadow: 0 0 10px black;
+    flex-direction: column;
+}
+.contact-form-div{
+    display: flex;
+    flex-direction: column;
+    /* width: 50%; */
+}
+.contact-form-input{
+    border: none;
+    /* width: 50%; */
+    border: 1px solid #d3d3d3;
+    border-radius: 5px;
+    outline: none;
+    padding: 5px;
+    font-size: 100%;
+}
+.submitBtn{
+    width: 50%;
+    font-size: 100%;
+    padding: 10px;
+    border-radius: 50px;
+    border: none;
+    background-image: linear-gradient(to right,#ce1126,#006341);
+    transition: .7s;
+    align-self: center;
+    margin-top: 10px;
+}
+.submitBtn:hover{
+    cursor: pointer;
+    color: #ce1126;
+    background: transparent;
+}
+.our-info{
+    border: 1px solid black;
+    /* width: 50%; */
+    height: fit-content;
+    padding: 20px;
+    box-shadow: 0 0 10px black
+}
 
 /* SIGNUP */
 .title{
