@@ -1,10 +1,9 @@
 const menuColumn1 = document.getElementById('menuColumn1');
 const menuColumn2 = document.getElementById('menuColumn2');
 const menuColumn3 = document.getElementById('menuColumn3');
+
+
 var menuCounter = 1
-const cart = document.getElementById('cartItems');
-var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-const cartTotal = document.getElementById('cartTotal');
 
 var foodItems = [
     {
@@ -212,96 +211,30 @@ function renderMenu() {
             menuCounter = 1;
         }
     });
-    localStorage.setItem('foodItems', JSON.stringify(foodItems))
+    localStorage.setItem('foodItems', JSON.stringify(foodItems)) //NOTE
 }
 renderMenu();
 
-updateCart();
 
 function addToCart(id) {
+    var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
     if(cartItems.some((foodItem) => foodItem.id === id)){
         alert("Item already in cart")
     }
     else {
         const foodItem = foodItems.find((foodItem) => foodItem.id === id)
-        
+
         cartItems.push({
             ...foodItem,
             quantity: 1,
         });
     }
 
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+
+    // Need to push it into the localStorage from this page first
+    // Set item here? Then update cart from the begining
     updateCart();
 };
-
-function updateCart() {
-    renderCart();
-    renderCartTotal();
-
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
-}
-
-function renderCart() {
-    cart.innerHTML = "";
-    cartItems.forEach((cartItem) => {
-        let subTotal = cartItem.price * cartItem.quantity
-        cart.innerHTML += `
-            <div class="cartItem">
-                <div class="cartItemFlex">
-                    <img  class="cartItemImage" src="${cartItem.image}" alt="">
-                </div>
-                <div class="cartItemFlex">
-                    <h4 class="cartItemName">${cartItem.name}</h3>
-                    <p class="cartItemDescription">${cartItem.description}</p>
-                    <div class="cartQuantityContainer">
-                    <div class="removeQtyBtn" onclick="changeCartItemQuantity('minus', ${cartItem.id})">-</div>
-                    <div class="cartItemQuantity">${cartItem.quantity}</div>
-                    <div class="addQtyBtn" onclick="changeCartItemQuantity('plus', ${cartItem.id})">+</div>
-                    </div>
-                </div>
-                <div class="cartItemFlex">
-                    <p class="cartItemPrice">$${subTotal.toFixed(2)}</p>
-                    <div class="cartItemRemoveButton" onclick="removeFromCart(${cartItem.id})">Remove</div>
-                </div>
-            </div>
-        `;
-    });
-}
-
-function renderCartTotal() {
-    let totalPrice = 0;
-    cartItems.forEach((cartItem) => {
-        totalPrice += cartItem.price * cartItem.quantity
-    });
-
-    cartTotal.innerHTML = `$${totalPrice.toFixed(2)}`
-}
-
-function changeCartItemQuantity(action, id) {
-    cartItems = cartItems.map((cartItem) => {
-        let quantity = cartItem.quantity;
-
-        if (cartItem.id === id) {
-            if (action === "minus" && quantity > 1) {
-                quantity--;
-            }
-            else if (action === "plus") {
-                quantity++;
-            }
-        }
-
-        return {
-            ...cartItem,
-            quantity,
-        };
-    });
-
-    updateCart();
-}
-
-function removeFromCart(id) {
-    cartItems = cartItems.filter( (cartItem) => cartItem.id !== id);
-
-    updateCart();
-}
 
