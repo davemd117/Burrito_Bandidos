@@ -13,19 +13,28 @@
 
     <title>Burrito Bandido - Home</title>
 </head>
-<body>
-
+<body id="body">
+    <!------------------------------- NAV BAR ---------------------------------->
     <nav id="nav-bar" class="nav-bar">
         <div class="logo">LOGO</div>
         <ul id="nav-links" class="nav-links">
             <a  href="#about-section"><li>About Us</li></a>
-            <a><li>Link</li></a>
-            <a><li>Link</li></a>
-            <a id="go-to-login" class="go-to-login"><li>LOGIN</li></a>
+            <a href="#featured"><li>Featured</li></a>
+            <a href="#our-locations"><li>Locations</li></a>
+            <a href="#contact-us"><li>Contact Us</li></a>
         </ul>
+        <ion-icon id="ham-menu" class="ham-menu" name="menu-outline"></ion-icon>
     </nav>
-
-    
+    <!------------------------------- SIDE BAR ---------------------------------->
+    <div id="side-bar" class="side-bar animate__animated animate__slideInRight">
+        <ul id="side-links" class="side-links">
+            <a  href="#about-section"><li>About Us</li></a>
+            <a href="#featured"><li>Featured</li></a>
+            <a href="#our-locations"><li>Locations</li></a>
+            <a href="#contact-us"><li>Contact Us</li></a>
+        </ul>
+    </div>
+    <!------------------------------- SIGNUP ---------------------------------->
     <form id="form-sup" class="form-sup form" action="">
         <ion-icon class="back-btn" name="arrow-back-outline"></ion-icon>
         <h1 class="sup-title title">Become a Bandido</h1>
@@ -65,6 +74,7 @@
         <input class=" form-input sup-submit submit" type="button" id="sup-submit" value="Sign Up">
     </form>
 
+
     <!------------------------------- LOGIN ---------------------------------->
     <form id="form-log " action="" class="form form-log">
         <ion-icon class="back-to-home" name="home"></ion-icon>
@@ -84,8 +94,9 @@
         </div>
     </form>
 
-    <!------------------------------- HERO SECTION ---------------------------------->
 
+
+    <!------------------------------- HERO SECTION ---------------------------------->
     <section class="hero">
         <!-- <div class="slide-container"> -->
             <ion-icon class="prev" name="arrow-back-outline"></ion-icon>
@@ -126,42 +137,45 @@
         <ion-icon class="next" name="arrow-forward-outline"></ion-icon>
     </section>
 
-    <!------------------------------- ABOUT US SECTION ---------------------------------->
 
-    <section id="about-section "class= 'reveal about-section animate__animated'>
+
+    <!------------------------------- ABOUT US SECTION ---------------------------------->
+    <section id="about-section"class= 'reveal about-section animate__animated'>
 
         <h1 class="header">About Us</h1>
         <div class="about">
             <img src="Manager-Menu-Page-Images/fam-eating-pic.jpg" alt="">
             <div class="about-text">
-                <h1 class="header">Who we are</h1>
-                <p>Since our modest beginnings in 2022 with a little space in Pennsylvania's stylish Lancaster locale,Burrito Bandido ‘s development has been enlivened with the energy to cook and serve solid, Mexican-roused takeout food.  We realize numerous individuals love Mexican sustenance, yet a large number of them loathe or are unconscious of the regularly unfortunate fixings that make run-of-the-mill Mexican nourishment taste so great.</p>
+                <h1  class="text-header">Who we are</h1>
+                <p>Since our modest beginnings in 2022 with a little space in Pennsylvania's stylish Lancaster locale,Burrito Bandido ‘s development has been enlivened with the energy to cook and serve amazing, Mexican-roused takeout food. </p>
             </div>
         </div>
     </section>
 
 
-    <!------------------------------- Featured Dish ---------------------------------->
-    <section id="our-locations" class="reveal animate__animated  locations-section">
+    <!------------------------------- FEATURED DISH ---------------------------------->
+    <section id="featured" class="reveal animate__animated  featured-section">
         <h1 class="header">Featured Dish</h1>
         <div class="about location-about">
-            <img src="Manager-Menu-Page-Images/bandido-location.webp" alt="">
+            <img src="Manager-Menu-Page-Images/featured-dish-pic.jpg" alt="">
             <div class="about-text">
-                <h1 class="header">The Super Burrito</h1>
-                <p></p>
+                <h1 class="text-header">The Super Burrito</h1>
+                <p>A whole pound of your choice of freshly grilled meat or veggies wrapped in a warm flour tortilla topped with all your favorites.</p>
             </div>
         </div>
     </section>
 
-    <!------------------------------- OUR LOCATIONS---------------------------------->
 
+
+    <!------------------------------- OUR LOCATIONS---------------------------------->
     <section id="our-locations" class="reveal animate__animated  locations-section">
         <h1 class="header">Our Locations</h1>
         <div class="about location-about">
             <img src="Manager-Menu-Page-Images/bandido-location.webp" alt="">
             <div class="about-text">
-                <h1 class="header">Where we are</h1>
-                <p></p>
+                <h1 class="text-header">Lancaster</h1>
+                <p>We are now open in Lancaster! Order online below or just come along. We always save room for walk-in's.</p>
+                <button class="btn">Order Now</button>
             </div>
         </div>
     </section>
@@ -169,49 +183,64 @@
 
     
     <!------------------------------- CONTACT US SECTION ---------------------------------->
-
     <section id="contact-us" class="reveal animate__animated">
 
         <h1 class="contact-title header">Contact Us</h1>
         <div class="contact-form-container">
+            
             <form action="" class="contact-form">
+                <p class="contact-form-title">Please leave a message!</p>
                 <div class="contact-form-div">
-                    <label for="name">Name</label>
-                    <input class="contact-form-input" type="text" name="name" id="">
+                    <input placeholder="Your Name" class="contact-form-input" type="text" name="name" id="">
                 </div>
                 <div class="contact-form-div">
-                    <label for="email">Email</label>
-                    <input class="contact-form-input" type="email" name="email" id="">
+                    <input placeholder="Your Email" class="contact-form-input" type="email" name="email" id="">
                 </div>
                 <div class="contact-form-div">
-                    <label for="subject">Subject</label>
-                    <input class="contact-form-input" type="text" name="subject" id="">
+                    <input placeholder="Subject" class="contact-form-input" type="text" name="subject" id="">
                 </div>
                 <div class="contact-form-div">
-                    <label for="message">Message</label>
-                    <textarea class="contact-form-input" class="messageBox" name="message" id="" cols="30" rows="3"></textarea>
+                    <textarea placeholder="Message" class="contact-form-input messageBox" name="message" id="" cols="30" rows="3"></textarea>
                 </div>
                 <input class="submitBtn btn" type="submit" value="Send Message">
             </form>
 
             <div class="our-info">
                 <div class="info-div">
-                    <h2 class="infoTitle">Address</h2>
-                    <p>123 Abcde Dr. Lancaster PA</p>
+                    <h2 class="info-title">Our Address</h2>
+                    <address>123 Abcde Dr, Lancaster, PA</address>
                 </div>
                 <div class="info-div">
-                    <h2 class="infoTitle">Phone</h2>
-                    <a href="">281-330-8004</a>
+                    <h2 class="info-title">Our Phone</h2>
+                    <a>(281) 330-8004</a>
                 </div>
                 <div class="info-div">
-                    <h2 class="infoTitle">Email Address</h2>
-                    <a href="">Bandido@email.com</a>
+                    <h2 class="info-title">Our Email</h2>
+                    <a>Bandido@email.com</a>
                 </div>
             </div>
         </div>
     </section>
+    <!------------------------------- FOOTER ---------------------------------->
+    <footer id="footer" class="animate__animated">
+        <!-- <div class=" footer-links"> -->
+            <ul class="footer-nav">
+                <a id="go-to-login" class="go-to-login"><li>LOGIN</li></a>
+            </ul>
 
-    <footer></footer>
+            <div class="footer-info">
+                <p><ion-icon name="location-outline"></ion-icon>123 Abcde Dr, Lancaster, PA</p>
+                <p><ion-icon name="time-outline"></ion-icon>12:00pm - 12:00am</p>
+                <p><ion-icon name="call-outline"></ion-icon>(281) 330-8004</p>
+            </div>
+        <!-- </div>    -->
+        <div class="footer-socials">
+            <a href=""><ion-icon id="fb" name="logo-facebook"></ion-icon></a>
+            <a href=""><ion-icon id="twitter" name="logo-twitter"></ion-icon></a>
+            <a href=""><ion-icon id="google" name="logo-google"></ion-icon></a>
+            <a href=""><ion-icon id="ig" name="logo-instagram"></ion-icon></a>
+        </div>
+    </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
@@ -226,7 +255,7 @@
                 nextArrow: $('.next'),
                 slidesToShow: 1,
                 slidesToScroll: 1,
-                autoplay: true,
+                autoplay: false,
                 autoplaySpeed: 5000,
             });
     </script>

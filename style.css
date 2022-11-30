@@ -7,12 +7,20 @@
 html{
     font-size: 20px;
     position: relative;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
     /* background-color: black; */
 }
 section{
     width: 100%;
-    height: 100vh;
-    padding: 50px;
+    height: 120vh;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.reveal{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
 }
 .flex{
     display: flex;
@@ -45,6 +53,7 @@ h1{
 /* NAV */
 .nav-bar{
     width: 100%;
+    color: #fff;
     height: 50px;
     margin: 0 auto;
     display: flex;
@@ -67,7 +76,9 @@ h1{
 }
 .sticky{
     background-color: #fff;
+    color: #ce1126;
     position: fixed;
+    top: 0;
     width: 100%;
     height: 50px;
     margin: 0 auto;
@@ -80,6 +91,36 @@ h1{
 nav a{
     text-decoration: none;
 }
+nav ion-icon{
+    display: none;
+}
+/* SIDE BAR*/
+.side-bar{
+    z-index: 4;
+    display: flex;
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 150px;
+    margin: auto;
+    background-color: white;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    display: none;
+}
+.side-links{
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
 
 /* SLICK SLIDER */
 .hero{
@@ -168,6 +209,7 @@ nav a{
     background-image: url(Manager-Menu-Page-Images/coin1.gif);
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
    
 }
 .card-3 p{
@@ -213,7 +255,10 @@ nav a{
 
 .about-section{
     /* margin-top: 50px; */
-    padding: 50px;
+    /* padding: 50px; */
+    display: flex;
+    flex-direction: column;
+    
     background-image: linear-gradient( rgba(0, 0, 0, 0.7) ,rgba(0, 0, 0, 0.7)), url(Manager-Menu-Page-Images/about-us-back1.jpg);
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -221,36 +266,68 @@ nav a{
     color: #006341;
 }
 .header{
+    font-family: 'smokum', cursive;
     text-align: center;
     margin: 0 auto;
+    font-size: 300%;
+    color: #ce1126;
+    text-shadow: 3px 3px black;
 }
+
 .about{
-    margin-top: 100px;
     width: 100%;
+    height: 50%;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    margin: 50px auto;
     text-align: center;
+    
 }
 .about-text{
-    background-color: #fff;
+    display: flex;
     width: 40%;
-    border: 1px solid black;
-    box-shadow:  -5px 5px, rgba(0 ,99 ,65, 0.3) -10px 10px, rgba(0 ,99 ,65,  0.2) -15px 15px, rgba(0 ,99 ,65,  0.1) -20px 20px, rgba(0 ,99 ,65,  0.05) -25px 25px;
-    text-shadow: 1px 1px black;
-    padding: 10px;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
 
 }
+.text-header{
+    width: 80%;
+    font-family: 'smokum', cursive;
+    font-size: 200%;
+    text-align: center;
+    padding: 10px;
+    background-color: #ce1126;
+    box-shadow: 0 0 5px black;
+    text-shadow: 2px 2px black;
+    border: 2px solid black;
+}
 .about-text p{
-    font-size: 75%;
+    font-size: 70%;
+    height: 50%;
+    color: white;
+    text-align: center;
+    background-color: #ce1126;
+    box-shadow: 0 0 5px black;
+    padding: 20px;
 }
 .about img{
     width: 40%;
+    height: 100%;
+    box-shadow: 0 0 10px black;
+}
+/* FEATURED DISH */
+.featured-section{
+    background-image: linear-gradient( rgba(0, 0, 0, 0.7) ,rgba(0, 0, 0, 0.7)), url(Manager-Menu-Page-Images/featured-dish-back.jpg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #006341;
 }
 /* LOCATIONS */
 .locations-section{
-    /* margin-top: 50px; */
-    padding: 50px;
     background-image: linear-gradient( rgba(0, 0, 0, 0.7) ,rgba(0, 0, 0, 0.7)), url(Manager-Menu-Page-Images/our-locations-back.jpg);
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -264,17 +341,28 @@ nav a{
 /* CONTACT US*/
 
 .contact-form-container{
+    width: 100%;
+    height: 60%;
     display: flex;
+    align-items: center;
     justify-content: space-around;
-    margin-top: 50px;
+    flex-wrap: wrap;
+    margin-top: 30px;
 }
 .contact-form{
     display: flex;
+    justify-content: space-evenly;
     border: 1px solid black;
     width: 50%;
+    height: 100%;
     padding: 20px;
     box-shadow: 0 0 10px black;
     flex-direction: column;
+}
+.contact-form-title{
+    text-align: center;
+    text-shadow: 0px 1px #ce1126;
+    color:black ;
 }
 .contact-form-div{
     display: flex;
@@ -284,11 +372,14 @@ nav a{
 .contact-form-input{
     border: none;
     /* width: 50%; */
-    border: 1px solid #d3d3d3;
+    border-bottom: 1px solid #d3d3d3;
     border-radius: 5px;
     outline: none;
     padding: 5px;
     font-size: 100%;
+}
+.messageBox{
+    border: 1px solid #d3d3d3;
 }
 .submitBtn{
     width: 50%;
@@ -308,11 +399,19 @@ nav a{
 }
 .our-info{
     border: 1px solid black;
-    /* width: 50%; */
-    height: fit-content;
+    height: 100%;
     padding: 20px;
-    box-shadow: 0 0 10px black
+    box-shadow: 0 0 10px black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
+.info-title{
+    text-shadow: 1px 1px #ce1126;
+    color:black ;
+}
+
+
 
 /* SIGNUP */
 .title{
@@ -498,4 +597,122 @@ text-decoration: none;
 color: #ce1126;
 }
 
-/* SLIDER TEST */
+/* FOOTER */
+.footer-sticky{
+    background-color: #006341;
+    color: #fff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    box-shadow: black 0 0 5px;
+    z-index: 4;
+}
+.footer-links{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: #fff;
+}
+
+.footer-nav{
+    display: flex;
+    list-style-type: none;
+}
+.footer-nav a{
+    margin-right: 10px;
+}
+.footer-info{
+    display: flex;
+    width: 75%;
+    justify-content: space-around;
+}
+.footer-info p{
+    font-size: 65%;
+}
+.footer-info ion-icon{
+    margin-right: 2px;
+}
+.footer-socials{
+    text-align: center;
+    display: flex;
+    
+}
+.footer-socials ion-icon{
+    color: #fff;
+}
+
+/* SMALLER SCREENS */
+@media (max-width:1000px) {
+    nav ul.nav-links{
+        display: none;
+    }
+    
+    nav ion-icon{
+        display: block;
+    }
+}
+
+
+@media (max-width:768px) {
+    form.contact-form{
+        font-size: 80%;
+    }
+    div.slide-flex{
+        flex-wrap: wrap;
+    }
+}
+
+
+@media (max-width:550px) {
+    p.slide-deal{
+        font-size: 100%;
+    }
+    p.slide-sub{
+        font-size: 100%;
+    }
+    button.btn{
+        width: auto;
+    }
+    div.about img{
+        height: 50%;
+    }
+    div.about button{
+        width: auto;
+        font-size: 80%;
+    }
+    h1.text-header{
+        font-size: 150%;
+    }
+    h1.header{
+        font-size: 200%;
+    }
+    div.about-text p{
+        font-size: 40%;
+    }
+    div.our-info{
+        width: 40%;
+        font-size: 60%;
+    }
+    input.submitBtn{
+        font-size: 50%;
+    }
+    div.footer-info{
+        width: auto;
+    }
+    a.go-to-login{
+        font-size: 75%;
+    }
+    div.footer-info p{
+        font-size: 40%;
+        margin-right: 10px;
+        width: fit-content;
+    }
+    div.footer-socials ion-icon{
+        font-size: 15px;
+    }
+}

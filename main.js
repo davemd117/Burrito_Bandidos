@@ -395,15 +395,41 @@ function makeSignout(){
 // STICKY NAV
 function addSticky(){
     let nav = document.getElementById("nav-bar")
+    let foot = document.getElementById("footer")
     let sticky = nav.offsetTop
     if (window.pageYOffset > sticky) {
         nav.classList.add("sticky")
-        // nav.classList.remove("clear")
+        foot.classList.remove("animate__slideOutDown")
+        foot.classList.add("animate__slideInUp")
+        foot.classList.add("footer-sticky")
+        
     } else {
         nav.classList.remove("sticky");
+        foot.classList.remove("animate__slideInUp")
+        foot.classList.add("animate__slideOutDown")
+        
         // nav.classList.add("clear")
     }
 }
+// HAMBURGER MENU
+var hamMenuClicked = 0
+$('#ham-menu').click(() => {
+   openNav()
+})
+let sections = document.querySelectorAll('section')
+sections.forEach((section) => {
+    section.addEventListener('click', closeNav)
+})
+
+function openNav(){
+    $(".side-bar").removeClass("animate__slideOutRight")
+    $(".side-bar").show()
+}
+function closeNav(){
+    $(".side-bar").addClass("animate__slideOutRight")
+
+}
+
 // SHOW BACKGROUNDS ON SCROLL
  function showOnScroll(){
     var sections = document.querySelectorAll('.reveal')
@@ -417,7 +443,7 @@ function addSticky(){
             sections[i].classList.remove('animate__fadeOutLeft')
             sections[i].classList.add('animate__fadeInLeft')
             let sectionItems = sections[i].children
-            console.log(sectionItems)
+            // console.log(sectionItems)
             for(j=0;  j < sectionItems.length; j++){
                 sectionItems[j].classList.remove("animate__lightSpeedOutLeft")
                 sectionItems[j].classList.add("animate__animated")
