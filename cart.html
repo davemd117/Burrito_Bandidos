@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="menu-cart.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="cart.html">Cart</a>
+        </nav>
+    </header>
+
+    <div class="cartContainer">
+        <h1>Cart Items</h1>
+        <div id="cartItems">
+            <!-- <div class="cartItem">
+                <div class="cartItemFlex">
+                    <img  class="cartItemImage" src="bandidos_images/burrito_de_bistec.jpg" alt="">
+                </div>
+                <div class="cartItemFlex">
+                    <h4 class="cartItemName">Burrito de Bistec</h3>
+                    <p class="cartItemDescription">Steak, Steak, Steak, Steak, Steak, Steak, Steak, Steak</p>
+                    <div class="cartQuantityContainer">
+                        <div class="removeQtyBtn" onclick="changeCartItemQuantity('minus', ${item.id})">-</div>
+                        <div class="cartItemQuantity">0</div>
+                        <div class="addQtyBtn" onclick="changeCartItemQuantity('plus', ${item.id})">+</div>
+                    </div>
+                </div>
+                <div class="cartItemFlex">
+                    <p class="cartItemPrice">$9.99</p>
+                    <div class="cartItemRemoveButton" >Remove</div>
+                </div>
+            </div> -->
+
+        </div>
+
+        <div class="cartCheckout">
+            <p id="cartTotalLabel">Total:</p>
+            <p id="cartTotal">$0</p>
+            <br>
+            <button onclick="purchaseCart()" id="cartPurchaseButton">Purchase</button>
+        </div>
+    </div>
+
+    <footer>Trademark Burrito Bandidos</footer>
+    <script src="cart.js"></script>
+</body>
+</html>
