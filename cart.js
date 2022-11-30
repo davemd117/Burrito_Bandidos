@@ -80,7 +80,7 @@ function purchaseCart() {
     let purchaseItems = [];
     purchaseItems = cartItems
     localStorage.setItem("purchaseItems", JSON.stringify(cartItems));
-    window.location.href = "checkout-payment.html"
+    window.location.href = "checkout-payment-page/checkout-payment.html"
     // just need to href to the purchase page
 }
 
