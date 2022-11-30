@@ -1,190 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Checkout & Payment Burrito Banditos</title>
-      <link rel="stylesheet" href="checkout-payment-styles.css">
-   </head>
-   <body>
-
-<header>
-   <div class="headerContainer">
-      <div class="logo">
-         <img src="images/logo.png" alt="logo">
-      </div>
-      <div>
-         <h2>Burrito Banditos</h2>
-      </div>
-      <div class="nav">
-         <ul>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout & Payment Burrito Banditos</title>
+    <link rel="stylesheet" href="checkout-payment-styles.css">
+  </head>
+  <body>
+    <header>
+      <div class="headerContainer">
+        <div class="logo">
+          <img src="images/logo.png" alt="logo">
+        </div>
+        <div>
+          <h2>Burrito Banditos</h2>
+        </div>
+        <div class="nav">
+          <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="products.html">Products</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact</a></li>
             <li><a href="checkout-payment.html">Checkout</a></li>
-         </ul>
+          </ul>
+        </div>
       </div>
-   </div>
-</header>
-
-<div class="customerCart">
-         <div class="cartTitle">
-            <h3>Customer Cart</h3>
-         </div>
-         <div class="cartItems">
-            <!-- <div class="cartItem">
-               <div class="cartItemImg">
-                  <img src="/checkout-payment-images/burrito1.jpg" alt="">
-               </div>
-               <div class="cartItemName">
-                  <h4>Chicken Burrito</h4>
-               </div>
-               <div class="cartItemQuantity">
-                  <h4>Qty: <span><input type="number"></span></h4>
-               </div>
-               <div class="cartItemPrice">
-                  <h4>$5.99</h4>
-               </div>
-               <div class="removeCartItem">
-                  <ion-icon class="deleteFromCartBtn" name="close-circle-outline"></ion-icon>
-               </div>
-            </div>   -->
-         </div>
-         <div class="cartTotal">
-            <h3 class="total" style="text-align: center;">Total: $0.00</h3>
-         </div>
-        
-</div>
-
-<div class="container containerActive" method="post">
-   <form action="" id="billingInfoForm">
-            <div class="row">
-               <div class="col">
-                  <h3 class="title">Billing Information</h3>
-                  <div class="inputs">
-                     <span>full name :</span>
-                     <input id="name" type="text" placeholder="enter name">
-                  </div>
-                  <div class="inputs">
-                     <span>email :</span>
-                     <input id="email" type="email" placeholder="enter email here">
-                  </div>
-                  <div class="inputs">
-                     <span>address :</span>
-                     <input id="billingAddress" type="text" placeholder="enter billing address">
-                  </div>
-                  <div class="inputs">
-                     <span>city :</span>
-                     <input id="city" type="text" placeholder="enter current city">
-                  </div>
-                  <div class="flex">
-                     <div class="inputs">
-                        <span>state :</span>
-                        <input id="state" type="text" placeholder="enter state">
-                     </div>
-                     <div class="inputs">
-                        <span>zip code :</span>
-                        <input id="zip" type="text" placeholder="enter zip code">
-                     </div>
-                  </div>
-               </div>
-            </div>
-   </form>
-   <form action="" id="paymentInfoForm">
-            <div class="row">
-               <div class="col">
-                  <h3 class="title">Payment Information</h3>
-                  <div class="inputs">
-                     <span>cards accepted :</span>
-                    <img src="/checkout-payment-images/card_img.png" alt="">
-                  </div>
-                  <div class="inputs">
-                     <span>cash :</span>
-                     <input id="cashRadio" type="radio">
-                  </div>
-                  <div class="inputs">
-                     <span>name on card :</span>
-                     <input id="cardName" type="text" placeholder="enter name on card">
-                  </div>
-                  <div class="inputs">
-                     <span>credit card number :</span>
-                     <input id="cardNumber" type="text" placeholder="1111-1111-1111-1111">
-                  </div>
-                  <div class="inputs">
-                     <span>exp month :</span>
-                     <input id="cardExpMonth" type="text" placeholder="enter card expiration month">
-                  </div>
-                  <div class="flex">
-                     <div class="inputs">
-                        <span>exp year :</span>
-                        <input id="cardExpYear" type="text" placeholder="enter card expiration year">
-                     </div>
-                     <div class="inputs">
-                        <span>CVV :</span>
-                        <input id="cardCvv" type="text" placeholder="enter 3 digit security code">
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <input type="button" id="submitBtn1" value="proceed to shipping" class="submitBtn">
-   </form>
-</div>
-
-<div class="container2 containerHidden">
-   <form action="" id="shippingInfoForm">
-      <div class="row">
-         <div class="col">
-            <h3 class="title">Shipping Information</h3>
+    </header>
+    <div class="customerCart">
+      <div class="cartTitle">
+        <h3>Customer Cart</h3>
+      </div>
+      <div class="cartItems">
+        <!-- <div class="cartItem">
+          <div class="cartItemImg">
+             <img src="/checkout-payment-images/burrito1.jpg" alt="">
+          </div>
+          <div class="cartItemName">
+             <h4>Chicken Burrito</h4>
+          </div>
+          <div class="cartItemQuantity">
+             <h4>Qty: <span><input type="number"></span></h4>
+          </div>
+          <div class="cartItemPrice">
+             <h4>$5.99</h4>
+          </div>
+          <div class="removeCartItem">
+             <ion-icon class="deleteFromCartBtn" name="close-circle-outline"></ion-icon>
+          </div>
+          </div>   -->
+      </div>
+      <div class="cartTotal">
+        <h3 class="total" style="text-align: center;">Total: $0.00</h3>
+      </div>
+    </div>
+    <div class="container containerActive">
+      <form id="billingInfoForm">
+        <div class="row">
+          <div class="col">
+            <h3 class="title">Billing Information</h3>
             <div class="inputs">
-               <span>full name :</span>
-               <input id="shippingName" type="text" placeholder="enter name">
+              <span>full name :</span>
+              <input id="name" type="text" placeholder="Enter full name...Robert Smith">
             </div>
             <div class="inputs">
-               <span>email :</span>
-               <input id="shippingEmail" type="email" placeholder="enter email here">
+              <span>email :</span>
+              <input id="email" type="email" placeholder="Enter email...email@email.com">
             </div>
             <div class="inputs">
-               <span>address :</span>
-               <input id="shippingAddress" type="text" placeholder="enter shipping address">
+              <span>address :</span>
+              <input id="billingAddress" type="text" placeholder="Enter billing address...111 Firehouse Rd.">
             </div>
             <div class="inputs">
-               <span>city :</span>
-               <input id="shippingCity" type="text" placeholder="enter city">
+              <span>city :</span>
+              <input id="city" type="text" placeholder="Enter current city...Lancaster">
             </div>
             <div class="flex">
-               <div class="inputs">
-                  <span>state :</span>
-                  <input id="shippingState" type="text" placeholder="enter state">
-               </div>
-               <div class="inputs">
-                  <span>zip code :</span>
-                  <input id="shippingZip" type="text" placeholder="enter zip code">
-               </div>
-               <div class="inputs">
-                  <span>phone number :</span>
-                  <input id="phone" type="text" placeholder="enter phone number">
-               </div>
-               <div class="inputs">
-                  <span>Shipping Method :</span>
-                  <select name="shippingMethod" id="shippingMethod">
-                     <option value="standard">Standard</option>
-                     <option value="express">Express</option>
-                     <option value="overnight">Overnight</option>
-               </div>
-              
+              <div class="inputs">
+                <span>state :</span>
+                <input id="state" type="text" placeholder="Enter current state...Pennsylvania">
+              </div>
+              <div class="inputs">
+                <span>zip code :</span>
+                <input id="zip" type="text" placeholder="Enter 5 digit zip code...11111">
+              </div>
             </div>
-         </div>
+          </div>
+        </div>
+      </form>
+      <form id="paymentInfoForm">
+        <div class="row">
+          <div class="col">
+            <h3 class="title">Payment Information</h3>
+            <div class="inputs">
+              <span>cards accepted :</span>
+              <img src="/checkout-payment-images/card_img.png" alt="">
+            </div>
+            <div class="inputs">
+              <span>cash :</span>
+              <input id="cashRadio" type="radio">
+            </div>
+            <div class="inputs">
+              <span>name on card :</span>
+              <input id="cardName" type="text" placeholder="Enter cardholder's name...Robert Smith">
+            </div>
+            <div class="inputs">
+              <span>credit card number :</span>
+              <input id="cardNumber" type="text" placeholder="Enter 16 digit credit card number...1111-1111-1111-1111">
+            </div>
+            <div class="inputs">
+              <span>exp month :</span>
+              <input id="cardExpMonth" type="text" placeholder="Enter card expiration month...01">
+            </div>
+            <div class="flex">
+              <div class="inputs">
+                <span>exp year :</span>
+                <input id="cardExpYear" type="text" placeholder="Enter card expiration year...2002">
+              </div>
+              <div class="inputs">
+                <span>CVV :</span>
+                <input id="cardCvv" type="text" placeholder="Enter 3 digit security code on back of card...131">
+              </div>
+            </div>
+          </div>
+        </div>
+        <input type="button" id="submitBtn1" value="proceed to shipping" class="submitBtn">
+      </form>
+    </div>
+
+    <div class="container2 containerHidden">
+      <form id="shippingInfoForm">
+        <div class="row">
+          <div class="col">
+            <h3 class="title">Shipping Information</h3>
+            <div class="inputs">
+              <span>full name :</span>
+              <input id="shippingName" type="text" placeholder="Enter name...Robert Smith">
+            </div>
+            <div class="inputs">
+              <span>email :</span>
+              <input id="shippingEmail" type="email" placeholder="Enter email here...email@email.com">
+            </div>
+            <div class="inputs">
+              <span>address :</span>
+              <input id="shippingAddress" type="text" placeholder="Enter shipping address...111 Schoolhouse Rd.">
+            </div>
+            <div class="inputs">
+              <span>city :</span>
+              <input id="shippingCity" type="text" placeholder="Enter city...Lancaster">
+            </div>
+            <div class="flex">
+              <div class="inputs">
+                <span>state :</span>
+                <input id="shippingState" type="text" placeholder="Enter state...Pennsylvania">
+              </div>
+              <div class="inputs">
+                <span>zip code :</span>
+                <input id="shippingZip" type="text" placeholder="Enter 5 digit zip code...11111">
+              </div>
+              <div class="inputs">
+                <span>phone number :</span>
+                <input id="phone" type="text" placeholder="Enter phone number...1111111111">
+              </div>
+              <div class="inputs">
+               <span>Shipping Method :</span>
+                  <select name="shippingMethod" id="shippingMethod">
+                  <option value="standard">Standard</option>
+                  <option value="express">Express</option>
+                  <option value="overnight">Overnight</option>
+                  </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <input type="submit" id="submitBtn2" value="proceed to checkout" class="submitBtn">
+    </div>
+
+   <footer>
+      <div class="footer">
+        <div class="footerContent">
+          <div class="footerContentLeft">
+            <h3>Company</h3>
+            <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+            </ul>
+          </div>
+          <div class="footerContentRight">
+            <h3>Connect</h3>
+            <ul>
+              <li><a href="#">Facebook</a></li>
+              <li><a href="#">Twitter</a></li>
+              <li><a href="#">Instagram</a></li>
+              <li><a href="#">YouTube</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
-</form>
-<input type="submit" id="submitBtn2" value="proceed to checkout" class="submitBtn">
-</div>
+    </footer>
 
-
-      <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-      <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-      <script src="checkout-payment-script.js"></script>
-      <script src="checkout-payment-forms-script.js"></script>
-   </body>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="checkout-payment-script.js"></script>
+    <script src="checkout-payment-forms-script.js"></script>
+  </body>
 </html>

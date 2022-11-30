@@ -7,7 +7,7 @@
 }
 
 body{
-    background-color: #ccc;
+    background-image: url("/checkout-payment-images/hollowed-boxes.svg");
 }
 
 header{
@@ -24,7 +24,6 @@ header{
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    /* max-width: 1200px; */
     margin: 0 auto;
 }
 .headerContainer ul{
@@ -36,13 +35,14 @@ header{
 }
 
 .container{
-    position: absolute;
+    position: relative;
     padding: 25px;
     width: min-content;
     height: max-content;
     padding-bottom: 70px;
     left: 40%;
-    transform: translate(-50%, 3.3%);
+    transform: translate(-40%, 3.3%);
+    
 }
 .container h3{
     text-align: center;
@@ -79,13 +79,13 @@ header{
 }
 
 .container form .row .col .inputs input:focus{
-    border-color: #edd00e;
+    border-color: #333;
 }
 
 .container2{
-    position: absolute;
+    position: relative;
     left: 40%;
-    transform: translate(-50%, 5.5%);
+    transform: translate(-40%, 5.5%);
     padding: 25px;
     width: min-content;
     padding-bottom: 50px;
@@ -125,7 +125,7 @@ header{
 }
 
 .container2 form .row .col .inputs input:focus{
-    border-color: #edd00e;
+    border-color: #333;
 }
 
 .containerActive{
@@ -184,8 +184,6 @@ input[type=radio]{
     width: 1rem;
 }
 
-
-
 #submitBtn2{
     margin-top:10%;
     padding: 10px 15px;
@@ -228,7 +226,7 @@ select{
     right: 10%;
     display: flex;
     flex-direction: column;
-    width: 30vw;
+    width: 25vw;
     background: #fff;
     box-shadow: 10px 5px 10px rgba(0,0,0,0.1);
     border: 1px solid #ccc;
@@ -272,4 +270,56 @@ select{
     justify-content: center;
     align-items: center;
     border-top: 1px solid #ccc;
+}
+
+
+/* come back when decided on universal header/footer for all pages and change */
+.footer{
+    width: 100%;
+    height: 100%;
+    background: #333;
+    color: #fff;
+    padding: 20px;
+}
+.footerContent{
+    display: flex;
+}
+
+.footerContentLeft, 
+.footerContentRight{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+
+
+/* media queries */
+@media screen and (max-width: 900px){
+    .container{
+        width: 50%;
+        padding: 0;
+    }
+    .container form{
+        width: 100%;
+    }
+    .container2{
+        width: 50%;
+        padding: 0;
+    }
+    .container2 form{
+        width: 100%;
+    }
+    .customerCart{
+        position: absolute;
+        top: 17.35%;
+        right: 2%;
+        display: flex;
+        flex-direction: column;
+        width: 30%;
+        background: #fff;
+        box-shadow: 10px 5px 10px rgba(0,0,0,0.1);
+        border: 1px solid #ccc;
+        height: 80vh;
+    }
 }

@@ -37,7 +37,7 @@ var shippingMethod = document.getElementById('shippingMethod');
 //form validation
 function validateForm() {
     if (billingName.value == "" || address.value == "" || email.value == "" || city.value == "" || state.value == "" || zip.value == "" || email.value.includes("@") == false) {
-        alert("Please fill out all fields");
+        alert("Please make sure to fill out all fields properly");
         return false;
     } else {
         return true;
@@ -46,7 +46,7 @@ function validateForm() {
 
 function validateForm2() {
     if (cardNumber.value == "" || cardName.value == "" || cardExpMonth.value == "" || cardExpYear.value == "" || cardCvv.value == "" || cardCvv.value.length < 3 || cardNumber.value.length < 16 || cardExpMonth.value.length < 2 || cardExpYear.value.length < 4) {
-        alert("Please fill out all fields");
+        alert("Please make sure to fill out all fields properly");
         return false;
     } else {
         return true;
@@ -56,7 +56,7 @@ function validateForm2() {
 
 function validateForm3() {
     if (shippingName.value == "" || shippingAddress.value == "" || shippingCity.value == "" || shippingState.value == "" || shippingZip.value == "" || shippingEmail.value == "" || shippingMethod.value == "" || shippingEmail.value.includes("@") == false || phone.value == "") {
-        alert("Please fill out all fields");
+        alert("Please make sure to fill out all fields properly");
         return false;
     } else {
         return true;
@@ -81,3 +81,11 @@ submitBtn2.addEventListener('click', function() {
         window.location.href = "confirmation-page.html";
     }
 });
+
+let cashRadio = document.getElementById('cashRadio');
+if(cashRadio.checked){
+    let billingForm = document.getElementById('billingInfoForm');
+}
+
+
+
