@@ -176,12 +176,38 @@ input[type=number]{
     width: 50px;
     text-align: center;
 }
-input[type=radio]{
+/* input[type=radio]{
     position: absolute;
     left: -35%;
     top: 56.9%;
     height: 1rem;
     width: 1rem;
+} */
+
+.cashBtn{
+    margin-right: 1rem;
+    padding: .5rem;
+    cursor: pointer;
+    background-color: #333;
+    color: #fff;
+    border: 1px solid black;
+}
+.creditBtn{
+    margin-left: 1rem;
+    padding: .5rem;
+    cursor: pointer;
+    background-color: #333;
+    color: #fff;
+    border: 1px solid black;
+}
+
+.cashBtn:hover, 
+.creditBtn:hover{
+    background: #fff;
+    color: #333;
+}
+.cashSelected{
+    opacity: 0.2;
 }
 
 #submitBtn2{
@@ -271,6 +297,7 @@ select{
     align-items: center;
     border-top: 1px solid #ccc;
 }
+
 
 
 /* come back when decided on universal header/footer for all pages and change */
