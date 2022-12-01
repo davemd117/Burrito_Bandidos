@@ -27,6 +27,7 @@
     </nav>
     <!------------------------------- SIDE BAR ---------------------------------->
     <div id="side-bar" class="side-bar animate__animated animate__slideInRight">
+        <ion-icon class="exit-sidebar" name="arrow-back-outline"></ion-icon>
         <ul id="side-links" class="side-links">
             <a  href="#about-section"><li>About Us</li></a>
             <a href="#featured"><li>Featured</li></a>
@@ -94,6 +95,13 @@
         </div>
     </form>
 
+    <!------------------------------- Profile---------------------------------->
+    <form action="" id="profile-form" class="profile-form form">
+        <h1 id="users-name" class="users-name "></h1>
+        <p id = "users-email" class="users-email"></p>
+        <p id="users-points" class="users-points"></p>
+        <button id="sign-out"class = "btn">Sign Out</button>
+    </form>
 
 
     <!------------------------------- HERO SECTION ---------------------------------->
@@ -140,7 +148,7 @@
 
 
     <!------------------------------- ABOUT US SECTION ---------------------------------->
-    <section id="about-section"class= 'reveal about-section animate__animated'>
+    <section data-id="Manager-Menu-Page-Images/about-us-back1.jpg" id="about-section"class= 'reveal about-section '>
 
         <h1 class="header">About Us</h1>
         <div class="about">
@@ -154,7 +162,7 @@
 
 
     <!------------------------------- FEATURED DISH ---------------------------------->
-    <section id="featured" class="reveal animate__animated  featured-section">
+    <section data-id="Manager-Menu-Page-Images/featured-dish-back.jpg" id="featured" class="reveal   featured-section">
         <h1 class="header">Featured Dish</h1>
         <div class="about location-about">
             <img src="Manager-Menu-Page-Images/featured-dish-pic.jpg" alt="">
@@ -168,7 +176,7 @@
 
 
     <!------------------------------- OUR LOCATIONS---------------------------------->
-    <section id="our-locations" class="reveal animate__animated  locations-section">
+    <section data-id="Manager-Menu-Page-Images/our-locations-back.jpg" id="our-locations" class="reveal   locations-section">
         <h1 class="header">Our Locations</h1>
         <div class="about location-about">
             <img src="Manager-Menu-Page-Images/bandido-location.webp" alt="">
@@ -183,7 +191,7 @@
 
     
     <!------------------------------- CONTACT US SECTION ---------------------------------->
-    <section id="contact-us" class="reveal animate__animated">
+    <section id="contact-us" class="reveal  contact-us">
 
         <h1 class="contact-title header">Contact Us</h1>
         <div class="contact-form-container">
@@ -208,24 +216,26 @@
             <div class="our-info">
                 <div class="info-div">
                     <h2 class="info-title">Our Address</h2>
-                    <address>123 Abcde Dr, Lancaster, PA</address>
+                    <address class="info">123 Abcde Dr, Lancaster, PA</address>
                 </div>
                 <div class="info-div">
                     <h2 class="info-title">Our Phone</h2>
-                    <a>(281) 330-8004</a>
+                    <a class="info">(281) 330-8004</a>
                 </div>
                 <div class="info-div">
                     <h2 class="info-title">Our Email</h2>
-                    <a>Bandido@email.com</a>
+                    <a class="info">Bandido@email.com</a>
                 </div>
             </div>
         </div>
     </section>
     <!------------------------------- FOOTER ---------------------------------->
-    <footer id="footer" class="animate__animated">
+    <footer id="footer" class="animate__animated footer-section">
         <!-- <div class=" footer-links"> -->
             <ul class="footer-nav">
                 <a id="go-to-login" class="go-to-login"><li>LOGIN</li></a>
+                <a id="go-to-signout" class="go-to-signout"><li>Sign Out</li></a>
+                
             </ul>
 
             <div class="footer-info">

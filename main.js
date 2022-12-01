@@ -46,20 +46,21 @@ let currentUser = [];
 // ----- user info class ----- //
 
 class UserInfo {
-    constructor(username, firstName, email, password) {
+    constructor(username, firstName, email, password,points) {
         this.username = username;
         this.firstName = firstName;
         this.email = email;
         this.password = password;
+        this.points = points
        
     };
 };
 
 // test classes to populate storage
-userDatabase.push(new UserInfo('bandido1', 'Owner', 'BurBand@email.com', 'Password123'));
-userDatabase.push(new UserInfo('davemd', 'Dave', 'dave@email.com', 'Drum&'));
-userDatabase.push(new UserInfo('preachey', 'Ryan', 'ryan@email.com', '$hort'));
-userDatabase.push(new UserInfo('chris', 'Chris', 'chris@email.com', 'wr1ght'));
+userDatabase.push(new UserInfo('bandido1', 'Owner', 'BurBand@email.com', 'Password123', 100000000000));
+userDatabase.push(new UserInfo('davemd', 'Dave', 'dave@email.com', 'Drum&',100000000000));
+userDatabase.push(new UserInfo('preachey', 'Ryan', 'ryan@email.com', '$hort',100000000000));
+userDatabase.push(new UserInfo('chris', 'Chris', 'chris@email.com', 'wr1ght',100000000000));
 
 //Testing accnts in storage
 window.onload =  addUserToStorage(userDatabase)
@@ -73,7 +74,8 @@ function addUser() {
         $('.sup-user').val(),
         $('.sup-name').val(),
         $('.sup-email').val(),
-        $('.sup-password').val()
+        $('.sup-password').val(),
+        500
     ));
 }
 
@@ -222,7 +224,11 @@ $('.go-to-login').click(()=>{
 
 // -----Go Back To Home ----- //
 $('.back-to-home').click(() => {
+    $(".form-log").removeClass('animate__zoomInRight')
+    $(".form-log").removeClass('animate__zoomOutLeft')
+    $(".form-log").removeClass('animate__animated')
     $('.form-log').css("transform", "scale(0)")
+
 })
 
 // ----- Go to signup page ----- //
@@ -340,7 +346,8 @@ $('.log-submit').click(() => {
             currentUser.length = 0
             currentUser.push(users)
             window.localStorage.removeItem("Current User")
-            window.localStorage.setItem("Current User", JSON.stringify(currentUser[0]))
+            window.localStorage.setItem("Current User", JSON.stringify(currentUser))
+            showSignout()
             window.location.href = "Manager-Menu-Page.html"
         }
         else if(logUsername === users.username && logPassword === users.password){
@@ -353,17 +360,14 @@ $('.log-submit').click(() => {
             currentUser.push(users)
             window.localStorage.removeItem("Current User")
             window.localStorage.setItem("Current User", JSON.stringify(currentUser))
+            showSignout()
             console.log("user")
-            window.location.href = "menu.html"
-           
-            
-
+            // window.location.href = "menu.html"
         }
         else if(logUsername === users.username && logPassword !== users.password){
             console.log("WRONG PASSWORD")
             $('.err-mess').text("WRONG PASSWORD")
             $('.err-mess').show()
-            
         }
         else if(logUsername !== users.username && logPassword === users.password){
             console.log("WRONG USERNAME")
@@ -378,20 +382,65 @@ $('.log-submit').click(() => {
 })
 
 //make signout button
-function makeSignout(){
-    // let logBtn = document.getElementById('go-to-login')
-    let nav = document.getElementById('nav-links')
-    let link = document.createElement('a')
-    link.removeAttribute("href")
-    link.classList.add("go-to-profile")
-    link.setAttribute("id", "go-to-profile")
-
-    let navLink = document.createElement('li')
-    navLink.innerHTML = "Profile"
-    link.appendChild(navLink)
-    nav.appendChild(link)
-
+function showSignout(){
+    let currentUser = JSON.parse(localStorage.getItem('Current User'));
+    logbtn = document.getElementById("go-to-login")
+    outbtn = document.getElementById("go-to-signout")
+    logbtn.style.display = "none"
+    outbtn.style.display = "block"
+    outbtn.innerHTML = `${currentUser[0].firstName}\'s Profile`
+    // POPULATE PROFILE
+    let usersname = currentUser[0].firstName
+    let usersemail = currentUser[0].email
+    let userspoints = currentUser[0].points
+    let displayname = document.getElementById("users-name")
+    let displayemail = document.getElementById("users-email")
+    displaypoints = document.getElementById("users-points")
+    displayname.innerHTML = usersname
+    displayemail.innerHTML = usersemail
+    displaypoints.innerHTML = `Points: ${userspoints}`
 }
+
+// SIGNOUT
+function checkForUser(){
+    logbtn = document.getElementById("go-to-login")
+    outbtn = document.getElementById("go-to-signout")
+    
+    if(window.localStorage.getItem("Current User")){
+        let currentUser = JSON.parse(localStorage.getItem('Current User'));
+        outbtn.style.display = "block"
+        logbtn.style.display = "none"
+        outbtn.innerHTML = `${currentUser[0].firstName}\'s Profile`
+        // POPULATE PROFILE
+        let usersname = currentUser[0].firstName
+        let usersemail = currentUser[0].email
+        let userspoints = currentUser[0].points
+        let displayname = document.getElementById("users-name")
+        let displayemail = document.getElementById("users-email")
+        displaypoints = document.getElementById("users-points")
+        displayname.innerHTML = usersname
+        displayemail.innerHTML = usersemail
+        displaypoints.innerHTML = `Points: ${userspoints}`
+    }
+    else{
+        console.log("NOT There")
+        outbtn.style.display = "none"
+        logbtn.style.display = "block"
+    }
+}
+$("#go-to-signout").click(() => {
+    profile = document.getElementById("profile-form")
+    profile.style.transform = "scale(1)"
+ })
+$("#sign-out").click(() => {
+    localStorage.removeItem("Current User")
+ })
+ window.addEventListener("scroll", showOnScroll);
+ window.addEventListener("scroll", addSticky);
+ window.onload = checkForUser()
+
+
+
 // STICKY NAV
 function addSticky(){
     let nav = document.getElementById("nav-bar")
@@ -411,16 +460,21 @@ function addSticky(){
         // nav.classList.add("clear")
     }
 }
+
 // HAMBURGER MENU
-var hamMenuClicked = 0
 $('#ham-menu').click(() => {
    openNav()
+   $('#ham-menu').toggleClass('.rotate-90')
+
 })
+$('.exit-sidebar').click(() => {
+    closeNav()
+ })
+
 let sections = document.querySelectorAll('section')
 sections.forEach((section) => {
     section.addEventListener('click', closeNav)
 })
-
 function openNav(){
     $(".side-bar").removeClass("animate__slideOutRight")
     $(".side-bar").show()
@@ -437,32 +491,21 @@ function closeNav(){
     for(i=0; i<sections.length; i++){
         var windowHeight = window.innerHeight
         var sectionTop = sections[i].getBoundingClientRect().top
-        var revealpoint = 150;
-
+        var revealpoint = 100;
         if(sectionTop < windowHeight - revealpoint){
-            sections[i].classList.remove('animate__fadeOutLeft')
-            sections[i].classList.add('animate__fadeInLeft')
+            sections[i].style.opacity = "1"
             let sectionItems = sections[i].children
-            // console.log(sectionItems)
             for(j=0;  j < sectionItems.length; j++){
-                sectionItems[j].classList.remove("animate__lightSpeedOutLeft")
-                sectionItems[j].classList.add("animate__animated")
-                sectionItems[j].classList.add("animate__slow")
-                sectionItems[j].classList.add("animate__delay-1s")
-                sectionItems[j].classList.add("animate__lightSpeedInRight")
+                sectionItems[j].style.transition = "3s"
+                sectionItems[j].style.opacity = '1'
             }
         }
         else{
-            sections[i].classList.remove('animate__fadeInLeft')
-            sections[i].classList.add('animate__fadeOutLeft')
+            sections[i].style.opacity = "0"
             let sectionItems = sections[i].children
             for(j=0;  j < sectionItems.length; j++){
-                sectionItems[j].classList.remove("animate__lightSpeedInRight")
-                sectionItems[j].classList.add("animate__lightSpeedOutLeft")
+                sectionItems[j].style.opacity = "0"
             }
         }
     }
  }
-
- window.addEventListener("scroll", showOnScroll);
- window.addEventListener("scroll", addSticky);

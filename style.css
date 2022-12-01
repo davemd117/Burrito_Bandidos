@@ -11,11 +11,15 @@ html{
     scroll-behavior: smooth;
     /* background-color: black; */
 }
+body{
+   background-color: black;
+}
 section{
     width: 100%;
     height: 120vh;
     padding-top: 50px;
     padding-bottom: 50px;
+    /* background-position: center; */
 }
 .reveal{
     display: flex;
@@ -50,6 +54,8 @@ h1{
     width: fit-content;
 }
 
+
+
 /* NAV */
 .nav-bar{
     width: 100%;
@@ -74,6 +80,10 @@ h1{
 .go-to-login{
     color: #ce1126;
 }
+.go-to-signout{
+    display: none;
+    color: #ce1126;
+}
 .sticky{
     background-color: #fff;
     color: #ce1126;
@@ -93,7 +103,9 @@ nav a{
 }
 nav ion-icon{
     display: none;
+    /* transform: rotate(90deg); */
 }
+
 /* SIDE BAR*/
 .side-bar{
     z-index: 4;
@@ -118,6 +130,17 @@ nav ion-icon{
     width: 100%;
     justify-content: space-evenly;
     align-items: center;
+}
+.exit-sidebar{
+    position: absolute;
+    top: 20px;
+    left: 15px;
+    font-size: 25px;
+    color: #006341;
+    cursor: pointer;
+}
+.exit-sidebar:hover{
+    color: #ce1126;
 }
 
 
@@ -187,14 +210,14 @@ nav ion-icon{
 #title{
     /* margin-top: 1150px; */
     font-size: 500%;
-    margin-left: -20px;
+    /* margin-left: -20px; */
     font-family: 'smokum', cursive;
     background:linear-gradient(to right,#006341,#ce1126);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 .card-1 p{
-    margin-left: -20px;
+    /* margin-left: -20px; */
 }
 .card-2{
     background-image: url(Manager-Menu-Page-Images/slideback-1.jpg);
@@ -254,11 +277,11 @@ nav ion-icon{
 /* ABOUT */
 
 .about-section{
-    /* margin-top: 50px; */
-    /* padding: 50px; */
+    opacity: 0;
+    transition: 1s;
     display: flex;
     flex-direction: column;
-    
+    z-index: 1;
     background-image: linear-gradient( rgba(0, 0, 0, 0.7) ,rgba(0, 0, 0, 0.7)), url(Manager-Menu-Page-Images/about-us-back1.jpg);
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -299,19 +322,21 @@ nav ion-icon{
     font-size: 200%;
     text-align: center;
     padding: 10px;
-    background-color: #ce1126;
+    background-color: black;
     box-shadow: 0 0 5px black;
     text-shadow: 2px 2px black;
-    border: 2px solid black;
+    
 }
 .about-text p{
     font-size: 70%;
     height: 50%;
     color: white;
     text-align: center;
-    background-color: #ce1126;
+    background-color: black;
     box-shadow: 0 0 5px black;
     padding: 20px;
+    display: flex;
+    align-items: center;;
 }
 .about img{
     width: 40%;
@@ -320,6 +345,8 @@ nav ion-icon{
 }
 /* FEATURED DISH */
 .featured-section{
+    opacity: 0;
+    transition: 1s;
     background-image: linear-gradient( rgba(0, 0, 0, 0.7) ,rgba(0, 0, 0, 0.7)), url(Manager-Menu-Page-Images/featured-dish-back.jpg);
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -328,6 +355,8 @@ nav ion-icon{
 }
 /* LOCATIONS */
 .locations-section{
+    opacity: 0;
+    transition: 2s;
     background-image: linear-gradient( rgba(0, 0, 0, 0.7) ,rgba(0, 0, 0, 0.7)), url(Manager-Menu-Page-Images/our-locations-back.jpg);
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -339,14 +368,17 @@ nav ion-icon{
 }
 
 /* CONTACT US*/
+.contact-us{
+    opacity: 0;
+    transition: 1s;
+}
 
 .contact-form-container{
     width: 100%;
-    height: 60%;
+    height: 70%;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    flex-wrap: wrap;
     margin-top: 30px;
 }
 .contact-form{
@@ -358,6 +390,7 @@ nav ion-icon{
     padding: 20px;
     box-shadow: 0 0 10px black;
     flex-direction: column;
+    background-color: #fff;
 }
 .contact-form-title{
     text-align: center;
@@ -405,13 +438,43 @@ nav ion-icon{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    background-color: #fff;
 }
 .info-title{
     text-shadow: 1px 1px #ce1126;
     color:black ;
+    font-size: 100%;
+}
+.info-div{
+    display: flex;
+    flex-direction: column;
+}
+.info{
+    font-size: 100%;
 }
 
-
+/* PROFILE */
+.profile-form{
+    transform: scale(0);
+}
+.users-name{
+    color: #ce1126;
+    text-shadow: 3px 3px black;
+    margin-bottom: 5px;
+    align-self: center;
+}
+.users-email{
+    text-align: center;
+    color: #006341;
+    text-shadow: 1px 1px black;
+    margin-bottom: 20px;
+}
+.users-points{
+    color: #ce1126;
+    text-shadow: 1px 1px black;
+    margin-bottom: 20px;
+    align-self: center;
+}
 
 /* SIGNUP */
 .title{
@@ -435,7 +498,7 @@ nav ion-icon{
 .form{
     display: flex;
     flex-direction: column;
-    width: 50%;
+    max-width: fit-content;
     height: fit-content;
     justify-content: center;
     position: fixed;
@@ -448,7 +511,8 @@ nav ion-icon{
     border: 2px solid black;
     box-shadow: 0 0 10px black;
     background-color: white;
-    z-index: 3;
+    transition: 1s;
+    z-index: 100;
 }
 .next-to{
     display: flex;
@@ -536,6 +600,7 @@ nav ion-icon{
 }
 .form-sup{
     visibility: hidden;
+    transition: 1s;
     /* display: none; */
 }
 
@@ -581,6 +646,7 @@ nav ion-icon{
     margin-bottom: 50px;
 }
 .create-acc{
+    text-align: center;
     font-size: 75%;
     margin :2.5px auto;
 }
@@ -630,6 +696,7 @@ color: #ce1126;
     display: flex;
     width: 75%;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 .footer-info p{
     font-size: 65%;
@@ -644,6 +711,23 @@ color: #ce1126;
 }
 .footer-socials ion-icon{
     color: #fff;
+    margin-right: 5px;
+}
+#fb:hover{
+    color: #1877F2;
+    transition: color .4s;
+}
+#twitter:hover{
+    color: #1DA1F2;
+    transition: color .4s;
+}
+#google:hover{
+    color: #DB4437;
+    transition: color .4s;
+}
+#ig:hover{
+    color: #C13584;
+    transition: color .4s;
 }
 
 /* SMALLER SCREENS */
@@ -655,20 +739,46 @@ color: #ce1126;
     nav ion-icon{
         display: block;
     }
+    nav.sticky{
+        background-color: #fff;
+        color: #ce1126;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 50px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        box-shadow: black 0 0 5px;
+        z-index: 4;
+    }
 }
 
 
 @media (max-width:768px) {
     form.contact-form{
+        width: 50%;
+    }
+    div.contact-form-div{
+        height: 20%;
+    }
+    div.info{
         font-size: 80%;
     }
     div.slide-flex{
         flex-wrap: wrap;
     }
+    div.about-text p{
+        font-size: 60%;
+    }
 }
 
 
 @media (max-width:550px) {
+    h1#title{
+        font-size: 375%;
+    }
     p.slide-deal{
         font-size: 100%;
     }
@@ -686,20 +796,38 @@ color: #ce1126;
         font-size: 80%;
     }
     h1.text-header{
-        font-size: 150%;
+        font-size: 120%;
     }
     h1.header{
         font-size: 200%;
     }
     div.about-text p{
-        font-size: 40%;
+        font-size: 35%;
+    }
+    div.contact-form-container{
+        flex-wrap: wrap-reverse;
+        height: 80%;
+    }
+    form.contact-form{
+        width: 90%;
+        height: 50%;
+        font-size: 80%;
     }
     div.our-info{
-        width: 40%;
-        font-size: 60%;
+        width: 50%;
+        height: 30%;
+        padding: 10px;
+        text-align: center;
+    }
+    h2.info-title{
+        font-size: 80%;
+    }
+    .info{
+        font-size: 50%;
     }
     input.submitBtn{
         font-size: 50%;
+        width: 30%;
     }
     div.footer-info{
         width: auto;
