@@ -1,30 +1,31 @@
-let cartItems = [
-    {
-        name: "Chicken",
-        price: 10.99,
-        quantity: 1,
-        image: "/checkout-payment-images/burrito1.jpg"
-    },
-    {
-        name: "Chicken",
-        price: 5.99,
-        quantity: 1,
-        image: "/checkout-payment-images/burrito1.jpg"
-    },
-    {
-        name: "Chicken",
-        price: 20.99,
-        quantity: 1,
-        image: "/checkout-payment-images/burrito1.jpg"
-    },
+// let cartItems = [
+//     {
+//         name: "Chicken",
+//         price: 10.99,
+//         quantity: 1,
+//         image: "/checkout-payment-images/burrito1.jpg"
+//     },
+//     {
+//         name: "Chicken",
+//         price: 5.99,
+//         quantity: 1,
+//         image: "/checkout-payment-images/burrito1.jpg"
+//     },
+//     {
+//         name: "Chicken",
+//         price: 20.99,
+//         quantity: 1,
+//         image: "/checkout-payment-images/burrito1.jpg"
+//     },
 
-]
+// ]
+// let currentCustomerCart = JSON.parse(localStorage.getItem("cartItems"));
 
 localStorage.setItem("cartItems", JSON.stringify(cartItems));
 
 let customerCart = [];
-// let currentCustomerCart = JSON.parse(localStorage.getItem("purchaseItems"));
-let currentCustomerCart = JSON.parse(localStorage.getItem("cartItems"));
+let currentCustomerCart = JSON.parse(localStorage.getItem("purchaseItems"));
+
 currentCustomerCart.forEach((item) => {
    let cartItems = document.querySelector(".cartItems");
     let cartItem = document.createElement("div");
@@ -113,10 +114,6 @@ function quantityChanged(e) {
 
 //form requirements/validation
 
-// var form = document.getElementById('billingInfoForm');
-// var form2 = document.getElementById('shippingInfoForm');
-// var form3 = document.getElementById('paymentInfoForm');
-
 //billing info form
 var billingName = document.getElementById('name');
 var address = document.getElementById('billingAddress');
@@ -126,7 +123,6 @@ var state = document.getElementById('state');
 var zip = document.getElementById('zip');
 var phone = document.getElementById('phone');
 
-//submit btns
 // submit button one is on billing/payment form this should hide payment form and show shipping form on click if forms filled out
 var submitBtn1 = document.getElementById('submitBtn1');
 // submit button two is on shipping form this should redirect to confirmation page on click if forms filled out
@@ -148,7 +144,7 @@ var shippingZip = document.getElementById('shippingZip');
 var shippingEmail = document.getElementById('shippingEmail');
 var shippingMethod = document.getElementById('shippingMethod');
 
-//form validation
+
 function validateForm() {
     if (billingName.value == "" || address.value == "" || email.value == "" || city.value == "" || state.value == "" || zip.value == "" || email.value.includes("@") == false) {
         alert("Please make sure to fill out all fields properly");
@@ -159,9 +155,7 @@ function validateForm() {
 }
 
 function validateForm2() {
-    
-    // if paymentFormInputs have attribute disabled then return true
-    if (cardNumber.value == "" || cardName.value == "" || cardExpMonth.value == "" || cardExpYear.value == "" || cardCvv.value == "" || cardCvv.value.length < 3 || cardNumber.value.length < 16 || cardExpMonth.value.length < 2 || cardExpYear.value.length < 4) {
+        if (cardNumber.value == "" || cardName.value == "" || cardExpMonth.value == "" || cardExpYear.value == "" || cardCvv.value == "" || cardCvv.value.length < 3 || cardNumber.value.length < 16 || cardExpMonth.value.length < 2 || cardExpYear.value.length < 4) {
         alert("Please make sure to fill out all fields properly");
         return false;
     } else {
@@ -169,8 +163,6 @@ function validateForm2() {
     }
 }
 
-
-// possibly go back and make a bunch of if statements to say which field is missing or incorrect
 
 function validateForm3() {
     if (shippingName.value == "" || shippingAddress.value == "" || shippingCity.value == "" || shippingState.value == "" || shippingZip.value == "" || shippingEmail.value == "" || shippingMethod.value == "" || shippingEmail.value.includes("@") == false || phone.value == "") {
