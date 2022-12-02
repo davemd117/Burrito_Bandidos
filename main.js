@@ -1,41 +1,4 @@
-// ----- SLICK SLIDER----- //
-// $('.slider').slick({
-//     // nextArrow: $('#slick-next1'),
-//     // prevArrow: $('#slick-prev1'),
-//       dots: true,
-//       infinite: true,
-//       speed: 300,
-//       slidesToShow: 4,
-//       slidesToScroll: 1,
-//       responsive: [
-//         {
-//           breakpoint: 1024,
-//           settings: {
-//             slidesToShow: 3,
-//             slidesToScroll: 3,
-//             infinite: true,
-//             dots: true
-//           }
-//         },
-//         {
-//           breakpoint: 600,
-//           settings: {
-//             slidesToShow: 2,
-//             slidesToScroll: 2
-//           }
-//         },
-//         {
-//           breakpoint: 480,
-//           settings: {
-//             slidesToShow: 1,
-//             slidesToScroll: 1
-//           }
-//         }
-//         // You can unslick at a given breakpoint now by adding:
-//         // settings: "unslick"
-//         // instead of a settings object
-//       ]
-//     });
+
 
 
 let userDatabase = [];
@@ -46,12 +9,13 @@ let currentUser = [];
 // ----- user info class ----- //
 
 class UserInfo {
-    constructor(username, firstName, email, password,points) {
+    constructor(username, firstName, email, password,points,favorites) {
         this.username = username;
         this.firstName = firstName;
         this.email = email;
         this.password = password;
         this.points = points
+        this.favorites = favorites
        
     };
 };
@@ -75,7 +39,7 @@ function addUser() {
         $('.sup-name').val(),
         $('.sup-email').val(),
         $('.sup-password').val(),
-        500
+        500,
     ));
 }
 
@@ -362,7 +326,7 @@ $('.log-submit').click(() => {
             window.localStorage.setItem("Current User", JSON.stringify(currentUser))
             showSignout()
             console.log("user")
-            // window.location.href = "menu.html"
+            window.location.href = "menu.html"
         }
         else if(logUsername === users.username && logPassword !== users.password){
             console.log("WRONG PASSWORD")
@@ -385,10 +349,10 @@ $('.log-submit').click(() => {
 function showSignout(){
     let currentUser = JSON.parse(localStorage.getItem('Current User'));
     logbtn = document.getElementById("go-to-login")
-    outbtn = document.getElementById("go-to-signout")
+    profbtn = document.getElementById("go-to-profile")
     logbtn.style.display = "none"
-    outbtn.style.display = "block"
-    outbtn.innerHTML = `${currentUser[0].firstName}\'s Profile`
+    profbtn.style.display = "block"
+    profbtn.innerHTML = `${currentUser[0].firstName}\'s Profile`
     // POPULATE PROFILE
     let usersname = currentUser[0].firstName
     let usersemail = currentUser[0].email
@@ -404,13 +368,13 @@ function showSignout(){
 // SIGNOUT
 function checkForUser(){
     logbtn = document.getElementById("go-to-login")
-    outbtn = document.getElementById("go-to-signout")
+    profbtn = document.getElementById("go-to-profile")
     
     if(window.localStorage.getItem("Current User")){
         let currentUser = JSON.parse(localStorage.getItem('Current User'));
-        outbtn.style.display = "block"
+        profbtn.style.display = "block"
         logbtn.style.display = "none"
-        outbtn.innerHTML = `${currentUser[0].firstName}\'s Profile`
+        profbtn.innerHTML = `${currentUser[0].firstName}\'s Profile`
         // POPULATE PROFILE
         let usersname = currentUser[0].firstName
         let usersemail = currentUser[0].email
@@ -424,19 +388,26 @@ function checkForUser(){
     }
     else{
         console.log("NOT There")
-        outbtn.style.display = "none"
+        profbtn.style.display = "none"
         logbtn.style.display = "block"
     }
 }
-$("#go-to-signout").click(() => {
+$("#go-to-profile").click(() => {
     profile = document.getElementById("profile-form")
     profile.style.transform = "scale(1)"
+ })
+ $("#exit-profile").click(() => {
+    profile = document.getElementById("profile-form")
+    profile.style.transform = "scale(0)"
  })
 $("#sign-out").click(() => {
     localStorage.removeItem("Current User")
  })
+
+
  window.addEventListener("scroll", showOnScroll);
  window.addEventListener("scroll", addSticky);
+ window.addEventListener("scroll", stickFooter);
  window.onload = checkForUser()
 
 
@@ -456,15 +427,29 @@ function addSticky(){
         nav.classList.remove("sticky");
         foot.classList.remove("animate__slideInUp")
         foot.classList.add("animate__slideOutDown")
-        
-        // nav.classList.add("clear")
     }
 }
-
+function stickFooter(){
+    let foot = document.getElementById("footer")
+    let bottom = document.getElementById("bottom")
+    let nav = document.getElementById("nav-bar")
+    let windowsHeight = window.innerHeight
+    var stickpoint = bottom.getBoundingClientRect().top
+    if (stickpoint < windowsHeight - 50) {
+        nav.style.opacity = "0"
+        foot.classList.add("stick")
+        foot.classList.remove("footer-sticky")
+        
+        
+    } else {
+        nav.style.opacity = "1"
+        foot.classList.remove("stick");
+        foot.classList.add("footer-sticky")
+    }
+}
 // HAMBURGER MENU
 $('#ham-menu').click(() => {
    openNav()
-   $('#ham-menu').toggleClass('.rotate-90')
 
 })
 $('.exit-sidebar').click(() => {

@@ -97,6 +97,7 @@
 
     <!------------------------------- Profile---------------------------------->
     <form action="" id="profile-form" class="profile-form form">
+        <ion-icon id="exit-profile" class="exit-profile" name="arrow-back-outline"></ion-icon>
         <h1 id="users-name" class="users-name "></h1>
         <p id = "users-email" class="users-email"></p>
         <p id="users-points" class="users-points"></p>
@@ -112,7 +113,7 @@
 
             <div class="card card-1">
                 <h1 id="title">Burrito Bandido</h1>
-                        <p>Meals for a steal</p>
+                        <p class="title-sub">Meals for a steal</p>
             </div>
 
             <div class="card card-2">
@@ -130,7 +131,7 @@
                             <p class="slide-deal slide-deal-3">Use points at checkout</p>
                             <p class="slide-sub">For an awesome DISCOUNT</p>
                         </div>
-                        <button class="btn slide-btn">Add To Cart</button>
+                        <button class="btn slide-btn">Sign up for 500 Points</button>
             </div>
 
             <div class="card card-4">
@@ -190,9 +191,46 @@
 
 
     
-    <!------------------------------- CONTACT US SECTION ---------------------------------->
-    <section id="contact-us" class="reveal  contact-us">
+    <!------------------------------- GALLERY SECTION ---------------------------------->
+    <section id="gallery" class="reveal  gallery">
+        <h1 class="gallery-title header">Gallery</h1>
+        
+        <div class="pic-container">
 
+            <div class="pic"></div>
+            <div class="pic"></div>
+            <div class="pic"></div>
+            <div class="pic"></div>
+            <div class="pic"></div>
+            <div class="pic"></div>
+
+        </div>
+       
+    </section>
+
+
+    <!------------------------------- FOOTER ---------------------------------->
+    <footer id="footer" class="animate__animated footer-section">
+        <div class="log-btn-container">
+                <a id="go-to-login" class="go-to-login">LOGIN</a>
+                <a id="go-to-profile" class="go-to-profile">Sign Out</a>
+            </div>
+
+            <div class="footer-info">
+                <p><ion-icon name="location-outline"></ion-icon>123 Abcde Dr, Lancaster, PA</p>
+                <p><ion-icon name="time-outline"></ion-icon>12:00pm - 12:00am</p>
+                <p><ion-icon name="call-outline"></ion-icon>(281) 330-8004</p>
+            </div>
+        <div class="footer-socials">
+            <a href=""><ion-icon id="fb" name="logo-facebook"></ion-icon></a>
+            <a href=""><ion-icon id="twitter" name="logo-twitter"></ion-icon></a>
+            <a href=""><ion-icon id="google" name="logo-google"></ion-icon></a>
+            <a href=""><ion-icon id="ig" name="logo-instagram"></ion-icon></a>
+        </div>
+    </footer>
+
+
+    <section id="bottom" style="background-color: #006341;">
         <h1 class="contact-title header">Contact Us</h1>
         <div class="contact-form-container">
             
@@ -229,29 +267,6 @@
             </div>
         </div>
     </section>
-    <!------------------------------- FOOTER ---------------------------------->
-    <footer id="footer" class="animate__animated footer-section">
-        <!-- <div class=" footer-links"> -->
-            <ul class="footer-nav">
-                <a id="go-to-login" class="go-to-login"><li>LOGIN</li></a>
-                <a id="go-to-signout" class="go-to-signout"><li>Sign Out</li></a>
-                
-            </ul>
-
-            <div class="footer-info">
-                <p><ion-icon name="location-outline"></ion-icon>123 Abcde Dr, Lancaster, PA</p>
-                <p><ion-icon name="time-outline"></ion-icon>12:00pm - 12:00am</p>
-                <p><ion-icon name="call-outline"></ion-icon>(281) 330-8004</p>
-            </div>
-        <!-- </div>    -->
-        <div class="footer-socials">
-            <a href=""><ion-icon id="fb" name="logo-facebook"></ion-icon></a>
-            <a href=""><ion-icon id="twitter" name="logo-twitter"></ion-icon></a>
-            <a href=""><ion-icon id="google" name="logo-google"></ion-icon></a>
-            <a href=""><ion-icon id="ig" name="logo-instagram"></ion-icon></a>
-        </div>
-    </footer>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

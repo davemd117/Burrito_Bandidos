@@ -53,10 +53,28 @@ section{
 h1{
     width: fit-content;
 }
+.stick{
+    position: sticky;
+    background-color: #006341;
+    color: #fff;
+    top: 0;
+    width: 100%;
+    min-height: 50px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 4
+}
 
 
 
-/* NAV */
+
+
+
+
+
+/* ------------------------------------------------------------------------------NAV/SIDEBAR-------------------------------------------------------------- */
 .nav-bar{
     width: 100%;
     color: #fff;
@@ -77,13 +95,7 @@ h1{
     width: 50%;
     list-style-type: none;
 }
-.go-to-login{
-    color: #ce1126;
-}
-.go-to-signout{
-    display: none;
-    color: #ce1126;
-}
+
 .sticky{
     background-color: #fff;
     color: #ce1126;
@@ -116,7 +128,7 @@ nav ion-icon{
     height: 100%;
     width: 150px;
     margin: auto;
-    background-color: white;
+    background-color: #fff;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
@@ -145,7 +157,7 @@ nav ion-icon{
 
 
 
-/* SLICK SLIDER */
+/*------------------------------------------------------------------------- SLICK SLIDER------------------------------------------------------------------------ */
 .hero{
     position: relative;
     display: flex;
@@ -153,6 +165,7 @@ nav ion-icon{
     /* flex-direction: column; */
     justify-content: center;
     background-image: linear-gradient( rgba(0, 0, 0, 0.7) ,rgba(0, 0, 0, 0.7)), url(Manager-Menu-Page-Images/heroback.jpg);
+    background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
@@ -216,9 +229,7 @@ nav ion-icon{
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-.card-1 p{
-    /* margin-left: -20px; */
-}
+
 .card-2{
     background-image: url(Manager-Menu-Page-Images/slideback-1.jpg);
     background-size: cover;
@@ -274,6 +285,13 @@ nav ion-icon{
 }
 
 
+
+
+
+
+
+
+/* ---------------------------------------------------------------------------PAGE--------------------------------------------------------------- */
 /* ABOUT */
 
 .about-section{
@@ -284,6 +302,7 @@ nav ion-icon{
     z-index: 1;
     background-image: linear-gradient( rgba(0, 0, 0, 0.7) ,rgba(0, 0, 0, 0.7)), url(Manager-Menu-Page-Images/about-us-back1.jpg);
     background-attachment: fixed;
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     color: #006341;
@@ -330,7 +349,7 @@ nav ion-icon{
 .about-text p{
     font-size: 70%;
     height: 50%;
-    color: white;
+    color: #fff;
     text-align: center;
     background-color: black;
     box-shadow: 0 0 5px black;
@@ -348,6 +367,7 @@ nav ion-icon{
     opacity: 0;
     transition: 1s;
     background-image: linear-gradient( rgba(0, 0, 0, 0.7) ,rgba(0, 0, 0, 0.7)), url(Manager-Menu-Page-Images/featured-dish-back.jpg);
+    background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
@@ -358,6 +378,7 @@ nav ion-icon{
     opacity: 0;
     transition: 2s;
     background-image: linear-gradient( rgba(0, 0, 0, 0.7) ,rgba(0, 0, 0, 0.7)), url(Manager-Menu-Page-Images/our-locations-back.jpg);
+    background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
@@ -366,93 +387,32 @@ nav ion-icon{
 .location-about{
     flex-direction: row-reverse;
 }
-
-/* CONTACT US*/
-.contact-us{
-    opacity: 0;
-    transition: 1s;
-}
-
-.contact-form-container{
-    width: 100%;
-    height: 70%;
+/* GALLERY */
+.pic-container{
     display: flex;
-    align-items: center;
-    justify-content: space-around;
-    margin-top: 30px;
-}
-.contact-form{
-    display: flex;
-    justify-content: space-evenly;
-    border: 1px solid black;
-    width: 50%;
+    flex-wrap: wrap;
     height: 100%;
-    padding: 20px;
-    box-shadow: 0 0 10px black;
-    flex-direction: column;
-    background-color: #fff;
+    justify-content: center;
+    
 }
-.contact-form-title{
-    text-align: center;
-    text-shadow: 0px 1px #ce1126;
-    color:black ;
-}
-.contact-form-div{
-    display: flex;
-    flex-direction: column;
-    /* width: 50%; */
-}
-.contact-form-input{
-    border: none;
-    /* width: 50%; */
-    border-bottom: 1px solid #d3d3d3;
-    border-radius: 5px;
-    outline: none;
-    padding: 5px;
-    font-size: 100%;
-}
-.messageBox{
-    border: 1px solid #d3d3d3;
-}
-.submitBtn{
-    width: 50%;
-    font-size: 100%;
-    padding: 10px;
-    border-radius: 50px;
-    border: none;
-    background-image: linear-gradient(to right,#ce1126,#006341);
-    transition: .7s;
-    align-self: center;
-    margin-top: 10px;
-}
-.submitBtn:hover{
-    cursor: pointer;
-    color: #ce1126;
-    background: transparent;
-}
-.our-info{
-    border: 1px solid black;
-    height: 100%;
-    padding: 20px;
-    box-shadow: 0 0 10px black;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    background-color: #fff;
-}
-.info-title{
-    text-shadow: 1px 1px #ce1126;
-    color:black ;
-    font-size: 100%;
-}
-.info-div{
-    display: flex;
-    flex-direction: column;
-}
-.info{
-    font-size: 100%;
+.pic{
+    width: 30%;
+    margin: 2.5% 1.5%;
+    background-color: red;
+    height: 30%;
 }
 
+
+
+
+
+
+
+
+
+
+
+/* -------------------------------------------------------------------------FORMS----------------------------------------------------------------------------- */
 /* PROFILE */
 .profile-form{
     transform: scale(0);
@@ -510,7 +470,7 @@ nav ion-icon{
     padding: 20px;
     border: 2px solid black;
     box-shadow: 0 0 10px black;
-    background-color: white;
+    background-color: #fff;
     transition: 1s;
     z-index: 100;
 }
@@ -663,20 +623,154 @@ text-decoration: none;
 color: #ce1126;
 }
 
-/* FOOTER */
+
+
+
+
+
+
+
+
+
+/*---------------------------------------------------------- CONTACT US-----------------------------------------------*/
+.contact-us{
+    opacity: 0;
+    transition: 1s;
+    background-color: #fff;
+}
+.contact-form-container{
+    width: 100%;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+.contact-form{
+    display: flex;
+    justify-content: space-evenly;
+    border: 1px solid black;
+    width: 50%;
+    height: 100%;
+    padding: 20px;
+    box-shadow: 0 0 10px black;
+    flex-direction: column;
+    background-color: #fff;
+}
+.contact-form-title{
+    text-align: center;
+    text-shadow: 0px 1px #ce1126;
+    color:black ;
+}
+.contact-form-div{
+    display: flex;
+    flex-direction: column;
+    /* width: 50%; */
+}
+.contact-form-input{
+    border: none;
+    /* width: 50%; */
+    border-bottom: 1px solid #d3d3d3;
+    border-radius: 5px;
+    outline: none;
+    padding: 5px;
+    font-size: 100%;
+}
+.messageBox{
+    border: 1px solid #d3d3d3;
+}
+.submitBtn{
+    width: 50%;
+    font-size: 100%;
+    padding: 10px;
+    border-radius: 50px;
+    border: none;
+    background-image: linear-gradient(to right,#ce1126,#006341);
+    transition: .7s;
+    align-self: center;
+    margin-top: 10px;
+}
+.submitBtn:hover{
+    cursor: pointer;
+    color: #ce1126;
+    background: transparent;
+}
+.our-info{
+    border: 1px solid black;
+    height: 100%;
+    padding: 20px;
+    box-shadow: 0 0 10px black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: #fff;
+}
+.info-title{
+    text-shadow: 1px 1px #ce1126;
+    color:black ;
+    font-size: 100%;
+}
+.info-div{
+    display: flex;
+    flex-direction: column;
+}
+.info{
+    font-size: 100%;
+}
+/* ---------------------------------------------------------FOOTER----------------------------------------------------------- */
+#bottom{
+    height: 100vh;
+    padding-top: 20px;
+}
+footer{
+    box-shadow: 0px -3px 3px 0px rgba(0,0,0,0.5);
+}
 .footer-sticky{
     background-color: #006341;
     color: #fff;
     position: fixed;
     bottom: 0;
     width: 100%;
-    height: 50px;
+    min-height: 50px;
     margin: 0 auto;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    box-shadow: black 0 0 5px;
+    /* box-shadow: black 0 0 5px; */
     z-index: 4;
+}
+.log-btn-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    width: 25%;
+    height: 50px;
+    transition: 1s;
+}
+
+.go-to-login{
+    height: fit-content;
+    text-align: center;
+    color: #ce1126;
+    padding: 0 10px;
+    /* border-right: 1px solid #fff;
+    border-left: 1px solid #fff; */
+    transition: .5s;
+}
+.go-to-profile{
+    height: fit-content;
+    text-align: center;
+    color: #ce1126;
+    padding: 0 10px;
+    /* border-right: 1px solid #fff;
+    border-left: 1px solid #fff; */
+    transition: .5s;
+}
+.go-to-login:hover,.go-to-profile:hover{
+    color: #fff;
+    border-right: 1px solid #fff;
+    border-left: 1px solid #fff;
 }
 .footer-links{
     display: flex;
@@ -685,21 +779,15 @@ color: #ce1126;
     color: #fff;
 }
 
-.footer-nav{
-    display: flex;
-    list-style-type: none;
-}
-.footer-nav a{
-    margin-right: 10px;
-}
 .footer-info{
     display: flex;
-    width: 75%;
+    width: 40%;
     justify-content: space-around;
     flex-wrap: wrap;
 }
 .footer-info p{
     font-size: 65%;
+    margin-right: 20px;
 }
 .footer-info ion-icon{
     margin-right: 2px;
@@ -730,7 +818,7 @@ color: #ce1126;
     transition: color .4s;
 }
 
-/* SMALLER SCREENS */
+/* ----------------------------------------------------------------------SMALLER SCREENS------------------------------------------------------- */
 @media (max-width:1000px) {
     nav ul.nav-links{
         display: none;
@@ -755,8 +843,10 @@ color: #ce1126;
     }
 }
 
-
-@media (max-width:768px) {
+/* @media (max-width:768px) {
+    
+} */
+@media (max-width:800px) {
     form.contact-form{
         width: 50%;
     }
@@ -775,7 +865,7 @@ color: #ce1126;
 }
 
 
-@media (max-width:550px) {
+@media (max-width:650px) {
     h1#title{
         font-size: 375%;
     }
@@ -815,7 +905,7 @@ color: #ce1126;
     }
     div.our-info{
         width: 50%;
-        height: 30%;
+        height: 40%;
         padding: 10px;
         text-align: center;
     }
@@ -829,18 +919,35 @@ color: #ce1126;
         font-size: 50%;
         width: 30%;
     }
-    div.footer-info{
-        width: auto;
-    }
     a.go-to-login{
         font-size: 75%;
+        padding: 0 ;
+    }
+    a.go-to-profile{
+        font-size: 60%;
+        padding: 0;
     }
     div.footer-info p{
         font-size: 40%;
-        margin-right: 10px;
+        margin-right: 5px;
         width: fit-content;
     }
     div.footer-socials ion-icon{
         font-size: 15px;
+    }
+}
+
+@media (max-width:425px) {
+    section{
+        height: 100vh;
+    }
+    h1#title{
+        font-size: 260%;
+    }
+    p.title-sub{
+        font-size:70% ;
+    }
+    footer{
+        font-size: 90%;
     }
 }
