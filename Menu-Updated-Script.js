@@ -10,8 +10,8 @@ CurrentMenuItemsCustomerPage.forEach((item) => {
     menuItem.innerHTML = `
     <img class="itemImg" src="${item.image}" alt="">
     <h3 class="itemName">${nameCapitalized}</h3>
-    <p class="itemPrice">${item.price}</p>
-    <p class="itemCalories">${item.calories}</p>
+    <p class="itemPrice">$${item.price}</p>
+    <p class="itemCalories">${item.calories} calories</p>
     <p class="itemDescription">${item.description}</p>
     `
     menuItems.appendChild(menuItem)

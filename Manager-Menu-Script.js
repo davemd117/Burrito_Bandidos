@@ -177,8 +177,8 @@ CurrentMenuItemsCustomerPage.forEach((item) => {
     <ion-icon class="deleteFromMenuBtn" name="close-circle-outline"></ion-icon>
     <img class="itemImg" src="${item.image}" alt="">
     <h3 class="itemName">${nameCapitalized}</h3>
-    <p class="itemPrice">${item.price}</p>
-    <p class="itemCalories">${item.calories}</p>
+    <p class="itemPrice">$${item.price}</p>
+    <p class="itemCalories">${item.calories} calories</p>
     <p class="itemDescription">${item.description}</p>
     `
     menuItems.appendChild(menuItem)
@@ -367,7 +367,7 @@ viewMenu.addEventListener('click', () => {
 //  jquery for header buttons to animate forms from left to center
 $("#addMenuHeader").click(function(){
     $(".addItemFormContainer").animate({
-        left: '15%',
+        left: '17.5%',
         opacity: '1'
     });
 });
@@ -375,7 +375,7 @@ $("#addMenuHeader").click(function(){
 
 $("#editMenuHeader").click(function(){
     $(".editItemFormContainer").animate({
-        left: '52.5%',
+        left: '51.25%',
         opacity: '1'
     });
 });

@@ -47,7 +47,7 @@ body{
     align-items: center;
     margin-left: 13rem;
 }
-
+/* fix hamburger when everything else done */
 .hamburger{
     display: flex;
     flex-direction: column;
@@ -66,7 +66,6 @@ body{
 }
 .hamburgerBtn{
     display:none;
-    transform: translate(1800%, 10%);
     position: absolute;
     height: 2.5rem;
     width: 2.5rem;
@@ -74,22 +73,15 @@ body{
     z-index: 100;
     padding: 2px;
 }
-.hamburgerBtnLeft{
-    transform: translate(1400%, 10%);
-    position: absolute;
-    height: 2.5rem;
-    width: 2.5rem;
-    cursor: pointer;
-    z-index: 100;
-    padding: 2px;
-}
+
 .hamburger ion-icon{
     font-size: 2.5rem;
     color: black;
     position: absolute;
     bottom: 20%;
 }
-    
+   
+
 /* hero */
 
 .hero{
@@ -114,7 +106,7 @@ body{
 /* end hero */
 
 
-/* start of add edit delete forms */
+/* start of add edit forms */
 .addNewItemForm{
     position: relative;
     align-items: center;
@@ -126,17 +118,15 @@ body{
     box-shadow: 0 0 10px black;
     padding: 2rem 2rem;
     text-align: center;
-    opacity: .7;
+    opacity: .9;
     transition: .7s;
 }
 .addNewItemForm:hover,
-.deleteItemForm:hover,
 .editItemForm:hover{
     opacity: 1;
 }
 
 .addItemFormContainer,
-.deleteItemFormContainer,
 .editItemFormContainer{
     position: absolute;
     top: 35%;
@@ -160,35 +150,6 @@ body{
 }
 
 
-/* .deleteItemForm{
-    position: relative;
-    align-items: center;
-    background-color: white;
-    height: 50vh;
-    width: 90%;
-    font-size: 1.4rem;
-    border: 2px solid black;
-    box-shadow: 0 0 10px black;    
-    padding: 2rem 2rem;
-    text-align: center;
-    opacity: .7;
-}
-
-.deleteItemForm > div{
-    margin-top: 40%;
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.delFormCloseBtn{
-    left: 85%;
-    top: 5%;
-    position: absolute;
-    font-size: 3rem;
-    cursor: pointer;
-    transition: .7s;
-} */
-
 .editItemForm{
     align-items: center;
     background-color: white;
@@ -200,7 +161,7 @@ body{
     padding: 2rem 2rem;
     text-align: center;
     gap: 1rem;
-    opacity: .7;
+    opacity: .9;
 }
 
 .editItemForm > div{
@@ -250,7 +211,7 @@ form{
     padding: 10px 20px;
     color: #fff;
     border: none;
-    background-color: rgb(28, 170, 17);
+    background-image: linear-gradient(to right,rgb(28,170,17),rgb(158, 14, 14));
     transition: .7s;
     cursor: pointer;
     margin-top: .3rem;
@@ -262,9 +223,9 @@ button:hover{
 }
 
 .formBtn:hover{
-     background-image: linear-gradient(to right,rgb(28,170,17),rgb(158, 14, 14));
+    color: rgb(28, 170, 17);
+    background-image: none;
     border: 1px solid black;
-    font-weight: 600;
     transition: .7s;
 }
 
@@ -274,10 +235,6 @@ button:hover{
     margin-top: .5rem;
     padding: 1rem;
     justify-content: space-evenly;
-}
-
-.itemName{
-    text-transform: capitalize;
 }
 
 
@@ -296,7 +253,6 @@ input[type="text"]:focus{
     border-bottom: 1px solid rgb(28, 170, 17);
 }
 
-/* for delete menu button on delete form */
 
 .formsHidden{
     display: none;
@@ -339,6 +295,27 @@ input[type="text"]:focus{
     padding: 2rem;
     margin-top: 1rem;
 }
+
+
+.itemName{
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.itemName:after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    margin: 0 auto;
+    background: white;
+}
+
+.itemDescription{
+    font-size: .8rem;
+    border-bottom: 1px solid white;
+}
+
 .menuItemsHidden{
     display: none;
 }
@@ -352,14 +329,15 @@ input[type="text"]:focus{
 
 .menuItem{
     position: relative;
-    border: 1px solid black;
-    background-color: gray;
+    /* border: 1px solid black; */
     color: white;
+    border-radius: 10px;
 }
 
 .menuItem img{
     width: 100%;
     object-fit: contain;
+    border-radius: 10px;
 }
 
 .menuHeader{
@@ -391,7 +369,7 @@ input[type="text"]:focus{
 
 .deleteFromMenuBtn{
     position: absolute;
-    right: 0%;
+    right: 2%;
     top: 0%;
     font-size: 2em;
     cursor: pointer;
@@ -403,7 +381,7 @@ input[type="text"]:focus{
 .deleteFromMenuBtn:hover{
     color: red;
     transition: .7s;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 /* end of menu items gallery */
