@@ -1,0 +1,96 @@
+/* Global*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background-color: beige;
+    background-image: url(receipt_images/bandidos_name_logo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 35%;
+}
+
+header {
+    height: 15%;
+    background-image: url(receipt_images/header_footer_background.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-bottom: 15px solid orange;
+}
+
+footer {
+    height: 15%;
+    width: 100%;
+    background-image: url(receipt_images/header_footer_background.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-top: 15px solid orange;
+}
+/* Global*/
+
+/* Receipt Form */
+.receiptMessage {
+    width: 400px;
+    height: auto;
+    background-color: white;
+    margin: 15px auto;
+    text-align: center;
+    font-size: 20px;
+    padding: 1rem;
+}
+
+.receiptForm {
+    width: 400px;
+    height: auto;
+    background-color: white;
+    margin: 15px auto;
+    text-align: center;
+    font-size: 16px;
+}
+
+.receiptTitle {
+    padding-top: 2rem;
+}
+
+#receiptItemsContainer {
+    padding: 2rem;
+    color: gray;
+}
+
+.receiptItem {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px dotted;
+    padding: 1rem 0;
+}
+
+.receiptItemInfo {
+    text-align: left;
+}
+
+.receiptItemCost {
+    float: right;
+}
+
+.receiptForm img {
+    width: 25%;
+    border-radius: 5px;
+}
+
+.receiptDetailsContainer {
+    background-color: rgb(240, 240, 240);
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+}
+
+.receiptDetails {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: .5rem;
+}
+/* Receipt Form */
+
