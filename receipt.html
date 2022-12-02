@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="receipt.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Login</a>
+            <a href="cart.html">Cart</a>
+        </nav>
+    </header>
+    <div class="receiptMessage">
+        <p>Thank you for your purchase!</p>
+    </div>
+    <form class="receiptForm" action="">
+        <h2 class="receiptTitle">Receipt</h2>
+        <div id="receiptItemsContainer">
+
+        </div>
+        <img src="receipt_images\receipt_logo.jpg" alt="">
+        <div class="receiptDetailsContainer">
+            <div class="receiptDetails">
+                <p>Sub Total:</p>
+                <p id="receiptSubTotal">$150</p>
+            </div>
+            <div class="receiptDetails">
+                <p>Tax:</p>
+                <p id="receiptTax">$150</p>
+            </div>
+            <div class="receiptDetails">
+                <p>Total:</p>
+                <p id="receiptTotal">$150</p>
+            </div>
+        </div>
+    </form>
+    <footer>
+        <p>Some trademark or somethin</p>
+    </footer>
+<script src="receipt.js"></script>
+</body>
+</html>
