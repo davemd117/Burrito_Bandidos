@@ -35,7 +35,7 @@ body{
 .headerContainer a:hover{
     text-decoration: underline;
     text-underline-offset: .5rem;
-    color: #FDB927;
+    color: rgb(28, 170, 17);
 }
 
 .headerContainer h2{
@@ -47,7 +47,7 @@ body{
     align-items: center;
     margin-left: 13rem;
 }
-
+/* fix hamburger when everything else done */
 .hamburger{
     display: flex;
     flex-direction: column;
@@ -66,7 +66,6 @@ body{
 }
 .hamburgerBtn{
     display:none;
-    transform: translate(1800%, 10%);
     position: absolute;
     height: 2.5rem;
     width: 2.5rem;
@@ -74,22 +73,15 @@ body{
     z-index: 100;
     padding: 2px;
 }
-.hamburgerBtnLeft{
-    transform: translate(1400%, 10%);
-    position: absolute;
-    height: 2.5rem;
-    width: 2.5rem;
-    cursor: pointer;
-    z-index: 100;
-    padding: 2px;
-}
+
 .hamburger ion-icon{
     font-size: 2.5rem;
     color: black;
     position: absolute;
     bottom: 20%;
 }
-    
+   
+
 /* hero */
 
 .hero{
@@ -114,7 +106,7 @@ body{
 /* end hero */
 
 
-/* start of add edit delete forms */
+/* start of add edit forms */
 .addNewItemForm{
     position: relative;
     align-items: center;
@@ -126,17 +118,15 @@ body{
     box-shadow: 0 0 10px black;
     padding: 2rem 2rem;
     text-align: center;
-    opacity: .7;
+    opacity: .9;
     transition: .7s;
 }
 .addNewItemForm:hover,
-.deleteItemForm:hover,
 .editItemForm:hover{
     opacity: 1;
 }
 
 .addItemFormContainer,
-.deleteItemFormContainer,
 .editItemFormContainer{
     position: absolute;
     top: 35%;
@@ -153,42 +143,12 @@ body{
     transition: .7s;
 }
 .addFormCloseBtn:hover,
-.editFormCloseBtn:hover,
-.delFormCloseBtn:hover{
-    color: #FDB927;
+.editFormCloseBtn:hover{
+    color: rgb(28, 170, 17);
     font-size: 3.1rem;
     transition: .7s;
 }
 
-
-.deleteItemForm{
-    position: relative;
-    align-items: center;
-    background-color: white;
-    height: 50vh;
-    width: 90%;
-    font-size: 1.4rem;
-    border: 2px solid black;
-    box-shadow: 0 0 10px black;    
-    padding: 2rem 2rem;
-    text-align: center;
-    opacity: .7;
-}
-
-.deleteItemForm > div{
-    margin-top: 40%;
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.delFormCloseBtn{
-    left: 85%;
-    top: 5%;
-    position: absolute;
-    font-size: 3rem;
-    cursor: pointer;
-    transition: .7s;
-}
 
 .editItemForm{
     align-items: center;
@@ -201,7 +161,7 @@ body{
     padding: 2rem 2rem;
     text-align: center;
     gap: 1rem;
-    opacity: .7;
+    opacity: .9;
 }
 
 .editItemForm > div{
@@ -228,10 +188,10 @@ form{
     align-self: center;
     margin-bottom: 20px;
     transition: .7s;
-    color: #FDB927;
+    color: rgb(28, 170, 17);
 }
 .formHeader:hover{
-    background-image: -webkit-linear-gradient(#FDB927,#552583);
+    background-image: -webkit-linear-gradient(rgb(28, 170, 17), #c70f0f);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -251,8 +211,7 @@ form{
     padding: 10px 20px;
     color: #fff;
     border: none;
-    background-color: #FDB927;
-    background-image: linear-gradient(to right,#FDB927,#552583);
+    background-image: linear-gradient(to right,rgb(28,170,17),rgb(158, 14, 14));
     transition: .7s;
     cursor: pointer;
     margin-top: .3rem;
@@ -260,15 +219,13 @@ form{
 }
 
 button:hover{
-    box-shadow: 0 0 10px #FDB927;
+    box-shadow: 0 0 10px rgb(28, 170, 17);
 }
 
 .formBtn:hover{
-    color: #FDB927;
-    background-color: transparent;
+    color: rgb(28, 170, 17);
     background-image: none;
-    border: 1px solid #FDB927;
-    font-weight: 600;
+    border: 1px solid black;
     transition: .7s;
 }
 
@@ -287,39 +244,15 @@ input[type="text"]{
     border-bottom: 1px solid #d3d3d3;
     border-radius: 5px;
     outline: none;
-    /* padding-top: 5px; */
     padding-bottom: 10px;
     text-indent: .7rem;
     font-size: 100%;
-    text-transform: capitalize;
 }
+
 input[type="text"]:focus{
-    border-bottom: 1px solid #FDB927;
+    border-bottom: 1px solid rgb(28, 170, 17);
 }
 
-/* for delete menu button on delete form */
-#deleteMenuItem {
-    width: 25%;
-    padding: 10px 20px;
-    color: #fff;
-    border: none;
-    background-color: #FDB927;
-    background-image: linear-gradient(to right,#FDB927,#552583);
-    transition: .7s;
-    cursor: pointer;
-    margin-top: .3rem;
-    font-size: .6em;
-    height: 3rem;
-}
-
-#deleteMenuItem:hover{
-    color: #FDB927;
-    background-color: transparent;
-    background-image: none;
-    border: 1px solid #FDB927;
-    font-weight: 600;
-    transition: .7s;
-}
 
 .formsHidden{
     display: none;
@@ -336,15 +269,13 @@ input[type="text"]:focus{
     background-color: transparent;
     padding: .7rem;
     border-radius: 10px;
-    box-shadow: 0 0 10px #FDB927;
+    box-shadow: 0 0 10px rgb(28, 170, 17);
     text-align: center;
-    font-size: .6em;
-    font-weight: 600;
-    color: #FDB927;
+    font-size: .5em;
+    color: rgb(28, 170, 17);
     z-index: 20;
     width: 20%;
     height: 15%;
-    line-height: 15px;
 }
 
 .addedItemSuccess{
@@ -360,7 +291,31 @@ input[type="text"]:focus{
     grid-gap: 1rem;
     text-align: center;
     width: 100%;
+    background-color: #333;
+    padding: 2rem;
+    margin-top: 1rem;
 }
+
+
+.itemName{
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.itemName:after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    margin: 0 auto;
+    background: white;
+}
+
+.itemDescription{
+    font-size: .8rem;
+    border-bottom: 1px solid white;
+}
+
 .menuItemsHidden{
     display: none;
 }
@@ -373,14 +328,16 @@ input[type="text"]:focus{
 }
 
 .menuItem{
-    border: 1px solid white;
-    background-color: gray;
+    position: relative;
+    /* border: 1px solid black; */
     color: white;
+    border-radius: 10px;
 }
 
 .menuItem img{
     width: 100%;
     object-fit: contain;
+    border-radius: 10px;
 }
 
 .menuHeader{
@@ -393,8 +350,8 @@ input[type="text"]:focus{
 
 .menuHeader > button {
     justify-content: center;
-    background-color: #FDB927;
-    background-image: linear-gradient(to right,#FDB927,#552583);
+    background-color: rgb(28, 170, 17);
+    background-image: linear-gradient(to right,rgb(28, 170, 17),#c70f0f);
     border: none;
     padding: .8rem;
     color: white;
@@ -405,9 +362,26 @@ input[type="text"]:focus{
 .menuHeader > button:hover{
     background-color: transparent;
     background-image: none;
-    border: 1px solid #FDB927;
-    color: #FDB927;
+    border: 1px solid rgb(28, 170, 17);
+    color: rgb(28, 170, 17);
     transition: .7s;
+}
+
+.deleteFromMenuBtn{
+    position: absolute;
+    right: 2%;
+    top: 0%;
+    font-size: 2em;
+    cursor: pointer;
+    padding: .5rem;
+    transition: .7s;
+    border: .2px solid transparent;
+}
+
+.deleteFromMenuBtn:hover{
+    color: red;
+    transition: .7s;
+    /* border: 1px solid black; */
 }
 
 /* end of menu items gallery */

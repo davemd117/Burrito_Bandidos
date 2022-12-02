@@ -1,4 +1,171 @@
 let menu = []
+// test
+// var foodItems = [
+//     {
+//         id: 0,
+//         name: "Burrito de Bistec",
+//         price: 9.99,
+//         image: "Manager-Menu-Page-Images/burrito-1.jpg",
+//         description: "Flour tortilla stuffed with steak and choice of toppings",
+//         calories: 920,
+//     },
+//     {
+//         id: 1,
+//         name: "Burrito de Carnitas",
+//         price: 8.99,
+//         image: "Manager-Menu-Page-Images/burrito-1.jpg",
+//         description: "Flour tortilla stuffed with pork and choice of toppings",
+//         calories: 920,
+//     },
+//     {
+//         id: 2,
+//         name: "Burrito de Chorizo",
+//         price: 8.99,
+//         image: "Manager-Menu-Page-Images/burrito-1.jpg",
+//         description: "Flour tortilla stuffed with mexican sausage and choice of toppings",
+//         calories: 920,
+//     },
+//     {
+//         id: 3,
+//         name: "Burrito de Pollo",
+//         price: 8.99,
+//         image: "Manager-Menu-Page-Images/burrito-1.jpg",
+//         description: "Flour tortilla stuffed with chicken and choice of toppings",
+//         calories: 920,
+//     },
+//     {
+//         id: 4,
+//         name: "Burrito de Tinga",
+//         price: 8.99,
+//         image: "Manager-Menu-Page-Images/burrito-1.jpg",
+//         description: "Flour tortilla stuffed with shredded chipotle chicken and choice of toppings",
+//         calories: 920,
+//     },
+//     {
+//         id: 5,
+//         name: "Steak Tacos",
+//         price: 12.99,
+//         image: "Manager-Menu-Page-Images/burrito-1.jpg",
+//         description: "Soft corn tortillas stuffed with steak and choice of toppings",
+//         calories: 920,
+//     },
+//     {
+//         id: 6,
+//         name: "Fish Tacos",
+//         price: 11.99,
+//         image: "Manager-Menu-Page-Images/burrito-1.jpg",
+//         description: "Soft corn tortillas stuffed with fish and choice of toppings",
+//         calories: 920,
+//     },
+//     {
+//         id: 7,
+//         name: "Shrimp Tacos",
+//         price: 11.99,
+//         image: "Manager-Menu-Page-Images/burrito-1.jpg",
+//         description: "Soft corn tortillas stuffed with shrimp and choice of toppings",
+//         calories: 920,
+//     },
+//     {
+//         id: 8,
+//         name: "Chicken Tacos",
+//         price: 11.99,
+//         image: "Manager-Menu-Page-Images/burrito-1.jpg",
+//         description: "Soft corn tortillas stuffed with chicken and choice of toppings",
+//         calories: 920,
+//     },
+//     {
+//         id: 9,
+//         name: "Carnitas Tacos",
+//         price: 11.99,
+//         image: "Manager-Menu-Page-Images/burrito-1.jpg",
+//         description: "Soft corn tortillas stuffed with pork and choice of toppings",
+//         calories: 920,
+//     },
+//     {
+//         id: 10,
+//         name: "Steak Quesadillas",
+//         price: 13.99,
+//         image: "Manager-Menu-Page-Images/burrito-1.jpg",
+//         description: "Folded corn tortilla or flour tortilla stuffed with steak and choice of toppings",
+//         calories: 920,
+//     },
+//     {
+//         id: 11,
+//         name: "Chicken Quesadillas",
+//         price: 12.99,
+//         image: "Manager-Menu-Page-Images/burrito-1.jpg",
+//         description: "Folded corn tortilla or flour tortilla stuffed with chicken and choice of toppings",
+//         calories: 920,
+//     },
+//     {
+//         id: 12,
+//         name: "Chorizo Quesadillas",
+//         price: 12.99,
+//         image: "Manager-Menu-Page-Images/burrito-1.jpg",
+//         description: "Folded corn tortilla or flour tortilla stuffed with Mexican sausage and choice of toppings",
+//         calories: 920,
+//     },
+//     {
+//         id: 13,
+//         name: "Carnitas Quesadillas",
+//         price: 12.99,
+//         image: "Manager-Menu-Page-Images/burrito-1.jpg",
+//         description: "Folded corn tortilla or flour tortilla stuffed with pork and choice of toppings",
+//         calories: 920,
+//     },
+//     {
+//         id: 14,
+//         name: "Picadillo Quesadillas",
+//         price: 12.99,
+//         image: "Manager-Menu-Page-Images/burrito-1.jpg",
+//         description: "Folded corn tortilla or flour tortilla stuffed with ground beef and choice of toppings",
+//         calories: 920,
+//     },
+//     {
+//         id: 15,
+//         name: "Enchiladas Rojas",
+//         price: 14.99,
+//         image: "Manager-Menu-Page-Images/burrito-1.jpg",
+//         description: "Choice of steak, chicken or cheese topped with red chile sauce and choice of toppings.",
+//         calories: 920,
+//     },
+//     {
+//         id: 16,
+//         name: "Enchiladas Verdes",
+//         price: 14.99,
+//         image: "Manager-Menu-Page-Images/burrito-1.jpg",
+//         description: "Choice of steak, chicken or cheese topped with green chile sauce and choice of toppings.",
+//         calories: 920,
+//     },
+//     {
+//         id: 17,
+//         name: "Enchiladas de Mole",
+//         price: 14.99,
+//         image: "Manager-Menu-Page-Images/burrito-1.jpg",
+//         description: "Stuffed with chicken and topped with mole and choice of toppings",
+//         calories: 920,
+//     },
+//     {
+//         id: 18,
+//         name: "Enchiladas Suizas",
+//         price: 14.99,
+//         image: "Manager-Menu-Page-Images/burrito-1.jpg",
+//         description: "Stuffed with chicken, topped with Swiss cheese sauce",
+//         calories: 920,
+//     },
+//     {
+//         id: 19,
+//         name: "Super Burrito",
+//         price: 19.99,
+//         image: "Manager-Menu-Page-Images/burrito-1.jpg",
+//         description: "A giant burrito stuffed with the hopes and dreams of all of Mexico",
+//         calories: 920,
+//     }
+// ]
+// localStorage.setItem("foodItems", JSON.stringify(foodItems));
+// end test
+
+
 let CurrentMenuItemsCustomerPage = JSON.parse(localStorage.getItem('foodItems'))
 CurrentMenuItemsCustomerPage.forEach((item) => {
     let name = item.name
@@ -7,10 +174,11 @@ CurrentMenuItemsCustomerPage.forEach((item) => {
     let menuItem = document.createElement('div')
     menuItem.classList.add('menuItem')
     menuItem.innerHTML = `
+    <ion-icon class="deleteFromMenuBtn" name="close-circle-outline"></ion-icon>
     <img class="itemImg" src="${item.image}" alt="">
     <h3 class="itemName">${nameCapitalized}</h3>
-    <p class="itemPrice">${item.price}</p>
-    <p class="itemCalories">${item.calories}</p>
+    <p class="itemPrice">$${item.price}</p>
+    <p class="itemCalories">${item.calories} calories</p>
     <p class="itemDescription">${item.description}</p>
     `
     menuItems.appendChild(menuItem)
@@ -21,8 +189,6 @@ CurrentMenuItemsCustomerPage.forEach((item) => {
         description: item.description,
         image: item.image,
         calories: item.calories
-
-
 })
 })
 
@@ -32,7 +198,7 @@ console.log(menu)
 //start of add new menu item 
 const addNewMenuItemBtn = document.getElementById('addNewMenuItem');
 addNewMenuItemBtn.addEventListener('click', () => {
-    const name = document.getElementById('newItemName').value.toUpperCase();
+    const name = document.getElementById('newItemName').value;
     const price = document.getElementById('newItemPrice').value;
     const description = document.getElementById('newItemDescription').value;
     const image = document.getElementById('newItemImg').value;
@@ -49,7 +215,7 @@ addNewMenuItemBtn.addEventListener('click', () => {
         return;
     }
     const newMenuItem = {
-        name: document.getElementById('newItemName').value.toUpperCase(),
+        name: document.getElementById('newItemName').value,
         price: document.getElementById('newItemPrice').value,
         description: document.getElementById('newItemDescription').value,
         image: document.getElementById('newItemImg').value,
@@ -77,22 +243,33 @@ addNewMenuItemBtn.addEventListener('click', () => {
 })
 
 const appendMenuItems = (menu) => {
+    const name = document.getElementById('newItemName').value;
+    const price = document.getElementById('newItemPrice').value;
+    const description = document.getElementById('newItemDescription').value;
+    const image = document.getElementById('newItemImg').value;
+    const calories = document.getElementById('newItemCalories').value;
     const menuItems = document.querySelector('.menuItems')
     const newMenuItem = document.createElement('div')
     const whereToinsert = document.getElementById('locationNewItem').value;
     newMenuItem.classList.add('menuItem')
     newMenuItem.innerHTML = `
-    <img class="itemImg" src="${menu[menu.length - 1].image}"  alt="...">
-    <h3 class="itemName">${menu[menu.length - 1].name}</h3>
-    <p class="itemDescription">${menu[menu.length - 1].description}</p>
-    <p class="itemCalories">${menu[menu.length - 1].calories}</p>
-    <p class="itemPrice">${menu[menu.length - 1].price}</p>
+    <ion-icon class="deleteFromMenuBtn" name="close-circle-outline"></ion-icon>
+    <img class="itemImg" src="${image}"  alt="...">
+    <h3 class="itemName">${name}</h3>
+    <p class="itemDescription">${description}</p>
+    <p class="itemCalories">${calories}</p>
+    <p class="itemPrice">${price}</p>
 `
-// test and see if still works when getting items from menu page
-    menuItems.appendChild(newMenuItem)
-// end test
-    // menu.splice(whereToinsert, 0, newMenuItem)
-    // menuItems.insertBefore(newMenuItem, menuItems.childNodes[whereToinsert])
+    menuItems.insertBefore(newMenuItem, menuItems.childNodes[whereToinsert])
+    const deleteFromMenuBtn = document.querySelectorAll('.deleteFromMenuBtn');
+    deleteFromMenuBtn.forEach((btn, i) => {
+    btn.addEventListener('click', () => {
+        btn.parentElement.remove()
+        menu.splice(i, 1)
+        console.log(menu)
+    })
+})
+
 }
 // end of add new menu item
 
@@ -117,52 +294,26 @@ addFormConfirmBtn.addEventListener('click', () => {
 })
 // end of add form buttons
 
-// function to delete menu figure out how to get error message to work properly
-const deleteMenuItemBtn = document.getElementById('deleteMenuItem');
-deleteMenuItemBtn.addEventListener('click', () => {
-    const deleteMenuItem = document.getElementById('deleteItemName').value.toUpperCase();
-    for(i = 0 ; i < menu.length ; i++) {
-        if(menu[i].name === deleteMenuItem) {
-        const menuItems = document.querySelector('.menuItems')
-        menuItems.removeChild(menuItems.children[i])
+//delete menu items
+const deleteFromMenuBtn = document.querySelectorAll('.deleteFromMenuBtn');
+deleteFromMenuBtn.forEach((btn, i) => {
+    btn.addEventListener('click', () => {
+        btn.parentElement.remove()
         menu.splice(i, 1)
-        console.log(deleteMenuItem)
         console.log(menu)
-        }
-        document.getElementById('deleteItemName').value = '';
-    }
+    })
 })
+
 // end of delete menu items
-
-// delete form buttons
-const deleteFormHeader = document.getElementById('deleteMenuHeader');
-deleteFormHeader.addEventListener('click', () => {
-    let deleteform1 = document.getElementById('deleteForm')
-    deleteform1.classList.remove('formsHidden')
-    deleteform1.classList.add('formsActive')
-})
-
-const deleteFormConfirmBtn = document.getElementById('deleteFormConfirmBtn');
-deleteFormConfirmBtn.addEventListener('click', () => {
-    localStorage.removeItem('menu')
-    localStorage.setItem('menu', JSON.stringify(menu))
-})
-
-const deleteFormviewChanges = document.getElementById('deleteFormViewChanges');
-deleteFormviewChanges.addEventListener('click', () => {
-    window.location.href = 'Menu-Updated.html'
-})
-// end of delete form buttons
 
 // start of edit items
 const editMenuItemBtn = document.getElementById('editMenuItem');
 editMenuItemBtn.addEventListener('click', () => {
-    const name = document.getElementById('editItemName').value.toUpperCase();
+    const name = document.getElementById('editItemName').value;
     const newPrice = document.getElementById('editItemPrice').value;
     const newDescription = document.getElementById('editItemDescription').value;
     const newImage = document.getElementById('editItemImg').value;
     const newCalories = document.getElementById('editItemCalories').value;
-    // might use to see if can update location of item would have to check if parsed menu looks the same
     const newItemLocation = document.getElementById('editItemLocation').value;
     for(let i = 0; i < menu.length; i++) {
         if(menu[i].name === name) {
@@ -216,25 +367,19 @@ viewMenu.addEventListener('click', () => {
 //  jquery for header buttons to animate forms from left to center
 $("#addMenuHeader").click(function(){
     $(".addItemFormContainer").animate({
-        left: '1%',
+        left: '17.5%',
         opacity: '1'
     });
 });
 
-
-$("#deleteMenuHeader").click(function(){
-    $(".deleteItemFormContainer").animate({
-        left: '34.5%',
-        opacity: '1',
-    });
-});
 
 $("#editMenuHeader").click(function(){
     $(".editItemFormContainer").animate({
-        left: '68%',
+        left: '51.25%',
         opacity: '1'
     });
 });
+
 // // end of header buttons jquery
 
 // jquery for forms to animate from center to left on close
@@ -244,14 +389,6 @@ $('.addFormCloseBtn').click(function() {
         opacity: '1',
     });
     $('.addNewItemForm').addClass('animate__fadeOut')
-})
-
-$('.delFormCloseBtn').click(function() {
-    $('.deleteItemFormContainer').animate({
-        left: '-100%',
-        opacity: '1',
-    });
-    $('.deleteItemForm').addClass('animte__fadeOut')
 })
 
 $('.editFormCloseBtn').click(function() {
@@ -291,7 +428,6 @@ viewMenuHamburger.addEventListener('click', () => {
 
 
 
-
 // let menuItems = document.querySelectorAll('.menuItem')
 // menuItems.forEach((item) => {
     // menu.push({
@@ -324,4 +460,55 @@ viewMenuHamburger.addEventListener('click', () => {
 //     let deleteform = document.getElementById('deleteForm')
 //     deleteform.classList.remove('formsActive')
 //     deleteform.classList.add('formsHidden')
+// })
+
+// $('.delFormCloseBtn').click(function() {
+//     $('.deleteItemFormContainer').animate({
+//         left: '-100%',
+//         opacity: '1',
+//     });
+//     $('.deleteItemForm').addClass('animte__fadeOut')
+// })
+
+// $("#deleteMenuHeader").click(function(){
+//     $(".deleteItemFormContainer").animate({
+//         left: '34.5%',
+//         opacity: '1',
+//     });
+// });
+
+// delete form buttons
+// const deleteFormHeader = document.getElementById('deleteMenuHeader');
+// deleteFormHeader.addEventListener('click', () => {
+//     let deleteform1 = document.getElementById('deleteForm')
+//     deleteform1.classList.remove('formsHidden')
+//     deleteform1.classList.add('formsActive')
+// })
+
+// const deleteFormConfirmBtn = document.getElementById('deleteFormConfirmBtn');
+// deleteFormConfirmBtn.addEventListener('click', () => {
+//     localStorage.removeItem('menu')
+//     localStorage.setItem('menu', JSON.stringify(menu))
+// })
+
+// const deleteFormviewChanges = document.getElementById('deleteFormViewChanges');
+// deleteFormviewChanges.addEventListener('click', () => {
+//     window.location.href = 'Menu-Updated.html'
+// })
+// end of delete form buttons
+
+// function to delete menu figure out how to get error message to work properly
+// const deleteMenuItemBtn = document.getElementById('deleteMenuItem');
+// deleteMenuItemBtn.addEventListener('click', () => {
+//     const deleteMenuItem = document.getElementById('deleteItemName').value.toUpperCase();
+//     for(i = 0 ; i < menu.length ; i++) {
+//         if(menu[i].name === deleteMenuItem) {
+//         const menuItems = document.querySelector('.menuItems')
+//         menuItems.removeChild(menuItems.children[i])
+//         menu.splice(i, 1)
+//         console.log(deleteMenuItem)
+//         console.log(menu)
+//         }
+//         document.getElementById('deleteItemName').value = '';
+//     }
 // })
