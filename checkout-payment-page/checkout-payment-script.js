@@ -21,7 +21,7 @@
 // ]
 // let currentCustomerCart = JSON.parse(localStorage.getItem("cartItems"));
 
-localStorage.setItem("cartItems", JSON.stringify(cartItems));
+// localStorage.setItem("cartItems", JSON.stringify(cartItems));
 
 let customerCart = [];
 let currentCustomerCart = JSON.parse(localStorage.getItem("purchaseItems"));
@@ -61,7 +61,6 @@ currentCustomerCart.forEach((item) => {
     totalPrice();
 });
 console.log(customerCart);
-// export customerCart
 
 
 // remove item from cart
