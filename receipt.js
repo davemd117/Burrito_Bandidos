@@ -69,7 +69,14 @@ function renderReceiptTax() {
 renderReceiptTax();
 
 function renderReceiptTotal() {
+    var pointUse = JSON.parse(localStorage.getItem("pointUse"));
+
+    var totalPoints = JSON.parse(localStorage.getItem("totalPoints"));
     let total = receiptSubTotal + tax
+    if (pointUse === "true") {
+        totalPoints / 10;
+        total -= totalPoints;
+    };
     receiptTotalElement.innerHTML = `$${total.toFixed(2)}`
-}
+};
 renderReceiptTotal();

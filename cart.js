@@ -9,6 +9,7 @@ function updateCart() {
 
 function renderCart() {
     cart.innerHTML = "";
+    let cartPoints = 0
     cartItems.forEach((cartItem) => {
         let subTotal = cartItem.price * cartItem.quantity
         cart.innerHTML += `
@@ -31,8 +32,11 @@ function renderCart() {
                 </div>
             </div>
         `;
+        cartPoints += (10 * cartItem.quantity)
     });
-}
+    localStorage.setItem("cartPoints", JSON.stringify(cartPoints));
+    console.log(cartPoints)
+};
 
 function renderCartTotal() {
     let totalPrice = 0;
