@@ -170,6 +170,15 @@ submitBtn1.addEventListener('click', function() {
     }
 });
 
+let customerPointsSelect = document.getElementById('customerPoints');
+customerPointsSelect.addEventListener('change', function() {
+    if(customerPointsSelect.value == "usePoints") {
+        localStorage.setItem("usePoints", true);
+    } else {
+        localStorage.setItem("usePoints", false);
+    }
+});
+
 submitBtn2.addEventListener('click', function() {
     let quantityInputs = document.querySelectorAll('.quantity');
 quantityInputs.forEach((input) => {
