@@ -1,5 +1,11 @@
 let customerCart = [];
 let currentCustomerCart = JSON.parse(localStorage.getItem("purchaseItems"));
+let cartPoints = JSON.parse(localStorage.getItem("cartPoints"));
+let customerPoints = JSON.parse(localStorage.getItem("Current User"));
+let totalPoints = 0;
+let points = [];
+totalPoints = customerPoints[0].points + cartPoints;
+points.push(totalPoints);
 
 currentCustomerCart.forEach((item) => {
    let cartItems = document.querySelector(".cartItems");
@@ -122,7 +128,6 @@ var shippingZip = document.getElementById('shippingZip');
 var shippingEmail = document.getElementById('shippingEmail');
 var shippingMethod = document.getElementById('shippingMethod');
 
-
 function validateForm() {
     if (billingName.value == "" || address.value == "" || email.value == "" || city.value == "" || state.value == "" || zip.value == "" || email.value.includes("@") == false) {
         alert("Please make sure to fill out all fields properly");
@@ -173,11 +178,14 @@ quantityInputs.forEach((input) => {
     });
     customerCart[itemIndex].quantity = input.value;
     if (validateForm3() == true) {
+        localStorage.setItem('totalPoints', points);
         localStorage.setItem('finalCart', JSON.stringify(customerCart));
         window.location.href = "receipt.html";
     }
 });
 });
+
+
   
 
 
