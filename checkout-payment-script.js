@@ -1,28 +1,3 @@
-// let cartItems = [
-//     {
-//         name: "Chicken",
-//         price: 10.99,
-//         quantity: 1,
-//         image: "/checkout-payment-images/burrito1.jpg"
-//     },
-//     {
-//         name: "Chicken",
-//         price: 5.99,
-//         quantity: 1,
-//         image: "/checkout-payment-images/burrito1.jpg"
-//     },
-//     {
-//         name: "Chicken",
-//         price: 20.99,
-//         quantity: 1,
-//         image: "/checkout-payment-images/burrito1.jpg"
-//     },
-
-// ]
-// let currentCustomerCart = JSON.parse(localStorage.getItem("cartItems"));
-
-// localStorage.setItem("cartItems", JSON.stringify(cartItems));
-
 let customerCart = [];
 let currentCustomerCart = JSON.parse(localStorage.getItem("purchaseItems"));
 
@@ -81,19 +56,24 @@ removeFromCartBtn.forEach((btn) => {
 
 
 
-  function totalPrice() {
+function totalPrice() {
     var cart = document.getElementsByClassName("cartItems")[0];
     var cartItem = cart.querySelectorAll(".cartItem");
+    var subTotal = 0;
+    var tax = 0;
     var total = 0;
     for (var i = 0; i < cartItem.length; i++) {
         var cartItemPrice = cartItem[i].querySelector(".cartItemPrice h4");
         var cartItemQuantity = cartItem[i].querySelector(".quantity");
         var price = parseFloat(cartItemPrice.innerText.replace("$", ""));
         var quantity = cartItemQuantity.value;
-        total = total + (price * quantity);
+        tax += (subTotal * .06)
+        subTotal = subTotal + (price * quantity);
+        total = subTotal + tax;
     }
-    total = total.toFixed(2);
-    document.getElementsByClassName("total")[0].innerText = "$" + total;
+    document.getElementsByClassName("total")[0].innerText = "Total: $" + total.toFixed(2);
+    document.getElementsByClassName("subTotal")[0].innerText = "Subtotal: $" + subTotal.toFixed(2);
+    document.getElementsByClassName("tax")[0].innerText = "Tax: $" + tax.toFixed(2);
     }
   var quantityInputs = document.getElementsByClassName("quantity");
 
