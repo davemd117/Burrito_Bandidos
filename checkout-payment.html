@@ -35,7 +35,9 @@
       <div class="cartItems">
       </div>
       <div class="cartTotal">
-        <h3 class="total" style="text-align: center;">Total: $0.00</h3>
+        <h3 class="tax">Tax: $0.00</h3>
+        <h3 class="subTotal">Sub total: $0.00</h3>
+        <h3 class="total">Total: $0.00</h3>
       </div>
     </div>
     <div class="container containerActive">
@@ -156,11 +158,20 @@
                   <option value="overnight">Overnight</option>
                   </select>
               </div>
+              <div class="inputs">
+               <span>Use customer points:</span>
+                  <select name="customerPoints" id="customerPoints">
+                  <option value="select">Select an option:</option>
+                  <option value="usePoints">Use Points</option>
+                  <option value="DoNotUsePoints">Do Not Use Points</option>
+                  </select>
+              </div>
+              
             </div>
           </div>
         </div>
-      </form>
-      <input type="submit" id="submitBtn2" value="proceed to checkout" class="submitBtn">
+        <input type="button" id="submitBtn2" value="proceed to checkout" class="submitBtn">
+      </form>  
     </div>
 
    <footer>
