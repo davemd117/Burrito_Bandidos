@@ -67,16 +67,16 @@ function totalPrice() {
         var cartItemQuantity = cartItem[i].querySelector(".quantity");
         var price = parseFloat(cartItemPrice.innerText.replace("$", ""));
         var quantity = cartItemQuantity.value;
-        tax += (subTotal * .06)
-        subTotal = subTotal + (price * quantity);
+        subTotal += (price * quantity);
+        tax = subTotal * .06
         total = subTotal + tax;
     }
     document.getElementsByClassName("total")[0].innerText = "Total: $" + total.toFixed(2);
     document.getElementsByClassName("subTotal")[0].innerText = "Subtotal: $" + subTotal.toFixed(2);
     document.getElementsByClassName("tax")[0].innerText = "Tax: $" + tax.toFixed(2);
     }
-  var quantityInputs = document.getElementsByClassName("quantity");
 
+var quantityInputs = document.getElementsByClassName("quantity");
 for (var i = 0; i < quantityInputs.length; i++) {
   quantity = quantityInputs[i];
   var inputChange = quantityInputs[i];
