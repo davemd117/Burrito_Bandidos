@@ -30,8 +30,7 @@ currentCustomerCart.forEach((item) => {
         name: item.name,
         price: item.price,
         image: item.image,
-        quantity: item.quantity
-
+        quantity: item.quantity,
     });
     totalPrice();
 });
@@ -154,8 +153,6 @@ function validateForm3() {
 
 //submit btns
 submitBtn1.addEventListener('click', function() {
-    // let paymentInfoForm = document.getElementById('paymentInfoForm');
-    // let paymentFormInputs = paymentInfoForm.querySelectorAll('input');
     // come back later and see if can make cash or credit option validation work
     if (validateForm() == true && validateForm2() == true) {
         let container = document.querySelector('.container');
@@ -164,16 +161,24 @@ submitBtn1.addEventListener('click', function() {
         let container2 = document.querySelector('.container2');
         container2.classList.add("containerActive");
         container2.classList.remove("containerHidden");
+       
     }
 });
 
 submitBtn2.addEventListener('click', function() {
+    let quantityInputs = document.querySelectorAll('.quantity');
+quantityInputs.forEach((input) => {
+    let itemIndex = customerCart.findIndex((item) => {
+        return item.name === input.parentElement.parentElement.querySelector(".cartItemName h4").innerText;
+    });
+    customerCart[itemIndex].quantity = input.value;
     if (validateForm3() == true) {
-        // going to need to save cart items to local storage and then redirect to confirmation page
         localStorage.setItem('finalCart', JSON.stringify(customerCart));
         window.location.href = "receipt.html";
     }
 });
+});
+  
 
 
 
