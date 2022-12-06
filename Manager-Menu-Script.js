@@ -1,16 +1,14 @@
-// let menu = []
 let menuItems = document.querySelector('.menuItems')
 var foodItems = JSON.parse(localStorage.getItem('foodItems'))
 
 function renderManagerMenu() {
     menuItems.innerHTML = "";
     foodItems.forEach((foodItem) => {
-        let nameCapitalized = foodItem.name.charAt(0).toUpperCase() + foodItem.name.slice(1).toLowerCase()
         menuItems.innerHTML += `
             <div class="menuItem">
                 <ion-icon class="deleteFromMenuBtn" onclick="removeFromMenu(${foodItem.id})" name="close-circle-outline"></ion-icon>
                 <img class="itemImg" src="${foodItem.image}" alt="">
-                <h3 class="itemName">${nameCapitalized}</h3>
+                <h3 class="itemName">${foodItem.name}</h3>
                 <p class="itemPrice">$${foodItem.price}</p>
                 <p class="itemCalories">${foodItem.calories} calories</p>
                 <p class="itemDescription">${foodItem.description}</p>
@@ -29,6 +27,7 @@ addNewMenuItemBtn.addEventListener('click', () => {
     const image = document.getElementById('newItemImg').value;
     const calories = document.getElementById('newItemCalories').value;
     const id = document.getElementById('newItemId').value;
+    const id1 = parseInt(id)
     for(let i = 0; i < foodItems.length; i++) {
         if(foodItems[i].name === name) {
             alert('Item already exists');
@@ -45,7 +44,7 @@ addNewMenuItemBtn.addEventListener('click', () => {
         description: description,
         image: image,        
         calories: calories,
-        id:  id
+        id:  id1
     }
     
     setTimeout(() => {
@@ -65,17 +64,18 @@ addNewMenuItemBtn.addEventListener('click', () => {
     document.getElementById('newItemDescription').value = '';
     document.getElementById('newItemImg').value = '';
     document.getElementById('newItemCalories').value = '';
+    document.getElementById('newItemId').value = '';
 })
 
 const appendMenuItems = () => {
-    const name = document.getElementById('newItemName').value;
-    const price = document.getElementById('newItemPrice').value;
-    const description = document.getElementById('newItemDescription').value;
-    const image = document.getElementById('newItemImg').value;
-    const calories = document.getElementById('newItemCalories').value;
-    const menuItems = document.querySelector('.menuItems')
-    const newMenuItem1 = document.createElement('div')
-    const id = document.getElementById('newItemId').value;
+    let name = document.getElementById('newItemName').value;
+    let price = document.getElementById('newItemPrice').value;
+    let description = document.getElementById('newItemDescription').value;
+    let image = document.getElementById('newItemImg').value;
+    let calories = document.getElementById('newItemCalories').value;
+    let menuItems = document.querySelector('.menuItems')
+    let newMenuItem1 = document.createElement('div')
+    let id = document.getElementById('newItemId').value;    
     newMenuItem1.classList.add('menuItem')
     newMenuItem1.innerHTML =  `
     <ion-icon class="deleteFromMenuBtn" onclick="removeFromMenu(${id})" name="close-circle-outline"></ion-icon>
@@ -87,8 +87,6 @@ const appendMenuItems = () => {
     `
     menuItems.appendChild(newMenuItem1)
     renderManagerMenu();
-    // newMenuItem1.localStorage.removeItem('foodItems')
-    // newMenuItem1.localStorage.setItem('foodItems', JSON.stringify(foodItems))
 }
 function removeFromMenu(id) {
     foodItems = foodItems.filter( (foodItem) => foodItem.id !== id);
@@ -148,8 +146,8 @@ editMenuItemBtn.addEventListener('click', () => {
 // start of edit form buttons
 const editItemConfirmBtn = document.getElementById('editFormConfirmBtn');
 editItemConfirmBtn.addEventListener('click', () => {
-    localStorage.removeItem('menu')
-    localStorage.setItem('menu', JSON.stringify(menu))
+    localStorage.removeItem('foodItems')
+    localStorage.setItem('foodItems', JSON.stringify(foodItems))
 })
 
 const editItemFormViewChanges = document.getElementById('editFormViewChanges');
