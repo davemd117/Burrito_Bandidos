@@ -99,10 +99,11 @@ h1{
 /* SIGNUP */
 .title{
     align-self: center;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     text-align: center;
     font-weight: 100;
     text-transform: capitalize;
+    font-size: 100%;
 }
 .sup-mess{
     font-size: 75%;
@@ -138,8 +139,8 @@ h1{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 .group{
     display: flex;
@@ -153,7 +154,7 @@ h1{
     border-radius: 5px;
     outline: none;
     padding: 5px;
-    font-size: 100%;
+    font-size: 85%;
 
 }
 .form-input:not(.sup-name,.sup-submit){
@@ -737,7 +738,7 @@ nav ion-icon{
     border-radius: 5px;
     outline: none;
     padding: 5px;
-    font-size: 100%;
+    /* font-size: 100%; */
 }
 .messageBox{
     border: 1px solid #d3d3d3;
@@ -1006,7 +1007,7 @@ footer{
         font-size: 80%;
     }
     div.our-info{
-        width: 40%;
+        width: 50%;
         height: 80%;
         padding: 10px;
         text-align: center;
@@ -1041,7 +1042,7 @@ footer{
         font-size: 50%;
     }
     div.rate-us{
-        width: 95%;
+        width: 90%;
         height: 60%;
         align-items: center;
         flex-direction: row;
@@ -1049,13 +1050,13 @@ footer{
     div.rating{
         font-size: 75%;
         height: 50%;
-        width: 55%;
+        width: 45%;
     }
     div.stars{
         margin-top: 15px;
     }
     .star{
-        font-size: 180%;
+        font-size: 100%;
     }
 }
 
@@ -1084,5 +1085,13 @@ footer{
     div.pic-container{
         align-content: center;
     }
-   
+    h5.thank-review{
+        font-size: 65%;
+    }
+    p.sup-mess{
+        font-size: 40%;
+    }
+    li.pass-req{
+        font-size: 45%;
+    }
 }

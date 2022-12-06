@@ -21,12 +21,14 @@ let userMessage=[];
 // ----- user info class ----- //
 
 class UserInfo {
-    constructor(username, firstName, email, password,points,favorites) {
+    constructor(username, firstName, email, password,points,address,phone,favorites) {
         this.username = username;
         this.firstName = firstName;
         this.email = email;
         this.password = password;
         this.points = points
+        this.phone = phone;
+        this.address = address;
         this.favorites = favorites
        
     };
@@ -54,7 +56,9 @@ function addUser() {
         $('.sup-name').val(),
         $('.sup-email').val(),
         $('.sup-password').val(),
-        50,
+        $('.sup-phone').val(),
+        $('.sup-addy').val(),
+        50
     ));
 }
 
@@ -210,6 +214,8 @@ $('.sup-submit').click(() => {
         $('.sup-name').val("")
         $('.sup-email').val("")
         $('.sup-user').val("")
+        $('.sup-phone').val("")
+        $('.sup-addy').val("")
         $('.sup-password').val("")
         $('.sup-confirm').val("")
     }
@@ -372,15 +378,15 @@ $('.log-submit').click(() => {
     retrieveFromStorage(listUsers) // Grab local storage and push it into listUsers
     for(users of listUsers){
         if(logUsername ==="bandido1" && logPassword === "Password123" ){
-            // console.log(users)
-            // $('.log-pass').val("")
-            // $('.log-user').val("")
+            user = window.localStorage.getItem("0")
+            owner = JSON.parse(user)
+            console.log(owner.email)
             $('.err-mess').hide()
-            $('#welcome').text(`Welcome ${users.firstName}`)
+            $('#welcome').text(`Welcome ${owner.firstName}`)
             $('#welcome').show()
             // console.log(users[0])
             currentUser.length = 0
-            currentUser.push(users)
+            currentUser.push(owner)
             window.localStorage.removeItem("Current User")
             window.localStorage.setItem("Current User", JSON.stringify(currentUser))
             showSignout()
@@ -441,8 +447,16 @@ function showSignout(){
 function checkForUser(){
     logbtn = document.getElementById("go-to-login")
     profbtn = document.getElementById("go-to-profile")
-    
-    if(window.localStorage.getItem("Current User")){
+
+    let reviewName = document.getElementById("contact-name")
+    let reviewEmail = document.getElementById("contact-email")
+
+    let storedUser = window.localStorage.getItem("Current User")
+    let loggedUser = JSON.parse(storedUser)
+    // let userName = loggedUser.firstName
+
+    if(storedUser){
+        // console.log(userName)
         let currentUser = JSON.parse(localStorage.getItem('Current User'));
         profbtn.style.display = "block"
         logbtn.style.display = "none"
@@ -457,6 +471,9 @@ function checkForUser(){
         displayname.innerHTML = usersname
         displayemail.innerHTML = usersemail
         displaypoints.innerHTML = `Points: ${userspoints}`
+        // Leave a message section
+        reviewName.value = usersname
+        reviewEmail.value = usersemail
     }
     else{
         console.log("NOT There")
@@ -616,40 +633,45 @@ $(".contact-submit").click(() =>{
     }
 })
 
+$('.contact-form-input').focus(()=>{
+    $(".contact-good").hide()
+    $(".contact-good").removeClass("animate__bounce")
+})
+
 //  Review stars
 function starReview(){
     let thank = document.getElementById("thank-review")
     let stars =document.querySelectorAll(".star")
     // console.log(this.parentNode.parentNode)
     let container = this.parentNode.parentNode;
-    let review = this.id;
-    if(review === "4-star"){
+    let star = this.id;
+    if(star === "4-star"){
         stars[0].name = "star"
         stars[1].name = "star"
         stars[2].name = "star"
         stars[3].name = "star"
        this.name = "star"
-       let starReview = JSON.stringify(review)
-       window.localStorage.setItem("Review",starReview )
+       let storedReview = JSON.stringify(star)
+       window.localStorage.setItem("Review",storedReview )
         
     }
-    else if(review === "3-star"){
+    else if(star === "3-star"){
         stars[0].name = "star"
         stars[1].name = "star"
         stars[2].name = "star"
-        let starReview = JSON.stringify(review)
-       window.localStorage.setItem("Review",starReview )
+        let storedReview = JSON.stringify(star)
+       window.localStorage.setItem("Review",storedReview )
     }
-    else if(review === "2-star"){
+    else if(star === "2-star"){
         stars[0].name = "star"
         stars[1].name = "star"
-        let starReview = JSON.stringify(review)
-       window.localStorage.setItem("Review",starReview )
+        let storedReview = JSON.stringify(review)
+       window.localStorage.setItem("Review",storedReview )
     }
     else{
         stars[0].name = "star"
-        let starReview = JSON.stringify(review)
-       window.localStorage.setItem("Review",starReview )
+        let storedReview = JSON.stringify(review)
+       window.localStorage.setItem("Review",storedReview )
     }
 
     container.style.opacity= ".5"
