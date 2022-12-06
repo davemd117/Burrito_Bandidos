@@ -1,7 +1,6 @@
 //function to parse local storage and append menu items to menu
-let CurrentMenuItemsCustomerPage = JSON.parse(localStorage.getItem('menu'))
+let CurrentMenuItemsCustomerPage = JSON.parse(localStorage.getItem('foodItems'))
 CurrentMenuItemsCustomerPage.forEach((item) => {
-    console.log(CurrentMenuItemsCustomerPage)
     let name = item.name
     let nameCapitalized = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()
     let menuItems = document.querySelector('.menuItems')

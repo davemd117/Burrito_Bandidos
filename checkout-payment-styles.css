@@ -189,26 +189,22 @@ input[type=number]{
     margin-right: 1rem;
     padding: .5rem;
     cursor: pointer;
-    background-color: #333;
-    color: #fff;
+    background: #fff;
+    color: #333;
     border: 1px solid black;
 }
 .creditBtn{
     margin-left: 1rem;
     padding: .5rem;
     cursor: pointer;
-    background-color: #333;
-    color: #fff;
+    background: #fff;
+    color: #333;
     border: 1px solid black;
 }
 
-.cashBtn:hover, 
-.creditBtn:hover{
-    background: #fff;
-    color: #333;
-}
-.cashSelected{
-    opacity: 0.2;
+.paymentOptionSelected{
+    background: #333;
+    color: #fff;
 }
 
 #submitBtn2{
