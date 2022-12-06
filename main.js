@@ -390,7 +390,7 @@ $('.log-submit').click(() => {
             window.localStorage.removeItem("Current User")
             window.localStorage.setItem("Current User", JSON.stringify(currentUser))
             showSignout()
-            window.location.href = "Manager-Menu-Page.html"
+            // window.location.href = "Manager-Menu-Page.html"
         }
         else if(logUsername === users.username && logPassword === users.password){
             // $('.log-pass').val("")
@@ -426,6 +426,10 @@ $('.log-submit').click(() => {
 //make Profile button
 function showSignout(){
     let currentUser = JSON.parse(localStorage.getItem('Current User'));
+    if(currentUser[0].firstName === "Owner"){
+        let manager = document.getElementById("manager-tab")
+        manager.style.display = "block"
+    }
     logbtn = document.getElementById("go-to-login")
     profbtn = document.getElementById("go-to-profile")
     logbtn.style.display = "none"
@@ -447,17 +451,20 @@ function showSignout(){
 function checkForUser(){
     logbtn = document.getElementById("go-to-login")
     profbtn = document.getElementById("go-to-profile")
+    manager = document.getElementById("manager-tab")
+
+    let currentUser = JSON.parse(localStorage.getItem('Current User'));
 
     let reviewName = document.getElementById("contact-name")
     let reviewEmail = document.getElementById("contact-email")
-
-    let storedUser = window.localStorage.getItem("Current User")
-    let loggedUser = JSON.parse(storedUser)
     // let userName = loggedUser.firstName
-
-    if(storedUser){
+    if(profbtn.innerHTML === "Owner's Profile"){
+            manager.style.display = "block"
+        }
+    else if(currentUser){
         // console.log(userName)
-        let currentUser = JSON.parse(localStorage.getItem('Current User'));
+        // var currentUserlog = JSON.parse(localStorage.getItem('Current User'));
+        // manager.style.display = "none"
         profbtn.style.display = "block"
         logbtn.style.display = "none"
         profbtn.innerHTML = `${currentUser[0].firstName}\'s Profile`
@@ -475,7 +482,9 @@ function checkForUser(){
         reviewName.value = usersname
         reviewEmail.value = usersemail
     }
+  
     else{
+        manager.style.display = 'none'
         console.log("NOT There")
         profbtn.style.display = "none"
         logbtn.style.display = "block"
@@ -557,7 +566,6 @@ function openNav(){
 }
 function closeNav(){
     $(".side-bar").addClass("animate__slideOutRight")
-
 }
 
 // SHOW BACKGROUNDS ON SCROLL
