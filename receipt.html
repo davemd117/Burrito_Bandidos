@@ -6,15 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="receipt.css">
+     <!-- ANIMATE -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+     <!-- FONTS -->
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap&family=Smokum&display=swap"  rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&family=DM+Sans:wght@400;500;700&family=Lato:wght@100;300;400&family=Playfair+Display:wght@400;500&family=Rubik:wght@300;400;500;600;700;800;900&family=Smokum&display=swap" rel="stylesheet"> 
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">Login</a>
-            <a href="cart.html">Cart</a>
-        </nav>
-    </header>
+    <!------------------------------- Nav Bar ---------------------------------->
+    <nav id="nav-bar" class="nav-bar">
+        <div class="logo">LOGO</div>
+        <ul id="nav-links" class="nav-links">
+            <a  href="index.html"><li>Home</li></a>
+            <a href="menu.html"><li>Menu</li></a>
+        </ul>
+        <ion-icon id="ham-menu" class="ham-menu" name="menu-outline"></ion-icon>
+    </nav>
+
+    <!------------------------------- Side Bar ---------------------------------->
+    <div id="side-bar" class="side-bar animate__animated animate__slideInRight">
+        <ion-icon class="exit-sidebar" name="arrow-back-outline"></ion-icon>
+        <ul id="side-links" class="side-links">
+            <a  href="#about-section"><li>About Us</li></a>
+            <a href="#featured"><li>Featured</li></a>
+            <a href="#our-locations"><li>Locations</li></a>
+            <a href="#contact-us"><li>Contact Us</li></a>
+        </ul>
+    </div>
+    
+    <!------------------------------- Receipt ---------------------------------->
     <div class="receiptMessage">
         <p>Thank you for your purchase!</p>
     </div>
@@ -39,9 +59,43 @@
             </div>
         </div>
     </form>
-    <footer>
-        <p>Some trademark or somethin</p>
-    </footer>
-<script src="receipt.js"></script>
+
+    <!------------------------------- Profile ---------------------------------->
+    <form action="" id="profile-form" class="profile-form form">
+        <ion-icon id="exit-profile" class="exit-profile" name="arrow-back-outline"></ion-icon>
+        <h1 id="users-name" class="users-name "></h1>
+        <p id = "users-email" class="users-email"></p>
+        <p id="users-points" class="users-points"></p>
+        <!-- <button id="sign-out"class = "btn">Sign Out</button> -->
+    </form>
+
+    <!------------------------------- FOOTER ---------------------------------->
+    <footer id="footer" class="animate__animated footer-section">
+        <div class="log-btn-container">
+                <a id="go-to-profile" class="go-to-profile">Sign Out</a>
+            </div>
+
+            <div class="footer-info">
+                <p><ion-icon name="location-outline"></ion-icon>123 Abcde Dr, Lancaster, PA</p>
+                <p><ion-icon name="time-outline"></ion-icon>12:00pm - 12:00am</p>
+                <p><ion-icon name="call-outline"></ion-icon>(281) 330-8004</p>
+            </div>
+        <div class="footer-socials">
+            <a href=""><ion-icon id="fb" name="logo-facebook"></ion-icon></a>
+            <a href=""><ion-icon id="twitter" name="logo-twitter"></ion-icon></a>
+            <a href=""><ion-icon id="google" name="logo-google"></ion-icon></a>
+            <a href=""><ion-icon id="ig" name="logo-instagram"></ion-icon></a>
+        </div>
+    </footer>  
+
+    <!-- ION-ICONS -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <!-- JQUERY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <!-- Receipt JS -->
+    <script src="receipt.js"></script>
 </body>
 </html>
