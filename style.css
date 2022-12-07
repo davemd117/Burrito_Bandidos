@@ -341,9 +341,6 @@ nav ion-icon{
     display: none;
     /* transform: rotate(90deg); */
 }
-#manager-tab{
-    display: none;
-}
 
 /* SIDE BAR*/
 .side-bar{
@@ -1029,7 +1026,6 @@ footer{
         font-size: 75%;
         padding: 0 ;
     }
-
     a.go-to-profile{
         font-size: 60%;
         padding: 0;
@@ -1042,7 +1038,6 @@ footer{
     div.footer-socials ion-icon{
         font-size: 15px;
     }
-
      p.img-desc{
         font-size: 50%;
     }
@@ -1081,11 +1076,9 @@ footer{
     p.title-sub{
         font-size:70% ;
     }
-
     footer{
         font-size: 90%;
     }
-
     div.about-text p{
         font-size: 30%;
     }

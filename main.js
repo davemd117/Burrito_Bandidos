@@ -426,10 +426,7 @@ $('.log-submit').click(() => {
 //make Profile button
 function showSignout(){
     let currentUser = JSON.parse(localStorage.getItem('Current User'));
-    if(currentUser[0].firstName === "Owner"){
-        let manager = document.getElementById("manager-tab")
-        manager.style.display = "block"
-    }
+    // if(currentUser[0.firstName === "Owner"])
     logbtn = document.getElementById("go-to-login")
     profbtn = document.getElementById("go-to-profile")
     logbtn.style.display = "none"
@@ -451,64 +448,72 @@ function showSignout(){
 function checkForUser(){
     let logbtn = document.getElementById("go-to-login")
     let profbtn = document.getElementById("go-to-profile")
-    if(window.localStorage.getItem("Current User")){
-        console.log("TRUE")
-        customizePage()
-        return true
-    }
-    else{
-        // manager.style.display = 'none'
-        // managerSide.style.display = "none"
-        profbtn.style.display = "none"
-        logbtn.style.display = "block"
-        return false
-    }
-}
- function customizePage(){
-   
-    // if(checkForUser){
-        let currentUser = JSON.parse(localStorage.getItem('Current User'));
 
+    let manager = document.getElementById("manager-tab")
+    let managerSide = document.getElementById("manager-tab-sidebar")
 
-        let logbtn = document.getElementById("go-to-login")
-        let profbtn = document.getElementById("go-to-profile")
-        let manager = document.getElementById("manager-tab")
-        let  managerSide = document.getElementById("manager-tab-sidebar")
-        let menu = document.getElementById("menu-tab")
-
-
-        let reviewName = document.getElementById("contact-name")
-        let reviewEmail = document.getElementById("contact-email")
-        let displayname = document.getElementById("users-name")
-        let displayemail = document.getElementById("users-email")
-        let displaypoints = document.getElementById("users-points")
-
-        if(currentUser[0].firstName === "Owner"){
-            console.log("OWNER")
+    let reviewName = document.getElementById("contact-name")
+    let reviewEmail = document.getElementById("contact-email")
+    let storedUser = window.localStorage.getItem("Current User")
+    let loggedUser = JSON.parse(storedUser)
+    // let userName = loggedUser.firstName
+    if(storedUser){
+        console.log(storedUser)
+        if(loggedUser[0].firstName === "Owner"){
+            let manager = document.getElementById("manager-tab")
+            let managerSide = document.getElementById("manager-tab-sidebar")
+            console.log("owner")
             manager.style.display = "block"
             managerSide.style.display = "block"
-
             // POPULATE PROFILE DISPLAY
-            let usersname = currentUser[0].firstName
-            let usersemail = currentUser[0].email
-            let userspoints = currentUser[0].points
+            let usersname = loggedUser[0].firstName
+            let usersemail = loggedUser[0].email
+            let userspoints = loggedUser[0].points
+            let displayname = document.getElementById("users-name")
+            let displayemail = document.getElementById("users-email")
+            displaypoints = document.getElementById("users-points")
             displayname.innerHTML = usersname
             displayemail.innerHTML = usersemail
-            displaypoints.innerHTML = userspoints
+            displaypoints.innerHTML = `Points: ${userspoints}`
+            profbtn.style.display = "block"
+            logbtn.style.display = "none"
+            profbtn.innerHTML = `${loggedUser[0].firstName}\'s Profile`
         }
         else{
+            console.log(loggedUser)
+            // console.log(userName)
+            let manager = document.getElementById("manager-tab")
+            let managerSide = document.getElementById("manager-tab-sidebar")
+            let currentUser = JSON.parse(localStorage.getItem('Current User'));
             manager.style.display = "none"
             managerSide.style.display = "none"
-            let usersname = currentUser[0].firstName
-            let usersemail = currentUser[0].email
-            let userspoints = currentUser[0].points
+            profbtn.style.display = "block"
+            logbtn.style.display = "none"
+            profbtn.innerHTML = `${currentUser[0].firstName}\'s Profile`
+            // POPULATE PROFILE DISPLAY
+            let usersname = loggedUser[0].firstName
+            let usersemail = loggedUser[0].email
+            let userspoints = loggedUser[0].points
+            let displayname = document.getElementById("users-name")
+            let displayemail = document.getElementById("users-email")
+            displaypoints = document.getElementById("users-points")
             displayname.innerHTML = usersname
             displayemail.innerHTML = usersemail
-            displaypoints.innerHTML = userspoints
+            displaypoints.innerHTML = `Points: ${userspoints}`
+            // Leave a message section
+            reviewName.value = usersname
+            reviewEmail.value = usersemail
         }
-        
-        
-        console.log(currentUser[0].firstName)
+    }
+    else{
+        let manager = document.getElementById("manager-tab")
+        let managerSide = document.getElementById("manager-tab-sidebar")
+        console.log("NOT There")
+        profbtn.style.display = "none"
+        logbtn.style.display = "block"
+        manager.style.display = "none"
+        managerSide.style.display = "none"
+    }
 }
 
 $("#go-to-profile").click(() => {
@@ -520,9 +525,9 @@ $("#go-to-profile").click(() => {
     profile.style.transform = "scale(0)"
  })
 $("#sign-out").click(() => {
-    document.location.reload()
-    console.log("REFRESH")
-    // localStorage.removeItem("Current User")
+    // document.location.reload()
+    // console.log("REFRESH")
+    localStorage.removeItem("Current User")
     // checkForUser
  })
 
@@ -590,6 +595,7 @@ function openNav(){
 }
 function closeNav(){
     $(".side-bar").addClass("animate__slideOutRight")
+
 }
 
 // SHOW BACKGROUNDS ON SCROLL
