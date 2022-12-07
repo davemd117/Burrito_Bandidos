@@ -449,47 +449,68 @@ function showSignout(){
 
 // SIGNOUT
 function checkForUser(){
-    logbtn = document.getElementById("go-to-login")
-    profbtn = document.getElementById("go-to-profile")
-    manager = document.getElementById("manager-tab")
-
-    let currentUser = JSON.parse(localStorage.getItem('Current User'));
-
-    let reviewName = document.getElementById("contact-name")
-    let reviewEmail = document.getElementById("contact-email")
-    // let userName = loggedUser.firstName
-    if(profbtn.innerHTML === "Owner's Profile"){
-            manager.style.display = "block"
-        }
-    else if(currentUser){
-        // console.log(userName)
-        // var currentUserlog = JSON.parse(localStorage.getItem('Current User'));
-        // manager.style.display = "none"
-        profbtn.style.display = "block"
-        logbtn.style.display = "none"
-        profbtn.innerHTML = `${currentUser[0].firstName}\'s Profile`
-        // POPULATE PROFILE DISPLAY
-        let usersname = currentUser[0].firstName
-        let usersemail = currentUser[0].email
-        let userspoints = currentUser[0].points
-        let displayname = document.getElementById("users-name")
-        let displayemail = document.getElementById("users-email")
-        displaypoints = document.getElementById("users-points")
-        displayname.innerHTML = usersname
-        displayemail.innerHTML = usersemail
-        displaypoints.innerHTML = `Points: ${userspoints}`
-        // Leave a message section
-        reviewName.value = usersname
-        reviewEmail.value = usersemail
+    let logbtn = document.getElementById("go-to-login")
+    let profbtn = document.getElementById("go-to-profile")
+    if(window.localStorage.getItem("Current User")){
+        console.log("TRUE")
+        customizePage()
+        return true
     }
-  
     else{
-        manager.style.display = 'none'
-        console.log("NOT There")
+        // manager.style.display = 'none'
+        // managerSide.style.display = "none"
         profbtn.style.display = "none"
         logbtn.style.display = "block"
+        return false
     }
 }
+ function customizePage(){
+   
+    // if(checkForUser){
+        let currentUser = JSON.parse(localStorage.getItem('Current User'));
+
+
+        let logbtn = document.getElementById("go-to-login")
+        let profbtn = document.getElementById("go-to-profile")
+        let manager = document.getElementById("manager-tab")
+        let  managerSide = document.getElementById("manager-tab-sidebar")
+        let menu = document.getElementById("menu-tab")
+
+
+        let reviewName = document.getElementById("contact-name")
+        let reviewEmail = document.getElementById("contact-email")
+        let displayname = document.getElementById("users-name")
+        let displayemail = document.getElementById("users-email")
+        let displaypoints = document.getElementById("users-points")
+
+        if(currentUser[0].firstName === "Owner"){
+            console.log("OWNER")
+            manager.style.display = "block"
+            managerSide.style.display = "block"
+
+            // POPULATE PROFILE DISPLAY
+            let usersname = currentUser[0].firstName
+            let usersemail = currentUser[0].email
+            let userspoints = currentUser[0].points
+            displayname.innerHTML = usersname
+            displayemail.innerHTML = usersemail
+            displaypoints.innerHTML = userspoints
+        }
+        else{
+            manager.style.display = "none"
+            managerSide.style.display = "none"
+            let usersname = currentUser[0].firstName
+            let usersemail = currentUser[0].email
+            let userspoints = currentUser[0].points
+            displayname.innerHTML = usersname
+            displayemail.innerHTML = usersemail
+            displaypoints.innerHTML = userspoints
+        }
+        
+        
+        console.log(currentUser[0].firstName)
+}
+
 $("#go-to-profile").click(() => {
     profile = document.getElementById("profile-form")
     profile.style.transform = "scale(1)"
@@ -499,7 +520,10 @@ $("#go-to-profile").click(() => {
     profile.style.transform = "scale(0)"
  })
 $("#sign-out").click(() => {
-    localStorage.removeItem("Current User")
+    document.location.reload()
+    console.log("REFRESH")
+    // localStorage.removeItem("Current User")
+    // checkForUser
  })
 
 
@@ -702,6 +726,7 @@ window.onload =  addUserToStorage(userDatabase)
 // window.onload = retrieveFromStorage()
 //Check if user is logged in
 window.onload = checkForUser();
+// window.onload = customizePage();
 
 window.addEventListener("scroll", showOnScroll);
  window.addEventListener("scroll", addSticky);
