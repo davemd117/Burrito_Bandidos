@@ -6,6 +6,7 @@ let totalPoints = 0;
 let points = [];
 totalPoints = customerPoints[0].points + cartPoints;
 points.push(totalPoints);
+localStorage.setItem("useCredit", true);
 
 currentCustomerCart.forEach((item) => {
    let cartItems = document.querySelector(".cartItems");
@@ -158,7 +159,6 @@ function validateForm3() {
 
 //submit btns
 submitBtn1.addEventListener('click', function() {
-    // come back later and see if can make cash or credit option validation work
     if (validateForm() == true && validateForm2() == true) {
         let container = document.querySelector('.container');
         container.classList.add("containerHidden");
@@ -194,24 +194,45 @@ quantityInputs.forEach((input) => {
 });
 });
 
+const creditBtn = document.querySelector('.creditBtn');
+const cashBtn = document.querySelector('.cashBtn');
 
-  
+cashBtn.addEventListener('click', function() {
+    cashBtn.classList.add("paymentOptionSelected");
+    creditBtn.classList.remove("paymentOptionSelected");
+    cardCvv.value = "Cash expected on delivery";
+    cardNumber.value = "Cash expected on delivery";
+    cardName.value = "Cash expected on delivery";
+    cardExpMonth.value = "Cash expected on delivery";
+    cardExpYear.value = "Cash expected on delivery";
+    localStorage.setItem("useCredit", false);
+});
 
+creditBtn.addEventListener('click', function() {
+    cashBtn.classList.remove("paymentOptionSelected");
+    creditBtn.classList.add("paymentOptionSelected");
+    cardCvv.value = "";
+    cardNumber.value = "";
+    cardName.value = "";
+    cardExpMonth.value = "";
+    cardExpYear.value = "";
+    localStorage.setItem("useCredit", true);
+});
 
-
-
-// jquery for #cashBtn
-// $(".cashBtn").click(function() {
-//     $("#paymentInfoForm input").attr("disabled", true);
-// });
-
-// // jquery for #cardBtn
-// $(".creditBtn").click(function() {
-//     $("#paymentInfoForm input").removeAttr("disabled", false);
-// });
-
-
-// $('.cashBtn').click(function() {
-//     $('#paymentInfoForm input').css('opacity', '0.5');
-// });
-
+$('#ham-menu').click(() => {
+    openNav()
+ 
+ })
+ $('.exit-sidebar').click(() => {
+     closeNav()
+  })
+ 
+ function openNav(){
+     $(".side-bar").removeClass("animate__slideOutRight")
+     $(".side-bar").show()
+ }
+ function closeNav(){
+     $(".side-bar").addClass("animate__slideOutRight")
+        $(".side-bar").hide()
+ 
+ }

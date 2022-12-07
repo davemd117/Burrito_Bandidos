@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="style.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap&family=Smokum&display=swap"  rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&family=DM+Sans:wght@400;500;700&family=Lato:wght@100;300;400&family=Playfair+Display:wght@400;500&family=Rubik:wght@300;400;500;600;700;800;900&family=Smokum&display=swap" rel="stylesheet">
@@ -16,12 +18,16 @@
 <body id="body">
     <!------------------------------- NAV BAR ---------------------------------->
     <nav id="nav-bar" class="nav-bar">
-        <div class="logo">LOGO</div>
+        <div class="logo">
+            <!-- <img class="logo-img" src="receipt_images/bandidos_name_logo.png" alt=""> -->
+        </div>
         <ul id="nav-links" class="nav-links">
+            <a href="menu.html">Menu</a>
+            <a id="manager-tab" href="Manager-Menu-Page.html">Manager</a>
             <a  href="#about-section"><li>About Us</li></a>
             <a href="#featured"><li>Featured</li></a>
             <a href="#our-locations"><li>Locations</li></a>
-            <a href="#contact-us"><li>Contact Us</li></a>
+            <a href="#gallery"><li>Gallery</li></a>
         </ul>
         <ion-icon id="ham-menu" class="ham-menu" name="menu-outline"></ion-icon>
     </nav>
@@ -29,10 +35,12 @@
     <div id="side-bar" class="side-bar animate__animated animate__slideInRight">
         <ion-icon class="exit-sidebar" name="arrow-back-outline"></ion-icon>
         <ul id="side-links" class="side-links">
+            <a id="menu-tab-sidebar" href="menu.html">Menu</a>
+            <a id="manager-tab-sidebar" href="Manager-Menu-Page.html">Manager</a>
             <a  href="#about-section"><li>About Us</li></a>
             <a href="#featured"><li>Featured</li></a>
             <a href="#our-locations"><li>Locations</li></a>
-            <a href="#contact-us"><li>Contact Us</li></a>
+            <a href="#Gallery"><li>Gallery</li></a>
         </ul>
     </div>
     <!------------------------------- SIGNUP ---------------------------------->
@@ -45,6 +53,10 @@
         <div class="next-to">
             <input placeholder="Email..." class="form-input sup-email sup-input" type="email" name="email" id="sup-email">
             <input placeholder="Userame..." class="form-input sup-user sup-input" type="text" name="username" id="sup-user">
+        </div>
+        <div class="next-to">
+            <input type="tel"placeholder="Phone Number (Optional)"class="form-input sup-input sup-phone" name="" id="sup-phone">
+            <input type="text" placeholder="Address (Optional)" class="form-input sup-input sup-addy" name="" id="sup-addy">
         </div>
         <div class="next-to">
             <input placeholder="Password..." class="form-input sup-password sup-input" type="password" name="password"
@@ -169,7 +181,7 @@
             <img src="Manager-Menu-Page-Images/featured-dish-pic.jpg" alt="">
             <div class="about-text">
                 <h1 class="text-header">The Super Burrito</h1>
-                <p>A whole pound of your choice of freshly grilled meat or veggies wrapped in a warm flour tortilla topped with all your favorites.</p>
+                <p>A whole pound of your choice of freshly grilled meat or veggies wrapped in a warm flour tortilla topped with the hopes and dreams of all of Mexico</p>
             </div>
         </div>
     </section>
@@ -194,9 +206,7 @@
     <!------------------------------- GALLERY SECTION ---------------------------------->
     <section id="gallery" class="reveal  gallery">
         <h1 class="gallery-title header">Gallery</h1>
-        
         <div class="pic-container">
-
             <div class="pic">
                 <img src="bandidos_images/burrito_de_bistec.jpg" alt="" class="gallery-img">
                 <p class="img-desc"><span class="img-title">Burrito De Bistec</span> <br>Flour tortilla stuffed with steak and choice of toppings</p>
@@ -221,9 +231,7 @@
                 <img src="bandidos_images/steak_quesadillas.jpg" alt="" class="gallery-img">
                 <p class="img-desc"><span class="img-title">Steak Quesadillas</span> <br>Folded corn tortilla or flour tortilla stuffed with steak and choice of toppings</p>
             </div>
-
         </div>
-       
     </section>
 
 
@@ -247,42 +255,54 @@
         </div>
     </footer>
 
-
+    <!------------------------------- CONTACT SECTION UNDER FOOTER ---------------------------------->
     <section id="bottom" style="background-color: #006341;">
         <h1 class="contact-title header">Contact Us</h1>
         <div class="contact-form-container">
             
             <form action="" class="contact-form">
                 <p class="contact-form-title">Please leave a message!</p>
+                <p class="contact-err animate__animated">Please fill out missing Fields</p>
+                <p class="contact-good animate__animated">Thank you for leaving a message!</p>
                 <div class="contact-form-div">
-                    <input placeholder="Your Name" class="contact-form-input" type="text" name="name" id="">
+                    <input placeholder="Your Name" class="contact-form-input" type="text" name="name" id="contact-name">
                 </div>
                 <div class="contact-form-div">
-                    <input placeholder="Your Email" class="contact-form-input" type="email" name="email" id="">
+                    <input placeholder="Your Email" class="contact-form-input" type="email" name="email" id="contact-email">
                 </div>
                 <div class="contact-form-div">
-                    <input placeholder="Subject" class="contact-form-input" type="text" name="subject" id="">
+                    <input placeholder="Subject (Optional)" class="contact-form-input" type="text" name="subject" id="contact-subject">
                 </div>
                 <div class="contact-form-div">
-                    <textarea placeholder="Message" class="contact-form-input messageBox" name="message" id="" cols="30" rows="3"></textarea>
+                    <textarea placeholder="Message" class="contact-form-input messageBox" name="message" id="contact-message" cols="30" rows="3"></textarea>
                 </div>
-                <input class="submitBtn btn" type="submit" value="Send Message">
+                <input class="contact-submit btn" type="button" value="Send Message">
             </form>
-
-            <div class="our-info">
-                <div class="info-div">
-                    <h2 class="info-title">Our Address</h2>
-                    <address class="info">123 Abcde Dr, Lancaster, PA</address>
+            <div class="rate-us">
+                <div id="our-info" class="our-info">
+                    <div class="info-div">
+                        <h2 class="info-title">Our Address</h2>
+                        <address class="info">123 Abcde Dr, Lancaster, PA</address>
+                    </div>
+                    <div class="info-div">
+                        <h2 class="info-title">Our Phone</h2>
+                        <a class="info">(281) 330-8004</a>
+                    </div>
+                    <div class="info-div">
+                        <h2 class="info-title">Our Email</h2>
+                        <a class="info">Bandido@email.com</a>
+                    </div>
                 </div>
-                <div class="info-div">
-                    <h2 class="info-title">Our Phone</h2>
-                    <a class="info">(281) 330-8004</a>
+                <div id="rating" class="rating">
+                    <h5 class="thank-review" id="thank-review">Please leave us a rating.</h5>
+                    <div class="stars">
+                        <ion-icon  id="1-star" class="star" name="star-outline"></ion-icon>
+                        <ion-icon  id="2-star"class= "star" name="star-outline"></ion-icon>
+                        <ion-icon  id="3-star"class= "star" name="star-outline"></ion-icon>
+                        <ion-icon  id="4-star"class= "star" name="star-outline"></ion-icon>
+                    </div>
                 </div>
-                <div class="info-div">
-                    <h2 class="info-title">Our Email</h2>
-                    <a class="info">Bandido@email.com</a>
-                </div>
-            </div>
+            </div>    
         </div>
     </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -298,7 +318,7 @@
                 nextArrow: $('.next'),
                 slidesToShow: 1,
                 slidesToScroll: 1,
-                autoplay: false,
+                autoplay: true,
                 autoplaySpeed: 5000,
             });
     </script>

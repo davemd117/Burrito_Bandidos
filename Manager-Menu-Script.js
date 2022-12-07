@@ -1,32 +1,22 @@
-let menu = []
+let menuItems = document.querySelector('.menuItems')
+var foodItems = JSON.parse(localStorage.getItem('foodItems'))
 
-let CurrentMenuItemsCustomerPage = JSON.parse(localStorage.getItem('foodItems'))
-CurrentMenuItemsCustomerPage.forEach((item) => {
-    let name = item.name
-    let nameCapitalized = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()
-    let menuItems = document.querySelector('.menuItems')
-    let menuItem = document.createElement('div')
-    menuItem.classList.add('menuItem')
-    menuItem.innerHTML = `
-    <ion-icon class="deleteFromMenuBtn" name="close-circle-outline"></ion-icon>
-    <img class="itemImg" src="${item.image}" alt="">
-    <h3 class="itemName">${nameCapitalized}</h3>
-    <p class="itemPrice">$${item.price}</p>
-    <p class="itemCalories">${item.calories} calories</p>
-    <p class="itemDescription">${item.description}</p>
-    `
-    menuItems.appendChild(menuItem)
-    menu.push({
-        name: item.name,
-        price: item.price,
-        description: item.description,
-        image: item.image,
-        calories: item.calories
-})
-})
-
-console.log(CurrentMenuItemsCustomerPage)
-console.log(menu)
+function renderManagerMenu() {
+    menuItems.innerHTML = "";
+    foodItems.forEach((foodItem) => {
+        menuItems.innerHTML += `
+            <div class="menuItem">
+                <ion-icon class="deleteFromMenuBtn" onclick="removeFromMenu(${foodItem.id})" name="close-circle-outline"></ion-icon>
+                <img class="itemImg" src="${foodItem.image}" alt="">
+                <h3 class="itemName">${foodItem.name}</h3>
+                <p class="itemPrice">$${foodItem.price}</p>
+                <p class="itemCalories">${foodItem.calories} calories</p>
+                <p class="itemDescription">${foodItem.description}</p>
+            <div>
+        `;
+    });
+};
+renderManagerMenu()
 
 //start of add new menu item 
 const addNewMenuItemBtn = document.getElementById('addNewMenuItem');
@@ -36,9 +26,10 @@ addNewMenuItemBtn.addEventListener('click', () => {
     const description = document.getElementById('newItemDescription').value;
     const image = document.getElementById('newItemImg').value;
     const calories = document.getElementById('newItemCalories').value;
-    const whereToinsert = document.getElementById('locationNewItem').value;
-    for(let i = 0; i < menu.length; i++) {
-        if(menu[i].name === name) {
+    const id = document.getElementById('newItemId').value;
+    const id1 = parseInt(id)
+    for(let i = 0; i < foodItems.length; i++) {
+        if(foodItems[i].name === name) {
             alert('Item already exists');
             return;
         }
@@ -48,11 +39,12 @@ addNewMenuItemBtn.addEventListener('click', () => {
         return;
     }
     const newMenuItem = {
-        name: document.getElementById('newItemName').value,
-        price: document.getElementById('newItemPrice').value,
-        description: document.getElementById('newItemDescription').value,
-        image: document.getElementById('newItemImg').value,
-        calories: document.getElementById('newItemCalories').value
+        name: name,
+        price: price,
+        description: description,
+        image: image,        
+        calories: calories,
+        id:  id1
     }
     
     setTimeout(() => {
@@ -63,47 +55,45 @@ addNewMenuItemBtn.addEventListener('click', () => {
         let addedSuccess = document.querySelector('.addedItemSuccess')
         addedSuccess.style.display = 'none'
     }, 1000)
-    // menu.push(newMenuItem)
-    menu.splice(whereToinsert, 0, newMenuItem)
-    console.log(menu)
-    appendMenuItems(menu)
+    foodItems.push(newMenuItem)
+    localStorage.setItem('foodItems', JSON.stringify(foodItems))
+    appendMenuItems(newMenuItem)
+    renderManagerMenu();
     document.getElementById('newItemName').value = '';
     document.getElementById('newItemPrice').value = '';
     document.getElementById('newItemDescription').value = '';
     document.getElementById('newItemImg').value = '';
     document.getElementById('newItemCalories').value = '';
-    document.getElementById('locationNewItem').value = '';
+    document.getElementById('newItemId').value = '';
 })
 
-const appendMenuItems = (menu) => {
-    const name = document.getElementById('newItemName').value;
-    const price = document.getElementById('newItemPrice').value;
-    const description = document.getElementById('newItemDescription').value;
-    const image = document.getElementById('newItemImg').value;
-    const calories = document.getElementById('newItemCalories').value;
-    const menuItems = document.querySelector('.menuItems')
-    const newMenuItem = document.createElement('div')
-    const whereToinsert = document.getElementById('locationNewItem').value;
-    newMenuItem.classList.add('menuItem')
-    newMenuItem.innerHTML = `
-    <ion-icon class="deleteFromMenuBtn" name="close-circle-outline"></ion-icon>
-    <img class="itemImg" src="${image}"  alt="...">
+const appendMenuItems = () => {
+    let name = document.getElementById('newItemName').value;
+    let price = document.getElementById('newItemPrice').value;
+    let description = document.getElementById('newItemDescription').value;
+    let image = document.getElementById('newItemImg').value;
+    let calories = document.getElementById('newItemCalories').value;
+    let menuItems = document.querySelector('.menuItems')
+    let newMenuItem1 = document.createElement('div')
+    let id = document.getElementById('newItemId').value;    
+    newMenuItem1.classList.add('menuItem')
+    newMenuItem1.innerHTML =  `
+    <ion-icon class="deleteFromMenuBtn" onclick="removeFromMenu(${id})" name="close-circle-outline"></ion-icon>
+    <img class="itemImg" src="${image}" alt="">
     <h3 class="itemName">${name}</h3>
+    <p class="itemPrice">$${price}</p>
+    <p class="itemCalories">${calories} calories</p>
     <p class="itemDescription">${description}</p>
-    <p class="itemCalories">${calories}</p>
-    <p class="itemPrice">${price}</p>
-`
-    menuItems.insertBefore(newMenuItem, menuItems.childNodes[whereToinsert])
-    const deleteFromMenuBtn = document.querySelectorAll('.deleteFromMenuBtn');
-    deleteFromMenuBtn.forEach((btn, i) => {
-    btn.addEventListener('click', () => {
-        btn.parentElement.remove()
-        menu.splice(i, 1)
-        console.log(menu)
-    })
-})
-
+    `
+    menuItems.appendChild(newMenuItem1)
+    renderManagerMenu();
 }
+function removeFromMenu(id) {
+    foodItems = foodItems.filter( (foodItem) => foodItem.id !== id);
+    localStorage.setItem("foodItems", JSON.stringify(foodItems));
+    renderManagerMenu();
+};
+
 // end of add new menu item
 
 // add form buttons
@@ -122,22 +112,10 @@ AddFormviewChanges.addEventListener('click', () => {
 
 const addFormConfirmBtn = document.getElementById('addFormConfirmBtn');
 addFormConfirmBtn.addEventListener('click', () => {
-    localStorage.removeItem('menu')
-    localStorage.setItem('menu', JSON.stringify(menu))
+    localStorage.removeItem('foodItems')
+    localStorage.setItem('foodItems', JSON.stringify(foodItems))
 })
 // end of add form buttons
-
-//delete menu items
-const deleteFromMenuBtn = document.querySelectorAll('.deleteFromMenuBtn');
-deleteFromMenuBtn.forEach((btn, i) => {
-    btn.addEventListener('click', () => {
-        btn.parentElement.remove()
-        menu.splice(i, 1)
-        console.log(menu)
-    })
-})
-
-// end of delete menu items
 
 // start of edit items
 const editMenuItemBtn = document.getElementById('editMenuItem');
@@ -147,27 +125,32 @@ editMenuItemBtn.addEventListener('click', () => {
     const newDescription = document.getElementById('editItemDescription').value;
     const newImage = document.getElementById('editItemImg').value;
     const newCalories = document.getElementById('editItemCalories').value;
-    const newItemLocation = document.getElementById('editItemLocation').value;
-    for(let i = 0; i < menu.length; i++) {
-        if(menu[i].name === name) {
-            menu[i].name = name;
-            menu[i].price = newPrice;
-            menu[i].description = newDescription;
-            menu[i].image = newImage;
-            menu[i].calories = newCalories;
-            console.log(menu)
+    const newId = document.getElementById('editItemId').value;
+    const newId1 = parseInt(newId)
+    for(let i = 0; i < foodItems.length; i++) {
+        if(foodItems[i].name === name) {
+            foodItems[i].name = name;
+            foodItems[i].price = newPrice;
+            foodItems[i].description = newDescription;
+            foodItems[i].image = newImage;
+            foodItems[i].calories = newCalories;
+            foodItems[i].id = newId1;
+            console.log(foodItems)
+            alert('Item has been updated');
+            localStorage.setItem('foodItems', JSON.stringify(foodItems))
             return;
         }
     }
     alert('Item does not exist');
 })
+
 // end of edit items
 
 // start of edit form buttons
 const editItemConfirmBtn = document.getElementById('editFormConfirmBtn');
 editItemConfirmBtn.addEventListener('click', () => {
-    localStorage.removeItem('menu')
-    localStorage.setItem('menu', JSON.stringify(menu))
+    localStorage.removeItem('foodItems')
+    localStorage.setItem('foodItems', JSON.stringify(foodItems))
 })
 
 const editItemFormViewChanges = document.getElementById('editFormViewChanges');
@@ -216,6 +199,7 @@ $("#editMenuHeader").click(function(){
 // // end of header buttons jquery
 
 // jquery for forms to animate from center to left on close
+
 $('.addFormCloseBtn').click(function() {
     $('.addItemFormContainer').animate({
         left: '-100%',
@@ -231,117 +215,25 @@ $('.editFormCloseBtn').click(function() {
     });
     $('.editItemForm').addClass('animte__fadeOut')
 })
+
 // end of jquery for close buttons
 
-// start of hamburger menu
-let hamburgerBtn = document.querySelector('.hamburgerBtn');
-hamburgerBtn.addEventListener('click', () => {
-    let hamnurgerMenu = document.querySelector('.hamburger');
-    hamnurgerMenu.classList.remove('hamburgerHidden')
-    hamnurgerMenu.classList.add('hamburgerActive')
-    hamburgerBtn.classList.add('hamburgerBtnLeft')
-})
-
-let viewMenuHamburger = document.querySelector('#viewMenuHamburger');
-viewMenuHamburger.addEventListener('click', () => {
-    let menuItemsContainer = document.querySelector('.menu')
-    menuItemsContainer.classList.remove('menuItemsHidden')
-    menuItemsContainer.classList.add('menuItemsActive')
-    let hero = document.querySelector('.hero')
-    hero.classList.remove('heroActive')
-    hero.classList.add('heroHidden')
-    let hamnurgerMenu = document.querySelector('.hamburger');
-    hamnurgerMenu.classList.remove('hamburgerActive')
-    hamnurgerMenu.classList.add('hamburgerHidden')
-    let hamburgerBtn = document.querySelector('.hamburgerBtn');
-    hamburgerBtn.classList.remove('hamburgerBtnLeft')
-    hamburgerBtn.classList.add('hamburgerBtn')
-})
-// end of hamburger menu
-
-
-
-// let menuItems = document.querySelectorAll('.menuItem')
-// menuItems.forEach((item) => {
-    // menu.push({
-    //     name: item.querySelector('.itemName').textContent.toUpperCase(),
-    //     price: item.querySelector('.itemPrice').textContent,
-    //     description: item.querySelector('.itemDescription').textContent,
-    //     image: item.querySelector('.itemImg').src,
-    //     calories: item.querySelector('.itemCalories').textContent
-    // })
-// })
-// console.log(menu)
-// end of pushing static menu items to array menu
-
-// const addFormCloseBtn = document.querySelector('.addFormCloseBtn');
-// addFormCloseBtn.addEventListener('click', () => {
-//     let addform = document.getElementById('addForm')
-//     addform.classList.remove('formsActive')
-//     addform.classList.add('formsHidden')
-// })
-
-// const editFormCloseBtn = document.querySelector('.editFormCloseBtn');
-// editFormCloseBtn.addEventListener('click', () => {
-//     let editForm = document.querySelector('.editItemForm')
-//     editForm.classList.remove('formsActive')
-//     editForm.classList.add('formsHidden')
-// })
-
-// const deleteFormCloseBtn = document.querySelector('.delFormCloseBtn');
-// deleteFormCloseBtn.addEventListener('click', () => {
-//     let deleteform = document.getElementById('deleteForm')
-//     deleteform.classList.remove('formsActive')
-//     deleteform.classList.add('formsHidden')
-// })
-
-// $('.delFormCloseBtn').click(function() {
-//     $('.deleteItemFormContainer').animate({
-//         left: '-100%',
-//         opacity: '1',
-//     });
-//     $('.deleteItemForm').addClass('animte__fadeOut')
-// })
-
-// $("#deleteMenuHeader").click(function(){
-//     $(".deleteItemFormContainer").animate({
-//         left: '34.5%',
-//         opacity: '1',
-//     });
-// });
-
-// delete form buttons
-// const deleteFormHeader = document.getElementById('deleteMenuHeader');
-// deleteFormHeader.addEventListener('click', () => {
-//     let deleteform1 = document.getElementById('deleteForm')
-//     deleteform1.classList.remove('formsHidden')
-//     deleteform1.classList.add('formsActive')
-// })
-
-// const deleteFormConfirmBtn = document.getElementById('deleteFormConfirmBtn');
-// deleteFormConfirmBtn.addEventListener('click', () => {
-//     localStorage.removeItem('menu')
-//     localStorage.setItem('menu', JSON.stringify(menu))
-// })
-
-// const deleteFormviewChanges = document.getElementById('deleteFormViewChanges');
-// deleteFormviewChanges.addEventListener('click', () => {
-//     window.location.href = 'Menu-Updated.html'
-// })
-// end of delete form buttons
-
-// function to delete menu figure out how to get error message to work properly
-// const deleteMenuItemBtn = document.getElementById('deleteMenuItem');
-// deleteMenuItemBtn.addEventListener('click', () => {
-//     const deleteMenuItem = document.getElementById('deleteItemName').value.toUpperCase();
-//     for(i = 0 ; i < menu.length ; i++) {
-//         if(menu[i].name === deleteMenuItem) {
-//         const menuItems = document.querySelector('.menuItems')
-//         menuItems.removeChild(menuItems.children[i])
-//         menu.splice(i, 1)
-//         console.log(deleteMenuItem)
-//         console.log(menu)
-//         }
-//         document.getElementById('deleteItemName').value = '';
-//     }
-// })
+// jquery for hamburger menu
+$('#ham-menu').click(() => {
+    openNav()
+ 
+ })
+ $('.exit-sidebar').click(() => {
+     closeNav()
+  })
+ 
+ function openNav(){
+     $(".side-bar").removeClass("animate__slideOutRight")
+     $(".side-bar").show()
+ }
+ function closeNav(){
+     $(".side-bar").addClass("animate__slideOutRight")
+        $(".side-bar").hide()
+ 
+ }
+// end of jquery for hamburger menu
