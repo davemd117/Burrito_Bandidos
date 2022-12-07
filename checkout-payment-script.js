@@ -1,5 +1,12 @@
 let customerCart = [];
 let currentCustomerCart = JSON.parse(localStorage.getItem("purchaseItems"));
+let cartPoints = JSON.parse(localStorage.getItem("cartPoints"));
+let customerPoints = JSON.parse(localStorage.getItem("Current User"));
+let totalPoints = 0;
+let points = [];
+totalPoints = customerPoints[0].points + cartPoints;
+points.push(totalPoints);
+localStorage.setItem("useCredit", true);
 
 currentCustomerCart.forEach((item) => {
    let cartItems = document.querySelector(".cartItems");
@@ -7,7 +14,7 @@ currentCustomerCart.forEach((item) => {
     cartItem.classList.add("cartItem");
     cartItem.innerHTML = `
     <div class="cartItemImg">
-        <img src="${item.image}" alt="">
+        <img src="/${item.image}" alt="">
     </div>
     <div class="cartItemName">
         <h4>${item.name}</h4>
@@ -30,8 +37,7 @@ currentCustomerCart.forEach((item) => {
         name: item.name,
         price: item.price,
         image: item.image,
-        quantity: item.quantity
-
+        quantity: item.quantity,
     });
     totalPrice();
 });
@@ -123,7 +129,6 @@ var shippingZip = document.getElementById('shippingZip');
 var shippingEmail = document.getElementById('shippingEmail');
 var shippingMethod = document.getElementById('shippingMethod');
 
-
 function validateForm() {
     if (billingName.value == "" || address.value == "" || email.value == "" || city.value == "" || state.value == "" || zip.value == "" || email.value.includes("@") == false) {
         alert("Please make sure to fill out all fields properly");
@@ -154,9 +159,6 @@ function validateForm3() {
 
 //submit btns
 submitBtn1.addEventListener('click', function() {
-    // let paymentInfoForm = document.getElementById('paymentInfoForm');
-    // let paymentFormInputs = paymentInfoForm.querySelectorAll('input');
-    // come back later and see if can make cash or credit option validation work
     if (validateForm() == true && validateForm2() == true) {
         let container = document.querySelector('.container');
         container.classList.add("containerHidden");
@@ -164,32 +166,73 @@ submitBtn1.addEventListener('click', function() {
         let container2 = document.querySelector('.container2');
         container2.classList.add("containerActive");
         container2.classList.remove("containerHidden");
+       
+    }
+});
+
+let customerPointsSelect = document.getElementById('customerPoints');
+customerPointsSelect.addEventListener('change', function() {
+    if(customerPointsSelect.value == "usePoints") {
+        localStorage.setItem("usePoints", true);
+    } else {
+        localStorage.setItem("usePoints", false);
     }
 });
 
 submitBtn2.addEventListener('click', function() {
+    let quantityInputs = document.querySelectorAll('.quantity');
+quantityInputs.forEach((input) => {
+    let itemIndex = customerCart.findIndex((item) => {
+        return item.name === input.parentElement.parentElement.querySelector(".cartItemName h4").innerText;
+    });
+    customerCart[itemIndex].quantity = input.value;
     if (validateForm3() == true) {
-        // going to need to save cart items to local storage and then redirect to confirmation page
+        localStorage.setItem('totalPoints', points);
         localStorage.setItem('finalCart', JSON.stringify(customerCart));
         window.location.href = "receipt.html";
     }
 });
+});
 
+const creditBtn = document.querySelector('.creditBtn');
+const cashBtn = document.querySelector('.cashBtn');
 
+cashBtn.addEventListener('click', function() {
+    cashBtn.classList.add("paymentOptionSelected");
+    creditBtn.classList.remove("paymentOptionSelected");
+    cardCvv.value = "Cash expected on delivery";
+    cardNumber.value = "Cash expected on delivery";
+    cardName.value = "Cash expected on delivery";
+    cardExpMonth.value = "Cash expected on delivery";
+    cardExpYear.value = "Cash expected on delivery";
+    localStorage.setItem("useCredit", false);
+});
 
+creditBtn.addEventListener('click', function() {
+    cashBtn.classList.remove("paymentOptionSelected");
+    creditBtn.classList.add("paymentOptionSelected");
+    cardCvv.value = "";
+    cardNumber.value = "";
+    cardName.value = "";
+    cardExpMonth.value = "";
+    cardExpYear.value = "";
+    localStorage.setItem("useCredit", true);
+});
 
-// jquery for #cashBtn
-// $(".cashBtn").click(function() {
-//     $("#paymentInfoForm input").attr("disabled", true);
-// });
-
-// // jquery for #cardBtn
-// $(".creditBtn").click(function() {
-//     $("#paymentInfoForm input").removeAttr("disabled", false);
-// });
-
-
-// $('.cashBtn').click(function() {
-//     $('#paymentInfoForm input').css('opacity', '0.5');
-// });
-
+$('#ham-menu').click(() => {
+    openNav()
+ 
+ })
+ $('.exit-sidebar').click(() => {
+     closeNav()
+  })
+ 
+ function openNav(){
+     $(".side-bar").removeClass("animate__slideOutRight")
+     $(".side-bar").show()
+ }
+ function closeNav(){
+     $(".side-bar").addClass("animate__slideOutRight")
+        $(".side-bar").hide()
+ 
+ }
