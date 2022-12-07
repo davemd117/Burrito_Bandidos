@@ -1,9 +1,9 @@
+// ------------------------------- Variables ------------------------------- 
 const menuColumn1 = document.getElementById('menuColumn1');
 const menuColumn2 = document.getElementById('menuColumn2');
 const menuColumn3 = document.getElementById('menuColumn3');
 
-
-var menuCounter = 1
+var menuCounter = 1;
 
 var foodItems = [
     {
@@ -166,8 +166,9 @@ var foodItems = [
         description: "A giant burrito stuffed with the hopes and dreams of all of Mexico",
         calories: 920,
     }
-]
+];
 
+// ------------------------------- Menu ------------------------------- 
 function renderMenu() {
     foodItems.forEach( (foodItem) => {
         if(menuCounter == 1) {
@@ -211,10 +212,9 @@ function renderMenu() {
             menuCounter = 1;
         }
     });
-    localStorage.setItem('foodItems', JSON.stringify(foodItems)) //NOTE
-}
+    localStorage.setItem('foodItems', JSON.stringify(foodItems))
+};
 renderMenu();
-
 
 function addToCart(id) {
     var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
@@ -232,9 +232,64 @@ function addToCart(id) {
     }
 
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
-
-    // Need to push it into the localStorage from this page first
-    // Set item here? Then update cart from the begining
-    updateCart();
 };
+
+// ------------------------------- Hamburger Menu ------------------------------- 
+$('#ham-menu').click(() => {
+    openNav()
+ 
+ })
+ $('.exit-sidebar').click(() => {
+     closeNav()
+  })
+ function openNav(){
+     $(".side-bar").removeClass("animate__slideOutRight")
+     $(".side-bar").show()
+ }
+ function closeNav(){
+     $(".side-bar").addClass("animate__slideOutRight")
+ 
+ }
+
+//  CHECK FOR USER TO HIDE LOGIN BUTTON
+// ------------------------------- Signout ------------------------------- 
+function checkForUser(){
+    logbtn = document.getElementById("go-to-login")
+    profbtn = document.getElementById("go-to-profile")
+    
+    if(window.localStorage.getItem("Current User")){
+        let currentUser = JSON.parse(localStorage.getItem('Current User'));
+        profbtn.style.display = "block"
+        // logbtn.style.display = "none"
+        profbtn.innerHTML = `${currentUser[0].firstName}\'s Profile`
+        // POPULATE PROFILE
+        let usersname = currentUser[0].firstName
+        let usersemail = currentUser[0].email
+        let userspoints = currentUser[0].points
+        let displayname = document.getElementById("users-name")
+        let displayemail = document.getElementById("users-email")
+        displaypoints = document.getElementById("users-points")
+        displayname.innerHTML = usersname
+        displayemail.innerHTML = usersemail
+        displaypoints.innerHTML = `Points: ${userspoints}`
+    }
+    else{
+        console.log("NOT There")
+        profbtn.style.display = "none"
+        // logbtn.style.display = "block"
+    }
+}
+
+$("#go-to-profile").click(() => {
+    profile = document.getElementById("profile-form")
+    profile.style.transform = "scale(1)"
+ })
+ $("#exit-profile").click(() => {
+    profile = document.getElementById("profile-form")
+    profile.style.transform = "scale(0)"
+ })
+$("#sign-out").click(() => {
+    localStorage.removeItem("Current User")
+ })
+ checkForUser()
 

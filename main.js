@@ -1,33 +1,50 @@
+// // WINDOW ONLOAD FUNCTIONS
+// //Testing accnts in storage
+// window.onload =  addUserToStorage(userDatabase)
+// //Check if user is logged in
+// window.onload = checkForUser();
 
+// window.addEventListener("scroll", showOnScroll);
+//  window.addEventListener("scroll", addSticky);
+//  window.addEventListener("scroll", stickFooter);nhjjgjtgttt
 
 
 let userDatabase = [];
 let listUsers = [];
 let currentUser = [];
+let userMessage=[];
+
+
+
 
 
 // ----- user info class ----- //
 
 class UserInfo {
-    constructor(username, firstName, email, password,points,favorites) {
+    constructor(username, firstName, email, password,points,address,phone,favorites) {
         this.username = username;
         this.firstName = firstName;
         this.email = email;
         this.password = password;
         this.points = points
+        this.phone = phone;
+        this.address = address;
         this.favorites = favorites
        
     };
 };
 
-// test classes to populate storage
-userDatabase.push(new UserInfo('bandido1', 'Owner', 'BurBand@email.com', 'Password123', 100000000000));
-userDatabase.push(new UserInfo('davemd', 'Dave', 'dave@email.com', 'Drum&',100000000000));
-userDatabase.push(new UserInfo('preachey', 'Ryan', 'ryan@email.com', '$hort',100000000000));
-userDatabase.push(new UserInfo('chris', 'Chris', 'chris@email.com', 'wr1ght',100000000000));
 
-//Testing accnts in storage
-window.onload =  addUserToStorage(userDatabase)
+
+
+// test classes to populate storage
+userDatabase.push(new UserInfo('bandido1', 'Owner', 'BurBand@email.com', 'Password123', 1000));
+userDatabase.push(new UserInfo('davemd', 'Dave', 'dave@email.com', 'Drum&',1000));
+userDatabase.push(new UserInfo('preachey', 'Ryan', 'ryan@email.com', '$hort',1000));
+userDatabase.push(new UserInfo('chris', 'Chris', 'chris@email.com', 'wr1ght',1000));
+
+
+
 
 
 
@@ -39,7 +56,9 @@ function addUser() {
         $('.sup-name').val(),
         $('.sup-email').val(),
         $('.sup-password').val(),
-        500,
+        $('.sup-phone').val(),
+        $('.sup-addy').val(),
+        50
     ));
 }
 
@@ -48,7 +67,12 @@ function addUserToStorage(arr){
         window.localStorage.setItem(`${i}`, JSON.stringify(arr[i]))
     }
 }
-
+function getKeyFromStorage(key, arr){
+    if(window.localStorage.getItem(key)!== null){
+        arr.push(JSON.parse(localStorage.getItem(key)))
+    }
+    
+}
 function retrieveFromStorage(arr){
     Object.keys(localStorage).forEach((key) => {
         arr.push(JSON.parse(localStorage.getItem(key)));
@@ -68,36 +92,84 @@ function checkForInput() {
 }
 
 //Checks if username is already used
-function userDupeCheck() {
-    let userUsername = []
-    userDatabase.forEach((user) => {
-        console.log(user.username)
-        userUsername.push(user.username)
-    })
-    console.log(userUsername.includes($('.sup-user').val()))
-    if(userUsername.includes($('.sup-user').val())){
+function checkUsername(){
+    let storedUsers = []
+    let usernames = []
+    let storage = window.localStorage
+    for(i=0;i<storage.length;i++){
+        getKeyFromStorage(`${i}`, storedUsers)
+        if(storedUsers[i]!==null && storedUsers[i]!==undefined){
+            // console.log(storedUsers[i].username)
+            storedUsernames = storedUsers[i].username
+            // console.log(storedUsernames)
+            usernames.push(storedUsernames)
+        }
+    }
+    // console.log()
+    if(usernames.includes($(".sup-user").val())){
+        // console.log("ITS THERE")
         return false
     }
     else{
+        // console.log("not there")
+        return true
+    }
+}
+// function userDupeCheck() {
+//     let userUsername = []
+//     userDatabase.forEach((user) => {
+//         // console.log(user.username)
+//         userUsername.push(user.username)
+//     })
+//     // console.log(userUsername.includes($('.sup-user').val()))
+//     if(userUsername.includes($('.sup-user').val())){
+//         return false
+//     }
+//     else{
+//         return true
+//     }
+// }
+
+
+//Checks if email is already in use
+function checkEmail(){
+    let storedUsers = []
+    let emails = []
+    let storage = window.localStorage
+    for(i=0;i<storage.length;i++){
+        getKeyFromStorage(`${i}`, storedUsers)
+        if(storedUsers[i]!==null && storedUsers[i]!==undefined){
+            console.log(storedUsers[i].email)
+            storedEmails = storedUsers[i].email
+            // console.log(storedEmails)
+            emails.push(storedEmails)
+        }
+    }
+    // console.log()
+    if(emails.includes($(".sup-email").val())){
+        console.log("ITS THERE")
+        return false
+    }
+    else{
+        console.log("not there")
         return true
     }
 }
 
-//Checks if email is already in use
-function emailDupeCheck() {
-    let userEmail = []
-    userDatabase.forEach((user) => {
-        console.log(user.email)
-        userEmail.push(user.email)
-    })
-    console.log(userEmail.includes($('.sup-email').val()))
-    if(userEmail.includes($('.sup-email').val())){
-        return false
-    }
-    else{
-        return true
-    }
-}
+// function emailDupeCheck() {
+//     let userEmail = []
+//     userDatabase.forEach((user) => {
+//         // console.log(user.email)
+//         userEmail.push(user.email)
+//     })
+//     // console.log(userEmail.includes($('.sup-email').val()))
+//     if(userEmail.includes($('.sup-email').val())){
+//         return false
+//     }
+//     else{
+//         return true
+//     }
+// }
 
 //Checks if password and confirm password are the same
 function checkConfirmPass() {
@@ -134,7 +206,7 @@ function checkPassReqs() {
 // Send userDatabase to local storage
 //Clear fields
 $('.sup-submit').click(() => {
-    if (userDupeCheck() && emailDupeCheck() && checkForInput() && checkPassReqs() && checkConfirmPass()){
+    if (checkUsername() && checkEmail() && checkForInput() && checkPassReqs() && checkConfirmPass()){
         addUser();
         addUserToStorage(userDatabase)
         $('.sup-good').show()
@@ -142,10 +214,13 @@ $('.sup-submit').click(() => {
         $('.sup-name').val("")
         $('.sup-email').val("")
         $('.sup-user').val("")
+        $('.sup-phone').val("")
+        $('.sup-addy').val("")
         $('.sup-password').val("")
         $('.sup-confirm').val("")
     }
     else {
+        // checkEmail()
         $('.sup-bad').show()
         $('.sup-good').hide()
     }
@@ -180,6 +255,9 @@ $('.log-pass').keydown((event) =>{
         $('.log-submit').click()
     }
 })
+
+
+
 
 // -----Go to Log-in ----- //
 $('.go-to-login').click(()=>{
@@ -300,19 +378,19 @@ $('.log-submit').click(() => {
     retrieveFromStorage(listUsers) // Grab local storage and push it into listUsers
     for(users of listUsers){
         if(logUsername ==="bandido1" && logPassword === "Password123" ){
-            console.log(users)
-            // $('.log-pass').val("")
-            // $('.log-user').val("")
+            user = window.localStorage.getItem("0")
+            owner = JSON.parse(user)
+            console.log(owner.email)
             $('.err-mess').hide()
-            $('#welcome').text(`Welcome ${users.firstName}`)
+            $('#welcome').text(`Welcome ${owner.firstName}`)
             $('#welcome').show()
             // console.log(users[0])
             currentUser.length = 0
-            currentUser.push(users)
+            currentUser.push(owner)
             window.localStorage.removeItem("Current User")
             window.localStorage.setItem("Current User", JSON.stringify(currentUser))
             showSignout()
-            window.location.href = "Manager-Menu-Page.html"
+            // window.location.href = "Manager-Menu-Page.html"
         }
         else if(logUsername === users.username && logPassword === users.password){
             // $('.log-pass').val("")
@@ -325,16 +403,16 @@ $('.log-submit').click(() => {
             window.localStorage.removeItem("Current User")
             window.localStorage.setItem("Current User", JSON.stringify(currentUser))
             showSignout()
-            console.log("user")
+            // console.log("user")
             window.location.href = "menu.html"
         }
         else if(logUsername === users.username && logPassword !== users.password){
-            console.log("WRONG PASSWORD")
+            // console.log("WRONG PASSWORD")
             $('.err-mess').text("WRONG PASSWORD")
             $('.err-mess').show()
         }
         else if(logUsername !== users.username && logPassword === users.password){
-            console.log("WRONG USERNAME")
+            // console.log("WRONG USERNAME")
             $('.err-mess').text("USERNAME DOESNT MATCH PASSWORD")
             $('.err-mess').show()
         }
@@ -345,9 +423,10 @@ $('.log-submit').click(() => {
     }
 })
 
-//make signout button
+//make Profile button
 function showSignout(){
     let currentUser = JSON.parse(localStorage.getItem('Current User'));
+    // if(currentUser[0.firstName === "Owner"])
     logbtn = document.getElementById("go-to-login")
     profbtn = document.getElementById("go-to-profile")
     logbtn.style.display = "none"
@@ -367,31 +446,76 @@ function showSignout(){
 
 // SIGNOUT
 function checkForUser(){
-    logbtn = document.getElementById("go-to-login")
-    profbtn = document.getElementById("go-to-profile")
-    
-    if(window.localStorage.getItem("Current User")){
-        let currentUser = JSON.parse(localStorage.getItem('Current User'));
-        profbtn.style.display = "block"
-        logbtn.style.display = "none"
-        profbtn.innerHTML = `${currentUser[0].firstName}\'s Profile`
-        // POPULATE PROFILE
-        let usersname = currentUser[0].firstName
-        let usersemail = currentUser[0].email
-        let userspoints = currentUser[0].points
-        let displayname = document.getElementById("users-name")
-        let displayemail = document.getElementById("users-email")
-        displaypoints = document.getElementById("users-points")
-        displayname.innerHTML = usersname
-        displayemail.innerHTML = usersemail
-        displaypoints.innerHTML = `Points: ${userspoints}`
+    let logbtn = document.getElementById("go-to-login")
+    let profbtn = document.getElementById("go-to-profile")
+
+    let manager = document.getElementById("manager-tab")
+    let managerSide = document.getElementById("manager-tab-sidebar")
+
+    let reviewName = document.getElementById("contact-name")
+    let reviewEmail = document.getElementById("contact-email")
+    let storedUser = window.localStorage.getItem("Current User")
+    let loggedUser = JSON.parse(storedUser)
+    // let userName = loggedUser.firstName
+    if(storedUser){
+        console.log(storedUser)
+        if(loggedUser[0].firstName === "Owner"){
+            let manager = document.getElementById("manager-tab")
+            let managerSide = document.getElementById("manager-tab-sidebar")
+            console.log("owner")
+            manager.style.display = "block"
+            managerSide.style.display = "block"
+            // POPULATE PROFILE DISPLAY
+            let usersname = loggedUser[0].firstName
+            let usersemail = loggedUser[0].email
+            let userspoints = loggedUser[0].points
+            let displayname = document.getElementById("users-name")
+            let displayemail = document.getElementById("users-email")
+            displaypoints = document.getElementById("users-points")
+            displayname.innerHTML = usersname
+            displayemail.innerHTML = usersemail
+            displaypoints.innerHTML = `Points: ${userspoints}`
+            profbtn.style.display = "block"
+            logbtn.style.display = "none"
+            profbtn.innerHTML = `${loggedUser[0].firstName}\'s Profile`
+        }
+        else{
+            console.log(loggedUser)
+            // console.log(userName)
+            let manager = document.getElementById("manager-tab")
+            let managerSide = document.getElementById("manager-tab-sidebar")
+            let currentUser = JSON.parse(localStorage.getItem('Current User'));
+            manager.style.display = "none"
+            managerSide.style.display = "none"
+            profbtn.style.display = "block"
+            logbtn.style.display = "none"
+            profbtn.innerHTML = `${currentUser[0].firstName}\'s Profile`
+            // POPULATE PROFILE DISPLAY
+            let usersname = loggedUser[0].firstName
+            let usersemail = loggedUser[0].email
+            let userspoints = loggedUser[0].points
+            let displayname = document.getElementById("users-name")
+            let displayemail = document.getElementById("users-email")
+            displaypoints = document.getElementById("users-points")
+            displayname.innerHTML = usersname
+            displayemail.innerHTML = usersemail
+            displaypoints.innerHTML = `Points: ${userspoints}`
+            // Leave a message section
+            reviewName.value = usersname
+            reviewEmail.value = usersemail
+        }
     }
     else{
+        let manager = document.getElementById("manager-tab")
+        let managerSide = document.getElementById("manager-tab-sidebar")
         console.log("NOT There")
         profbtn.style.display = "none"
         logbtn.style.display = "block"
+        manager.style.display = "none"
+        managerSide.style.display = "none"
     }
 }
+
 $("#go-to-profile").click(() => {
     profile = document.getElementById("profile-form")
     profile.style.transform = "scale(1)"
@@ -401,14 +525,17 @@ $("#go-to-profile").click(() => {
     profile.style.transform = "scale(0)"
  })
 $("#sign-out").click(() => {
+    // document.location.reload()
+    // console.log("REFRESH")
     localStorage.removeItem("Current User")
+    // checkForUser
  })
 
 
- window.addEventListener("scroll", showOnScroll);
- window.addEventListener("scroll", addSticky);
- window.addEventListener("scroll", stickFooter);
- window.onload = checkForUser()
+//  window.addEventListener("scroll", showOnScroll);
+//  window.addEventListener("scroll", addSticky);
+//  window.addEventListener("scroll", stickFooter);
+ 
 
 
 
@@ -429,6 +556,8 @@ function addSticky(){
         foot.classList.add("animate__slideOutDown")
     }
 }
+
+
 function stickFooter(){
     let foot = document.getElementById("footer")
     let bottom = document.getElementById("bottom")
@@ -494,3 +623,117 @@ function closeNav(){
         }
     }
  }
+
+
+
+
+
+
+
+
+// CONTACT US
+
+class message{
+    constructor(name,email,subject,message){
+        this.name = name;
+        this.email = email;
+        this.subject = subject;
+        this.message = message;
+    }
+}
+
+function storeMessage(){
+    userMessage.push(new message(
+        $("#contact-name").val(),
+        $("#contact-email").val(),
+        $("#contact-subject").val(),
+        $("#contact-message").val()
+    ))
+}
+$(".contact-submit").click(() =>{
+    if($("#contact-name").val() ===""||$("#contact-email").val() ===""||$("#contact-message").val() ===""){
+        $(".contact-good").hide()
+        $(".contact-err").show()
+        $(".contact-err").addClass("animate__headShake")
+    }
+    else{
+        
+    storeMessage();
+   let  stringMessage = JSON.stringify(userMessage)
+    window.localStorage.setItem("Message", stringMessage)
+        $(".contact-err").hide()
+        $(".contact-good").addClass("animate__bounce")
+        $(".contact-good").show()
+        $("#contact-name").val("") 
+        $("#contact-email").val("") 
+        $("#contact-subject").val("") 
+        $("#contact-message").val("") 
+    }
+})
+
+$('.contact-form-input').focus(()=>{
+    $(".contact-good").hide()
+    $(".contact-good").removeClass("animate__bounce")
+})
+
+//  Review stars
+function starReview(){
+    let thank = document.getElementById("thank-review")
+    let stars =document.querySelectorAll(".star")
+    // console.log(this.parentNode.parentNode)
+    let container = this.parentNode.parentNode;
+    let star = this.id;
+    if(star === "4-star"){
+        stars[0].name = "star"
+        stars[1].name = "star"
+        stars[2].name = "star"
+        stars[3].name = "star"
+       this.name = "star"
+       let storedReview = JSON.stringify(star)
+       window.localStorage.setItem("Review",storedReview )
+        
+    }
+    else if(star === "3-star"){
+        stars[0].name = "star"
+        stars[1].name = "star"
+        stars[2].name = "star"
+        let storedReview = JSON.stringify(star)
+       window.localStorage.setItem("Review",storedReview )
+    }
+    else if(star === "2-star"){
+        stars[0].name = "star"
+        stars[1].name = "star"
+        let storedReview = JSON.stringify(review)
+       window.localStorage.setItem("Review",storedReview )
+    }
+    else{
+        stars[0].name = "star"
+        let storedReview = JSON.stringify(review)
+       window.localStorage.setItem("Review",storedReview )
+    }
+
+    container.style.opacity= ".5"
+    thank.innerHTML = "Thank you for leaving a rating"
+    stars.forEach((star)=>{
+    star.removeEventListener("click", starReview)
+    star.style.cursor = "default"
+})
+}
+let stars =document.querySelectorAll(".star")
+stars.forEach((star)=>{
+    star.addEventListener("click", starReview)
+})
+
+
+// WINDOW ONLOAD FUNCTIONS
+//Testing accnts in storage
+window.onload =  addUserToStorage(userDatabase)
+
+// window.onload = retrieveFromStorage()
+//Check if user is logged in
+window.onload = checkForUser();
+// window.onload = customizePage();
+
+window.addEventListener("scroll", showOnScroll);
+ window.addEventListener("scroll", addSticky);
+ window.addEventListener("scroll", stickFooter);

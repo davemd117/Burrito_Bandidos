@@ -9,73 +9,93 @@ body {
     background-image: linear-gradient( rgba(0, 0, 0, 0.7) ,rgba(0, 0, 0, 0.7)), url(Manager-Menu-Page-Images/heroback.jpg);
     /* background-repeat: no-repeat; */
     background-size: auto;
-    /* background-position: center; */
 }
 
-/* ------------------------------- Receipt Form -------------------------------*/
-.receiptMessage {
-    width: 400px;
-    height: auto;
-    background-color: white;
-    margin: 15px auto;
-    text-align: center;
-    font-size: 20px;
-    padding: 1rem;
-
+/* ------------------------------- Cart -------------------------------*/
+.cartTitle {
+    margin: 5rem 1rem;
     background-image: url(bandidos_images/menu_background2.jpg);
     background-size: 100%;
     background-repeat: no-repeat;
+    text-align: center;
+    font-size: 20px;
     border-radius: 25px;
 }
 
-.receiptForm {
-    width: 400px;
-    height: auto;
-    background-color: white;
-    margin: 15px auto;
-    text-align: center;
-    font-size: 16px;
+.cartTitle h1 {
+    font-size: 120px;
+    font-family: 'smokum', cursive;
+    padding-top: 3rem;
 }
 
-.receiptTitle {
-    padding-top: 2rem;
+.cartTitle p {
+    font-size: 32px;
+    margin: 0 10rem;
+    padding-bottom: 1.5rem;
 }
 
-#receiptItemsContainer {
-    padding: 2rem;
-    color: gray;
+.cartContainer {
+    margin: 5rem;
+    background-image: url(bandidos_images/menu_background.jpg);
+    background-size: cover;
 }
 
-.receiptItem {
+#cartItems {
+    margin: 3rem;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+}
+
+.cartItem {
     display: flex;
-    justify-content: space-between;
-    border-bottom: 2px dotted;
-    padding: 1rem 0;
 }
 
-.receiptItemInfo {
-    text-align: left;
+.cartItemFlex {
+    width: 33%;
 }
 
-.receiptItemCost {
+.cartItemImage {
+    width: 50%;
+}
+
+.cartItemPrice {
+    text-align: right;
+}
+
+.cartQuantityContainer {
+    display: flex;
+}
+
+.addQtyBtn {
+    margin-left: 1rem;
+}
+
+.removeQtyBtn {
+    margin-right: 1rem;
+}
+
+.cartItemRemoveButton {
     float: right;
-}
-
-.receiptForm img {
-    width: 25%;
-    border-radius: 5px;
-}
-
-.receiptDetailsContainer {
-    background-color: rgb(240, 240, 240);
     margin-top: 2rem;
-    padding: 1rem 2rem;
 }
 
-.receiptDetails {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: .5rem;
+.cartCheckout {
+    background-color: #f5f5dc;
+    width: 33%;
+    height: auto;
+    margin: 0 auto;
+    text-align: right;
+}
+
+#cartTotalLabel {
+    display: inline;
+}
+
+#cartTotal {
+    display: inline;
+}
+
+#cartPurchaseButton {
 }
 
 /* ------------------------------- Nav / Sidebar -------------------------------*/
