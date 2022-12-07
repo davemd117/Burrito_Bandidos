@@ -8,77 +8,78 @@
 
 body{
     font-family: 'Poppins', sans-serif;
-    font-size: 1rem;
+    background-image: linear-gradient( rgba(0, 0, 0, 0.9) ,rgba(0, 0, 0, 0.9)), url(Manager-Menu-Page-Images/heroback.jpg);
 }
 
-.headerContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    background-color: #fff;
-    border-bottom: 1px solid #e6e6e6;
-    height: 10vh;
+.nav-bar{
     width: 100%;
-}
- 
-.headerContainer ul,
-.headerContainer a{
+    height: 50px;
+    margin: 0 auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    gap: 1rem;
-    font-size: 1.2rem;
-    color: black;
+    background-color: transparent;
+    z-index: 4;
+    border-bottom: 1px solid #d3d3d3;
+    transition: .4s;
+    
 }
-
-.headerContainer a:hover{
-    text-decoration: underline;
-    text-underline-offset: .5rem;
-    color: rgb(28, 170, 17);
-}
-
-.headerContainer h2{
-    font-size: 1.2rem;
-    pointer-events: none;
-}
-
-.headerContainer h2:nth-child(2){
-    align-items: center;
-    margin-left: 13rem;
-}
-/* fix hamburger when everything else done */
-.hamburger{
+.nav-links{
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    position: absolute;
+    justify-content: right;
+    width: 50%;
+    list-style-type: none;
+    gap: 1.2rem;
+}
+
+nav a{
+    text-decoration: none;
+    color: #006341;
+    font-size: 1.25em;
+}
+nav ion-icon{
+    display: none;
+    font-size: 2rem;
+}
+.logo{
+    font-size: 1.25em;
+    color: #006341;
+}
+
+.side-bar{
+    z-index: 4;
+    display: flex;
+    position: fixed;
     right: 0;
-    background-color: white;
+    top: 0;
     height: 100%;
-    width: 20%;
-}
-.hamburgerHidden{
+    width: 150px;
+    margin: auto;
+    background-color: #fff;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
     display: none;
 }
-.hamburgerActive{
-    display: block;
+.side-links{
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
 }
-.hamburgerBtn{
-    display:none;
-    position: absolute;
-    height: 2.5rem;
-    width: 2.5rem;
+.exit-sidebar{
+    /* position: absolute; */
+    top: 20px;
+    left: 15px;
+    font-size: 25px;
+    color: #006341;
     cursor: pointer;
-    z-index: 100;
-    padding: 2px;
 }
-
-.hamburger ion-icon{
-    font-size: 2.5rem;
-    color: black;
-    position: absolute;
-    bottom: 20%;
+.exit-sidebar:hover{
+    color: #ce1126;
 }
    
 
@@ -144,7 +145,7 @@ body{
 }
 .addFormCloseBtn:hover,
 .editFormCloseBtn:hover{
-    color: rgb(28, 170, 17);
+    color: #006341;
     font-size: 3.1rem;
     transition: .7s;
 }
@@ -188,10 +189,10 @@ form{
     align-self: center;
     margin-bottom: 20px;
     transition: .7s;
-    color: rgb(28, 170, 17);
+    color: #006341;
 }
 .formHeader:hover{
-    background-image: -webkit-linear-gradient(rgb(28, 170, 17), #c70f0f);
+    background-image: -webkit-linear-gradient(#006341, #c70f0f);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -219,11 +220,11 @@ form{
 }
 
 button:hover{
-    box-shadow: 0 0 10px rgb(28, 170, 17);
+    box-shadow: 0 0 10px #006341;
 }
 
 .formBtn:hover{
-    color: rgb(28, 170, 17);
+    color: #006341;
     background-image: none;
     border: 1px solid black;
     transition: .7s;
@@ -250,7 +251,7 @@ input[type="text"]{
 }
 
 input[type="text"]:focus{
-    border-bottom: 1px solid rgb(28, 170, 17);
+    border-bottom: 1px solid #006341;
 }
 
 
@@ -269,10 +270,10 @@ input[type="text"]:focus{
     background-color: transparent;
     padding: .7rem;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgb(28, 170, 17);
+    box-shadow: 0 0 10px #006341;
     text-align: center;
     font-size: .5em;
-    color: rgb(28, 170, 17);
+    color: #006341;
     z-index: 20;
     width: 20%;
     height: 15%;
@@ -291,7 +292,6 @@ input[type="text"]:focus{
     grid-gap: 1rem;
     text-align: center;
     width: 100%;
-    background-color: #333;
     padding: 2rem;
     margin-top: 1rem;
 }
@@ -348,22 +348,25 @@ input[type="text"]:focus{
 
 .menuHeader > button {
     justify-content: center;
-    background-color: rgb(28, 170, 17);
-    background-image: linear-gradient(to right,rgb(28, 170, 17),#c70f0f);
+    background-color: #006341;
+    background-image: linear-gradient(to right,#006341,#c70f0f);
     border: none;
     padding: .8rem;
     color: white;
     font-size: 1rem;
     cursor: pointer;
     transition: .7s;
+    border: 1px solid #006341;
+
 }
 .menuHeader > button:hover{
     background-color: transparent;
     background-image: none;
-    border: 1px solid rgb(28, 170, 17);
-    color: rgb(28, 170, 17);
+    color: #006341;
     transition: .7s;
 }
+
+
 
 .deleteFromMenuBtn{
     position: absolute;
@@ -386,23 +389,83 @@ input[type="text"]:focus{
 
 /* start of footer */
 footer{
-    border-top: 1px solid #d3d3d3;
-    position: relative;
-    width: 100%;
-}
-
-.footerContainer{
+    bottom: 0%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    width: 100%;
+    box-shadow: 0px -3px 3px 0px rgba(0,0,0,0.5);
+    font-size: 1.25em;
+    color: #006341;
 }
 
-.socialMedia{
+.log-btn-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    width: 20%;
+    height: 50px;
+    transition: 1s;
+}
+
+.go-to-profile{
+    height: fit-content;
+    text-align: center;
+    color: #ce1126;
+    padding: 0 10px;
+    transition: .5s;
+}
+.go-to-profile:hover{
+    color: #fff;
+    border-right: 1px solid #fff;
+    border-left: 1px solid #fff;
+}
+.footer-links{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    gap: 1rem; 
+    color: #fff;
+}
+
+.footer-info{
+    display: flex;
+    width: 40%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.footer-info p{
+    font-size: 65%;
+    margin-right: 20px;
+}
+.footer-info ion-icon{
+    margin-right: 2px;
+}
+.footer-socials{
+    width: 20%;
+    text-align: center;
+    display: flex;
+    
+}
+.footer-socials ion-icon{
+    color: #fff;
+    margin-right: 5px;
+}
+#fb:hover{
+    color: #1877F2;
+    transition: color .4s;
+}
+#twitter:hover{
+    color: #1DA1F2;
+    transition: color .4s;
+}
+#google:hover{
+    color: #DB4437;
+    transition: color .4s;
+}
+#ig:hover{
+    color: #C13584;
+    transition: color .4s;
 }
 
 
@@ -420,9 +483,6 @@ footer{
     .headerContainer{
         display: none;
     }
-    .hamburgerBtn{
-        display: block;
-    }
     .menuHeader{
         display:inline-block
     }
@@ -432,20 +492,34 @@ footer{
     .menuItems{
         grid-template-columns: repeat(1, 1fr);
     }
-    .hamburgerBtn{
-        transform: translateX(1100%);
-    }
-    .hamburger{
-        margin-top: 10%;
-        background-color: transparent;
-        font-size: .7em;
-        font-weight: 600;
-    }
 }
 
 @media screen and (max-width: 400px){
     .menuItems{
         grid-template-columns: repeat(1, 1fr);
+    }
+}
+@media (max-width:1000px) {
+    nav ul.nav-links{
+        display: none;
+    }
+    
+    nav ion-icon{
+        display: block;
+    }
+    nav.sticky{
+        background-color: #fff;
+        color: #ce1126;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 50px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        box-shadow: black 0 0 5px;
+        z-index: 4;
     }
 }
 
