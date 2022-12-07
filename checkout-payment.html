@@ -9,25 +9,28 @@
     <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap&family=Smokum&display=swap"  rel="stylesheet">
+
   </head>
   <body>
-    <header>
-      <div class="headerContainer">
-        <div class="logo">
-          <img src="images/logo.png" alt="logo">
-        </div>
-        <div>
-          <h2>Burrito Banditos</h2>
-        </div>
-        <div class="nav">
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-      </div>
-    </header>
+    <nav id="nav-bar" class="nav-bar">
+      <div class="logo">LOGO</div>
+      <ul id="nav-links" class="nav-links">
+          <a href="index.html"><li>Home</li></a>
+          <a href="cart.html"><li>Cart</li></a>
+          <a href="menu.html"><li>Menu</li></a>
+      </ul>
+      <ion-icon id="ham-menu" class="ham-menu" name="menu-outline"></ion-icon>
+  </nav>
+  <div id="side-bar" class="side-bar animate__animated animate__slideInRight">
+      <ion-icon class="exit-sidebar" name="arrow-back-outline"></ion-icon>
+      <ul id="side-links" class="side-links">
+          <a  href="index.html"><li>Home</li></a>
+          <a href="cart.html"><li>Cart</li></a>
+          <a href="menu.html"><li>Menu</li></a>
+      </ul>
+  </div>
+
     <div class="customerCart">
       <div class="cartTitle">
         <h3>Customer Cart</h3>
@@ -35,7 +38,9 @@
       <div class="cartItems">
       </div>
       <div class="cartTotal">
-        <h3 class="total" style="text-align: center;">Total: $0.00</h3>
+        <h3 class="tax">Tax: $0.00</h3>
+        <h3 class="subTotal">Sub total: $0.00</h3>
+        <h3 class="total">Total: $0.00</h3>
       </div>
     </div>
     <div class="container containerActive">
@@ -82,30 +87,31 @@
             </div>
             <div class="inputs">
               <span>cash :</span>
-             <span> <button class="cashBtn" type="button">Click here for cash</button>/<button type="button" class="creditBtn">Click here for credit</button></span>
-              
-             
+             <span> 
+            <button class="cashBtn" type="button">Click here for cash</button>
+            /<button type="button" class="creditBtn paymentOptionSelected">Click here for credit</button>
+            </span>  
             </div>
             <div class="inputs">
               <span>name on card :</span>
-              <input id="cardName" type="text" placeholder="Enter cardholder's name...Robert Smith">
+              <input id="cardName" class="paymentFormInput" type="text" placeholder="Enter cardholder's name...Robert Smith">
             </div>
             <div class="inputs">
               <span>credit card number :</span>
-              <input id="cardNumber" type="text" placeholder="Enter 16 digit credit card number...1111-1111-1111-1111">
+              <input id="cardNumber" class="paymentFormInput" type="text" placeholder="Enter 16 digit credit card number...1111-1111-1111-1111">
             </div>
             <div class="inputs">
               <span>exp month :</span>
-              <input id="cardExpMonth" type="text" placeholder="Enter card expiration month...01">
+              <input id="cardExpMonth" class="paymentFormInput" type="text" placeholder="Enter card expiration month...01">
             </div>
             <div class="flex">
               <div class="inputs">
                 <span>exp year :</span>
-                <input id="cardExpYear" type="text" placeholder="Enter card expiration year...2002">
+                <input id="cardExpYear" class="paymentFormInput" type="text" placeholder="Enter card expiration year...2002">
               </div>
               <div class="inputs">
                 <span>CVV :</span>
-                <input id="cardCvv" type="text" placeholder="Enter 3 digit security code on back of card...131">
+                <input id="cardCvv" class="paymentFormInput" type="text" placeholder="Enter 3 digit security code on back of card...131">
               </div>
             </div>
           </div>
@@ -156,37 +162,38 @@
                   <option value="overnight">Overnight</option>
                   </select>
               </div>
+              <div class="inputs">
+               <span>Use customer points:</span>
+                  <select name="customerPoints" id="customerPoints">
+                  <option value="select">Select an option:</option>
+                  <option value="usePoints">Use Points</option>
+                  <option value="DoNotUsePoints">Do Not Use Points</option>
+                  </select>
+              </div>
+              
             </div>
           </div>
         </div>
-      </form>
-      <input type="submit" id="submitBtn2" value="proceed to checkout" class="submitBtn">
+        <input type="button" id="submitBtn2" value="proceed to checkout" class="submitBtn">
+      </form>  
     </div>
 
-   <footer>
-      <div class="footer">
-        <div class="footerContent">
-          <div class="footerContentLeft">
-            <h3>Company</h3>
-            <ul>
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Contact Us</a></li>
-              <li><a href="#">Careers</a></li>
-              <li><a href="#">Privacy Policy</a></li>
-            </ul>
+    <footer id="footer" class="animate__animated footer-section">
+      <div class="log-btn-container">
+              <a id="go-to-profile" class="go-to-profile">logo</a>
           </div>
-          <div class="footerContentRight">
-            <h3>Connect</h3>
-            <ul>
-              <li><a href="#">Facebook</a></li>
-              <li><a href="#">Twitter</a></li>
-              <li><a href="#">Instagram</a></li>
-              <li><a href="#">YouTube</a></li>
-            </ul>
+          <div class="footer-info">
+              <p><ion-icon name="location-outline"></ion-icon>123 Abcde Dr, Lancaster, PA</p>
+              <p><ion-icon name="time-outline"></ion-icon>12:00pm - 12:00am</p>
+              <p><ion-icon name="call-outline"></ion-icon>(281) 330-8004</p>
           </div>
-        </div>
+      <div class="footer-socials">
+          <a href=""><ion-icon id="fb" name="logo-facebook"></ion-icon></a>
+          <a href=""><ion-icon id="twitter" name="logo-twitter"></ion-icon></a>
+          <a href=""><ion-icon id="google" name="logo-google"></ion-icon></a>
+          <a href=""><ion-icon id="ig" name="logo-instagram"></ion-icon></a>
       </div>
-    </footer>
+  </footer>
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
