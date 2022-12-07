@@ -219,3 +219,20 @@ creditBtn.addEventListener('click', function() {
     localStorage.setItem("useCredit", true);
 });
 
+$('#ham-menu').click(() => {
+    openNav()
+ 
+ })
+ $('.exit-sidebar').click(() => {
+     closeNav()
+  })
+ 
+ function openNav(){
+     $(".side-bar").removeClass("animate__slideOutRight")
+     $(".side-bar").show()
+ }
+ function closeNav(){
+     $(".side-bar").addClass("animate__slideOutRight")
+        $(".side-bar").hide()
+ 
+ }

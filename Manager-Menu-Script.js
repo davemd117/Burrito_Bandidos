@@ -125,6 +125,8 @@ editMenuItemBtn.addEventListener('click', () => {
     const newDescription = document.getElementById('editItemDescription').value;
     const newImage = document.getElementById('editItemImg').value;
     const newCalories = document.getElementById('editItemCalories').value;
+    const newId = document.getElementById('editItemId').value;
+    const newId1 = parseInt(newId)
     for(let i = 0; i < foodItems.length; i++) {
         if(foodItems[i].name === name) {
             foodItems[i].name = name;
@@ -132,6 +134,7 @@ editMenuItemBtn.addEventListener('click', () => {
             foodItems[i].description = newDescription;
             foodItems[i].image = newImage;
             foodItems[i].calories = newCalories;
+            foodItems[i].id = newId1;
             console.log(foodItems)
             alert('Item has been updated');
             localStorage.setItem('foodItems', JSON.stringify(foodItems))
@@ -196,6 +199,7 @@ $("#editMenuHeader").click(function(){
 // // end of header buttons jquery
 
 // jquery for forms to animate from center to left on close
+
 $('.addFormCloseBtn').click(function() {
     $('.addItemFormContainer').animate({
         left: '-100%',
@@ -211,177 +215,25 @@ $('.editFormCloseBtn').click(function() {
     });
     $('.editItemForm').addClass('animte__fadeOut')
 })
+
 // end of jquery for close buttons
 
-// start of hamburger menu
-let hamburgerBtn = document.querySelector('.hamburgerBtn');
-hamburgerBtn.addEventListener('click', () => {
-    let hamnurgerMenu = document.querySelector('.hamburger');
-    hamnurgerMenu.classList.remove('hamburgerHidden')
-    hamnurgerMenu.classList.add('hamburgerActive')
-    hamburgerBtn.classList.add('hamburgerBtnLeft')
-})
-
-let viewMenuHamburger = document.querySelector('#viewMenuHamburger');
-viewMenuHamburger.addEventListener('click', () => {
-    let menuItemsContainer = document.querySelector('.menu')
-    menuItemsContainer.classList.remove('menuItemsHidden')
-    menuItemsContainer.classList.add('menuItemsActive')
-    let hero = document.querySelector('.hero')
-    hero.classList.remove('heroActive')
-    hero.classList.add('heroHidden')
-    let hamnurgerMenu = document.querySelector('.hamburger');
-    hamnurgerMenu.classList.remove('hamburgerActive')
-    hamnurgerMenu.classList.add('hamburgerHidden')
-    let hamburgerBtn = document.querySelector('.hamburgerBtn');
-    hamburgerBtn.classList.remove('hamburgerBtnLeft')
-    hamburgerBtn.classList.add('hamburgerBtn')
-})
-// end of hamburger menu
-
-
-
-// let menuItems = document.querySelectorAll('.menuItem')
-// menuItems.forEach((item) => {
-    // menu.push({
-    //     name: item.querySelector('.itemName').textContent.toUpperCase(),
-    //     price: item.querySelector('.itemPrice').textContent,
-    //     description: item.querySelector('.itemDescription').textContent,
-    //     image: item.querySelector('.itemImg').src,
-    //     calories: item.querySelector('.itemCalories').textContent
-    // })
-// })
-// console.log(menu)
-// end of pushing static menu items to array menu
-
-// const addFormCloseBtn = document.querySelector('.addFormCloseBtn');
-// addFormCloseBtn.addEventListener('click', () => {
-//     let addform = document.getElementById('addForm')
-//     addform.classList.remove('formsActive')
-//     addform.classList.add('formsHidden')
-// })
-
-// const editFormCloseBtn = document.querySelector('.editFormCloseBtn');
-// editFormCloseBtn.addEventListener('click', () => {
-//     let editForm = document.querySelector('.editItemForm')
-//     editForm.classList.remove('formsActive')
-//     editForm.classList.add('formsHidden')
-// })
-
-// const deleteFormCloseBtn = document.querySelector('.delFormCloseBtn');
-// deleteFormCloseBtn.addEventListener('click', () => {
-//     let deleteform = document.getElementById('deleteForm')
-//     deleteform.classList.remove('formsActive')
-//     deleteform.classList.add('formsHidden')
-// })
-
-// $('.delFormCloseBtn').click(function() {
-//     $('.deleteItemFormContainer').animate({
-//         left: '-100%',
-//         opacity: '1',
-//     });
-//     $('.deleteItemForm').addClass('animte__fadeOut')
-// })
-
-// $("#deleteMenuHeader").click(function(){
-//     $(".deleteItemFormContainer").animate({
-//         left: '34.5%',
-//         opacity: '1',
-//     });
-// });
-
-// delete form buttons
-// const deleteFormHeader = document.getElementById('deleteMenuHeader');
-// deleteFormHeader.addEventListener('click', () => {
-//     let deleteform1 = document.getElementById('deleteForm')
-//     deleteform1.classList.remove('formsHidden')
-//     deleteform1.classList.add('formsActive')
-// })
-
-// const deleteFormConfirmBtn = document.getElementById('deleteFormConfirmBtn');
-// deleteFormConfirmBtn.addEventListener('click', () => {
-//     localStorage.removeItem('menu')
-//     localStorage.setItem('menu', JSON.stringify(menu))
-// })
-
-// const deleteFormviewChanges = document.getElementById('deleteFormViewChanges');
-// deleteFormviewChanges.addEventListener('click', () => {
-//     window.location.href = 'Menu-Updated.html'
-// })
-// end of delete form buttons
-
-// function to delete menu figure out how to get error message to work properly
-// const deleteMenuItemBtn = document.getElementById('deleteMenuItem');
-// deleteMenuItemBtn.addEventListener('click', () => {
-//     const deleteMenuItem = document.getElementById('deleteItemName').value.toUpperCase();
-//     for(i = 0 ; i < menu.length ; i++) {
-//         if(menu[i].name === deleteMenuItem) {
-//         const menuItems = document.querySelector('.menuItems')
-//         menuItems.removeChild(menuItems.children[i])
-//         menu.splice(i, 1)
-//         console.log(deleteMenuItem)
-//         console.log(menu)
-//         }
-//         document.getElementById('deleteItemName').value = '';
-//     }
-// })
-
-// let CurrentMenuItemsCustomerPage = JSON.parse(localStorage.getItem('foodItems'))
-// CurrentMenuItemsCustomerPage.forEach((item) => {
-//     let name = item.name
-//     let nameCapitalized = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()
-    // let menuItems = document.querySelector('.menuItems')
-//     let menuItem = document.createElement('div')
-//     menuItem.classList.add('menuItem')
-//     menuItem.innerHTML = `
-//     <ion-icon class="deleteFromMenuBtn" name="close-circle-outline"></ion-icon>
-//     <img class="itemImg" src="${item.image}" alt="">
-//     <h3 class="itemName">${nameCapitalized}</h3>
-//     <p class="itemPrice">$${item.price}</p>
-//     <p class="itemCalories">${item.calories} calories</p>
-//     <p class="itemDescription">${item.description}</p>
-//     `
-//     menuItems.appendChild(menuItem)
-//     menu.push({
-//         name: nameCapitalized,
-//         price: item.price,
-//         description: item.description,
-//         image: item.image,
-//         calories: item.calories
-// })
-// })
-
-// const editMenuItemBtn = document.getElementById('editMenuItem');
-// editMenuItemBtn.addEventListener('click', () => {
-//     let editItemName = document.getElementById('editItemName').value;
-//     let newPrice = document.getElementById('editItemPrice').value;
-//     let newDescription = document.getElementById('editItemDescription').value;
-//     let newImage = document.getElementById('editItemImg').value;
-//     let newCalories = document.getElementById('editItemCalories').value;
-//     let newMenuItems = document.querySelector('.menuItems')
-//     let editedMenuItem = document.createElement('div')
-//     for(let i = 0; i < menu.length; i++) {
-//     if(menu[i].name === editItemName) {
-//         menu[i].name = name;
-//         menu[i].price = newPrice;
-//         menu[i].description = newDescription;
-//         menu[i].image = newImage;
-//         menu[i].calories = newCalories;
-//         console.log(menu)
-//     editedMenuItem.classList.add('menuItem')
-//     editedMenuItem.innerHTML =  `
-//     <ion-icon class="deleteFromMenuBtn" name="close-circle-outline"></ion-icon>
-//     <img class="itemImg" src="${newImage}" alt="">
-//     <h3 class="itemName">${name}</h3>
-//     <p class="itemPrice">$${newPrice}</p>
-//     <p class="itemCalories">${newCalories} calories</p>
-//     <p class="itemDescription">${newDescription}</p>
-//     `
-//     newMenuItems.replaceChild(editedMenuItem, newMenuItems.childNodes[i])
-//     alert('Item has been updated');
-//     return;
-//     } 
-//         alert('Item not found');
-//         return;
-// }
-// })
+// jquery for hamburger menu
+$('#ham-menu').click(() => {
+    openNav()
+ 
+ })
+ $('.exit-sidebar').click(() => {
+     closeNav()
+  })
+ 
+ function openNav(){
+     $(".side-bar").removeClass("animate__slideOutRight")
+     $(".side-bar").show()
+ }
+ function closeNav(){
+     $(".side-bar").addClass("animate__slideOutRight")
+        $(".side-bar").hide()
+ 
+ }
+// end of jquery for hamburger menu

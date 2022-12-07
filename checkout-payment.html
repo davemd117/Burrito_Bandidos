@@ -9,25 +9,28 @@
     <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap&family=Smokum&display=swap"  rel="stylesheet">
+
   </head>
   <body>
-    <header>
-      <div class="headerContainer">
-        <div class="logo">
-          <img src="images/logo.png" alt="logo">
-        </div>
-        <div>
-          <h2>Burrito Banditos</h2>
-        </div>
-        <div class="nav">
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-      </div>
-    </header>
+    <nav id="nav-bar" class="nav-bar">
+      <div class="logo">LOGO</div>
+      <ul id="nav-links" class="nav-links">
+          <a href="index.html"><li>Home</li></a>
+          <a href="cart.html"><li>Cart</li></a>
+          <a href="menu.html"><li>Menu</li></a>
+      </ul>
+      <ion-icon id="ham-menu" class="ham-menu" name="menu-outline"></ion-icon>
+  </nav>
+  <div id="side-bar" class="side-bar animate__animated animate__slideInRight">
+      <ion-icon class="exit-sidebar" name="arrow-back-outline"></ion-icon>
+      <ul id="side-links" class="side-links">
+          <a  href="index.html"><li>Home</li></a>
+          <a href="cart.html"><li>Cart</li></a>
+          <a href="menu.html"><li>Menu</li></a>
+      </ul>
+  </div>
+
     <div class="customerCart">
       <div class="cartTitle">
         <h3>Customer Cart</h3>
@@ -175,30 +178,22 @@
       </form>  
     </div>
 
-   <footer>
-      <div class="footer">
-        <div class="footerContent">
-          <div class="footerContentLeft">
-            <h3>Company</h3>
-            <ul>
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Contact Us</a></li>
-              <li><a href="#">Careers</a></li>
-              <li><a href="#">Privacy Policy</a></li>
-            </ul>
+    <footer id="footer" class="animate__animated footer-section">
+      <div class="log-btn-container">
+              <a id="go-to-profile" class="go-to-profile">logo</a>
           </div>
-          <div class="footerContentRight">
-            <h3>Connect</h3>
-            <ul>
-              <li><a href="#">Facebook</a></li>
-              <li><a href="#">Twitter</a></li>
-              <li><a href="#">Instagram</a></li>
-              <li><a href="#">YouTube</a></li>
-            </ul>
+          <div class="footer-info">
+              <p><ion-icon name="location-outline"></ion-icon>123 Abcde Dr, Lancaster, PA</p>
+              <p><ion-icon name="time-outline"></ion-icon>12:00pm - 12:00am</p>
+              <p><ion-icon name="call-outline"></ion-icon>(281) 330-8004</p>
           </div>
-        </div>
+      <div class="footer-socials">
+          <a href=""><ion-icon id="fb" name="logo-facebook"></ion-icon></a>
+          <a href=""><ion-icon id="twitter" name="logo-twitter"></ion-icon></a>
+          <a href=""><ion-icon id="google" name="logo-google"></ion-icon></a>
+          <a href=""><ion-icon id="ig" name="logo-instagram"></ion-icon></a>
       </div>
-    </footer>
+  </footer>
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
