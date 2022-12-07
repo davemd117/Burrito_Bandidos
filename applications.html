@@ -6,49 +6,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manager Dashboard - Applications</title>
     <link rel="stylesheet" href="applications.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap&family=Smokum&display=swap"  rel="stylesheet">
+
 </head>
 <body>
-    <header class="headerContainer">
-        <h2>Burrito Banditos</h2>
-        <h2>Manager Dashboard</h2>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <!-- <li><a id="applications" href="#">Applications</a></li> -->
-                <li ><a href="Manager-Menu-Page.html">Manager-Home</a></li>
-            </ul>
-        </nav>
-    </header>
+    <nav id="nav-bar" class="nav-bar">
+        <div class="logo">LOGO</div>
+        <ul id="nav-links" class="nav-links">
+            <a href="Manager-Menu-Page.html"><li>Manager Dashboard</li></a>
+            <a href="menu.html"><li>Menu</li></a>
+            <a href="index.html"><li>Home</li></a>
+        </ul>
+        <ion-icon id="ham-menu" class="ham-menu" name="menu-outline"></ion-icon>
+    </nav>
+    <div id="side-bar" class="side-bar animate__animated animate__slideInRight">
+        <ion-icon class="exit-sidebar" name="arrow-back-outline"></ion-icon>
+        <ul id="side-links" class="side-links">
+            <a  href="Manager-Menu-Page.html"><li>Dashboard</li></a>
+            <a href="menu.html"><li>Menu</li></a>
+            <a href="index.html"><li>Home</li></a>
+        </ul>
+    </div>
 
 <section class="container">
-   <div class="hero">
+<div class="applications">
+    <div class="cookApplications">
+        <h1>Cook Applications</h1>
+        <h3 class="applicant">Mark</h3>
+        <h3 class="applicant">Erika</h3>
+        <h3 class="applicant">Greg</h3>
+        <h3 class="applicant">Greg</h3>
+    </div>
+    <div class="waiterApplications">
+        <h1>Waiter Applications</h1>
+        <h3 class="applicant">Jim</h3>
+        <h3 class="applicant">Marie</h3>
+        <h3 class="applicant">Anna</h3>
+        <h3 class="applicant">Anna</h3>
+        <h3 class="applicant">Anna</h3>
+    </div>
+    <div class="hostApplications">
+        <h1>Host Applications</h1>
+        <h3 class="applicant">Steven</h3>
+        <h3 class="applicant">Jimbo</h3>
+        <h3 class="applicant">Jimbo</h3>
+        <h3 class="applicant">Mary</h3>
+        <h3 class="applicant">Mary</h3>
+    </div>
+    <div class="dishWasherApplications">
+        <h1>Dish Washer Applications</h1>
+        <h3 class="applicant">Franco</h3>
+        <h3 class="applicant">Giovanni</h3>
+        <h3 class="applicant">Giovanni</h3>
+        <h3 class="applicant">Georgia</h3>
+        <h3 class="applicant">Georgia</h3>
+    </div>
+</div>
+<div class="showApplication">
+    <h2>Clicking an applicants name from the list on the left will show their application here.</h2>
+</div>
 
-   </div>
-   <div class="applications">
-    <h2 style="text-align:center; color:white;">Applications</h2>
-
-   </div>
 </section>
 
-
-
-    <footer>
-        <div class="footerContainer">
-            <div class="footerLinks">
-                <a href="index.html">Home</a>
-                <a href="menu.html">Menu</a>
-                <a href="about.html">About</a>
-                <a href="contact.html">Contact</a>
-            </div>
-            <div class="socialMedia">
-                <a href="https://www.facebook.com/"><ion-icon name="logo-facebook"></ion-icon></a>
-                <a href="https://www.instagram.com/"><ion-icon name="logo-instagram"></ion-icon></a>
-                <a href="https://twitter.com/"><ion-icon name="logo-twitter"></ion-icon></a>
-            </div>
+<footer id="footer" class="animate__animated footer-section">
+    <div class="log-btn-container">
+            <a id="go-to-profile" class="go-to-profile">logo</a>
         </div>
-    </footer>
+        <div class="footer-info">
+            <p><ion-icon name="location-outline"></ion-icon>123 Abcde Dr, Lancaster, PA</p>
+            <p><ion-icon name="time-outline"></ion-icon>12:00pm - 12:00am</p>
+            <p><ion-icon name="call-outline"></ion-icon>(281) 330-8004</p>
+        </div>
+    <div class="footer-socials">
+        <a href=""><ion-icon id="fb" name="logo-facebook"></ion-icon></a>
+        <a href=""><ion-icon id="twitter" name="logo-twitter"></ion-icon></a>
+        <a href=""><ion-icon id="google" name="logo-google"></ion-icon></a>
+        <a href=""><ion-icon id="ig" name="logo-instagram"></ion-icon></a>
+    </div>
+</footer>
 
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="applications.js"></script>
 </body>
 </html>
