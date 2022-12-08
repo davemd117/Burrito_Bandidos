@@ -556,7 +556,7 @@ $('.log-submit').click(() => {
             window.localStorage.removeItem("Current User")
             window.localStorage.setItem("Current User", JSON.stringify(currentUser))
             showSignout()
-            // window.location.href = "Manager-Menu-Page.html"
+            window.location.href = "Manager-Menu-Page.html"
         }
         else if(logUsername === users.username && logPassword === users.password){
             // $('.log-pass').val("")
