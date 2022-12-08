@@ -1,0 +1,246 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background-image: linear-gradient( rgba(0, 0, 0, 0.8) ,rgba(0, 0, 0, 0.8)), url(Manager-Menu-Page-Images/heroback.jpg);
+
+}
+
+.nav-bar{
+    width: 100%;
+    height: 50px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: transparent;
+    z-index: 4;
+    border-bottom: 1px solid #d3d3d3;
+    transition: .4s;
+    
+}
+.nav-links{
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    list-style-type: none;
+}
+
+nav a{
+    text-decoration: none;
+    color: #006341;
+    font-size: 1.25em;
+}
+nav ion-icon{
+    display: none;
+    font-size: 2rem;
+}
+.logo{
+    font-size: 1.25em;
+    color: #006341;
+}
+
+.container{
+    margin: 0 auto;
+    padding-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 84vh;
+}
+
+
+.applications{
+    padding-top: .5rem;
+    padding-left: 1rem;
+    width: 30%;
+    height: 100%;
+    background-color: #333; 
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    font-size: .9em;
+}
+
+.showApplication{
+    background-color: #333;
+    height: 100%;
+    width: 50%;
+    font-size: .9em;
+    text-align: center;
+    border-left: 1px solid black;
+    padding-top: .5rem;
+}
+
+h1 {
+    text-decoration: underline;
+    pointer-events: none;
+}
+
+h3 {
+    cursor: pointer;
+}
+
+h2 {
+    pointer-events: none;
+}
+
+
+.side-bar{
+    z-index: 4;
+    display: flex;
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 150px;
+    margin: auto;
+    background-color: #fff;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    display: none;
+}
+.side-links{
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.exit-sidebar{
+    /* position: absolute; */
+    top: 20px;
+    left: 15px;
+    font-size: 25px;
+    color: #006341;
+    cursor: pointer;
+}
+.exit-sidebar:hover{
+    color: #ce1126;
+}
+
+
+
+/* footer */
+
+footer{
+    position: absolute;
+    bottom: 0%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    box-shadow: 0px -3px 3px 0px rgba(0,0,0,0.5);
+    font-size: 1.25em;
+    color: #006341;
+}
+
+.log-btn-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    width: 20%;
+    height: 50px;
+    transition: 1s;
+}
+
+.go-to-profile{
+    height: fit-content;
+    text-align: center;
+    color: #ce1126;
+    padding: 0 10px;
+    transition: .5s;
+}
+.go-to-login:hover,.go-to-profile:hover{
+    color: #fff;
+    border-right: 1px solid #fff;
+    border-left: 1px solid #fff;
+}
+.footer-links{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: #fff;
+}
+
+.footer-info{
+    display: flex;
+    width: 40%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.footer-info p{
+    font-size: 65%;
+    margin-right: 20px;
+}
+.footer-info ion-icon{
+    margin-right: 2px;
+}
+.footer-socials{
+    width: 20%;
+    text-align: center;
+    display: flex;
+    
+}
+.footer-socials ion-icon{
+    color: #fff;
+    margin-right: 5px;
+}
+#fb:hover{
+    color: #1877F2;
+    transition: color .4s;
+}
+#twitter:hover{
+    color: #1DA1F2;
+    transition: color .4s;
+}
+#google:hover{
+    color: #DB4437;
+    transition: color .4s;
+}
+#ig:hover{
+    color: #C13584;
+    transition: color .4s;
+}
+
+
+
+
+
+
+
+/* media queries */
+@media (max-width:1000px) {
+    nav ul.nav-links{
+        display: none;
+    }
+    
+    nav ion-icon{
+        display: block;
+    }
+    nav.sticky{
+        background-color: #fff;
+        color: #ce1126;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 50px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        box-shadow: black 0 0 5px;
+        z-index: 4;
+    }
+}

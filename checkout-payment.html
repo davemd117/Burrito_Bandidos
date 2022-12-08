@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout & Payment Burrito Banditos</title>
+    <link rel="stylesheet" href="checkout-payment-styles.css">
+    <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap&family=Smokum&display=swap"  rel="stylesheet">
+
+  </head>
+  <body>
+    <nav id="nav-bar" class="nav-bar">
+      <div class="logo">LOGO</div>
+      <ul id="nav-links" class="nav-links">
+          <a href="index.html"><li>Home</li></a>
+          <a href="cart.html"><li>Cart</li></a>
+          <a href="menu.html"><li>Menu</li></a>
+      </ul>
+      <ion-icon id="ham-menu" class="ham-menu" name="menu-outline"></ion-icon>
+  </nav>
+  <div id="side-bar" class="side-bar animate__animated animate__slideInRight">
+      <ion-icon class="exit-sidebar" name="arrow-back-outline"></ion-icon>
+      <ul id="side-links" class="side-links">
+          <a  href="index.html"><li>Home</li></a>
+          <a href="cart.html"><li>Cart</li></a>
+          <a href="menu.html"><li>Menu</li></a>
+      </ul>
+  </div>
+
+    <div class="customerCart">
+      <div class="cartTitle">
+        <h3>Customer Cart</h3>
+      </div>
+      <div class="cartItems">
+      </div>
+      <div class="cartTotal">
+        <h3 class="tax">Tax: $0.00</h3>
+        <h3 class="subTotal">Sub total: $0.00</h3>
+        <h3 class="total">Total: $0.00</h3>
+      </div>
+    </div>
+    <div class="container containerActive">
+      <form id="billingInfoForm">
+        <div class="row">
+          <div class="col">
+            <h3 class="title">Billing Information</h3>
+            <div class="inputs">
+              <span>full name :</span>
+              <input id="name" type="text" placeholder="Enter full name...Robert Smith">
+            </div>
+            <div class="inputs">
+              <span>email :</span>
+              <input id="email" type="email" placeholder="Enter email...email@email.com">
+            </div>
+            <div class="inputs">
+              <span>address :</span>
+              <input id="billingAddress" type="text" placeholder="Enter billing address...111 Firehouse Rd.">
+            </div>
+            <div class="inputs">
+              <span>city :</span>
+              <input id="city" type="text" placeholder="Enter current city...Lancaster">
+            </div>
+            <div class="flex">
+              <div class="inputs">
+                <span>state :</span>
+                <input id="state" type="text" placeholder="Enter current state...Pennsylvania">
+              </div>
+              <div class="inputs">
+                <span>zip code :</span>
+                <input id="zip" type="text" placeholder="Enter 5 digit zip code...11111">
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <form id="paymentInfoForm">
+        <div class="row">
+          <div class="col">
+            <h3 class="title">Payment Information</h3>
+            <div class="inputs">
+              <span>cards accepted :</span>
+              <img src="/checkout-payment-images/card_img.png" alt="">
+            </div>
+            <div class="inputs">
+              <span>cash :</span>
+             <span> 
+            <button class="cashBtn" type="button">Click here for cash</button>
+            /<button type="button" class="creditBtn paymentOptionSelected">Click here for credit</button>
+            </span>  
+            </div>
+            <div class="inputs">
+              <span>name on card :</span>
+              <input id="cardName" class="paymentFormInput" type="text" placeholder="Enter cardholder's name...Robert Smith">
+            </div>
+            <div class="inputs">
+              <span>credit card number :</span>
+              <input id="cardNumber" class="paymentFormInput" type="text" placeholder="Enter 16 digit credit card number...1111-1111-1111-1111">
+            </div>
+            <div class="inputs">
+              <span>exp month :</span>
+              <input id="cardExpMonth" class="paymentFormInput" type="text" placeholder="Enter card expiration month...01">
+            </div>
+            <div class="flex">
+              <div class="inputs">
+                <span>exp year :</span>
+                <input id="cardExpYear" class="paymentFormInput" type="text" placeholder="Enter card expiration year...2002">
+              </div>
+              <div class="inputs">
+                <span>CVV :</span>
+                <input id="cardCvv" class="paymentFormInput" type="text" placeholder="Enter 3 digit security code on back of card...131">
+              </div>
+            </div>
+          </div>
+        </div>
+        <input type="button" id="submitBtn1" value="proceed to shipping" class="submitBtn">
+      </form>
+    </div>
+
+    <div class="container2 containerHidden">
+      <form id="shippingInfoForm">
+        <div class="row">
+          <div class="col">
+            <h3 class="title">Shipping Information</h3>
+            <div class="inputs">
+              <span>full name :</span>
+              <input id="shippingName" type="text" placeholder="Enter name...Robert Smith">
+            </div>
+            <div class="inputs">
+              <span>email :</span>
+              <input id="shippingEmail" type="email" placeholder="Enter email here...email@email.com">
+            </div>
+            <div class="inputs">
+              <span>address :</span>
+              <input id="shippingAddress" type="text" placeholder="Enter shipping address...111 Schoolhouse Rd.">
+            </div>
+            <div class="inputs">
+              <span>city :</span>
+              <input id="shippingCity" type="text" placeholder="Enter city...Lancaster">
+            </div>
+            <div class="flex">
+              <div class="inputs">
+                <span>state :</span>
+                <input id="shippingState" type="text" placeholder="Enter state...Pennsylvania">
+              </div>
+              <div class="inputs">
+                <span>zip code :</span>
+                <input id="shippingZip" type="text" placeholder="Enter 5 digit zip code...11111">
+              </div>
+              <div class="inputs">
+                <span>phone number :</span>
+                <input id="phone" type="text" placeholder="Enter phone number...1111111111">
+              </div>
+              <div class="inputs">
+               <span>Shipping Method :</span>
+                  <select name="shippingMethod" id="shippingMethod">
+                  <option value="standard">Standard</option>
+                  <option value="express">Express</option>
+                  <option value="overnight">Overnight</option>
+                  </select>
+              </div>
+              <div class="inputs">
+               <span>Use customer points:</span>
+                  <select name="customerPoints" id="customerPoints">
+                  <option value="select">Select an option:</option>
+                  <option value="usePoints">Use Points</option>
+                  <option value="DoNotUsePoints">Do Not Use Points</option>
+                  </select>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        <input type="button" id="submitBtn2" value="proceed to checkout" class="submitBtn">
+      </form>  
+    </div>
+
+    <footer id="footer" class="animate__animated footer-section">
+      <div class="log-btn-container">
+              <a id="go-to-profile" class="go-to-profile">logo</a>
+          </div>
+          <div class="footer-info">
+              <p><ion-icon name="location-outline"></ion-icon>123 Abcde Dr, Lancaster, PA</p>
+              <p><ion-icon name="time-outline"></ion-icon>12:00pm - 12:00am</p>
+              <p><ion-icon name="call-outline"></ion-icon>(281) 330-8004</p>
+          </div>
+      <div class="footer-socials">
+          <a href=""><ion-icon id="fb" name="logo-facebook"></ion-icon></a>
+          <a href=""><ion-icon id="twitter" name="logo-twitter"></ion-icon></a>
+          <a href=""><ion-icon id="google" name="logo-google"></ion-icon></a>
+          <a href=""><ion-icon id="ig" name="logo-instagram"></ion-icon></a>
+      </div>
+  </footer>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="checkout-payment-script.js"></script>
+  </body>
+</html>
