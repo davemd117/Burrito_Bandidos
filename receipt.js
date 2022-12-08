@@ -3,11 +3,22 @@ const receiptItemsContainer = document.getElementById('receiptItemsContainer');
 const receiptSubTotalElement = document.getElementById('receiptSubTotal');
 const receiptTaxElement = document.getElementById('receiptTax');
 const receiptTotalElement = document.getElementById('receiptTotal');
+const pointsSpent = document.getElementById('pointsSpent');
+const pointsAccumulated = document.getElementById('pointsAccumulated');
+const pointsDiscount = document.getElementById('pointsDiscount');
+
 
 // ------------------------------- Global Variables For Functions ------------------------------- 
 var receiptSubTotal = 0;
 var tax = 0;
+var total = 0;
 var receiptItems = JSON.parse(localStorage.getItem("finalCart"));
+// var pointUse = JSON.parse(localStorage.getItem("pointUse"));
+var pointUse = "true"
+
+var currentUser = JSON.parse(localStorage.getItem("Current User"));
+var totalPoints = JSON.parse(localStorage.getItem("totalPoints"));
+
 
 // ------------------------------- Receipt Items ------------------------------- 
 function renderReceiptItems() {
@@ -41,15 +52,38 @@ function renderReceiptTax() {
 }
 renderReceiptTax();
 
-function renderReceiptTotal() {
-    var pointUse = JSON.parse(localStorage.getItem("pointUse"));
+function spendPoints() {
+    total = receiptSubTotal + tax;
 
-    var totalPoints = JSON.parse(localStorage.getItem("totalPoints"));
-    let total = receiptSubTotal + tax;
     if (pointUse === "true") {
-        totalPoints / 10;
-        total -= totalPoints;
-    };
+        currentUser[0].points = 0;
+        localStorage.setItem('Current User', JSON.stringify(currentUser));
+        // Setting user points to 0 after spending points
+
+        total -= (totalPoints / 10);
+
+        renderPointsUsed();
+    } else {
+        currentUser[0].points = totalPoints
+        localStorage.setItem('Current User', JSON.stringify(currentUser));
+        // Incrementing user points after choosing not to spend points
+
+        renderPointsSaved();
+    }
+};
+spendPoints();
+
+function renderPointsUsed() {
+    pointsSpent.innerHTML = `${totalPoints}`;
+    pointConversion = (totalPoints /10);
+    pointsDiscount.innerHTML = `$${pointConversion.toFixed(2)}`;
+};
+
+function renderPointsSaved() {
+    pointsAccumulated.innerHTML = `${totalPoints}`;
+};
+
+function renderReceiptTotal() {
     receiptTotalElement.innerHTML = `$${total.toFixed(2)}`;
 };
 renderReceiptTotal();
