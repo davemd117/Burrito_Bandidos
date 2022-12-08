@@ -38,12 +38,10 @@ class UserInfo {
 
 
 // test classes to populate storage
-userDatabase.push(new UserInfo('bandido1', 'Owner', 'BurBand@email.com', 'Password123', 1000));
-userDatabase.push(new UserInfo('davemd', 'Dave', 'dave@email.com', 'Drum&',1000));
-userDatabase.push(new UserInfo('preachey', 'Ryan', 'ryan@email.com', '$hort',1000));
-userDatabase.push(new UserInfo('chris', 'Chris', 'chris@email.com', 'wr1ght',1000));
-
-
+userDatabase.push(new UserInfo('bandido1', 'Owner', 'BurBand@email.com', 'Password123', 1000, "", "",""));
+userDatabase.push(new UserInfo('davemd', 'Dave', 'dave@email.com', 'Drum&',1000, "", "",""));
+userDatabase.push(new UserInfo('preachey', 'Ryan', 'ryan@email.com', '$hort',1000, "", "",""));
+userDatabase.push(new UserInfo('chris', 'Chris', 'chris@email.com', 'wr1ght',1000,"123 Abcde, Dr","555-555-5555"));
 
 
 
@@ -56,9 +54,10 @@ function addUser() {
         $('.sup-name').val(),
         $('.sup-email').val(),
         $('.sup-password').val(),
+        50,
         $('.sup-phone').val(),
         $('.sup-addy').val(),
-        50
+        
     ));
 }
 
@@ -390,7 +389,7 @@ $('.log-submit').click(() => {
             window.localStorage.removeItem("Current User")
             window.localStorage.setItem("Current User", JSON.stringify(currentUser))
             showSignout()
-            // window.location.href = "Manager-Menu-Page.html"
+            window.location.href = "Manager-Menu-Page.html"
         }
         else if(logUsername === users.username && logPassword === users.password){
             // $('.log-pass').val("")
@@ -469,11 +468,18 @@ function checkForUser(){
             let usersname = loggedUser[0].firstName
             let usersemail = loggedUser[0].email
             let userspoints = loggedUser[0].points
+            let usersphone = loggedUser[0].phone
+            let usersaddress = loggedUser[0].address
+            console.log(usersphone,usersaddress)
             let displayname = document.getElementById("users-name")
             let displayemail = document.getElementById("users-email")
-            displaypoints = document.getElementById("users-points")
+            let displayphone = document.getElementById("users-phone")
+            let displayaddress = document.getElementById("users-addy")
+            let displaypoints = document.getElementById("users-points")
             displayname.innerHTML = usersname
             displayemail.innerHTML = usersemail
+            displayphone.innerHTML = usersphone
+            displayaddress.innerHTML = usersaddress
             displaypoints.innerHTML = `Points: ${userspoints}`
             profbtn.style.display = "block"
             logbtn.style.display = "none"
@@ -484,21 +490,28 @@ function checkForUser(){
             // console.log(userName)
             let manager = document.getElementById("manager-tab")
             let managerSide = document.getElementById("manager-tab-sidebar")
-            let currentUser = JSON.parse(localStorage.getItem('Current User'));
+            // let currentUser = JSON.parse(localStorage.getItem('Current User'));
             manager.style.display = "none"
             managerSide.style.display = "none"
             profbtn.style.display = "block"
             logbtn.style.display = "none"
-            profbtn.innerHTML = `${currentUser[0].firstName}\'s Profile`
+            profbtn.innerHTML = `${loggedUser[0].firstName}\'s Profile`
             // POPULATE PROFILE DISPLAY
             let usersname = loggedUser[0].firstName
             let usersemail = loggedUser[0].email
             let userspoints = loggedUser[0].points
+            let usersphone = loggedUser[0].phone
+            let usersaddress = loggedUser[0].address
+            console.log(usersphone,usersaddress)
             let displayname = document.getElementById("users-name")
             let displayemail = document.getElementById("users-email")
-            displaypoints = document.getElementById("users-points")
+            let displayphone = document.getElementById("users-phone")
+            let displayaddress = document.getElementById("users-addy")
+            let displaypoints = document.getElementById("users-points")
             displayname.innerHTML = usersname
             displayemail.innerHTML = usersemail
+            displayphone.innerHTML = usersphone
+            displayaddress.innerHTML = usersaddress
             displaypoints.innerHTML = `Points: ${userspoints}`
             // Leave a message section
             reviewName.value = usersname
