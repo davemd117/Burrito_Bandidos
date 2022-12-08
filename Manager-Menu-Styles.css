@@ -10,6 +10,14 @@ body{
     font-family: 'Poppins', sans-serif;
     background-image: linear-gradient( rgba(0, 0, 0, 0.9) ,rgba(0, 0, 0, 0.9)), url(Manager-Menu-Page-Images/heroback.jpg);
 }
+.logo{
+    background-image: url(receipt_images/bandidos_name_logo.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 2.5rem;
+    width: 10%;
+}
 
 .nav-bar{
     width: 100%;
@@ -26,10 +34,10 @@ body{
 }
 .nav-links{
     display: flex;
-    justify-content: right;
+    justify-content: space-between;
     width: 50%;
     list-style-type: none;
-    gap: 1.2rem;
+    /* gap: 1.2rem; */
 }
 
 nav a{
@@ -199,6 +207,18 @@ form{
     transition: .7s;
     cursor: pointer;
 }
+.heroHeader{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate( -35%,-50%);
+    font-size: 4rem;   
+    width: 100%;
+    pointer-events: none;
+    /* color: #006341; */
+}
+
+
 
 .formHidden{
     display: none;
@@ -208,7 +228,7 @@ form{
 }
 
 .formBtn{
-    width: max-content;
+    width: 10rem;
     padding: 10px 20px;
     color: #fff;
     border: none;
@@ -292,8 +312,14 @@ input[type="text"]:focus{
     grid-gap: 1rem;
     text-align: center;
     width: 100%;
-    padding: 2rem;
+    padding:  0rem 2rem;
     margin-top: 1rem;
+}
+
+.itemId{
+    position: absolute;
+    right: 0%;
+    bottom: 21.5%;
 }
 
 
@@ -343,7 +369,8 @@ input[type="text"]:focus{
     align-items: center;
     gap: 1rem;
     justify-content: center;
-    padding: 1rem;
+    padding: 1rem 1rem 0 1rem;
+    flex-direction: column;
 }
 
 .menuHeader > button {
@@ -381,6 +408,7 @@ input[type="text"]:focus{
 }
 
 .deleteFromMenuBtn:hover{
+    font-size: 2.5em;
     color: red;
     transition: .7s;
 }
@@ -466,6 +494,62 @@ footer{
 #ig:hover{
     color: #C13584;
     transition: color .4s;
+}
+
+.form1{
+    display: flex;
+    flex-direction: column;
+    max-width: fit-content;
+    height: fit-content;
+    justify-content: center;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    padding: 20px;
+    border: 2px solid black;
+    box-shadow: 0 0 10px black;
+    background-color: #fff;
+    transition: 1s;
+    z-index: 100;
+}
+
+.profile-form{
+    transform: scale(0);
+}
+
+.users-name{
+    color: #ce1126;
+    text-shadow: 3px 3px black;
+    margin-bottom: 5px;
+    align-self: center;
+}
+
+.users-email{
+    text-align: center;
+    color: #006341;
+    text-shadow: 1px 1px black;
+    margin-bottom: 20px;
+}
+
+.users-points{
+    color: #ce1126;
+    text-shadow: 1px 1px black;
+    margin-bottom: 20px;
+    align-self: center;
+}
+
+.btn{
+    width: 200px;
+    font-size: 100%;
+    padding: 10px;
+    border-radius: 50px;
+    border: none;
+    background-image: linear-gradient(to right,#ce1126,#006341);
+    transition: .7s;
+    align-self: center;
 }
 
 

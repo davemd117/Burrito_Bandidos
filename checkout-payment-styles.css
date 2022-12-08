@@ -465,6 +465,70 @@ footer{
     }
 }
 
+.form{
+    display: flex;
+    flex-direction: column;
+    max-width: fit-content;
+    height: fit-content;
+    justify-content: center;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    padding: 20px;
+    border: 2px solid black;
+    box-shadow: 0 0 10px black;
+    background-color: #fff;
+    transition: 1s;
+    z-index: 100;
+}
+
+.profile-form{
+    transform: scale(0);
+}
+
+.users-name{
+    color: #ce1126;
+    text-shadow: 3px 3px black;
+    margin-bottom: 5px;
+    align-self: center;
+}
+
+.users-email{
+    text-align: center;
+    color: #006341;
+    text-shadow: 1px 1px black;
+    margin-bottom: 20px;
+}
+
+.users-points{
+    color: #ce1126;
+    text-shadow: 1px 1px black;
+    margin-bottom: 20px;
+    align-self: center;
+}
+
+.btn{
+    width: 200px;
+    font-size: 100%;
+    padding: 10px;
+    border-radius: 50px;
+    border: none;
+    background-image: linear-gradient(to right,#ce1126,#006341);
+    transition: .7s;
+    align-self: center;
+}
+
+.logo{
+    background-image: url(receipt_images/bandidos_name_logo.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 45px;
+    width: 7%;
+}
 
 /* media queries */
 @media screen and (max-width: 900px){

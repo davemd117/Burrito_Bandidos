@@ -12,6 +12,7 @@ function renderManagerMenu() {
                 <p class="itemPrice">$${foodItem.price}</p>
                 <p class="itemCalories">${foodItem.calories} calories</p>
                 <p class="itemDescription">${foodItem.description}</p>
+                <p class="itemId">ID#${foodItem.id}</p>
             <div>
         `;
     });
@@ -84,6 +85,7 @@ const appendMenuItems = () => {
     <p class="itemPrice">$${price}</p>
     <p class="itemCalories">${calories} calories</p>
     <p class="itemDescription">${description}</p>
+    <p class="itemId">ID#${id}</p>
     `
     menuItems.appendChild(newMenuItem1)
     renderManagerMenu();
@@ -105,16 +107,17 @@ showAddFormHeader.addEventListener('click', () => {
     
 })
 
-const AddFormviewChanges = document.getElementById('AddFormviewChanges');
-AddFormviewChanges.addEventListener('click', () => {
-    window.location.href = 'Menu-Updated.html'
-})
+// const AddFormviewChanges = document.getElementById('AddFormviewChanges');
+// AddFormviewChanges.addEventListener('click', () => {
+//     window.location.href = 'Menu-Updated.html'
+// })
 
-const addFormConfirmBtn = document.getElementById('addFormConfirmBtn');
-addFormConfirmBtn.addEventListener('click', () => {
-    localStorage.removeItem('foodItems')
-    localStorage.setItem('foodItems', JSON.stringify(foodItems))
-})
+// const addFormConfirmBtn = document.getElementById('addFormConfirmBtn');
+// addFormConfirmBtn.addEventListener('click', () => {
+//     localStorage.setItem('foodItems', JSON.stringify(foodItems))
+//     window.location.href = 'Manager-Menu-Page.html'
+// })
+
 // end of add form buttons
 
 // start of edit items
@@ -149,15 +152,16 @@ editMenuItemBtn.addEventListener('click', () => {
 // start of edit form buttons
 const editItemConfirmBtn = document.getElementById('editFormConfirmBtn');
 editItemConfirmBtn.addEventListener('click', () => {
-    localStorage.removeItem('foodItems')
     localStorage.setItem('foodItems', JSON.stringify(foodItems))
+    window.location.href = 'Manager-Menu-Page.html'
+    
 })
 
-const editItemFormViewChanges = document.getElementById('editFormViewChanges');
-editItemFormViewChanges.addEventListener('click', () => {
-    window.location.href = 'Menu-Updated.html'
+// const editItemFormViewChanges = document.getElementById('editFormViewChanges');
+// editItemFormViewChanges.addEventListener('click', () => {
+//     window.location.href = 'Menu-Updated.html'
 
-})
+// })
 
 const editMenuHeader = document.getElementById('editMenuHeader');
 editMenuHeader.addEventListener('click', () => {
@@ -237,3 +241,58 @@ $('#ham-menu').click(() => {
  
  }
 // end of jquery for hamburger menu
+
+function checkForUser(){
+    logbtn = document.getElementById("go-to-login")
+    profbtn = document.getElementById("go-to-profile")
+    
+    if(window.localStorage.getItem("Current User")){
+        let currentUser = JSON.parse(localStorage.getItem('Current User'));
+        profbtn.style.display = "block"
+        // logbtn.style.display = "none"
+        profbtn.innerHTML = `${currentUser[0].firstName}\'s Profile`
+        // POPULATE PROFILE
+        let usersname = currentUser[0].firstName
+        let usersemail = currentUser[0].email
+        let userspoints = currentUser[0].points
+        let displayname = document.getElementById("users-name")
+        let displayemail = document.getElementById("users-email")
+        displaypoints = document.getElementById("users-points")
+        displayname.innerHTML = usersname
+        displayemail.innerHTML = usersemail
+        displaypoints.innerHTML = `Points: ${userspoints}`
+    }
+    else{
+        console.log("NOT There")
+        profbtn.style.display = "none"
+        // logbtn.style.display = "block"
+    }
+}
+$("#go-to-profile").click(() => {
+    profile = document.getElementById("profile-form")
+    profile.style.transform = "scale(1)"
+ })
+ $("#exit-profile").click(() => {
+    profile = document.getElementById("profile-form")
+    profile.style.transform = "scale(0)"
+ })
+
+
+ checkForUser()
+
+// jquery to make hero go fade off screen after 3 seconds and then show menu items
+// $(document).ready(function(){
+//     setTimeout(function(){
+//         $('.hero').addClass('animate__fadeOut')
+//         $('.hero').addClass('heroHidden')
+//         $('.menu').removeClass('menuItemsHidden')
+//         $('.menu').addClass('menuItemsActive')
+//     }, 3000);
+// });
+
+$('.hero').click(function() {
+    // $('.hero').addClass('animate__fadeOut')
+    $('.hero').addClass('heroHidden')
+    $('.menu').removeClass('menuItemsHidden')
+    $('.menu').addClass('menuItemsActive')
+})
