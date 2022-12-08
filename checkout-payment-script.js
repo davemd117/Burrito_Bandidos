@@ -7,6 +7,7 @@ let points = [];
 totalPoints = customerPoints[0].points + cartPoints;
 points.push(totalPoints);
 localStorage.setItem("useCredit", true);
+localStorage.setItem('usePoints', false);
 
 currentCustomerCart.forEach((item) => {
    let cartItems = document.querySelector(".cartItems");
@@ -188,6 +189,7 @@ quantityInputs.forEach((input) => {
     customerCart[itemIndex].quantity = input.value;
     if (validateForm3() == true) {
         localStorage.setItem('totalPoints', points);
+        localStorage.removeItem('cartItems');
         localStorage.setItem('finalCart', JSON.stringify(customerCart));
         window.location.href = "receipt.html";
     }
@@ -236,3 +238,41 @@ $('#ham-menu').click(() => {
         $(".side-bar").hide()
  
  }
+
+ function checkForUser(){
+    logbtn = document.getElementById("go-to-login")
+    profbtn = document.getElementById("go-to-profile")
+    
+    if(window.localStorage.getItem("Current User")){
+        let currentUser = JSON.parse(localStorage.getItem('Current User'));
+        profbtn.style.display = "block"
+        // logbtn.style.display = "none"
+        profbtn.innerHTML = `${currentUser[0].firstName}\'s Profile`
+        // POPULATE PROFILE
+        let usersname = currentUser[0].firstName
+        let usersemail = currentUser[0].email
+        let userspoints = currentUser[0].points
+        let displayname = document.getElementById("users-name")
+        let displayemail = document.getElementById("users-email")
+        displaypoints = document.getElementById("users-points")
+        displayname.innerHTML = usersname
+        displayemail.innerHTML = usersemail
+        displaypoints.innerHTML = `Points: ${userspoints}`
+    }
+    else{
+        console.log("NOT There")
+        profbtn.style.display = "none"
+        // logbtn.style.display = "block"
+    }
+}
+$("#go-to-profile").click(() => {
+    profile = document.getElementById("profile-form")
+    profile.style.transform = "scale(1)"
+ })
+ $("#exit-profile").click(() => {
+    profile = document.getElementById("profile-form")
+    profile.style.transform = "scale(0)"
+ })
+
+
+ checkForUser()
