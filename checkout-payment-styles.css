@@ -298,8 +298,8 @@ select{
 
 .customerCart{
     position: absolute;
-    top: 13.5%;
-    right: 10%;
+    top: 15%;
+    right: 2.5%;
     display: flex;
     flex-direction: column;
     width: 25vw;
@@ -531,31 +531,96 @@ footer{
 }
 
 /* media queries */
+@media screen and (max-width: 1200px){
+   .container{
+       transform: translate(0,0);
+       left: 0;
+   }
+   .container form{
+        width: 150%;
+   }
+   .container2{
+        transform: translate(0,0);
+        left: 0;
+    }
+    .container2 form{
+     width: 150%;
+    }
+   .customerCart{
+        top: 15%;
+        right: 0%;
+        width: 35%;
+   }
+   .cartItemName{
+        font-size: .8rem;
+   }
+}
+    
 @media screen and (max-width: 900px){
-    .container{
-        width: 50%;
-        padding: 0;
-    }
     .container form{
-        width: 100%;
+         width: 135%;
     }
-    .container2{
-        width: 50%;
-        padding: 0;
+     .container2 form{
+      width: 135%;
+     }
+    .customerCart{
+         top: 15%;
+         right: 0%;
+         width: 30%;
     }
+    .cartItem{
+        flex-direction: column;
+        text-align: center;
+    }
+    .submitBtn{
+        margin-left: 20%
+    }
+    #submitBtn2{
+        margin-left: 15%
+    }
+}
+
+@media screen and (max-width: 600px){
+    .container{
+        left: -5%;
+    }
+     .container form{
+      width: 100%;
+     }
+     .container2{
+        left: -5%;
+     }
     .container2 form{
         width: 100%;
     }
     .customerCart{
-        position: absolute;
-        top: 17.35%;
-        right: 2%;
-        display: flex;
-        flex-direction: column;
-        width: 30%;
-        background: #fff;
-        box-shadow: 10px 5px 10px rgba(0,0,0,0.1);
-        border: 1px solid #ccc;
-        height: 80vh;
+        top: 15%;
+        right: .5%;
+        width: 47.5%;
+        height: 100%;
+    }
+    #submitBtn2{
+        margin-left: 1%
+    }
+    /* make placeholder font smaller */
+    input::-webkit-input-placeholder{
+        font-size: 75%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .container form{
+        width: 75%;
+    }
+    .container2 form{
+        width: 75%;
+    }
+    .container img{
+        width: 100%;
+    }
+    .customerCart{
+        top: 9%;
+        right: -3%;
+        width: 50%;
     }
 }
