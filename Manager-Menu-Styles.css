@@ -81,6 +81,7 @@ nav ion-icon{
     width: 100%;
     justify-content: space-evenly;
     align-items: center;
+    text-align: center;
 }
 .exit-sidebar{
     /* position: absolute; */
@@ -532,9 +533,10 @@ footer{
 
 /* media queries come back and finish once rest of css is done */
 @media screen and (max-width: 1200px){
-    .menuItems{
-        grid-template-columns: repeat(3, 1fr);
+    .formBtnContainer{
+        padding: 0;
     }
+    
 }
 
 @media screen and (max-width: 900px){
@@ -565,6 +567,24 @@ footer{
         box-shadow: black 0 0 5px;
         z-index: 4;
     }
+   .addNewItemForm{
+         width: 50%;
+         height: 50%;
+         position: fixed;
+         left: 0;
+         justify-content: center;
+         align-items: center;
+         z-index: 100;
+   }
+   .editItemForm{
+            width: 50%;
+            height: 50%;
+            position: fixed;
+            right: 0;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+   }
    
 }
 
@@ -576,12 +596,29 @@ footer{
     footer{
         font-size: 1em;
     }
-}
-
-@media screen and (max-width: 400px){
-    .menuItems{
-        grid-template-columns: repeat(1, 1fr);
-    }
+    .addNewItemForm{
+        width: 100%;
+        height: 50%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        justify-content: center;
+        align-items: center;
+        z-index: 100;
+  }
+  .editItemForm{
+           width: 100%;
+           height: 50%;
+           position: fixed;
+           top: 50%;
+           left: 0;
+           justify-content: center;
+           align-items: center;
+           z-index: 100;
+           padding: 0;
+           margin: 0;
+           border-radius: 0;
+  }
 }
 
   
