@@ -9,7 +9,7 @@ points.push(totalPoints);
 localStorage.setItem("useCredit", true);
 localStorage.setItem('usePoints', false);
 localStorage.setItem("useDelivery", true);
-let tip = "$0.00";
+let tip = 0.00;
 localStorage.setItem("tip", tip);
 
 currentCustomerCart.forEach((item) => {
@@ -83,13 +83,11 @@ function totalPrice() {
         subTotal += (price * quantity);
         tax = subTotal * .06
         total = subTotal + tax + tipasNumber;
-        console.log(tipasNumber)
-        console.log(tip)
     }
     document.getElementsByClassName("total")[0].innerText = "Total: $" + total.toFixed(2);
     document.getElementsByClassName("subTotal")[0].innerText = "Subtotal: $" + subTotal.toFixed(2);
     document.getElementsByClassName("tax")[0].innerText = "Tax: $" + tax.toFixed(2);
-    document.getElementsByClassName("tipAmount")[0].innerText = "Tip: $" + tip.replace("$", "");
+    document.getElementsByClassName("tipAmount")[0].innerText = "Tip: $" + tipasNumber.toFixed(2);
     }
 
 var quantityInputs = document.getElementsByClassName("quantity");
@@ -171,7 +169,7 @@ function validateForm3() {
 submitBtn1.addEventListener('click', function() {
     let tipAmount = document.querySelector("#tip").value;
     if (tipAmount.includes("$") && !isNaN(tipAmount.replace("$", ""))) {
-        // tipAmount = parseFloat(tipAmount.replace("$", ""));
+        tipAmount = parseFloat(tipAmount.replace("$", ""));
         localStorage.setItem("tip", tipAmount);
        
     } else {
