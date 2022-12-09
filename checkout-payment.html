@@ -37,6 +37,7 @@
       <div class="cartItems">
       </div>
       <div class="cartTotal">
+        <!-- <h3 class="tipAmount">Tip: $0.00</h3> -->
         <h3 class="tax">Tax: $0.00</h3>
         <h3 class="subTotal">Sub total: $0.00</h3>
         <h3 class="total">Total: $0.00</h3>
@@ -112,6 +113,10 @@
                 <span>CVV :</span>
                 <input id="cardCvv" class="paymentFormInput" type="text" placeholder="Enter 3 digit security code on back of card...131">
               </div>
+              <div class="inputs">
+                <span>Enter tip amount :</span>
+                <input id="tip" class="paymentFormInput" type="text" placeholder="Must include $... $0.00 ">
+              </div>
             </div>
           </div>
         </div>
@@ -154,11 +159,10 @@
                 <input id="phone" type="text" placeholder="Enter phone number...1111111111">
               </div>
               <div class="inputs">
-               <span>Shipping Method :</span>
+               <span>Delivery/Pickup :</span>
                   <select name="shippingMethod" id="shippingMethod">
-                  <option value="standard">Standard</option>
-                  <option value="express">Express</option>
-                  <option value="overnight">Overnight</option>
+                  <option value="delivery">Delivery</option>
+                  <option value="pickUp">Pick-up</option>
                   </select>
               </div>
               <div class="inputs">
