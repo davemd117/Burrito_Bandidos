@@ -80,6 +80,14 @@ body {
     margin-bottom: .5rem;
 }
 
+#deliveryMessage {
+    line-height: 1.5;
+}
+
+.deliveryMessageVisibility {
+    display: none;
+}
+
 /* ------------------------------- Nav / Sidebar -------------------------------*/
 .nav-bar{
     width: 100%;
