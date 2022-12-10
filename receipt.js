@@ -1,23 +1,26 @@
 // ------------------------------- HTML Element Variables ------------------------------- 
 const receiptItemsContainer = document.getElementById('receiptItemsContainer');
 const receiptSubTotalElement = document.getElementById('receiptSubTotal');
+const pointsEarnedElement = document.getElementById('pointsEarned');
+const pointsSpentElement = document.getElementById('pointsSpent');
+const pointsDiscountElement = document.getElementById('pointsDiscount');
+const customerPointsElement = document.getElementById('customerPoints');
+const receiptTipElement = document.getElementById('receiptTip');
 const receiptTaxElement = document.getElementById('receiptTax');
 const receiptTotalElement = document.getElementById('receiptTotal');
-const pointsSpent = document.getElementById('pointsSpent');
-const pointsAccumulated = document.getElementById('pointsAccumulated');
-const pointsDiscount = document.getElementById('pointsDiscount');
 
 
 // ------------------------------- Global Variables For Functions ------------------------------- 
-var receiptSubTotal = 0;
-var tax = 0;
-var total = 0;
 var receiptItems = JSON.parse(localStorage.getItem("finalCart"));
-// var pointUse = JSON.parse(localStorage.getItem("pointUse"));
-var pointUse = "true"
-
+var pointUse = JSON.parse(localStorage.getItem("usePoints"));
+var subTotal = JSON.parse(localStorage.getItem("orderSubTotal"));
 var currentUser = JSON.parse(localStorage.getItem("Current User"));
+var cartPoints = JSON.parse(localStorage.getItem("cartPoints"));
 var totalPoints = JSON.parse(localStorage.getItem("totalPoints"));
+// var tip = JSON.parse(localStorage.getItem("tip"));
+var tax = subTotal * .06;
+var total = subTotal + tax;
+// var total = subTotal + tax + tip;
 
 
 // ------------------------------- Receipt Items ------------------------------- 
@@ -38,55 +41,44 @@ function renderReceiptItems() {
 };
 renderReceiptItems();
 
-function renderReceiptSubTotal() {
-    receiptItems.forEach((receiptItem) => {
-        receiptSubTotal += receiptItem.price * receiptItem.quantity;
-    });
-    receiptSubTotalElement.innerHTML = `$${receiptSubTotal.toFixed(2)}`;
-};
-renderReceiptSubTotal();
 
-function renderReceiptTax() {
-    tax = receiptSubTotal * .06;
+
+function renderReceiptDetails() {
+    // receiptTipElement.innerHTML = `$${tip}`;
+    receiptSubTotalElement.innerHTML = `$${subTotal.toFixed(2)}`;
     receiptTaxElement.innerHTML = `$${tax.toFixed(2)}`;
+
+    pointsEarnedElement.innerHTML = `${cartPoints}`;
 }
-renderReceiptTax();
+renderReceiptDetails();
 
-function spendPoints() {
-    total = receiptSubTotal + tax;
 
-    if (pointUse === "true") {
+
+function renderPointUsage() {
+    if (pointUse === true) {
+        pointsSpentElement.innerHTML = `${currentUser[0].points}`;
+        pointsDiscountElement.innerHTML = `$${currentUser[0].points / 10}`;
+        customerPointsElement.innerHTML = `${cartPoints}`
+
+        total -= (currentUser[0].points / 10);
+
         currentUser[0].points = 0;
-        localStorage.setItem('Current User', JSON.stringify(currentUser));
-        // Setting user points to 0 after spending points
-
-        total -= (totalPoints / 10);
-
-        renderPointsUsed();
     } else {
-        currentUser[0].points = totalPoints
-        localStorage.setItem('Current User', JSON.stringify(currentUser));
-        // Incrementing user points after choosing not to spend points
-
-        renderPointsSaved();
+        customerPointsElement.innerHTML = `${ currentUser[0].points + cartPoints}`
     }
-};
-spendPoints();
 
-function renderPointsUsed() {
-    pointsSpent.innerHTML = `${totalPoints}`;
-    pointConversion = (totalPoints /10);
-    pointsDiscount.innerHTML = `$${pointConversion.toFixed(2)}`;
+    currentUser[0].points += cartPoints;
+    localStorage.setItem('Current User', JSON.stringify(currentUser));
+    renderReceiptTotal();
 };
+renderPointUsage();
 
-function renderPointsSaved() {
-    pointsAccumulated.innerHTML = `${totalPoints}`;
-};
+
 
 function renderReceiptTotal() {
     receiptTotalElement.innerHTML = `$${total.toFixed(2)}`;
 };
-renderReceiptTotal();
+// renderReceiptTotal();
 
 // ------------------------------- Hamburger Menu ------------------------------- 
 $('#ham-menu').click(() => {

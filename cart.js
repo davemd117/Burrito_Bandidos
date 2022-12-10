@@ -43,13 +43,14 @@ function renderCart() {
 };
 
 function renderCartTotal() {
-    let totalPrice = 0;
+    let total = 0;
 
     cartItems.forEach((cartItem) => {
-        totalPrice += cartItem.price * cartItem.quantity
+        total += cartItem.price * cartItem.quantity
     });
 
-    cartTotal.innerHTML = `$${totalPrice.toFixed(2)}`;
+    cartTotal.innerHTML = `$${total.toFixed(2)}`;
+    localStorage.setItem("orderSubTotal", JSON.stringify(total));
 };
 
 function changeCartItemQuantity(action, id) {
@@ -72,9 +73,6 @@ function changeCartItemQuantity(action, id) {
     });
 
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
-
-    // Set localStorage here as well?
-
     updateCart();
 };
 
@@ -85,14 +83,17 @@ function removeFromCart(id) {
 };
 
 function purchaseCart() {
-    let purchaseItems = [];
-    purchaseItems = cartItems;
-    localStorage.setItem("purchaseItems", JSON.stringify(cartItems));
-    window.location.href = "checkout-payment.html"
-    // NOTE: May not have to set a new array. Purchase page should just be able to grab the cart items
+    if (cartItems.length === 0) {
+        alert("Your cart is empty");
+        return
+    }
+    else {
+        localStorage.setItem("purchaseItems", JSON.stringify(cartItems));
+        window.location.href = "checkout-payment.html"
+    }
 };
-
 updateCart();
+console.log(cartItems)
 
 // ------------------------------- Hamburger Menu ------------------------------- 
 $('#ham-menu').click(() => {

@@ -63,6 +63,7 @@ body {
 }
 
 .receiptForm img {
+    margin-top: 2rem;
     width: 25%;
     border-radius: 5px;
 }
