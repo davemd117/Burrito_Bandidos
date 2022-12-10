@@ -53,6 +53,9 @@ section{
 h1{
     width: fit-content;
 }
+a{
+    text-decoration: none;
+}
 .stick{
     position: sticky;
     background-color: #006341;
@@ -87,13 +90,28 @@ h1{
     text-align: center;
     color: #006341;
     text-shadow: 1px 1px black;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
 }
 .users-points{
     color: #ce1126;
     text-shadow: 1px 1px black;
     margin-bottom: 20px;
     align-self: center;
+}
+.prof-next-to{
+    height: 10%;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+.users-phone{
+    color: #ce1126;
+    text-shadow: 1px 1px black;
+    margin-right: 10px;
+}
+.users-addy{
+    color: #006341;
+    text-shadow: 1px 1px black;
+    text-align: center;
 }
 
 /* SIGNUP */
@@ -339,6 +357,7 @@ nav a{
 }
 nav ion-icon{
     display: none;
+    font-size: 24px;
     /* transform: rotate(90deg); */
 }
 
@@ -567,6 +586,7 @@ nav ion-icon{
     text-align: center;
     padding: 10px;
     background-color: black;
+    /* background-image: url(bandidos_images/menu_background.jpg); */
     box-shadow: 0 0 5px black;
     text-shadow: 2px 2px black;
     background-image: url(bandidos_images/menu_background.jpg);
@@ -582,7 +602,8 @@ nav ion-icon{
     box-shadow: 0 0 5px black;
     padding: 20px;
     display: flex;
-    align-items: center;;
+    align-items: center;
+    /* background-image: url(bandidos_images/menu_background.jpg); */
 }
 .about img{
     width: 40%;
@@ -633,6 +654,7 @@ nav ion-icon{
     position: relative;
     /* box-shadow:  0 0 10px black; */
     transition: .5s;
+    cursor: default;
 }
 .gallery-img{
     width: 100%;
@@ -965,7 +987,7 @@ footer{
         
     }
     a.go-to-profile{
-        font-size: 90%;
+        font-size: 80%;
     }
 }
 

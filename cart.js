@@ -18,10 +18,10 @@ function renderCart() {
 
         cart.innerHTML += `
             <div class="cartItem">
-                <div class="cartItemFlex">
+                <div class="cartItemFlex cart-left">
                     <img  class="cartItemImage" src="${cartItem.image}" alt="">
                 </div>
-                <div class="cartItemFlex">
+                <div class="cartItemFlex cart-middle">
                     <h4 class="cartItemName">${cartItem.name}</h3>
                     <p class="cartItemDescription">${cartItem.description}</p>
                     <div class="cartQuantityContainer">
@@ -30,9 +30,9 @@ function renderCart() {
                     <div class="addQtyBtn" onclick="changeCartItemQuantity('plus', ${cartItem.id})">+</div>
                     </div>
                 </div>
-                <div class="cartItemFlex">
-                    <p class="cartItemPrice">$${subTotal.toFixed(2)}</p>
-                    <div class="cartItemRemoveButton" onclick="removeFromCart(${cartItem.id})">Remove</div>
+                <div class="cartItemFlex cart-right">
+                    <p class="cartItemPrice cart-price">$${subTotal.toFixed(2)}</p>
+                    <div class="cartItemRemoveButton " onclick="removeFromCart(${cartItem.id})">Remove</div>
                 </div>
             </div>
         `;
@@ -150,4 +150,4 @@ $("#go-to-profile").click(() => {
 $("#sign-out").click(() => {
     localStorage.removeItem("Current User")
  })
- checkForUser()
+window.onload =  checkForUser()

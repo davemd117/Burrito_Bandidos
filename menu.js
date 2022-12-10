@@ -57,19 +57,22 @@ renderMenu();
 
 function addToCart(id) {
     var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+    if(window.localStorage.getItem("Current User")){
+        if(cartItems.some((foodItem) => foodItem.id === id)){
+            alert("Item already in cart")
+        }
+        else {
+            const foodItem = foodItems.find((foodItem) => foodItem.id === id)
 
-    if(cartItems.some((foodItem) => foodItem.id === id)){
-        alert("Item already in cart")
+            cartItems.push({
+                ...foodItem,
+                quantity: 1,
+            });
+        }
     }
-    else {
-        const foodItem = foodItems.find((foodItem) => foodItem.id === id)
-
-        cartItems.push({
-            ...foodItem,
-            quantity: 1,
-        });
+    else{
+        alert("You must be logged in to add to cart")
     }
-
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
 };
 
@@ -131,4 +134,31 @@ $("#sign-out").click(() => {
     localStorage.removeItem("Current User")
  })
  checkForUser()
+
+
+
+//  CART ICON BADGE
+$("img").click(()=> {
+    let cart = JSON.parse(localStorage.getItem("cartItems")) || [];
+    let badge = document.getElementById("icon-badge")
+    let sideBadge = document.getElementById("icon-badge-side")
+    let hamBadge = document.getElementById("icon-badge-ham")
+    if(cart.length > 0){
+        badge.classList.add("animate__flipInY")
+        badge.style.display = "flex"
+        badge.innerHTML = cart.length
+        sideBadge.classList.add("animate__flipInY")
+        sideBadge.style.display = "flex"
+        sideBadge.innerHTML = cart.length
+        hamBadge.classList.add("animate__flipInY")
+        hamBadge.style.display = "flex"
+        hamBadge.innerHTML = cart.length
+    }
+    else{
+        badge.style.display = "none"
+        sideBadge.style.display = "none"
+        hamBadge.style.display = "none"
+    }
+    console.log(cart.length)
+})
 
