@@ -10,6 +10,14 @@ body{
     font-family: 'Poppins', sans-serif;
     background-image: linear-gradient( rgba(0, 0, 0, 0.9) ,rgba(0, 0, 0, 0.9)), url(Manager-Menu-Page-Images/heroback.jpg);
 }
+.logo{
+    background-image: url(receipt_images/bandidos_name_logo.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 2.5rem;
+    width: 10%;
+}
 
 .nav-bar{
     width: 100%;
@@ -26,10 +34,10 @@ body{
 }
 .nav-links{
     display: flex;
-    justify-content: right;
+    justify-content: space-between;
     width: 50%;
     list-style-type: none;
-    gap: 1.2rem;
+    /* gap: 1.2rem; */
 }
 
 nav a{
@@ -44,6 +52,10 @@ nav ion-icon{
 .logo{
     font-size: 1.25em;
     color: #006341;
+}
+.ham-menu{
+    color: #006341;
+    cursor: pointer;
 }
 
 .side-bar{
@@ -69,6 +81,7 @@ nav ion-icon{
     width: 100%;
     justify-content: space-evenly;
     align-items: center;
+    text-align: center;
 }
 .exit-sidebar{
     /* position: absolute; */
@@ -82,30 +95,6 @@ nav ion-icon{
     color: #ce1126;
 }
    
-
-/* hero */
-
-.hero{
-    background-color: gray;
-    border-bottom: 1px solid #e6e6e6;
-    height: 83.5vh;
-    width: 100%;
-}
-
-.heroActive{
-    display: block;
-}
-.heroHidden{
-    display: none;
-}
-.hero img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* end hero */
-
 
 /* start of add edit forms */
 .addNewItemForm{
@@ -199,6 +188,18 @@ form{
     transition: .7s;
     cursor: pointer;
 }
+.heroHeader{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate( -35%,-50%);
+    font-size: 4rem;   
+    width: 100%;
+    pointer-events: none;
+    /* color: #006341; */
+}
+
+
 
 .formHidden{
     display: none;
@@ -208,7 +209,7 @@ form{
 }
 
 .formBtn{
-    width: max-content;
+    width: 10rem;
     padding: 10px 20px;
     color: #fff;
     border: none;
@@ -292,8 +293,14 @@ input[type="text"]:focus{
     grid-gap: 1rem;
     text-align: center;
     width: 100%;
-    padding: 2rem;
+    padding:  0rem 3rem;
     margin-top: 1rem;
+}
+
+.itemId{
+    position: absolute;
+    right: 0%;
+    bottom: 21.5%;
 }
 
 
@@ -316,12 +323,6 @@ input[type="text"]:focus{
     border-bottom: 1px solid white;
 }
 
-.menuItemsHidden{
-    display: none;
-}
-.menuItemsActive{
-    display: block;
-}
 
 .menuItems h2{
     color: white;
@@ -343,7 +344,8 @@ input[type="text"]:focus{
     align-items: center;
     gap: 1rem;
     justify-content: center;
-    padding: 1rem;
+    padding: 1rem 1rem 0 1rem;
+    /* flex-direction: column; */
 }
 
 .menuHeader > button {
@@ -357,6 +359,7 @@ input[type="text"]:focus{
     cursor: pointer;
     transition: .7s;
     border: 1px solid #006341;
+    border-radius: 15px;
 
 }
 .menuHeader > button:hover{
@@ -364,6 +367,7 @@ input[type="text"]:focus{
     background-image: none;
     color: #006341;
     transition: .7s;
+    font-size: 1.2rem;
 }
 
 
@@ -381,9 +385,11 @@ input[type="text"]:focus{
 }
 
 .deleteFromMenuBtn:hover{
+    font-size: 2.5em;
     color: red;
     transition: .7s;
 }
+
 
 /* end of menu items gallery */
 
@@ -468,12 +474,69 @@ footer{
     transition: color .4s;
 }
 
+.form1{
+    display: flex;
+    flex-direction: column;
+    max-width: fit-content;
+    height: fit-content;
+    justify-content: center;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    padding: 20px;
+    border: 2px solid black;
+    box-shadow: 0 0 10px black;
+    background-color: #fff;
+    transition: 1s;
+    z-index: 100;
+}
+
+.profile-form{
+    transform: scale(0);
+}
+
+.users-name{
+    color: #ce1126;
+    text-shadow: 3px 3px black;
+    margin-bottom: 5px;
+    align-self: center;
+}
+
+.users-email{
+    text-align: center;
+    color: #006341;
+    text-shadow: 1px 1px black;
+    margin-bottom: 20px;
+}
+
+.users-points{
+    color: #ce1126;
+    text-shadow: 1px 1px black;
+    margin-bottom: 20px;
+    align-self: center;
+}
+
+.btn{
+    width: 200px;
+    font-size: 100%;
+    padding: 10px;
+    border-radius: 50px;
+    border: none;
+    background-image: linear-gradient(to right,#ce1126,#006341);
+    transition: .7s;
+    align-self: center;
+}
+
 
 /* media queries come back and finish once rest of css is done */
 @media screen and (max-width: 1200px){
-    .menuItems{
-        grid-template-columns: repeat(3, 1fr);
+    .formBtnContainer{
+        padding: 0;
     }
+    
 }
 
 @media screen and (max-width: 900px){
@@ -483,23 +546,6 @@ footer{
     .headerContainer{
         display: none;
     }
-    .menuHeader{
-        display:inline-block
-    }
-}
-
-@media screen and (max-width: 600px){
-    .menuItems{
-        grid-template-columns: repeat(1, 1fr);
-    }
-}
-
-@media screen and (max-width: 400px){
-    .menuItems{
-        grid-template-columns: repeat(1, 1fr);
-    }
-}
-@media (max-width:1000px) {
     nav ul.nav-links{
         display: none;
     }
@@ -521,8 +567,61 @@ footer{
         box-shadow: black 0 0 5px;
         z-index: 4;
     }
+   .addNewItemForm{
+         width: 50%;
+         height: 50%;
+         position: fixed;
+         left: 0;
+         justify-content: center;
+         align-items: center;
+         z-index: 100;
+   }
+   .editItemForm{
+            width: 50%;
+            height: 50%;
+            position: fixed;
+            right: 0;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+   }
+   
 }
 
+
+@media screen and (max-width: 600px){
+    .menuItems{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    footer{
+        font-size: 1em;
+    }
+    .addNewItemForm{
+        width: 100%;
+        height: 50%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        justify-content: center;
+        align-items: center;
+        z-index: 100;
+  }
+  .editItemForm{
+           width: 100%;
+           height: 50%;
+           position: fixed;
+           top: 50%;
+           left: 0;
+           justify-content: center;
+           align-items: center;
+           z-index: 100;
+           padding: 0;
+           margin: 0;
+           border-radius: 0;
+  }
+}
+
+  
 
 /* end of media queries */
 
