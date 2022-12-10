@@ -107,16 +107,6 @@ showAddFormHeader.addEventListener('click', () => {
     
 })
 
-// const AddFormviewChanges = document.getElementById('AddFormviewChanges');
-// AddFormviewChanges.addEventListener('click', () => {
-//     window.location.href = 'Menu-Updated.html'
-// })
-
-// const addFormConfirmBtn = document.getElementById('addFormConfirmBtn');
-// addFormConfirmBtn.addEventListener('click', () => {
-//     localStorage.setItem('foodItems', JSON.stringify(foodItems))
-//     window.location.href = 'Manager-Menu-Page.html'
-// })
 
 // end of add form buttons
 
@@ -157,32 +147,12 @@ editItemConfirmBtn.addEventListener('click', () => {
     
 })
 
-// const editItemFormViewChanges = document.getElementById('editFormViewChanges');
-// editItemFormViewChanges.addEventListener('click', () => {
-//     window.location.href = 'Menu-Updated.html'
-
-// })
-
 const editMenuHeader = document.getElementById('editMenuHeader');
 editMenuHeader.addEventListener('click', () => {
     let editForm = document.querySelector('.editItemForm')
     editForm.classList.remove('formsHidden')
     editForm.classList.add('formsActive')
 })
-
-// // end of edit form buttons
-
-// start of view menu button
-const viewMenu = document.getElementById('viewMenu');
-viewMenu.addEventListener('click', () => {
-    let menuItemsContainer = document.querySelector('.menu')
-    menuItemsContainer.classList.remove('menuItemsHidden')
-    menuItemsContainer.classList.add('menuItemsActive')
-    let hero = document.querySelector('.hero')
-    hero.classList.remove('heroActive')
-    hero.classList.add('heroHidden')
-})
-// end of view menu button
 
 //  jquery for header buttons to animate forms from left to center
 $("#addMenuHeader").click(function(){
@@ -200,6 +170,19 @@ $("#editMenuHeader").click(function(){
     });
 });
 
+if($(window).width() < 900) {
+    $("#addMenuHeader").click(function(){
+        $(".addItemFormContainer").css('display', 'block')
+    });
+}
+
+if($(window).width() < 900) {
+    $("#editMenuHeader").click(function(){
+        $(".editItemFormContainer").css('display', 'block')
+    });
+}
+
+
 // // end of header buttons jquery
 
 // jquery for forms to animate from center to left on close
@@ -211,6 +194,22 @@ $('.addFormCloseBtn').click(function() {
     });
     $('.addNewItemForm').addClass('animate__fadeOut')
 })
+// if screen is medium or smaller, set display to none on close for add and edit form
+if($(window).width() < 900) {
+    $('.addFormCloseBtn').click(function() {
+        $('.addItemFormContainer').css('display', 'none')
+    })
+}
+if($(window).width() < 900) {
+    $('.editFormCloseBtn').click(function() {
+        $('.editItemFormContainer').css('display', 'none')
+    })
+}
+
+    
+   
+
+
 
 $('.editFormCloseBtn').click(function() {
     $('.editItemFormContainer').animate({

@@ -16,40 +16,31 @@
     <nav id="nav-bar" class="nav-bar">
         <div class="logo"></div>
         <ul id="nav-links" class="nav-links">
-            <a href="#" id="viewMenu"><li> View Menu</li></a>
+            <a href="#" style="pointer-events: none;"><li><h4>Manager Dashboard</h4></li></a>
+            <a href="index.html"><li>Home</li></a>
             <a href="applications.html"><li>Applications</li></a>
             <a href="menu.html"><li>Customer Menu</li></a>
-            <a href="index.html"><li>Home</li></a>
         </ul>
         <ion-icon id="ham-menu" class="ham-menu" name="menu-outline"></ion-icon>
     </nav>
     <div id="side-bar" class="side-bar animate__animated animate__slideInRight">
         <ion-icon class="exit-sidebar" name="arrow-back-outline"></ion-icon>
         <ul id="side-links" class="side-links">
-            <a href="#" id="viewMenu"><li> View Menu</li></a>
+            <a href=""><li>Manager Home Page</li></a>
+            <a href="index.html"><li>Home</li></a>
             <a  href="applications.html"><li>Applications</li></a>
             <a href="menu.html"><li>Customer Menu</li></a>
-            <a href="index.html"><li>Home</li></a>
         </ul>
     </div>
 
 
-
-<section class="hero heroActive animate__animated">
-    <h2 class="heroHeader">Manager Dashboard Click to view menu</h2>
-    <img src="Manager-Menu-Page-Images/hero.gif" alt="">
-</section>
-
-<section class="menuItemsHidden menu">
+<section class="menu">
+    <h2 class="menuHeader1" style="text-align:center; color: #006341;">Menu Items</h2>
 <div class="menuHeader">
-<button id="addMenuHeader" class="headerMenuBtn">Add Menu Items</button>
-<button id="editMenuHeader" class="headerMenuBtn">Edit Menu Items</button>
-<h2 class="menuHeader1" style="text-align:center; color: #006341;">Menu Items</h2>
+    <button id="addMenuHeader" class="headerMenuBtn">Add Menu Items</button>
+    <button id="editMenuHeader" class="headerMenuBtn">Edit Menu Items</button>
 </div>
-
-
-<div class="menuItems"> 
-</div>
+<div class="menuItems"></div>
 </section>
 
 <section class="form">
@@ -66,8 +57,6 @@
             <input type="text" id="newItemId" placeholder="Enter ID #">
         <div class="formBtnContainer">
             <button class="formBtn" id="addNewMenuItem" type="button">Add new menu item</button>
-            <!-- <button class="formBtn" type="button" id="addFormConfirmBtn">Confirm Changes</button>
-            <button class="formBtn" id="AddFormviewChanges" type="button">View Changes</button> -->
         </div>
     </form>
     </div>
@@ -84,7 +73,6 @@
         <div class="formBtnContainer">
             <button id="editMenuItem" class="formBtn" type="button">Edit Item</button>
             <button class="formBtn" id="editFormConfirmBtn" type="button">Confirm Changes</button>
-            <!-- <button class="formBtn" id="editFormViewChanges" type="button">View Changes</button> -->
         </div>
     </form>
 </div>
