@@ -1,5 +1,9 @@
 // ------------------------------- HTML Element Variables ------------------------------- 
 const receiptItemsContainer = document.getElementById('receiptItemsContainer');
+const customerNameElement = document.getElementById('customerName');
+const paymentTypeElement = document.getElementById('paymentType');
+const orderNumberElement = document.getElementById('orderNumber');
+const orderTimeElement = document.getElementById('orderTime');
 const receiptSubTotalElement = document.getElementById('receiptSubTotal');
 const pointsEarnedElement = document.getElementById('pointsEarned');
 const pointsSpentElement = document.getElementById('pointsSpent');
@@ -12,15 +16,27 @@ const receiptTotalElement = document.getElementById('receiptTotal');
 
 // ------------------------------- Global Variables For Functions ------------------------------- 
 var receiptItems = JSON.parse(localStorage.getItem("finalCart"));
-var pointUse = JSON.parse(localStorage.getItem("usePoints"));
-var subTotal = JSON.parse(localStorage.getItem("orderSubTotal"));
 var currentUser = JSON.parse(localStorage.getItem("Current User"));
+var paymentType = true;
+//Line above for testing - to be deleted
+// var paymentType = JSON.parse(localStorage.getItem("useCredit"));
+//Line above commented out for testing - to be uncommented
+var orderNumber = 0;
+// var orderTime = JSON.parse(localStorage.getItem("orderTime"));
+//Line above commented out for testing - to be uncommented
+var orderTime = 5;
+//Line above for testing - to be deleted
+var subTotal = JSON.parse(localStorage.getItem("orderSubTotal"));
+var pointUse = JSON.parse(localStorage.getItem("usePoints"));
 var cartPoints = JSON.parse(localStorage.getItem("cartPoints"));
 var totalPoints = JSON.parse(localStorage.getItem("totalPoints"));
 // var tip = JSON.parse(localStorage.getItem("tip"));
+//Line above commented out for testing - to be uncommented
 var tax = subTotal * .06;
 var total = subTotal + tax;
+//Line above for testing - to be deleted
 // var total = subTotal + tax + tip;
+//Line above commented out for testing - to be uncommented
 
 
 // ------------------------------- Receipt Items ------------------------------- 
@@ -44,8 +60,17 @@ renderReceiptItems();
 
 
 function renderReceiptDetails() {
-    // receiptTipElement.innerHTML = `$${tip}`;
+    customerNameElement.innerHTML = `${currentUser[0].firstName}`;
+    if (paymentType = true) {
+        paymentTypeElement.innerHTML = `Card`;
+    } else {
+        paymentTypeElement.innerHTML = `Cash`;
+    };
+    orderNumber += 1;
+    orderNumberElement.innerHTML = `${orderNumber}`
+    orderTimeElement.innerHTML = `${orderTime} minutes`
     receiptSubTotalElement.innerHTML = `$${subTotal.toFixed(2)}`;
+    // receiptTipElement.innerHTML = `$${tip}`;
     receiptTaxElement.innerHTML = `$${tax.toFixed(2)}`;
 
     pointsEarnedElement.innerHTML = `${cartPoints}`;
