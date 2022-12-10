@@ -18,9 +18,15 @@
         <div class="logo">LOGO</div>
         <ul id="nav-links" class="nav-links">
             <a  href="index.html"><li>Home</li></a>
-            <a href="cart.html"><li>Cart</li></a>
+            <div class="badge-container">
+                <a href="cart.html"><li>Cart</li></a>
+                <p class="icon-badge animate__animated" id="icon-badge"></p>
+            </div>
         </ul>
-        <ion-icon id="ham-menu" class="ham-menu" name="menu-outline"></ion-icon>
+        <div  class="badge-container ham-container">
+            <ion-icon id="ham-menu" class="ham-menu" name="menu-outline"></ion-icon>
+            <p class="icon-badge animate__animated" id="icon-badge-ham"></p>
+        </div>
     </nav>
 
     <!------------------------------- Side BAR ---------------------------------->
@@ -28,7 +34,10 @@
         <ion-icon class="exit-sidebar" name="arrow-back-outline"></ion-icon>
         <ul id="side-links" class="side-links">
             <a  href="index.html"><li>Home</li></a>
-            <a href="cart.html"><li>Cart</li></a>
+            <div class="badge-container">
+                <a href="cart.html"><li>Cart </li></a>
+                <p class="icon-badge" id="icon-badge-side"></p>
+            </div>
         </ul>
     </div>
 

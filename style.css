@@ -53,6 +53,9 @@ section{
 h1{
     width: fit-content;
 }
+a{
+    text-decoration: none;
+}
 .stick{
     position: sticky;
     background-color: #006341;
@@ -354,6 +357,7 @@ nav a{
 }
 nav ion-icon{
     display: none;
+    font-size: 24px;
     /* transform: rotate(90deg); */
 }
 
@@ -590,7 +594,7 @@ nav ion-icon{
 .about-text p{
     font-size: 70%;
     height: 50%;
-    color: #000;
+    color: #fff;
     text-align: center;
     background-color: black;
     box-shadow: 0 0 5px black;
