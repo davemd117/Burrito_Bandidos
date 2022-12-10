@@ -403,7 +403,12 @@ footer{
 }
 
 @media (max-width:800px) {
-   
+   div.menuColumn{
+    width: 50%;
+   }
+   #menuColumn3{
+    width: 100%;
+   }
 }
 
 @media (max-width:650px) {
@@ -419,10 +424,14 @@ footer{
     div.footer-socials ion-icon{
         font-size: 15px;
     }
+    div.menuColumn{
+        width: auto;
+    }
 }
 
 @media (max-width:450px) {
     footer{
         font-size: 90%;
     }
+    
 }
