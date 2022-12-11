@@ -758,7 +758,6 @@ function stickFooter(){
 // HAMBURGER MENU
 $('#ham-menu').click(() => {
    openNav()
-
 })
 $('.exit-sidebar').click(() => {
     closeNav()
@@ -771,9 +770,11 @@ sections.forEach((section) => {
 function openNav(){
     $(".side-bar").removeClass("animate__slideOutRight")
     $(".side-bar").show()
+    $(".side-links").css("visibility", "visible")
 }
 function closeNav(){
     $(".side-bar").addClass("animate__slideOutRight")
+    $(".side-links").css("visibility","hidden")
 
 }
 

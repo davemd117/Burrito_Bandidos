@@ -80,6 +80,12 @@ a{
 .profile-form{
     transform: scale(0);
 }
+.exit-profile{
+    color: #006341;
+}
+.exit-profile:hover{
+    color: #ce1126;
+}
 .users-name{
     color: #ce1126;
     text-shadow: 3px 3px black;
@@ -358,7 +364,12 @@ nav a{
 nav ion-icon{
     display: none;
     font-size: 24px;
-    /* transform: rotate(90deg); */
+    transition: .4s;
+    
+}
+nav ion-icon:hover{
+    color: #006341;
+    transform: rotate(90deg);
 }
 
 /* SIDE BAR*/
