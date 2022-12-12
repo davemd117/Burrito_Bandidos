@@ -73,8 +73,7 @@ function totalPrice() {
     var tax = 0;
     var total = 0;
     var tip = localStorage.getItem("tip");
-    var tip1 = tip.replace("$", "");
-    var tipasNumber = parseFloat(tip1);
+    tip = parseFloat(tip.replace("$", ""));
     for (var i = 0; i < cartItem.length; i++) {
         var cartItemPrice = cartItem[i].querySelector(".cartItemPrice h4");
         var cartItemQuantity = cartItem[i].querySelector(".quantity");
@@ -82,12 +81,12 @@ function totalPrice() {
         var quantity = cartItemQuantity.value;
         subTotal += (price * quantity);
         tax = subTotal * .06
-        total = subTotal + tax + tipasNumber;
+        total = subTotal + tax + tip;
     }
     document.getElementsByClassName("total")[0].innerText = "Total: $" + total.toFixed(2);
     document.getElementsByClassName("subTotal")[0].innerText = "Subtotal: $" + subTotal.toFixed(2);
     document.getElementsByClassName("tax")[0].innerText = "Tax: $" + tax.toFixed(2);
-    document.getElementsByClassName("tipAmount")[0].innerText = "Tip: $" + tipasNumber.toFixed(2);
+    document.getElementsByClassName("tipAmount")[0].innerText = "Tip: $" + tip.toFixed(2);
     }
 
 var quantityInputs = document.getElementsByClassName("quantity");
@@ -116,9 +115,7 @@ var state = document.getElementById('state');
 var zip = document.getElementById('zip');
 var phone = document.getElementById('phone');
 
-// submit button one is on billing/payment form this should hide payment form and show shipping form on click if forms filled out
 var submitBtn1 = document.getElementById('submitBtn1');
-// submit button two is on shipping form this should redirect to confirmation page on click if forms filled out
 var submitBtn2 = document.getElementById('submitBtn2');
 
 //payment info form
@@ -127,6 +124,7 @@ var cardName = document.getElementById('cardName');
 var cardExpMonth = document.getElementById('cardExpMonth');
 var cardExpYear = document.getElementById('cardExpYear');
 var cardCvv = document.getElementById('cardCvv');
+var tip1 = document.getElementById('tip');
 
 //shipping info form
 var shippingName = document.getElementById('shippingName');
@@ -173,9 +171,7 @@ submitBtn1.addEventListener('click', function() {
         localStorage.setItem("tip", tipAmount);
        
     } else {
-        validateForm2()==false;
-        alert("Please enter a valid tip amount");
-        return;
+        localStorage.setItem("tip", 0);
     }
     if (validateForm() == true && validateForm2() == true) {
         let container = document.querySelector('.container');
@@ -234,6 +230,7 @@ cashBtn.addEventListener('click', function() {
     cardName.value = "Cash expected on delivery";
     cardExpMonth.value = "Cash expected on delivery";
     cardExpYear.value = "Cash expected on delivery";
+    tip1.value = "$0.00";
     localStorage.setItem("useCredit", false);
 });
 
