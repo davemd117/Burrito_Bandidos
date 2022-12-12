@@ -636,17 +636,20 @@ function checkForUser(){
             let userspoints = loggedUser[0].points
             let usersphone = loggedUser[0].phone
             let usersaddress = loggedUser[0].address
+            // let favs = loggedUser[0].favorites
             console.log(usersphone,usersaddress)
             let displayname = document.getElementById("users-name")
             let displayemail = document.getElementById("users-email")
             let displayphone = document.getElementById("users-phone")
             let displayaddress = document.getElementById("users-addy")
             let displaypoints = document.getElementById("users-points")
+            let displayfavs = document.getElementById("favs")
             displayname.innerHTML = usersname
             displayemail.innerHTML = usersemail
             displayphone.innerHTML = usersphone
             displayaddress.innerHTML = usersaddress
             displaypoints.innerHTML = `Points: ${userspoints}`
+            // displayfavs.innerHTML = favs
             profbtn.style.display = "block"
             logbtn.style.display = "none"
             profbtn.innerHTML = `${loggedUser[0].firstName}\'s Profile`

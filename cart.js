@@ -167,16 +167,26 @@ function checkForUser(){
         profbtn.style.display = "block"
         // logbtn.style.display = "none"
         profbtn.innerHTML = `${currentUser[0].firstName}\'s Profile`
-        // POPULATE PROFILE
+        // POPULATE PROFILE DISPLAY
         let usersname = currentUser[0].firstName
         let usersemail = currentUser[0].email
         let userspoints = currentUser[0].points
+        let usersphone = currentUser[0].phone
+        let usersaddress = currentUser[0].address
+        // let favs = JSON.parse(currentUser[0].favorites)
+        // console.log(favs)
         let displayname = document.getElementById("users-name")
         let displayemail = document.getElementById("users-email")
-        displaypoints = document.getElementById("users-points")
+        let displayphone = document.getElementById("users-phone")
+        let displayaddress = document.getElementById("users-addy")
+        let displaypoints = document.getElementById("users-points")
+        let displayfavs = document.getElementById("favs")
         displayname.innerHTML = usersname
         displayemail.innerHTML = usersemail
+        displayphone.innerHTML = usersphone
+        displayaddress.innerHTML = usersaddress
         displaypoints.innerHTML = `Points: ${userspoints}`
+        // displayfavs.innerHTML = favs
     }
     else{
         console.log("NOT There")
