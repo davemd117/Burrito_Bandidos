@@ -7,10 +7,10 @@
 
 body {
     background-image: linear-gradient( rgba(0, 0, 0, 0.7) ,rgba(0, 0, 0, 0.7)), url(Manager-Menu-Page-Images/heroback.jpg);
-    /* background-repeat: no-repeat; */
-    background-size: auto;
+    background-repeat: no-repeat;
+    background-size: cover;
     font-family: 'Poppins', cursive;
-    /* background-position: center; */
+    background-position: center;
 }
 
 /* ------------------------------- Receipt Form -------------------------------*/
