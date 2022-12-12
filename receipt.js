@@ -1,4 +1,4 @@
-// To do: classList.remove() for deliveryMessageElement not working in renderReceiptDetails function, improve time display if time allows (ironic) ... and maybe other stuff
+// To do: classList.remove() for deliveryMessageElement not working in renderReceiptDetails function
 
 // ------------------------------- HTML Element Variables ------------------------------- 
 const receiptItemsContainer = document.getElementById('receiptItemsContainer');
@@ -61,8 +61,8 @@ function renderReceiptDetails() {
         paymentTypeElement.innerHTML = `Cash`;
     };
     if (useDelivery === true) {
+        deliveryMessageElement.style.display = "block";
         orderTypeElement.innerHTML = `Delivery`;
-        deliveryMessageElement.classList.remove('deliveryMessageVisbility');
         deliveryChargeElement.innerHTML = `$2.00`;
         total += 2;
     } else if (useDelivery === false) {
@@ -91,7 +91,7 @@ function renderPointUsage() {
         total -= (currentUser[0].points / 10);
 
         currentUser[0].points = 0;
-    } else {
+    } else if (usePoints === false) {
         customerPointsElement.innerHTML = `${ currentUser[0].points + cartPoints}`
     }
 

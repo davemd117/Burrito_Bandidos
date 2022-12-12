@@ -82,9 +82,6 @@ body {
 
 #deliveryMessage {
     line-height: 1.5;
-}
-
-.deliveryMessageVisibility {
     display: none;
 }
 

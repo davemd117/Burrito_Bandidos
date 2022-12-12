@@ -2,6 +2,7 @@
 const cart = document.querySelector('#cartItems');
 const cartTotal = document.getElementById('cartTotal');
 var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+var currentUser = JSON.parse(localStorage.getItem("Current User"));
 
 // ------------------------------- Cart ------------------------------- 
 function updateCart() {
@@ -94,6 +95,51 @@ function purchaseCart() {
 };
 updateCart();
 console.log(cartItems)
+
+function setFavorite() {
+    currentUser[0].favorites = cartItems;
+    localStorage.setItem('Current User', JSON.stringify(currentUser));
+};
+
+function renderFavorite() {
+    if (currentUser[0].favorites === "") {
+        alert("No favorite order found for this user")
+        return
+    };
+
+    // cartItems = [];
+    let favoriteCartItems = currentUser[0].favorites
+    cart.innerHTML = "";
+    let cartPoints = 0;
+
+    favoriteCartItems.forEach((cartItem) => {
+        let subTotal = cartItem.price * cartItem.quantity
+
+        cart.innerHTML += `
+            <div class="cartItem">
+                <div class="cartItemFlex cart-left">
+                    <img  class="cartItemImage" src="${cartItem.image}" alt="">
+                </div>
+                <div class="cartItemFlex cart-middle">
+                    <h4 class="cartItemName">${cartItem.name}</h3>
+                    <p class="cartItemDescription">${cartItem.description}</p>
+                    <div class="cartQuantityContainer">
+                    <div class="removeQtyBtn" onclick="changeCartItemQuantity('minus', ${cartItem.id})">-</div>
+                    <div class="cartItemQuantity">${cartItem.quantity}</div>
+                    <div class="addQtyBtn" onclick="changeCartItemQuantity('plus', ${cartItem.id})">+</div>
+                    </div>
+                </div>
+                <div class="cartItemFlex cart-right">
+                    <p class="cartItemPrice cart-price">$${subTotal.toFixed(2)}</p>
+                    <div class="cartItemRemoveButton " onclick="removeFromCart(${cartItem.id})">Remove</div>
+                </div>
+            </div>
+        `;
+        cartPoints += (10 * cartItem.quantity);
+    });
+    localStorage.setItem("cartPoints", JSON.stringify(cartPoints));
+    console.log(cartPoints)
+};
 
 // ------------------------------- Hamburger Menu ------------------------------- 
 $('#ham-menu').click(() => {
