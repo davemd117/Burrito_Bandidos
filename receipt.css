@@ -48,6 +48,10 @@ body {
     color: gray;
 }
 
+#orderTimeContainer {
+    align-items: center;
+}
+
 .receiptItem {
     display: flex;
     justify-content: space-between;

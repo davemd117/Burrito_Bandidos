@@ -107,12 +107,11 @@ function renderFavorite() {
         return
     };
 
-    // cartItems = [];
-    let favoriteCartItems = currentUser[0].favorites
+    cartItems = currentUser[0].favorites;
     cart.innerHTML = "";
     let cartPoints = 0;
 
-    favoriteCartItems.forEach((cartItem) => {
+    cartItems.forEach((cartItem) => {
         let subTotal = cartItem.price * cartItem.quantity
 
         cart.innerHTML += `

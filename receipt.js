@@ -8,6 +8,7 @@ const orderTypeElement = document.getElementById('orderType');
 const orderNumberElement = document.getElementById('orderNumber');
 const orderTimeElement = document.getElementById('orderTime');
 const deliveryMessageElement = document.getElementById('deliveryMessage');
+const specialInstructionsElement = document.getElementById('specialInstructions');
 const receiptSubTotalElement = document.getElementById('receiptSubTotal');
 const pointsEarnedElement = document.getElementById('pointsEarned');
 const pointsSpentElement = document.getElementById('pointsSpent');
@@ -24,6 +25,7 @@ var receiptItems = JSON.parse(localStorage.getItem("finalCart"));
 var currentUser = JSON.parse(localStorage.getItem("Current User"));
 var useCard = JSON.parse(localStorage.getItem("useCredit"));
 var useDelivery = JSON.parse(localStorage.getItem("useDelivery"));
+var specialInstructions = JSON.parse(localStorage.getItem("specialInstructions"));
 var orderNumber = JSON.parse(localStorage.getItem("orderNumber")) || 0;
 var orderTime = 5;
 var subTotal = JSON.parse(localStorage.getItem("orderSubTotal"));
@@ -61,6 +63,7 @@ function renderReceiptDetails() {
         paymentTypeElement.innerHTML = `Cash`;
     };
     if (useDelivery === true) {
+        specialInstructionsElement.innerHTML = `${specialInstructions}`
         deliveryMessageElement.style.display = "block";
         orderTypeElement.innerHTML = `Delivery`;
         deliveryChargeElement.innerHTML = `$2.00`;
