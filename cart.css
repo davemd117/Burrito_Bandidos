@@ -293,29 +293,52 @@ nav ion-icon:hover{
     z-index: 100;
 }
 
+/* PROFILE */
 .profile-form{
     transform: scale(0);
 }
-
+.exit-profile{
+    color: #006341;
+}
+.exit-profile:hover{
+    color: #ce1126;
+}
 .users-name{
     color: #ce1126;
     text-shadow: 3px 3px black;
     margin-bottom: 5px;
     align-self: center;
 }
-
 .users-email{
     text-align: center;
     color: #006341;
     text-shadow: 1px 1px black;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
 }
-
 .users-points{
     color: #ce1126;
     text-shadow: 1px 1px black;
     margin-bottom: 20px;
     align-self: center;
+}
+.prof-next-to{
+    height: 10%;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+.users-phone{
+    color: #ce1126;
+    text-shadow: 1px 1px black;
+    margin-right: 10px;
+}
+.users-addy{
+    color: #006341;
+    text-shadow: 1px 1px black;
+    text-align: center;
+}
+.favs{
+    color: #ce1126;
+    text-shadow: 1px 1px black;
 }
 
 /* ------------------------------- Footer -------------------------------*/
