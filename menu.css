@@ -37,9 +37,13 @@ a{
 }
 
 .menuTitle p {
-    font-size: 32px;
-    margin: 0 10rem;
+    font-size: 100%;
+    width: 50%;
+    margin: 0 auto;
     padding-bottom: 1.5rem;
+    background:linear-gradient(to right,#006341,#ce1126);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .menuContainer {
@@ -163,6 +167,11 @@ nav a{
 nav ion-icon{
     display: none;
     font-size: 24px;
+    transition: .4s;
+}
+nav ion-icon:hover{
+    color: #006341;
+    transform: rotate(90deg);
 }
 .badge-container{
     position: relative;
@@ -403,7 +412,12 @@ footer{
 }
 
 @media (max-width:800px) {
-   
+   div.menuColumn{
+    width: 50%;
+   }
+   #menuColumn3{
+    width: 100%;
+   }
 }
 
 @media (max-width:650px) {
@@ -419,10 +433,25 @@ footer{
     div.footer-socials ion-icon{
         font-size: 15px;
     }
+    div.menuColumn{
+        width: auto;
+    }
 }
 
 @media (max-width:450px) {
+    div.menuTitle h1{
+        font-size: 200%;
+        font-family: 'smokum', cursive;
+        padding-top: 1rem;
+    }
+    div.menuTitle p{
+        font-size: 50%;
+        width: 50%;
+        margin: auto;
+        padding-bottom: 1.5rem;
+    }
     footer{
         font-size: 90%;
     }
+    
 }
