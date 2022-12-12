@@ -30,7 +30,7 @@ var subTotal = JSON.parse(localStorage.getItem("orderSubTotal"));
 var usePoints = JSON.parse(localStorage.getItem("usePoints"));
 var cartPoints = JSON.parse(localStorage.getItem("cartPoints"));
 var totalPoints = JSON.parse(localStorage.getItem("totalPoints"));
-var tip = localStorage.getItem("tip");
+var tip = Number(localStorage.getItem("tip"));
 var tax = subTotal * .06;
 var total = subTotal + tax + Number(tip);
 
@@ -73,7 +73,7 @@ function renderReceiptDetails() {
     orderNumberElement.innerHTML = `${orderNumber}`
     orderTimeElement.innerHTML = `${orderTime} minutes`
     receiptSubTotalElement.innerHTML = `$${subTotal.toFixed(2)}`;
-    receiptTipElement.innerHTML = `$${tip}`;
+    receiptTipElement.innerHTML = `$${tip.toFixed(2)}`;
     receiptTaxElement.innerHTML = `$${tax.toFixed(2)}`;
 }
 renderReceiptDetails();
