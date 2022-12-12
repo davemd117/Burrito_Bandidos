@@ -18,7 +18,7 @@ currentCustomerCart.forEach((item) => {
     cartItem.classList.add("cartItem");
     cartItem.innerHTML = `
     <div class="cartItemImg">
-        <img src="/${item.image}" alt="">
+        <img src="${item.image}" alt="">
     </div>
     <div class="cartItemName">
         <h4>${item.name}</h4>
