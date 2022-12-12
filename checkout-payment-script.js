@@ -135,6 +135,7 @@ var shippingZip = document.getElementById('shippingZip');
 var shippingEmail = document.getElementById('shippingEmail');
 var shippingMethod = document.getElementById('shippingMethod');
 
+
 function validateForm() {
     if (billingName.value == "" || address.value == "" || email.value == "" || city.value == "" || state.value == "" || zip.value == "" || email.value.includes("@") == false) {
         alert("Please make sure to fill out all fields properly");
@@ -179,7 +180,7 @@ submitBtn1.addEventListener('click', function() {
         container.classList.remove("containerActive");
         let container2 = document.querySelector('.container2');
         container2.classList.add("containerActive");
-        container2.classList.remove("containerHidden");   
+        container2.classList.remove("containerHidden");
         totalPrice();    
     }
 });
@@ -214,7 +215,9 @@ quantityInputs.forEach((input) => {
         localStorage.setItem('totalPoints', points);
         localStorage.removeItem('cartItems');
         localStorage.setItem('finalCart', JSON.stringify(customerCart));
-        window.location.href = "receipt.html";
+        var specialInstructions = document.getElementById('specialInstructions').value;
+        localStorage.setItem('specialInstructions', JSON.stringify(specialInstructions)); 
+        window.location.href = "receipt.html";  
     }
 });
 });
