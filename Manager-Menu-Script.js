@@ -12,6 +12,7 @@ function renderManagerMenu() {
                 <p class="itemPrice">$${foodItem.price}</p>
                 <p class="itemCalories">${foodItem.calories} calories</p>
                 <p class="itemDescription">${foodItem.description}</p>
+                <p class="itemId">ID#${foodItem.id}</p>
             <div>
         `;
     });
@@ -84,6 +85,7 @@ const appendMenuItems = () => {
     <p class="itemPrice">$${price}</p>
     <p class="itemCalories">${calories} calories</p>
     <p class="itemDescription">${description}</p>
+    <p class="itemId">ID#${id}</p>
     `
     menuItems.appendChild(newMenuItem1)
     renderManagerMenu();
@@ -105,16 +107,7 @@ showAddFormHeader.addEventListener('click', () => {
     
 })
 
-const AddFormviewChanges = document.getElementById('AddFormviewChanges');
-AddFormviewChanges.addEventListener('click', () => {
-    window.location.href = 'Menu-Updated.html'
-})
 
-const addFormConfirmBtn = document.getElementById('addFormConfirmBtn');
-addFormConfirmBtn.addEventListener('click', () => {
-    localStorage.removeItem('foodItems')
-    localStorage.setItem('foodItems', JSON.stringify(foodItems))
-})
 // end of add form buttons
 
 // start of edit items
@@ -149,14 +142,9 @@ editMenuItemBtn.addEventListener('click', () => {
 // start of edit form buttons
 const editItemConfirmBtn = document.getElementById('editFormConfirmBtn');
 editItemConfirmBtn.addEventListener('click', () => {
-    localStorage.removeItem('foodItems')
     localStorage.setItem('foodItems', JSON.stringify(foodItems))
-})
-
-const editItemFormViewChanges = document.getElementById('editFormViewChanges');
-editItemFormViewChanges.addEventListener('click', () => {
-    window.location.href = 'Menu-Updated.html'
-
+    window.location.href = 'Manager-Menu-Page.html'
+    
 })
 
 const editMenuHeader = document.getElementById('editMenuHeader');
@@ -165,20 +153,6 @@ editMenuHeader.addEventListener('click', () => {
     editForm.classList.remove('formsHidden')
     editForm.classList.add('formsActive')
 })
-
-// // end of edit form buttons
-
-// start of view menu button
-const viewMenu = document.getElementById('viewMenu');
-viewMenu.addEventListener('click', () => {
-    let menuItemsContainer = document.querySelector('.menu')
-    menuItemsContainer.classList.remove('menuItemsHidden')
-    menuItemsContainer.classList.add('menuItemsActive')
-    let hero = document.querySelector('.hero')
-    hero.classList.remove('heroActive')
-    hero.classList.add('heroHidden')
-})
-// end of view menu button
 
 //  jquery for header buttons to animate forms from left to center
 $("#addMenuHeader").click(function(){
@@ -196,6 +170,19 @@ $("#editMenuHeader").click(function(){
     });
 });
 
+if($(window).width() < 900) {
+    $("#addMenuHeader").click(function(){
+        $(".addItemFormContainer").css('display', 'block')
+    });
+}
+
+if($(window).width() < 900) {
+    $("#editMenuHeader").click(function(){
+        $(".editItemFormContainer").css('display', 'block')
+    });
+}
+
+
 // // end of header buttons jquery
 
 // jquery for forms to animate from center to left on close
@@ -207,6 +194,22 @@ $('.addFormCloseBtn').click(function() {
     });
     $('.addNewItemForm').addClass('animate__fadeOut')
 })
+// if screen is medium or smaller, set display to none on close for add and edit form
+if($(window).width() < 900) {
+    $('.addFormCloseBtn').click(function() {
+        $('.addItemFormContainer').css('display', 'none')
+    })
+}
+if($(window).width() < 900) {
+    $('.editFormCloseBtn').click(function() {
+        $('.editItemFormContainer').css('display', 'none')
+    })
+}
+
+    
+   
+
+
 
 $('.editFormCloseBtn').click(function() {
     $('.editItemFormContainer').animate({
@@ -237,3 +240,58 @@ $('#ham-menu').click(() => {
  
  }
 // end of jquery for hamburger menu
+
+function checkForUser(){
+    logbtn = document.getElementById("go-to-login")
+    profbtn = document.getElementById("go-to-profile")
+    
+    if(window.localStorage.getItem("Current User")){
+        let currentUser = JSON.parse(localStorage.getItem('Current User'));
+        profbtn.style.display = "block"
+        // logbtn.style.display = "none"
+        profbtn.innerHTML = `${currentUser[0].firstName}\'s Profile`
+        // POPULATE PROFILE
+        let usersname = currentUser[0].firstName
+        let usersemail = currentUser[0].email
+        let userspoints = currentUser[0].points
+        let displayname = document.getElementById("users-name")
+        let displayemail = document.getElementById("users-email")
+        displaypoints = document.getElementById("users-points")
+        displayname.innerHTML = usersname
+        displayemail.innerHTML = usersemail
+        displaypoints.innerHTML = `Points: ${userspoints}`
+    }
+    else{
+        console.log("NOT There")
+        profbtn.style.display = "none"
+        // logbtn.style.display = "block"
+    }
+}
+$("#go-to-profile").click(() => {
+    profile = document.getElementById("profile-form")
+    profile.style.transform = "scale(1)"
+ })
+ $("#exit-profile").click(() => {
+    profile = document.getElementById("profile-form")
+    profile.style.transform = "scale(0)"
+ })
+
+
+ checkForUser()
+
+// jquery to make hero go fade off screen after 3 seconds and then show menu items
+// $(document).ready(function(){
+//     setTimeout(function(){
+//         $('.hero').addClass('animate__fadeOut')
+//         $('.hero').addClass('heroHidden')
+//         $('.menu').removeClass('menuItemsHidden')
+//         $('.menu').addClass('menuItemsActive')
+//     }, 3000);
+// });
+
+$('.hero').click(function() {
+    // $('.hero').addClass('animate__fadeOut')
+    $('.hero').addClass('heroHidden')
+    $('.menu').removeClass('menuItemsHidden')
+    $('.menu').addClass('menuItemsActive')
+})

@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Burrito Bandidos | Receipt</title>
     <link rel="stylesheet" href="receipt.css">
      <!-- ANIMATE -->
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
      <!-- FONTS -->
      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap&family=Smokum&display=swap"  rel="stylesheet">
      <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&family=DM+Sans:wght@400;500;700&family=Lato:wght@100;300;400&family=Playfair+Display:wght@400;500&family=Rubik:wght@300;400;500;600;700;800;900&family=Smokum&display=swap" rel="stylesheet"> 
+
+     <link rel="icon" href="favicon.ico">
+
 </head>
 <body>
     <!------------------------------- Nav Bar ---------------------------------->
@@ -27,10 +30,8 @@
     <div id="side-bar" class="side-bar animate__animated animate__slideInRight">
         <ion-icon class="exit-sidebar" name="arrow-back-outline"></ion-icon>
         <ul id="side-links" class="side-links">
-            <a  href="#about-section"><li>About Us</li></a>
-            <a href="#featured"><li>Featured</li></a>
-            <a href="#our-locations"><li>Locations</li></a>
-            <a href="#contact-us"><li>Contact Us</li></a>
+            <a  href="index.html"><li>Home</li></a>
+            <a href="menu.html"><li>Menu</li></a>
         </ul>
     </div>
     
@@ -40,22 +41,75 @@
     </div>
     <form class="receiptForm" action="">
         <h2 class="receiptTitle">Receipt</h2>
+        <div class="receiptDetailsContainer">
+            <div class="receiptDetails">
+                <p>Customer Name:</p>
+                <p id="customerName">N/A</p>
+            </div>
+            <div class="receiptDetails">
+                <p>Payment Type:</p>
+                <p id="paymentType">-</p>
+            </div>
+            <div id="orderTypeContainer" class="receiptDetails">
+                <p>Order Type:</p>
+                <p id="orderType">N/A</p>
+            </div>
+            <div class="receiptDetails">
+                <p>Order Number:</p>
+                <p id="orderNumber">-</p>
+            </div>
+            <div class="receiptDetails" id="orderTimeContainer">
+                <p>Estimated Order<br>Completion Time:</p>
+                <p id="orderTime">-</p>
+            </div>
+            <div id="deliveryMessage" class="receiptDetails">
+                <p id="specialInstructions"></p>
+            </div>
+        </div>
         <div id="receiptItemsContainer">
-
+            <!-- HTML FOR RECEIPT ITEMS RENDERED FROM JAVASCRIPT HERE -->
+        </div>
+        <div class="receiptDetailsContainer">
+            <div class="receiptDetails">
+                <p>Sub Total:</p>
+                <p id="receiptSubTotal">$0</p>
+            </div>
         </div>
         <img src="receipt_images\receipt_logo.jpg" alt="">
         <div class="receiptDetailsContainer">
             <div class="receiptDetails">
-                <p>Sub Total:</p>
-                <p id="receiptSubTotal">$150</p>
+                <p>Points Earned:</p>
+                <p id="pointsEarned">0</p>
+            </div>
+            <div class="receiptDetails">
+                <p>Points Used:</p>
+                <p id="pointsSpent">0</p>
+            </div>
+            <div class="receiptDetails">
+                <p>You Saved:</p>
+                <p id="pointsDiscount">$0</p>
+            </div>
+            <div class="receiptDetails">
+                <p>Total Points:</p>
+                <p id="customerPoints">0</p>
+            </div>
+        </div>
+        <div class="receiptDetailsContainer">
+            <div class="receiptDetails">
+                <p>Tip:</p>
+                <p id="receiptTip">$0</p>
+            </div>
+            <div class="receiptDetails">
+                <p>Delivery Charge:</p>
+                <p id="deliveryCharge">$0</p>
             </div>
             <div class="receiptDetails">
                 <p>Tax:</p>
-                <p id="receiptTax">$150</p>
+                <p id="receiptTax">$0</p>
             </div>
             <div class="receiptDetails">
                 <p>Total:</p>
-                <p id="receiptTotal">$150</p>
+                <p id="receiptTotal">$0</p>
             </div>
         </div>
     </form>

@@ -6,15 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout & Payment Burrito Banditos</title>
     <link rel="stylesheet" href="checkout-payment-styles.css">
-    <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap&family=Smokum&display=swap"  rel="stylesheet">
+
+    <link rel="icon" href="favicon.ico">
+
 
   </head>
   <body>
     <nav id="nav-bar" class="nav-bar">
-      <div class="logo">LOGO</div>
+      <div class="logo"></div>
       <ul id="nav-links" class="nav-links">
           <a href="index.html"><li>Home</li></a>
           <a href="cart.html"><li>Cart</li></a>
@@ -38,6 +40,7 @@
       <div class="cartItems">
       </div>
       <div class="cartTotal">
+        <h3 class="tipAmount">Tip: $0.00</h3>
         <h3 class="tax">Tax: $0.00</h3>
         <h3 class="subTotal">Sub total: $0.00</h3>
         <h3 class="total">Total: $0.00</h3>
@@ -113,6 +116,10 @@
                 <span>CVV :</span>
                 <input id="cardCvv" class="paymentFormInput" type="text" placeholder="Enter 3 digit security code on back of card...131">
               </div>
+              <div class="inputs">
+                <span>Enter tip amount :</span>
+                <input id="tip" class="paymentFormInput" type="text" placeholder="Must include $... $0.00 ">
+              </div>
             </div>
           </div>
         </div>
@@ -155,13 +162,17 @@
                 <input id="phone" type="text" placeholder="Enter phone number...1111111111">
               </div>
               <div class="inputs">
-               <span>Shipping Method :</span>
+               <span>Delivery/Pickup :</span>
                   <select name="shippingMethod" id="shippingMethod">
-                  <option value="standard">Standard</option>
-                  <option value="express">Express</option>
-                  <option value="overnight">Overnight</option>
+                  <option value="delivery">Delivery</option>
+                  <option value="pickUp">Pick-up</option>
                   </select>
               </div>
+              <div class="inputs">
+                <span>Special Instructions :</span>
+                <input id="specialInstructions" type="text" placeholder="Special instructions for delivery">
+               </div>
+
               <div class="inputs">
                <span>Use customer points:</span>
                   <select name="customerPoints" id="customerPoints">
@@ -178,9 +189,16 @@
       </form>  
     </div>
 
+    <form action="" id="profile-form" class="profile-form form">
+        <ion-icon id="exit-profile" class="exit-profile" name="arrow-back-outline"></ion-icon>
+        <h1 id="users-name" class="users-name "></h1>
+        <p id = "users-email" class="users-email"></p>
+        <p id="users-points" class="users-points"></p>
+    </form>
+
     <footer id="footer" class="animate__animated footer-section">
       <div class="log-btn-container">
-              <a id="go-to-profile" class="go-to-profile">logo</a>
+        <a id="go-to-profile" class="go-to-profile">Sign Out</a>
           </div>
           <div class="footer-info">
               <p><ion-icon name="location-outline"></ion-icon>123 Abcde Dr, Lancaster, PA</p>

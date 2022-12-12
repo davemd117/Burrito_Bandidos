@@ -7,9 +7,10 @@
 
 body {
     background-image: linear-gradient( rgba(0, 0, 0, 0.7) ,rgba(0, 0, 0, 0.7)), url(Manager-Menu-Page-Images/heroback.jpg);
-    /* background-repeat: no-repeat; */
-    background-size: auto;
-    /* background-position: center; */
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Poppins', cursive;
+    background-position: center;
 }
 
 /* ------------------------------- Receipt Form -------------------------------*/
@@ -35,6 +36,7 @@ body {
     margin: 15px auto;
     text-align: center;
     font-size: 16px;
+    margin-bottom: 100px;
 }
 
 .receiptTitle {
@@ -44,6 +46,10 @@ body {
 #receiptItemsContainer {
     padding: 2rem;
     color: gray;
+}
+
+#orderTimeContainer {
+    align-items: center;
 }
 
 .receiptItem {
@@ -62,6 +68,7 @@ body {
 }
 
 .receiptForm img {
+    margin-top: 2rem;
     width: 25%;
     border-radius: 5px;
 }
@@ -76,6 +83,11 @@ body {
     display: flex;
     justify-content: space-between;
     margin-bottom: .5rem;
+}
+
+#deliveryMessage {
+    line-height: 1.5;
+    display: none;
 }
 
 /* ------------------------------- Nav / Sidebar -------------------------------*/
@@ -256,6 +268,7 @@ footer{
     /* border-right: 1px solid #fff;
     border-left: 1px solid #fff; */
     transition: .5s;
+    cursor: pointer;
 }
 
 .go-to-login:hover,.go-to-profile:hover{

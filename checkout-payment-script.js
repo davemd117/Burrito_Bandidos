@@ -7,6 +7,10 @@ let points = [];
 totalPoints = customerPoints[0].points + cartPoints;
 points.push(totalPoints);
 localStorage.setItem("useCredit", true);
+localStorage.setItem('usePoints', false);
+localStorage.setItem("useDelivery", true);
+let tip = 0.00;
+localStorage.setItem("tip", tip);
 
 currentCustomerCart.forEach((item) => {
    let cartItems = document.querySelector(".cartItems");
@@ -14,7 +18,7 @@ currentCustomerCart.forEach((item) => {
     cartItem.classList.add("cartItem");
     cartItem.innerHTML = `
     <div class="cartItemImg">
-        <img src="/${item.image}" alt="">
+        <img src="${item.image}" alt="">
     </div>
     <div class="cartItemName">
         <h4>${item.name}</h4>
@@ -68,6 +72,8 @@ function totalPrice() {
     var subTotal = 0;
     var tax = 0;
     var total = 0;
+    var tip = localStorage.getItem("tip");
+    tip = parseFloat(tip.replace("$", ""));
     for (var i = 0; i < cartItem.length; i++) {
         var cartItemPrice = cartItem[i].querySelector(".cartItemPrice h4");
         var cartItemQuantity = cartItem[i].querySelector(".quantity");
@@ -75,11 +81,12 @@ function totalPrice() {
         var quantity = cartItemQuantity.value;
         subTotal += (price * quantity);
         tax = subTotal * .06
-        total = subTotal + tax;
+        total = subTotal + tax + tip;
     }
     document.getElementsByClassName("total")[0].innerText = "Total: $" + total.toFixed(2);
     document.getElementsByClassName("subTotal")[0].innerText = "Subtotal: $" + subTotal.toFixed(2);
     document.getElementsByClassName("tax")[0].innerText = "Tax: $" + tax.toFixed(2);
+    document.getElementsByClassName("tipAmount")[0].innerText = "Tip: $" + tip.toFixed(2);
     }
 
 var quantityInputs = document.getElementsByClassName("quantity");
@@ -108,9 +115,7 @@ var state = document.getElementById('state');
 var zip = document.getElementById('zip');
 var phone = document.getElementById('phone');
 
-// submit button one is on billing/payment form this should hide payment form and show shipping form on click if forms filled out
 var submitBtn1 = document.getElementById('submitBtn1');
-// submit button two is on shipping form this should redirect to confirmation page on click if forms filled out
 var submitBtn2 = document.getElementById('submitBtn2');
 
 //payment info form
@@ -119,6 +124,7 @@ var cardName = document.getElementById('cardName');
 var cardExpMonth = document.getElementById('cardExpMonth');
 var cardExpYear = document.getElementById('cardExpYear');
 var cardCvv = document.getElementById('cardCvv');
+var tip1 = document.getElementById('tip');
 
 //shipping info form
 var shippingName = document.getElementById('shippingName');
@@ -128,6 +134,7 @@ var shippingState = document.getElementById('shippingState');
 var shippingZip = document.getElementById('shippingZip');
 var shippingEmail = document.getElementById('shippingEmail');
 var shippingMethod = document.getElementById('shippingMethod');
+
 
 function validateForm() {
     if (billingName.value == "" || address.value == "" || email.value == "" || city.value == "" || state.value == "" || zip.value == "" || email.value.includes("@") == false) {
@@ -159,6 +166,14 @@ function validateForm3() {
 
 //submit btns
 submitBtn1.addEventListener('click', function() {
+    let tipAmount = document.querySelector("#tip").value;
+    if (tipAmount.includes("$") && !isNaN(tipAmount.replace("$", ""))) {
+        tipAmount = parseFloat(tipAmount.replace("$", ""));
+        localStorage.setItem("tip", tipAmount);
+       
+    } else {
+        localStorage.setItem("tip", 0);
+    }
     if (validateForm() == true && validateForm2() == true) {
         let container = document.querySelector('.container');
         container.classList.add("containerHidden");
@@ -166,7 +181,7 @@ submitBtn1.addEventListener('click', function() {
         let container2 = document.querySelector('.container2');
         container2.classList.add("containerActive");
         container2.classList.remove("containerHidden");
-       
+        totalPrice();    
     }
 });
 
@@ -179,6 +194,16 @@ customerPointsSelect.addEventListener('change', function() {
     }
 });
 
+let deliveryOrPickup = document.getElementById('shippingMethod');
+deliveryOrPickup.addEventListener('change', function() {
+    if(deliveryOrPickup.value == "delivery") {
+        localStorage.setItem("useDelivery", true);
+    } else {
+        localStorage.setItem("useDelivery", false);
+    }
+});
+
+
 submitBtn2.addEventListener('click', function() {
     let quantityInputs = document.querySelectorAll('.quantity');
 quantityInputs.forEach((input) => {
@@ -188,8 +213,11 @@ quantityInputs.forEach((input) => {
     customerCart[itemIndex].quantity = input.value;
     if (validateForm3() == true) {
         localStorage.setItem('totalPoints', points);
+        localStorage.removeItem('cartItems');
         localStorage.setItem('finalCart', JSON.stringify(customerCart));
-        window.location.href = "receipt.html";
+        var specialInstructions = document.getElementById('specialInstructions').value;
+        localStorage.setItem('specialInstructions', JSON.stringify(specialInstructions)); 
+        window.location.href = "receipt.html";  
     }
 });
 });
@@ -205,6 +233,7 @@ cashBtn.addEventListener('click', function() {
     cardName.value = "Cash expected on delivery";
     cardExpMonth.value = "Cash expected on delivery";
     cardExpYear.value = "Cash expected on delivery";
+    tip1.value = "$0.00";
     localStorage.setItem("useCredit", false);
 });
 
@@ -236,3 +265,42 @@ $('#ham-menu').click(() => {
         $(".side-bar").hide()
  
  }
+
+ function checkForUser(){
+    logbtn = document.getElementById("go-to-login")
+    profbtn = document.getElementById("go-to-profile")
+    
+    if(window.localStorage.getItem("Current User")){
+        let currentUser = JSON.parse(localStorage.getItem('Current User'));
+        profbtn.style.display = "block"
+        // logbtn.style.display = "none"
+        profbtn.innerHTML = `${currentUser[0].firstName}\'s Profile`
+        // POPULATE PROFILE
+        let usersname = currentUser[0].firstName
+        let usersemail = currentUser[0].email
+        let userspoints = currentUser[0].points
+        let displayname = document.getElementById("users-name")
+        let displayemail = document.getElementById("users-email")
+        displaypoints = document.getElementById("users-points")
+        displayname.innerHTML = usersname
+        displayemail.innerHTML = usersemail
+        displaypoints.innerHTML = `Points: ${userspoints}`
+    }
+    else{
+        console.log("NOT There")
+        profbtn.style.display = "none"
+        // logbtn.style.display = "block"
+    }
+}
+$("#go-to-profile").click(() => {
+    profile = document.getElementById("profile-form")
+    profile.style.transform = "scale(1)"
+ })
+ $("#exit-profile").click(() => {
+    profile = document.getElementById("profile-form")
+    profile.style.transform = "scale(0)"
+ })
+
+
+ checkForUser()
+

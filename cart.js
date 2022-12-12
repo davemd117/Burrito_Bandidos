@@ -2,6 +2,7 @@
 const cart = document.querySelector('#cartItems');
 const cartTotal = document.getElementById('cartTotal');
 var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+var currentUser = JSON.parse(localStorage.getItem("Current User"));
 
 // ------------------------------- Cart ------------------------------- 
 function updateCart() {
@@ -43,13 +44,14 @@ function renderCart() {
 };
 
 function renderCartTotal() {
-    let totalPrice = 0;
+    let total = 0;
 
     cartItems.forEach((cartItem) => {
-        totalPrice += cartItem.price * cartItem.quantity
+        total += cartItem.price * cartItem.quantity
     });
 
-    cartTotal.innerHTML = `$${totalPrice.toFixed(2)}`;
+    cartTotal.innerHTML = `$${total.toFixed(2)}`;
+    localStorage.setItem("orderSubTotal", JSON.stringify(total));
 };
 
 function changeCartItemQuantity(action, id) {
@@ -72,9 +74,6 @@ function changeCartItemQuantity(action, id) {
     });
 
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
-
-    // Set localStorage here as well?
-
     updateCart();
 };
 
@@ -85,14 +84,61 @@ function removeFromCart(id) {
 };
 
 function purchaseCart() {
-    let purchaseItems = [];
-    purchaseItems = cartItems;
-    localStorage.setItem("purchaseItems", JSON.stringify(cartItems));
-    window.location.href = "checkout-payment.html"
-    // NOTE: May not have to set a new array. Purchase page should just be able to grab the cart items
+    if (cartItems.length === 0) {
+        alert("Your cart is empty");
+        return
+    }
+    else {
+        localStorage.setItem("purchaseItems", JSON.stringify(cartItems));
+        window.location.href = "checkout-payment.html"
+    }
+};
+updateCart();
+console.log(cartItems)
+
+function setFavorite() {
+    currentUser[0].favorites = cartItems;
+    localStorage.setItem('Current User', JSON.stringify(currentUser));
 };
 
-updateCart();
+function renderFavorite() {
+    if (currentUser[0].favorites === "") {
+        alert("No favorite order found for this user")
+        return
+    };
+
+    cartItems = currentUser[0].favorites;
+    cart.innerHTML = "";
+    let cartPoints = 0;
+
+    cartItems.forEach((cartItem) => {
+        let subTotal = cartItem.price * cartItem.quantity
+
+        cart.innerHTML += `
+            <div class="cartItem">
+                <div class="cartItemFlex cart-left">
+                    <img  class="cartItemImage" src="${cartItem.image}" alt="">
+                </div>
+                <div class="cartItemFlex cart-middle">
+                    <h4 class="cartItemName">${cartItem.name}</h3>
+                    <p class="cartItemDescription">${cartItem.description}</p>
+                    <div class="cartQuantityContainer">
+                    <div class="removeQtyBtn" onclick="changeCartItemQuantity('minus', ${cartItem.id})">-</div>
+                    <div class="cartItemQuantity">${cartItem.quantity}</div>
+                    <div class="addQtyBtn" onclick="changeCartItemQuantity('plus', ${cartItem.id})">+</div>
+                    </div>
+                </div>
+                <div class="cartItemFlex cart-right">
+                    <p class="cartItemPrice cart-price">$${subTotal.toFixed(2)}</p>
+                    <div class="cartItemRemoveButton " onclick="removeFromCart(${cartItem.id})">Remove</div>
+                </div>
+            </div>
+        `;
+        cartPoints += (10 * cartItem.quantity);
+    });
+    localStorage.setItem("cartPoints", JSON.stringify(cartPoints));
+    console.log(cartPoints)
+};
 
 // ------------------------------- Hamburger Menu ------------------------------- 
 $('#ham-menu').click(() => {
@@ -121,16 +167,26 @@ function checkForUser(){
         profbtn.style.display = "block"
         // logbtn.style.display = "none"
         profbtn.innerHTML = `${currentUser[0].firstName}\'s Profile`
-        // POPULATE PROFILE
+        // POPULATE PROFILE DISPLAY
         let usersname = currentUser[0].firstName
         let usersemail = currentUser[0].email
         let userspoints = currentUser[0].points
+        let usersphone = currentUser[0].phone
+        let usersaddress = currentUser[0].address
+        // let favs = JSON.parse(currentUser[0].favorites)
+        // console.log(favs)
         let displayname = document.getElementById("users-name")
         let displayemail = document.getElementById("users-email")
-        displaypoints = document.getElementById("users-points")
+        let displayphone = document.getElementById("users-phone")
+        let displayaddress = document.getElementById("users-addy")
+        let displaypoints = document.getElementById("users-points")
+        let displayfavs = document.getElementById("favs")
         displayname.innerHTML = usersname
         displayemail.innerHTML = usersemail
+        displayphone.innerHTML = usersphone
+        displayaddress.innerHTML = usersaddress
         displaypoints.innerHTML = `Points: ${userspoints}`
+        // displayfavs.innerHTML = favs
     }
     else{
         console.log("NOT There")

@@ -1,18 +1,46 @@
+// To do: classList.remove() for deliveryMessageElement not working in renderReceiptDetails function
+
 // ------------------------------- HTML Element Variables ------------------------------- 
 const receiptItemsContainer = document.getElementById('receiptItemsContainer');
+const customerNameElement = document.getElementById('customerName');
+const paymentTypeElement = document.getElementById('paymentType');
+const orderTypeElement = document.getElementById('orderType');
+const orderNumberElement = document.getElementById('orderNumber');
+const orderTimeElement = document.getElementById('orderTime');
+const deliveryMessageElement = document.getElementById('deliveryMessage');
+const specialInstructionsElement = document.getElementById('specialInstructions');
 const receiptSubTotalElement = document.getElementById('receiptSubTotal');
+const pointsEarnedElement = document.getElementById('pointsEarned');
+const pointsSpentElement = document.getElementById('pointsSpent');
+const pointsDiscountElement = document.getElementById('pointsDiscount');
+const customerPointsElement = document.getElementById('customerPoints');
+const receiptTipElement = document.getElementById('receiptTip');
+const deliveryChargeElement = document.getElementById('deliveryCharge');
 const receiptTaxElement = document.getElementById('receiptTax');
 const receiptTotalElement = document.getElementById('receiptTotal');
 
+
 // ------------------------------- Global Variables For Functions ------------------------------- 
-var receiptSubTotal = 0;
-var tax = 0;
 var receiptItems = JSON.parse(localStorage.getItem("finalCart"));
+var currentUser = JSON.parse(localStorage.getItem("Current User"));
+var useCard = JSON.parse(localStorage.getItem("useCredit"));
+var useDelivery = JSON.parse(localStorage.getItem("useDelivery"));
+var specialInstructions = JSON.parse(localStorage.getItem("specialInstructions"));
+var orderNumber = JSON.parse(localStorage.getItem("orderNumber")) || 0;
+var orderTime = 5;
+var subTotal = JSON.parse(localStorage.getItem("orderSubTotal"));
+var usePoints = JSON.parse(localStorage.getItem("usePoints"));
+var cartPoints = JSON.parse(localStorage.getItem("cartPoints"));
+var totalPoints = JSON.parse(localStorage.getItem("totalPoints"));
+var tip = Number(localStorage.getItem("tip"));
+var tax = subTotal * .06;
+var total = subTotal + tax + Number(tip);
 
 // ------------------------------- Receipt Items ------------------------------- 
 function renderReceiptItems() {
     receiptItemsContainer.innerHTML = "";
     receiptItems.forEach((receiptItem) => {
+        orderTime += (Number(receiptItem.quantity))
         let receiptItemSubTotal = receiptItem.price * receiptItem.quantity;
         receiptItemsContainer.innerHTML += `
             <div class="receiptItem">
@@ -27,32 +55,61 @@ function renderReceiptItems() {
 };
 renderReceiptItems();
 
-function renderReceiptSubTotal() {
-    receiptItems.forEach((receiptItem) => {
-        receiptSubTotal += receiptItem.price * receiptItem.quantity;
-    });
-    receiptSubTotalElement.innerHTML = `$${receiptSubTotal.toFixed(2)}`;
-};
-renderReceiptSubTotal();
-
-function renderReceiptTax() {
-    tax = receiptSubTotal * .06;
+function renderReceiptDetails() {
+    customerNameElement.innerHTML = `${currentUser[0].firstName}`;
+    if (useCard === true) {
+        paymentTypeElement.innerHTML = `Card`;
+    } else if (useCard === false) {
+        paymentTypeElement.innerHTML = `Cash`;
+    };
+    if (useDelivery === true) {
+        specialInstructionsElement.innerHTML = `${specialInstructions}`
+        deliveryMessageElement.style.display = "block";
+        orderTypeElement.innerHTML = `Delivery`;
+        deliveryChargeElement.innerHTML = `$2.00`;
+        total += 2;
+    } else if (useDelivery === false) {
+        orderTypeElement.innerHTML = `Pickup`;
+    };
+    orderNumber += 1;
+    localStorage.setItem("orderNumber", JSON.stringify(orderNumber));
+    orderNumberElement.innerHTML = `${orderNumber}`
+    orderTimeElement.innerHTML = `${orderTime} minutes`
+    receiptSubTotalElement.innerHTML = `$${subTotal.toFixed(2)}`;
+    receiptTipElement.innerHTML = `$${tip.toFixed(2)}`;
     receiptTaxElement.innerHTML = `$${tax.toFixed(2)}`;
 }
-renderReceiptTax();
+renderReceiptDetails();
+
+
+
+function renderPointUsage() {
+    pointsEarnedElement.innerHTML = `${cartPoints}`;
+
+    if (usePoints === true) {
+        pointsSpentElement.innerHTML = `${currentUser[0].points}`;
+        pointsDiscountElement.innerHTML = `$${currentUser[0].points / 10}`;
+        customerPointsElement.innerHTML = `${cartPoints}`
+
+        total -= (currentUser[0].points / 10);
+
+        currentUser[0].points = 0;
+    } else if (usePoints === false) {
+        customerPointsElement.innerHTML = `${ currentUser[0].points + cartPoints}`
+    }
+
+    currentUser[0].points += cartPoints;
+    localStorage.setItem('Current User', JSON.stringify(currentUser));
+    renderReceiptTotal();
+};
+renderPointUsage();
+
+
 
 function renderReceiptTotal() {
-    var pointUse = JSON.parse(localStorage.getItem("pointUse"));
-
-    var totalPoints = JSON.parse(localStorage.getItem("totalPoints"));
-    let total = receiptSubTotal + tax;
-    if (pointUse === "true") {
-        totalPoints / 10;
-        total -= totalPoints;
-    };
     receiptTotalElement.innerHTML = `$${total.toFixed(2)}`;
 };
-renderReceiptTotal();
+// renderReceiptTotal();
 
 // ------------------------------- Hamburger Menu ------------------------------- 
 $('#ham-menu').click(() => {

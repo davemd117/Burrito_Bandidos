@@ -14,9 +14,175 @@ let listUsers = [];
 let currentUser = [];
 let userMessage=[];
 
+// ----- foodItems declared ----- //
 
+var foodItems = JSON.parse(localStorage.getItem("foodItems"));
 
-
+if (foodItems === null) {
+    foodItems = [
+        {
+            id: 0,
+            name: "Burrito de Bistec",
+            price: 9.99,
+            image: "bandidos_images/burrito_de_bistec.jpg",
+            description: "Flour tortilla stuffed with steak and choice of toppings",
+            calories: 920,
+        },
+        {
+            id: 1,
+            name: "Burrito de Carnitas",
+            price: 8.99,
+            image: "bandidos_images/burrito_de_carnitas.jpg",
+            description: "Flour tortilla stuffed with pork and choice of toppings",
+            calories: 920,
+        },
+        {
+            id: 2,
+            name: "Burrito de Chorizo",
+            price: 8.99,
+            image: "bandidos_images/burrito_de_chorizo.jpg",
+            description: "Flour tortilla stuffed with mexican sausage and choice of toppings",
+            calories: 920,
+        },
+        {
+            id: 3,
+            name: "Burrito de Pollo",
+            price: 8.99,
+            image: "bandidos_images/burrito_de_pollo.jpg",
+            description: "Flour tortilla stuffed with chicken and choice of toppings",
+            calories: 920,
+        },
+        {
+            id: 4,
+            name: "Burrito de Tinga",
+            price: 8.99,
+            image: "bandidos_images/burrito_de_tinga.jpg",
+            description: "Flour tortilla stuffed with shredded chipotle chicken and choice of toppings",
+            calories: 920,
+        },
+        {
+            id: 5,
+            name: "Steak Tacos",
+            price: 12.99,
+            image: "bandidos_images/steak_tacos.jpg",
+            description: "Soft corn tortillas stuffed with steak and choice of toppings",
+            calories: 920,
+        },
+        {
+            id: 6,
+            name: "Fish Tacos",
+            price: 11.99,
+            image: "bandidos_images/fish_tacos.jpg",
+            description: "Soft corn tortillas stuffed with fish and choice of toppings",
+            calories: 920,
+        },
+        {
+            id: 7,
+            name: "Shrimp Tacos",
+            price: 11.99,
+            image: "bandidos_images/shrimp_tacos.jpg",
+            description: "Soft corn tortillas stuffed with shrimp and choice of toppings",
+            calories: 920,
+        },
+        {
+            id: 8,
+            name: "Chicken Tacos",
+            price: 11.99,
+            image: "bandidos_images/chicken_tacos.jpg",
+            description: "Soft corn tortillas stuffed with chicken and choice of toppings",
+            calories: 920,
+        },
+        {
+            id: 9,
+            name: "Carnitas Tacos",
+            price: 11.99,
+            image: "bandidos_images/carnitas_tacos.jpg",
+            description: "Soft corn tortillas stuffed with pork and choice of toppings",
+            calories: 920,
+        },
+        {
+            id: 10,
+            name: "Steak Quesadillas",
+            price: 13.99,
+            image: "bandidos_images/steak_quesadillas.jpg",
+            description: "Folded corn tortilla or flour tortilla stuffed with steak and choice of toppings",
+            calories: 920,
+        },
+        {
+            id: 11,
+            name: "Chicken Quesadillas",
+            price: 12.99,
+            image: "bandidos_images/chicken_quesadillas.jpg",
+            description: "Folded corn tortilla or flour tortilla stuffed with chicken and choice of toppings",
+            calories: 920,
+        },
+        {
+            id: 12,
+            name: "Chorizo Quesadillas",
+            price: 12.99,
+            image: "bandidos_images/chorizo_quesadillas.jpg",
+            description: "Folded corn tortilla or flour tortilla stuffed with Mexican sausage and choice of toppings",
+            calories: 920,
+        },
+        {
+            id: 13,
+            name: "Carnitas Quesadillas",
+            price: 12.99,
+            image: "bandidos_images/carnitas_quesadillas.jpg",
+            description: "Folded corn tortilla or flour tortilla stuffed with pork and choice of toppings",
+            calories: 920,
+        },
+        {
+            id: 14,
+            name: "Picadillo Quesadillas",
+            price: 12.99,
+            image: "bandidos_images/picadillo_quesadillas.jpg",
+            description: "Folded corn tortilla or flour tortilla stuffed with ground beef and choice of toppings",
+            calories: 920,
+        },
+        {
+            id: 15,
+            name: "Enchiladas Rojas",
+            price: 14.99,
+            image: "bandidos_images/enchiladas_rojas.jpg",
+            description: "Choice of steak, chicken or cheese topped with red chile sauce and choice of toppings.",
+            calories: 920,
+        },
+        {
+            id: 16,
+            name: "Enchiladas Verdes",
+            price: 14.99,
+            image: "bandidos_images/enchiladas_verdes.jpg",
+            description: "Choice of steak, chicken or cheese topped with green chile sauce and choice of toppings.",
+            calories: 920,
+        },
+        {
+            id: 17,
+            name: "Enchiladas de Mole",
+            price: 14.99,
+            image: "bandidos_images/enchiladas_de_mole.jpg",
+            description: "Stuffed with chicken and topped with mole and choice of toppings",
+            calories: 920,
+        },
+        {
+            id: 18,
+            name: "Enchiladas Suizas",
+            price: 14.99,
+            image: "bandidos_images/enchiladas_suizas.jpg",
+            description: "Stuffed with chicken, topped with Swiss cheese sauce",
+            calories: 920,
+        },
+        {
+            id: 19,
+            name: "Super Burrito",
+            price: 19.99,
+            image: "bandidos_images/super_burrito.jpg",
+            description: "A giant burrito stuffed with the hopes and dreams of all of Mexico",
+            calories: 920,
+        }
+    ];
+    localStorage.setItem('foodItems', JSON.stringify(foodItems));
+};
 
 // ----- user info class ----- //
 
@@ -38,10 +204,10 @@ class UserInfo {
 
 
 // test classes to populate storage
-userDatabase.push(new UserInfo('bandido1', 'Owner', 'BurBand@email.com', 'Password123', 1000, "", "",""));
-userDatabase.push(new UserInfo('davemd', 'Dave', 'dave@email.com', 'Drum&',1000, "", "",""));
-userDatabase.push(new UserInfo('preachey', 'Ryan', 'ryan@email.com', '$hort',1000, "", "",""));
-userDatabase.push(new UserInfo('chris', 'Chris', 'chris@email.com', 'wr1ght',1000,"123 Abcde, Dr","555-555-5555"));
+userDatabase.push(new UserInfo('bandido1', 'Owner', 'BurBand@email.com', 'Password123', 100, "", "",""));
+userDatabase.push(new UserInfo('davemd', 'Dave', 'dave@email.com', 'Drum&',100, "", "",""));
+userDatabase.push(new UserInfo('preachey', 'Ryan', 'ryan@email.com', '$hort',100, "", "",""));
+userDatabase.push(new UserInfo('chris', 'Chris', 'chris@email.com', 'wr1ght',100,"123 Abcde, Dr","555-555-5555"));
 
 
 
@@ -57,7 +223,7 @@ function addUser() {
         50,
         $('.sup-phone').val(),
         $('.sup-addy').val(),
-        
+        50
     ));
 }
 
@@ -470,17 +636,20 @@ function checkForUser(){
             let userspoints = loggedUser[0].points
             let usersphone = loggedUser[0].phone
             let usersaddress = loggedUser[0].address
+            // let favs = loggedUser[0].favorites
             console.log(usersphone,usersaddress)
             let displayname = document.getElementById("users-name")
             let displayemail = document.getElementById("users-email")
             let displayphone = document.getElementById("users-phone")
             let displayaddress = document.getElementById("users-addy")
             let displaypoints = document.getElementById("users-points")
+            let displayfavs = document.getElementById("favs")
             displayname.innerHTML = usersname
             displayemail.innerHTML = usersemail
             displayphone.innerHTML = usersphone
             displayaddress.innerHTML = usersaddress
             displaypoints.innerHTML = `Points: ${userspoints}`
+            // displayfavs.innerHTML = favs
             profbtn.style.display = "block"
             logbtn.style.display = "none"
             profbtn.innerHTML = `${loggedUser[0].firstName}\'s Profile`
@@ -592,7 +761,6 @@ function stickFooter(){
 // HAMBURGER MENU
 $('#ham-menu').click(() => {
    openNav()
-
 })
 $('.exit-sidebar').click(() => {
     closeNav()
@@ -605,9 +773,11 @@ sections.forEach((section) => {
 function openNav(){
     $(".side-bar").removeClass("animate__slideOutRight")
     $(".side-bar").show()
+    $(".side-links").css("visibility", "visible")
 }
 function closeNav(){
     $(".side-bar").addClass("animate__slideOutRight")
+    $(".side-links").css("visibility","hidden")
 
 }
 

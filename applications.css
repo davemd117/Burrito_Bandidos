@@ -23,8 +23,14 @@ body{
     z-index: 4;
     border-bottom: 1px solid #d3d3d3;
     transition: .4s;
-    
 }
+
+.ham-menu{
+    font-size: 2rem;
+    color: #006341;
+    cursor: pointer;
+}
+
 .nav-links{
     display: flex;
     justify-content: space-between;
@@ -56,6 +62,10 @@ nav ion-icon{
     height: 84vh;
 }
 
+.applicant{
+    color: #fff;
+}
+
 
 .applications{
     padding-top: .5rem;
@@ -66,22 +76,52 @@ nav ion-icon{
     display: flex;
     flex-direction: column;
     gap: .5rem;
-    font-size: .9em;
 }
 
 .showApplication{
-    background-color: #333;
+    position: relative;
+    background-color: #d3d3d3;
     height: 100%;
     width: 50%;
     font-size: .9em;
-    text-align: center;
     border-left: 1px solid black;
-    padding-top: .5rem;
 }
 
-h1 {
-    text-decoration: underline;
-    pointer-events: none;
+.showApplicationImg{
+    width: 100%;
+    height: 100%;
+    padding: 2rem 2rem;
+}
+
+.showApplication h2{
+    text-align: center;
+}
+.resumeHeader{
+    text-align: center;
+}
+
+.head{
+    display: flex;
+    padding: 1rem 0;
+    text-transform: uppercase;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #006341;
+}
+
+.head::before,
+.head::after{
+    content: '';
+    flex: 1 1;
+    border-bottom: 1px solid black;
+}
+
+.head ul{
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid black;
 }
 
 h3 {
@@ -92,6 +132,37 @@ h2 {
     pointer-events: none;
 }
 
+li{
+    padding: .3rem .5rem;
+    cursor: pointer;
+}
+.stuff ul{
+    display: flex;
+    flex-direction: row;
+}
+
+.stuff li{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+
+.exit {
+    position: absolute;
+    right: 2%;
+    top: 2%;
+    font-size: 2.2rem;
+    color: #006341;
+    cursor: pointer;
+    transition: .7s;
+}
+
+.exit:hover{
+    color: #ce1126;
+    font-size: 3rem;
+    transition: .7s;
+}
 
 .side-bar{
     z-index: 4;
@@ -127,6 +198,71 @@ h2 {
 }
 .exit-sidebar:hover{
     color: #ce1126;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    max-width: fit-content;
+    height: fit-content;
+    justify-content: center;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    padding: 20px;
+    border: 2px solid black;
+    box-shadow: 0 0 10px black;
+    background-color: #fff;
+    transition: 1s;
+    z-index: 100;
+}
+
+.profile-form{
+    transform: scale(0);
+}
+
+.users-name{
+    color: #ce1126;
+    text-shadow: 3px 3px black;
+    margin-bottom: 5px;
+    align-self: center;
+}
+
+.users-email{
+    text-align: center;
+    color: #006341;
+    text-shadow: 1px 1px black;
+    margin-bottom: 20px;
+}
+
+.users-points{
+    color: #ce1126;
+    text-shadow: 1px 1px black;
+    margin-bottom: 20px;
+    align-self: center;
+}
+
+.btn{
+    width: 200px;
+    font-size: 100%;
+    padding: 10px;
+    border-radius: 50px;
+    border: none;
+    background-image: linear-gradient(to right,#ce1126,#006341);
+    transition: .7s;
+    align-self: center;
+}
+
+.logo{
+    background-image: url(receipt_images/bandidos_name_logo.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 45px;
+    width: 7%;
 }
 
 
@@ -242,5 +378,21 @@ footer{
         align-items: center;
         box-shadow: black 0 0 5px;
         z-index: 4;
+    }
+    .showApplicationImg{
+        padding: 2rem 2rem;
+        height: min-content;
+    }
+    .applications{
+        font-size: .8em;
+    }
+    .applicant{
+        font-size: 1.2em;
+    }
+    h1{
+        font-size: 1.2em;
+    }
+    footer{
+        font-size: .9em;
     }
 }

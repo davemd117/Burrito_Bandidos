@@ -11,6 +11,9 @@
     <!-- FONTS -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap&family=Smokum&display=swap"  rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&family=DM+Sans:wght@400;500;700&family=Lato:wght@100;300;400&family=Playfair+Display:wght@400;500&family=Rubik:wght@300;400;500;600;700;800;900&family=Smokum&display=swap" rel="stylesheet">
+
+    <link rel="icon" href="favicon.ico">
+
 </head>
 <body>
     <!------------------------------- NAV BAR ---------------------------------->
@@ -18,9 +21,15 @@
         <div class="logo">LOGO</div>
         <ul id="nav-links" class="nav-links">
             <a  href="index.html"><li>Home</li></a>
-            <a href="cart.html"><li>Cart</li></a>
+            <div class="badge-container">
+                <a href="cart.html"><li>Cart</li></a>
+                <p class="icon-badge animate__animated" id="icon-badge"></p>
+            </div>
         </ul>
-        <ion-icon id="ham-menu" class="ham-menu" name="menu-outline"></ion-icon>
+        <div  class="badge-container ham-container">
+            <ion-icon id="ham-menu" class="ham-menu" name="menu-outline"></ion-icon>
+            <p class="icon-badge animate__animated" id="icon-badge-ham"></p>
+        </div>
     </nav>
 
     <!------------------------------- Side BAR ---------------------------------->
@@ -28,14 +37,17 @@
         <ion-icon class="exit-sidebar" name="arrow-back-outline"></ion-icon>
         <ul id="side-links" class="side-links">
             <a  href="index.html"><li>Home</li></a>
-            <a href="cart.html"><li>Cart</li></a>
+            <div class="badge-container">
+                <a href="cart.html"><li>Cart </li></a>
+                <p class="icon-badge" id="icon-badge-side"></p>
+            </div>
         </ul>
     </div>
 
     <!------------------------------- MENU ---------------------------------->
     <div class="menuTitle">
         <h1>MENU</h1>
-        <p>Here is our quality selection of Mexican cuisine! Click on an image to add the item to your cart.</p>
+        <p>Here is our fine selection of Mexican cuisine! Click on an image to add the item to your cart.</p>
     </div>
     <div class="menuContainer">
         <div class="menuColumnContainer">
@@ -55,8 +67,13 @@
     <form action="" id="profile-form" class="profile-form form">
         <ion-icon id="exit-profile" class="exit-profile" name="arrow-back-outline"></ion-icon>
         <h1 id="users-name" class="users-name "></h1>
-        <p id = "users-email" class="users-email"></p>
+        <p class="users-addy" id="users-addy"></p>
+        <div class="next-to prof-next-to">
+            <p class="users-phone" id="users-phone"></p>
+            <p id = "users-email" class="users-email"></p>
+        </div>
         <p id="users-points" class="users-points"></p>
+        <p id="favs" class="favs"></p>
         <!-- <button id="sign-out"class = "btn">Sign Out</button> -->
     </form>
 
